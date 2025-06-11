@@ -1,5 +1,7 @@
 import {
   Instagram,
+  Facebook,
+  Github,
   Linkedin,
   Mail,
   MapPin,
@@ -42,19 +44,20 @@ export const ContactSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
+          {/* Contact Information */}
+          <div className="bg-card p-8 rounded-lg shadow-md space-y-8">
+            <h3 className="text-2xl font-semibold mb-6 border-b border-muted-foreground pb-2">
               Contact Information
             </h3>
 
-            <div className="space-y-6 justify-center">
+            <div className="space-y-6">
+              {/* Email */}
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Email</h4>
+                <div className="text-left">
+                  <h4 className="font-medium text-left">Email</h4>
                   <a
                     href="mailto:chamiduudara321@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -63,65 +66,102 @@ export const ContactSection = () => {
                   </a>
                 </div>
               </div>
+
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Phone</h4>
+                <div className="text-left">
+                  <h4 className="font-medium text-left">OutLock</h4>
                   <a
-                    href="tel:+11234567890"
+                    href="mailto:2021e049@eng.jfn.ac.lk"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +94761720686
+                    2021e049@eng.jfn.ac.lk
                   </a>
                 </div>
               </div>
+
+              {/* Phone */}
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
+                  <Phone className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
+                <div className="text-left">
+                  <h4 className="font-medium text-left">Phone</h4>
+                  <a
+                    href="tel:+94761720686"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    +94 76 172 0686
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <MapPin className="h-6 w-6 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-medium text-left">Location</h4>
+                  <a
+                    href="https://www.google.com/maps/place/Kuliyapitiya,+Sri+Lanka"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     Kuliyapitiya, Sri Lanka
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
-                <a href="www.linkedin.com/in/udara-herath-530006217" target="_blank">
-                  <Linkedin />
-                </a>
-                <a href="#" target="_blank">
-                  <Twitter />
-                </a>
-                <a href="#" target="_blank">
-                  <Instagram />
-                </a>
-                <a href="#" target="_blank">
-                  <Twitch />
-                </a>
+            <div>
+              <h4 className="font-semibold mb-4"> </h4>
+              <div className="pt-8 text-center">
+                <h4 className="font-medium mb-4">Connect With Me</h4>
+                <div className="flex space-x-4 justify-center">
+                  <a
+                    href="https://www.linkedin.com/in/udara-herath-530006217"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Linkedin />
+                  </a>
+                  <a
+                    href="https://github.com/UdaraChamidu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/udara.chamidu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Facebook className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
+                  </a>
+                  
+    
+                </div>
               </div>
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
-            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
+          {/* Send a Message */}
+          <div className="bg-card p-8 rounded-lg shadow-md">
+            <h3 className="text-2xl font-semibold mb-6 border-b border-muted-foreground pb-2">
+              Send a Message
+            </h3>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Name
                 </label>
                 <input
@@ -129,7 +169,7 @@ export const ContactSection = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Pedro Machado..."
                 />
               </div>
@@ -139,7 +179,6 @@ export const ContactSection = () => {
                   htmlFor="email"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Email
                 </label>
                 <input
@@ -147,7 +186,7 @@ export const ContactSection = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="john@gmail.com"
                 />
               </div>
@@ -157,14 +196,13 @@ export const ContactSection = () => {
                   htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>

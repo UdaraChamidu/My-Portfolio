@@ -16,21 +16,34 @@ export const AboutSection = () => {
             </h3>
 
             <p className="text-muted-foreground">
-              Passionate about Generative AI, Machine Learning, and Agentic AI. Currently exploring internship opportunities to grow in the field of AI and automation.
+              Passionate about Generative AI, Machine Learning, and Agentic AI.
+              Currently exploring internship opportunities to grow in the field
+              of AI and automation.
             </p>
 
             <p className="text-muted-foreground">
-              I’m currently looking for AI internship opportunities where I can learn from experienced teams, contribute to meaningful work, and take the next step toward my goal of becoming an AI engineer.
+              I’m currently looking for AI internship opportunities where I can
+              learn from experienced teams, contribute to meaningful work, and
+              take the next step toward my goal of becoming an AI engineer.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <a href="#contact" className="cosmic-button">
-                {" "}
                 Get In Touch
               </a>
 
               <a
-                href=""
+                href="/CV(AI)_Udara_Herath.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+              >
+                View CV
+              </a>
+
+              <a
+                href="/CV(AI)_Udara_Herath.pdf"
+                download
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
@@ -53,14 +66,16 @@ export const AboutSection = () => {
                 </div>
               </div>
             </div>
-           
+
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Machine & Deep Learning</h4>
+                  <h4 className="font-semibold text-lg">
+                    Machine & Deep Learning
+                  </h4>
                   <p className="text-muted-foreground">
                     Leading projects from conception to completion with agile
                     methodologies.
@@ -75,7 +90,9 @@ export const AboutSection = () => {
                   <User className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Generative & Agentic AI</h4>
+                  <h4 className="font-semibold text-lg">
+                    Generative & Agentic AI
+                  </h4>
                   <p className="text-muted-foreground">
                     Designing intuitive user interfaces and seamless user
                     experiences.
