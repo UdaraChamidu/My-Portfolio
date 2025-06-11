@@ -2,7 +2,8 @@
 
 ## 🚀 Introduction
 
-In this repository contains my portfolio website using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. From dark mode support to responsive animations and deployable project showcases.
+In this repository contains my portfolio website using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. From dark mode support to responsive animations and deployable project showcases. This web page was build with the hepl of PedroTech's youtube video
+
 ---
 
 ## ⚙️ Tech Stack
@@ -42,32 +43,12 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 * 🚀 **One-Click Deployment**
   Easily host your site with Vercel and GitHub
-
----
-
-## 👌 Quick Start
-
-### Prerequisites
-
-* [Node.js](https://nodejs.org/)
-* [Git](https://git-scm.com/)
-
-### Clone and Run
-
-```bash
-git clone https://github.com/yourusername/react-tailwind-portfolio.git
-cd react-tailwind-portfolio
-npm install
-npm run dev
-```
-
-Your app will be available at: [http://localhost:5173](http://localhost:5173)
-
+  
 ---
 
 ## 🖼️ Screenshots
 
-> 📸 Add screenshots of your Hero section, Projects grid, and Contact form here to show off your site.
+![image](https://github.com/user-attachments/assets/f59a4b6f-f5da-49e1-b19f-cd5b83bb1897)
 
 ---
 
@@ -83,16 +64,3 @@ Your app will be available at: [http://localhost:5173](http://localhost:5173)
 Your live website will be hosted on a custom subdomain (e.g. `https://your-name.vercel.app`)
 
 ---
-
-## 🔗 Useful Links
-
-* [React Documentation](https://reactjs.org/)
-* [Tailwind CSS Docs](https://tailwindcss.com/)
-* [Lucide Icons](https://lucide.dev/)
-* [Radix UI](https://www.radix-ui.com/)
-* [Vite](https://vitejs.dev/)
-* [Vercel](https://vercel.com/)
-
----
-
-Let me know if you'd like me to generate a version with your actual GitHub repo, YouTube URL, or a banner image suggestion!
