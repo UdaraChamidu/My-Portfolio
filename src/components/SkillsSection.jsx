@@ -2,29 +2,61 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "Next.js", level: 80, category: "frontend" },
+  // Web Development
+  { name: "HTML", level: 95, category: "Web Development" },
+  { name: "CSS", level: 90, category: "Web Development" },
+  { name: "JavaScript", level: 90, category: "Web Development" },
+  { name: "React", level: 90, category: "Web Development" },
+  { name: "Tailwind CSS", level: 90, category: "Web Development" },
+  { name: "Next.js", level: 80, category: "Web Development" },
 
-  // Backend
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
-  { name: "PostgreSQL", level: 65, category: "backend" },
-  { name: "GraphQL", level: 60, category: "backend" },
+  // ML / AI
+  { name: "ML", level: 80, category: "AI / ML" },
+  { name: "DL", level: 75, category: "AI / ML" },
+  { name: "NLP", level: 70, category: "AI / ML" },
+  { name: "LLM", level: 65, category: "AI / ML" },
+  { name: "Gen AI", level: 60, category: "AI / ML" },
+  { name: "Computer Vision", level: 60, category: "AI / ML" },
+  { name: "AI Agents", level: 60, category: "AI / ML" },
+  { name: "LLMs", level: 60, category: "AI / ML" },
+  { name: "VectorStores", level: 60, category: "AI / ML" },
+  { name: "RAG", level: 60, category: "AI / ML" },
+
+  // Programming
+  { name: "Python", level: 90, category: "Programming" },
+  { name: "Java", level: 70, category: "Programming" },
+  { name: "C++", level: 85, category: "Programming" },
+  { name: "Databases", level: 85, category: "Programming" },
+
+  // Deployment
+  { name: "Docker", level: 70, category: "Deployment" },
+  { name: "Flask", level: 70, category: "Deployment" },
+  { name: "Streamlit ", level: 70, category: "Deployment" },
 
   // Tools
-  { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 70, category: "tools" },
-  { name: "Figma", level: 85, category: "tools" },
+  { name: "GitHub", level: 90, category: "tools" },
+  { name: "Google Colab", level: 85, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
+  { name: "Jupyter", level: 95, category: "tools" },
+  { name: "HuggingFace", level: 95, category: "tools" },
+
+  // Add other skills as needed
+  { name: "Arduino", level: 90, category: "others" },
+  { name: "Matlab", level: 85, category: "others" },
+  { name: "Solidworks", level: 95, category: "others" },
+  { name: "Electronics", level: 95, category: "others" },
+  { name: "Databases", level: 95, category: "others" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = [
+  "all",
+  "AI / ML",
+  "Programming",
+  "Web Development",
+  "Deployment",
+  "tools",
+  "others",
+];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");

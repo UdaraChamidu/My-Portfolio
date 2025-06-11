@@ -9,21 +9,23 @@ export const HeroSection = () => {
       <div className="container max-w-4xl mx-auto text-center z-10">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in"> Hi, I'm</span>
-            <span className="text-primary opacity-0 animate-fade-in-delay-1">
-              {" "}
-              Pedro
+            <span className="opacity-0 animate-fade-in"> Hi,</span>
+            <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-1">
+              {""}
+            I am
             </span>
-            <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
+            <span className="text-primary opacity-0 animate-fade-in-delay-2">
               {" "}
-              Machado
+              Udara
+            </span>
+            <span className="text-primary opacity-0 animate-fade-in-delay-3">
+              {" "}
+              Herath  
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I create stellar web experiences with modern technologies.
-            Specializing in front-end development, I build interfaces that are
-            both beautiful and functional.
+          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-4">
+            I'm a passionate and driven final year university student at Faculty of Engineering, University of Jaffna specializing in Computer Engineering. Currently, I’m actively exploring opportunities in AI research, Generative AI, Deep Learning, Machine Learning and Agentic AI Systems.
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">
