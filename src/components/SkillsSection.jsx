@@ -3,49 +3,46 @@ import { cn } from "@/lib/utils";
 
 const skills = [
   // Web Development
-  { name: "HTML", level: 95, category: "Web Development" },
-  { name: "CSS", level: 90, category: "Web Development" },
-  { name: "JavaScript", level: 90, category: "Web Development" },
+  { name: "HTML", level: 75, category: "Web Development" },
+  { name: "CSS", level: 85, category: "Web Development" },
+  { name: "JavaScript", level: 88, category: "Web Development" },
   { name: "React", level: 90, category: "Web Development" },
-  { name: "Tailwind CSS", level: 90, category: "Web Development" },
-  { name: "Next.js", level: 80, category: "Web Development" },
+  { name: "Tailwind CSS", level: 81, category: "Web Development" },
 
   // ML / AI
-  { name: "ML", level: 80, category: "AI / ML" },
-  { name: "DL", level: 75, category: "AI / ML" },
-  { name: "NLP", level: 70, category: "AI / ML" },
-  { name: "LLM", level: 65, category: "AI / ML" },
-  { name: "Gen AI", level: 60, category: "AI / ML" },
-  { name: "Computer Vision", level: 60, category: "AI / ML" },
-  { name: "AI Agents", level: 60, category: "AI / ML" },
-  { name: "LLMs", level: 60, category: "AI / ML" },
-  { name: "VectorStores", level: 60, category: "AI / ML" },
-  { name: "RAG", level: 60, category: "AI / ML" },
+  { name: "ML", level: 93, category: "AI / ML" },
+  { name: "DL", level: 87, category: "AI / ML" },
+  { name: "NLP", level: 80, category: "AI / ML" },
+  { name: "Gen AI", level: 90, category: "AI / ML" },
+  { name: "Computer Vision", level: 74, category: "AI / ML" },
+  { name: "AI Agents", level: 65, category: "AI / ML" },
+  { name: "LLMs", level: 74, category: "AI / ML" },
+  { name: "VectorStores", level: 80, category: "AI / ML" },
+  { name: "RAG", level: 87, category: "AI / ML" },
 
   // Programming
   { name: "Python", level: 90, category: "Programming" },
-  { name: "Java", level: 70, category: "Programming" },
+  { name: "Java", level: 82, category: "Programming" },
   { name: "C++", level: 85, category: "Programming" },
-  { name: "Databases", level: 85, category: "Programming" },
 
   // Deployment
-  { name: "Docker", level: 70, category: "Deployment" },
+  { name: "Docker", level: 40, category: "Deployment" },
   { name: "Flask", level: 70, category: "Deployment" },
   { name: "Streamlit ", level: 70, category: "Deployment" },
 
   // Tools
-  { name: "GitHub", level: 90, category: "tools" },
-  { name: "Google Colab", level: 85, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
-  { name: "Jupyter", level: 95, category: "tools" },
-  { name: "HuggingFace", level: 95, category: "tools" },
+  { name: "GitHub", level: 85, category: "tools" },
+  { name: "Google Colab", level: 95, category: "tools" },
+  { name: "VS Code", level: 84, category: "tools" },
+  { name: "Jupyter", level: 85, category: "tools" },
+  { name: "HuggingFace", level: 75, category: "tools" },
 
   // Add other skills as needed
-  { name: "Arduino", level: 90, category: "others" },
-  { name: "Matlab", level: 85, category: "others" },
-  { name: "Solidworks", level: 95, category: "others" },
-  { name: "Electronics", level: 95, category: "others" },
-  { name: "Databases", level: 95, category: "others" },
+  { name: "Arduino", level: 70, category: "others" },
+  { name: "Matlab", level: 78, category: "others" },
+  { name: "Solidworks", level: 65, category: "others" },
+  { name: "Electronics", level: 72, category: "others" },
+  { name: "Databases", level: 85, category: "others" },
 ];
 
 const categories = [
