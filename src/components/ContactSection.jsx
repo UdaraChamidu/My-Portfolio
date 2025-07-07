@@ -1,3 +1,4 @@
+import { MessageCircle } from "lucide-react";
 import {
   Instagram,
   Facebook,
@@ -12,25 +13,62 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    const form = e.target;
+
+    const serviceId = "service_qp0jrov";
+    const userToYouTemplateId = "template_agqr49w";
+    const autoReplyTemplateId = "template_zja5mq3";
+    const publicKey = "TqR-vRWKOgnaZq2aA";
+
+    const formData = {
+      user_name: form.user_name.value,
+      user_email: form.user_email.value,
+      message: form.message.value,
+    };
+
+    // Send message to you
+    emailjs
+      .send(serviceId, userToYouTemplateId, formData, publicKey)
+      .then(() => {
+        // Send auto-reply to user
+        return emailjs.send(
+          serviceId,
+          autoReplyTemplateId,
+          formData,
+          publicKey
+        );
+      })
+      .then(() => {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setIsSubmitting(false);
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        setIsSubmitting(false);
+        toast({
+          title: "Something went wrong",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
       });
-      setIsSubmitting(false);
-    }, 1500);
   };
+
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -72,7 +110,7 @@ export const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-medium text-left">OutLock</h4>
+                  <h4 className="font-medium text-left">Outlook</h4>
                   <a
                     href="mailto:2021e049@eng.jfn.ac.lk"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -91,6 +129,24 @@ export const ContactSection = () => {
                   <h4 className="font-medium text-left">Phone</h4>
                   <a
                     href="tel:+94761720686"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    +94 76 172 0686
+                  </a>
+                </div>
+              </div>
+
+              {/* Whatsapp */}
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <MessageCircle className="h-6 w-6 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-medium text-left">Whatsapp</h4>
+                  <a
+                    href="https://wa.me/94761720686"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     +94 76 172 0686
@@ -117,33 +173,31 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-4"> </h4>
-              <div className="pt-8 text-center">
-                <h4 className="font-medium mb-4">Connect With Me</h4>
-                <div className="flex space-x-4 justify-center">
-                  <a
-                    href="https://www.linkedin.com/in/udara-herath-530006217"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Linkedin />
-                  </a>
-                  <a
-                    href="https://github.com/UdaraChamidu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
-                  </a>
-                  <a
-                    href="https://www.facebook.com/udara.chamidu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Facebook className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
-                  </a>
-                </div>
+            {/* Socials */}
+            <div className="pt-8 text-center">
+              <h4 className="font-medium mb-4">Connect With Me</h4>
+              <div className="flex space-x-4 justify-center">
+                <a
+                  href="https://www.linkedin.com/in/udara-herath-530006217"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin />
+                </a>
+                <a
+                  href="https://github.com/UdaraChamidu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
+                </a>
+                <a
+                  href="https://www.facebook.com/udara.chamidu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
+                </a>
               </div>
             </div>
           </div>
@@ -154,7 +208,7 @@ export const ContactSection = () => {
               Send a Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -165,7 +219,7 @@ export const ContactSection = () => {
                 <input
                   type="text"
                   id="name"
-                  name="name"
+                  name="user_name"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="udara chamidu..."
@@ -182,7 +236,7 @@ export const ContactSection = () => {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  name="user_email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="abc@gmail.com"

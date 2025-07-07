@@ -52,6 +52,14 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 ---
 
+## 🖼️ How to run
+
+* npm install
+* npm run dev
+* npm install @emailjs/browser - for contact
+
+---
+
 ## ☁️ Deployment
 
 ### Deploy on Vercel
@@ -60,6 +68,7 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 2. Go to [vercel.com](https://vercel.com)
 3. Import your repository
 4. Click **Deploy**
+
 
 Your live website will be hosted on a custom subdomain (e.g. `https://your-name.vercel.app`)
 

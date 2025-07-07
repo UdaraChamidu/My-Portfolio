@@ -7,12 +7,12 @@ const skills = [
   { name: "CSS", level: 85, category: "Web Development" },
   { name: "JavaScript", level: 88, category: "Web Development" },
   { name: "React", level: 90, category: "Web Development" },
-  { name: "Tailwind CSS", level: 81, category: "Web Development" },
+  { name: "Tailwind CSS", level: 71, category: "Web Development" },
 
   // ML / AI
   { name: "ML", level: 93, category: "AI / ML" },
   { name: "DL", level: 87, category: "AI / ML" },
-  { name: "NLP", level: 80, category: "AI / ML" },
+  { name: "NLP", level: 74, category: "AI / ML" },
   { name: "Gen AI", level: 90, category: "AI / ML" },
   { name: "Computer Vision", level: 74, category: "AI / ML" },
   { name: "AI Agents", level: 65, category: "AI / ML" },
@@ -42,7 +42,7 @@ const skills = [
   { name: "Matlab", level: 78, category: "others" },
   { name: "Solidworks", level: 65, category: "others" },
   { name: "Electronics", level: 72, category: "others" },
-  { name: "Databases", level: 85, category: "others" },
+  { name: "Databases", level: 82, category: "others" },
 ];
 
 const categories = [
