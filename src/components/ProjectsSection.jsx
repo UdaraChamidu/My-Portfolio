@@ -4,10 +4,12 @@ const projects = [
   {
     id: 1,
     title: "Medical Chatbot",
-    description: "A medical chat application that enables upload medical images and symptoms to diognisis diseases.",
+    description:
+      "A medical chat application that enables upload medical images and symptoms to diognisis diseases.",
     image: "/projects/project1.png",
     tags: ["Python", "Groq", "FastAPI"],
-    demoUrl: "https://www.linkedin.com/posts/udara-herath-530006217_ai-machinelearning-healthcareinnovation-activity-7337763371116654592-B8ek?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+    demoUrl:
+      "https://www.linkedin.com/posts/udara-herath-530006217_ai-machinelearning-healthcareinnovation-activity-7337763371116654592-B8ek?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
 
@@ -17,9 +19,10 @@ const projects = [
     description:
       "A web application for managing student attendance, including features for tracking attendance, generating reports, and managing student data.",
     image: "/projects/project3.png",
-    tags: ["PHP", "MySQL","HTML", "CSS", "JavaScript"],
+    tags: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
     demoUrl: "#",
-    githubUrl: "https://github.com/UdaraChamidu/student_attendance_management_project",
+    githubUrl:
+      "https://github.com/UdaraChamidu/student_attendance_management_project",
   },
   {
     id: 2,
@@ -28,39 +31,70 @@ const projects = [
       "A RAG based PDF chatbot that allows users to interact with PDF documents using natural language.",
     image: "/projects/project2.png",
     tags: ["Python", "LangChain", "Streamlit"],
-    demoUrl: "https://www.linkedin.com/posts/udara-herath-530006217_ai-chatwithpdf-pdaflag-activity-7337730822373855233-3k1K?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+    demoUrl:
+      "https://www.linkedin.com/posts/udara-herath-530006217_ai-chatwithpdf-pdaflag-activity-7337730822373855233-3k1K?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
     githubUrl: "https://github.com/UdaraChamidu/RAG-Based-PDF-Chatbot",
   },
-  
+
   {
     id: 1,
     title: "Laptop Price Predictor",
-    description: "A machine learning model that predicts laptop prices based on various features such as brand, processor, RAM, storage and more.",
+    description:
+      "A machine learning model that predicts laptop prices based on various features such as brand, processor, RAM, storage and more.",
     image: "/projects/project4.png",
     tags: ["Python", "HTML", "NumPy", "Pandas", "Scikit learn"],
-    demoUrl: "https://www.linkedin.com/posts/udara-herath-530006217_machinelearning-ai-datascience-activity-7337062576368824320-_5UL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+    demoUrl:
+      "https://www.linkedin.com/posts/udara-herath-530006217_machinelearning-ai-datascience-activity-7337062576368824320-_5UL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
   },
 
   {
     id: 1,
     title: "Personal AI Assistant",
-    description: "Building an AI agent in n8n to automate day to day works.(ongoing)",
+    description:
+      "Building an AI agent in n8n to automate day to day works.(ongoing)",
     image: "/projects/project5.png",
     tags: ["n8n", "OpenAI", "API"],
-    demoUrl: "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
-    githubUrl: "https://github.com/UdaraChamidu/n8n-AI-Agents/blob/main/My_AI_workflow_final.json",
+    demoUrl:
+      "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+    githubUrl:
+      "https://github.com/UdaraChamidu/n8n-AI-Agents/blob/main/My_AI_workflow_final.json",
   },
 
   {
     id: 1,
     title: "Research Project",
-    description: "Eye Disease Classification with Chatbot Integration (ongoing)",
+    description:
+      "Eye Disease Classification with Chatbot Integration (ongoing)",
     image: "/projects/project6.png",
     tags: ["React", "TailwindCSS", "Supabase"],
     demoUrl: "#",
     githubUrl: "#",
-  }
+  },
+
+  {
+    id: 3,
+    title: "AskBot ChatBot",
+    description:
+      "This is a LangGraph-based chatbot that uses the Gemini 2.5 Flash model via the Gemini API key. The backend is built with Python and FastAPI, and deployed on Railway.",
+    image: "/projects/askbot.png",
+    tags: ["Python", "React", "FastAPI"],
+    demoUrl:
+      "https://ask-bot-front-end-git-main-udarachamidus-projects.vercel.app/",
+    githubUrl: "https://github.com/UdaraChamidu/AskBot_FrontEnd",
+  },
+
+  {
+    id: 3,
+    title: "Trip Planner Agent",
+    description:
+      "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
+    image: "/projects/",
+    tags: ["Python", "React", "FastAPI"],
+    demoUrl: "#",
+    githubUrl:
+      "https://github.com/UdaraChamidu/student_attendance_management_project",
+  },
 ];
 
 export const ProjectsSection = () => {

@@ -1,5 +1,3 @@
-
-
 ## 🚀 Introduction
 
 In this repository contains my portfolio website using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. From dark mode support to responsive animations and deployable project showcases. This web page was build with the hepl of PedroTech's youtube video
@@ -8,42 +6,42 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 ## ⚙️ Tech Stack
 
-* **React** – Component-based UI development
-* **Vite** – Lightning-fast build tool
-* **TailwindCSS** – Utility-first CSS for styling
-* **Lucide Icons** – Clean and beautiful icon pack
-* **Radix UI** – Accessible component primitives
-* **TypeScript (optional)** – Type safety and tooling
-* **GitHub & Vercel** – Deployment
+- **React** – Component-based UI development
+- **Vite** – Lightning-fast build tool
+- **TailwindCSS** – Utility-first CSS for styling
+- **Lucide Icons** – Clean and beautiful icon pack
+- **Radix UI** – Accessible component primitives
+- **TypeScript (optional)** – Type safety and tooling
+- **GitHub & Vercel** – Deployment
 
 ---
 
 ## ⚡️ Features
 
-* 🌑 **Light/Dark Mode Toggle**
+- 🌑 **Light/Dark Mode Toggle**
   Save theme preference in local storage with beautiful transitions
 
-* 💫 **Animated Backgrounds**
+- 💫 **Animated Backgrounds**
   Stars, meteors, scroll effects, and glowing UI elements
 
-* 📱 **Responsive Navigation**
+- 📱 **Responsive Navigation**
   Desktop and mobile menus with glassmorphism
 
-* 👨‍💻 **Hero & About Sections**
+- 👨‍💻 **Hero & About Sections**
   Showcase who you are with smooth intro animations and buttons
 
-* 📊 **Skills Grid**
+- 📊 **Skills Grid**
   Filterable progress bars and categories with animated width
 
-* 🖼️ **Projects Showcase**
+- 🖼️ **Projects Showcase**
   Display screenshots, tech stacks, and GitHub/demo links
 
-* 📩 **Contact Section**
+- 📩 **Contact Section**
   Social icons + responsive contact form with toast notifications
 
-* 🚀 **One-Click Deployment**
+- 🚀 **One-Click Deployment**
   Easily host your site with Vercel and GitHub
-  
+
 ---
 
 ## 🖼️ Screenshots
@@ -54,9 +52,10 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 ## 🖼️ How to run
 
-* npm install
-* npm run dev
-* npm install @emailjs/browser - for contact
+- npm run
+- npm install
+- npm run dev
+- npm install @emailjs/browser - for contact
 
 ---
 
@@ -68,7 +67,6 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 2. Go to [vercel.com](https://vercel.com)
 3. Import your repository
 4. Click **Deploy**
-
 
 Your live website will be hosted on a custom subdomain (e.g. `https://your-name.vercel.app`)
 
