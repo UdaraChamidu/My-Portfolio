@@ -1,22 +1,42 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import matter from "gray-matter";
 
 export default function BlogList() {
-  const posts = [
-    {
-      slug: "ai-trends-2025",
-      title: "🚀 AI Trends for 2025",
-      summary:
-        "Discover the top AI breakthroughs shaping the future of technology.",
-      date: "July 25, 2025",
-    },
-    {
-      slug: "ml-latest-research",
-      title: "📊 ML Research Highlights",
-      summary:
-        "Explore recent advancements in machine learning from global labs.",
-      date: "July 24, 2025",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function loadPosts() {
+      // Add your actual .md filenames here or make it dynamic later via GitHub API
+      const fileList = [
+        "ai-trends-2025.md",
+        "ml-latest-research.md"
+      ];
+
+      const loaded = [];
+
+      for (const file of fileList) {
+        try {
+          const res = await fetch(`/posts/${file}`);
+          const raw = await res.text();
+          const { data } = matter(raw);
+
+          loaded.push({
+            slug: file.replace(".md", ""),
+            title: data.title || file,
+            summary: data.summary || "",
+            date: data.date || "Unknown",
+          });
+        } catch (err) {
+          console.error(`Error loading ${file}`, err);
+        }
+      }
+
+      setPosts(loaded);
+    }
+
+    loadPosts();
+  }, []);
 
   return (
     <section id="blog" className="py-24 px-4 relative">
