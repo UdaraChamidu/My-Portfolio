@@ -1,0 +1,3 @@
+public/posts/robert-kirkman-teases-massive-roster-of-playable-c.md,## Exciting News from SDCC 2025!
+
+Robert Kirkman, the mastermind behind the hit series Invincible, has teased a massive roster of playable characters for the upcoming game, Invincible VS. In a recent interview with IGN, Kirkman hinted that the game will feature a plethora of characters, stating 'There's a 99% chance they're going to be in the game.' While we already know six of the characters set to appear, Kirkman's comments suggest that there are many more exciting additions to come. With the promise of a colossal roster, fans of Invincible and fighting games alike have much to look forward to in Invincible VS.
