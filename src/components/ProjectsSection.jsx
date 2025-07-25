@@ -66,10 +66,10 @@ const projects = [
     title: "Research Project",
     description:
       "Eye Disease Classification with Chatbot Integration (ongoing)",
-    image: "/projects/project6.png",
-    tags: ["React", "TailwindCSS", "Supabase"],
+    image: "/projects/project7.png",
+    tags: ["Chatbot", "Python", "Streamlit"],
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
   },
 
   {
