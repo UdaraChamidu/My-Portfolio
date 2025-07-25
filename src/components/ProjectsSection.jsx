@@ -89,7 +89,7 @@ const projects = [
     title: "Trip Planner Agent",
     description:
       "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
-    image: "/projects/",
+    image: "/projects/project8.png",
     tags: ["Python", "React", "FastAPI"],
     demoUrl: "#",
     githubUrl:
