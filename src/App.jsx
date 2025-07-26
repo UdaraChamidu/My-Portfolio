@@ -13,13 +13,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<BlogList />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+
+          {/* Keep this LAST to prevent it from catching valid paths */}
           <Route path="*" element={<NotFound />} />
-        
         </Routes>
       </BrowserRouter>
     </>

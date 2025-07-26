@@ -69,7 +69,8 @@ const projects = [
     image: "/projects/project7.png",
     tags: ["Chatbot", "Python", "Streamlit"],
     demoUrl: "#",
-    githubUrl: "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
+    githubUrl:
+      "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
   },
 
   {
