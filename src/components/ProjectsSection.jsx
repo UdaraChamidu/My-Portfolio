@@ -100,7 +100,7 @@ const projects = [
     title: "Youtube Master",
     description:
       "Copy and paste the Youtube URL and ask questions, download the summary pdf, Extract audio and video and more options.(Ongoing Project)",
-    image: "/projects/project8.png",
+    image: "/projects/project9.png",
     tags: ["Python", "Gemini", "React"],
     demoUrl: "#",
     githubUrl: "https://github.com/UdaraChamidu/Youtube-Master",
