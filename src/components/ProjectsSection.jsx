@@ -8,8 +8,7 @@ const projects = [
       "A medical chat application that enables upload medical images and symptoms to diognisis diseases.",
     image: "/projects/project1.png",
     tags: ["Python", "Groq", "FastAPI"],
-    demoUrl:
-      "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
+    demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
 
@@ -31,8 +30,7 @@ const projects = [
       "A RAG based PDF chatbot that allows users to interact with PDF documents using natural language.",
     image: "/projects/project2.png",
     tags: ["Python", "LangChain", "Streamlit"],
-    demoUrl:
-      "https://pdfchatty.streamlit.app/",
+    demoUrl: "https://pdfchatty.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/RAG-Based-PDF-Chatbot",
   },
 
@@ -65,7 +63,7 @@ const projects = [
     id: 1,
     title: "Research Project",
     description:
-      "Eye Disease Classification with Chatbot Integration (ongoing)",
+      "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
     image: "/projects/project7.png",
     tags: ["Chatbot", "Python", "Streamlit"],
     demoUrl: "#",
@@ -105,8 +103,7 @@ const projects = [
     image: "/projects/project8.png",
     tags: ["Python", "Gemini", "React"],
     demoUrl: "#",
-    githubUrl:
-      "https://github.com/UdaraChamidu/Youtube-Master",
+    githubUrl: "https://github.com/UdaraChamidu/Youtube-Master",
   },
 ];
 
