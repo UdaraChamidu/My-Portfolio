@@ -9,7 +9,7 @@ export default function BlogList() {
     async function loadPosts() {
       const fileList = ["the-future-of-ai.md", "react-tips-and-tricks.md"]; // ✅ Example file list
       const loaded = [];
-
+ 
       for (const file of fileList) {
         try {
           const res = await fetch(`/posts/${file}`);

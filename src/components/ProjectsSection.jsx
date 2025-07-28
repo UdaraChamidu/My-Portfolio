@@ -9,7 +9,7 @@ const projects = [
     image: "/projects/project1.png",
     tags: ["Python", "Groq", "FastAPI"],
     demoUrl:
-      "https://www.linkedin.com/posts/udara-herath-530006217_ai-machinelearning-healthcareinnovation-activity-7337763371116654592-B8ek?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+      "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
 
@@ -32,7 +32,7 @@ const projects = [
     image: "/projects/project2.png",
     tags: ["Python", "LangChain", "Streamlit"],
     demoUrl:
-      "https://www.linkedin.com/posts/udara-herath-530006217_ai-chatwithpdf-pdaflag-activity-7337730822373855233-3k1K?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+      "https://pdfchatty.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/RAG-Based-PDF-Chatbot",
   },
 
@@ -44,7 +44,7 @@ const projects = [
     image: "/projects/project4.png",
     tags: ["Python", "HTML", "NumPy", "Pandas", "Scikit learn"],
     demoUrl:
-      "https://www.linkedin.com/posts/udara-herath-530006217_machinelearning-ai-datascience-activity-7337062576368824320-_5UL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+      "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
   },
 
