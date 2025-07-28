@@ -19,7 +19,7 @@ const projects = [
     description:
       "A web application for managing student attendance, including features for tracking attendance, generating reports, and managing student data.",
     image: "/projects/project3.png",
-    tags: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    tags: ["PHP", "MySQL", "HTML", "JavaScript"],
     demoUrl: "#",
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
