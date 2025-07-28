@@ -42,7 +42,7 @@ const projects = [
     description:
       "A machine learning model that predicts laptop prices based on various features such as brand, processor, RAM, storage and more.",
     image: "/projects/project4.png",
-    tags: ["Python", "HTML", "NumPy", "Pandas", "Scikit learn"],
+    tags: ["Python", "HTML", "NumPy", "Pandas"],
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
