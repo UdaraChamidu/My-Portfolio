@@ -94,7 +94,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
   },
-
+ 
   {
     id: 3,
     title: "Youtube Master",
