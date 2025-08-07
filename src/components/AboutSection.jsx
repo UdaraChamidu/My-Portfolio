@@ -33,7 +33,7 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href="/CV_Udara_Herath.pdf"
+                href="/cv_udara.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
