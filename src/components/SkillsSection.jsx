@@ -5,8 +5,8 @@ const skills = [
   // Web Development
   { name: "HTML", level: 75, category: "Web Development" },
   { name: "CSS", level: 85, category: "Web Development" },
-  { name: "JavaScript", level: 88, category: "Web Development" },
-  { name: "React", level: 90, category: "Web Development" },
+  { name: "JavaScript", level: 84, category: "Web Development" },
+  { name: "React", level: 80, category: "Web Development" },
   { name: "Tailwind CSS", level: 71, category: "Web Development" },
 
   // ML / AI
@@ -17,8 +17,9 @@ const skills = [
   { name: "Computer Vision", level: 74, category: "AI / ML" },
   { name: "AI Agents", level: 65, category: "AI / ML" },
   { name: "LLMs", level: 74, category: "AI / ML" },
-  { name: "VectorStores", level: 80, category: "AI / ML" },
+  { name: "Vector Stores", level: 83, category: "AI / ML" },
   { name: "RAG", level: 87, category: "AI / ML" },
+  { name: "n8n", level: 84, category: "AI / ML" },
 
   // Programming
   { name: "Python", level: 90, category: "Programming" },
@@ -26,16 +27,16 @@ const skills = [
   { name: "C++", level: 85, category: "Programming" },
 
   // Deployment
-  { name: "Docker", level: 40, category: "Deployment" },
+  { name: "Docker", level: 70, category: "Deployment" },
   { name: "Flask", level: 70, category: "Deployment" },
-  { name: "Streamlit ", level: 70, category: "Deployment" },
+  { name: "Streamlit ", level: 85, category: "Deployment" },
 
   // Tools
   { name: "GitHub", level: 85, category: "tools" },
   { name: "Google Colab", level: 95, category: "tools" },
   { name: "VS Code", level: 84, category: "tools" },
   { name: "Jupyter", level: 85, category: "tools" },
-  { name: "HuggingFace", level: 75, category: "tools" },
+  { name: "HuggingFace", level: 82, category: "tools" },
 
   // Add other skills as needed
   { name: "Arduino", level: 70, category: "others" },
