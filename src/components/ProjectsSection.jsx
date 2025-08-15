@@ -66,7 +66,7 @@ const projects = [
       "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
     image: "/projects/project7.png",
     tags: ["Chatbot", "Python", "Streamlit"],
-    demoUrl: "#",
+    demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Eye_Disease_Assistant",
     githubUrl:
       "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
   },
