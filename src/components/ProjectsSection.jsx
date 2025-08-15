@@ -48,7 +48,7 @@ const projects = [
 
   {
     id: 1,
-    title: "Personal AI Assistant",
+    title: "n8n AI Assistant",
     description:
       "Building an AI agent in n8n to automate day to day works.(ongoing)",
     image: "/projects/project5.png",
@@ -104,6 +104,17 @@ const projects = [
     tags: ["Python", "Gemini", "Streamlit"],
     demoUrl: "video-master.streamlit.app",
     githubUrl: "https://github.com/UdaraChamidu/Video-Master",
+  },
+
+  {
+    id: 3,
+    title: "AskDoc RAG Chatbot",
+    description:
+      "Upload pdf documents and and ask questions. (Ongoing Project)",
+    image: "/projects/project10.png",
+    tags: ["Python", "Gemini", "FastAPI"],
+    demoUrl: "video-master.streamlit.app",
+    githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
   },
 ];
 
