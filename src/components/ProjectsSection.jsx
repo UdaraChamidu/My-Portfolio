@@ -94,16 +94,16 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
   },
- 
+
   {
     id: 3,
-    title: "Youtube Master",
+    title: "Video Master",
     description:
-      "Copy and paste the Youtube URL and ask questions, download the summary pdf, Extract audio and video and more options.(Ongoing Project)",
+      "Copy and paste the Video URL or upload video file directly and ask questions.",
     image: "/projects/project9.png",
-    tags: ["Python", "Gemini", "React"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/UdaraChamidu/Youtube-Master",
+    tags: ["Python", "Gemini", "Streamlit"],
+    demoUrl: "video-master.streamlit.app",
+    githubUrl: "https://github.com/UdaraChamidu/Video-Master",
   },
 ];
 
