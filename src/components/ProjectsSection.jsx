@@ -2,6 +2,88 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    id: 3,
+    title: "Trip Planner Agent",
+    description:
+      "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
+    image: "/projects/project8.png",
+    tags: ["Python", "React", "FastAPI"],
+    demoUrl: "#",
+    githubUrl:
+      "https://github.com/UdaraChamidu/student_attendance_management_project",
+  },
+
+  {
+    id: 1,
+    title: "Legal Document Explainer ",
+    description:
+      "The AI , Take legal PDF docs as input. It can Summarize simply , Highlight key clauses & risks and Answer specific user questions about the doc. Optionally show confidence or lawyer advice",
+    image: "/projects/project11.png",
+    tags: ["Python", "Gemini", "FastAPI", "React"],
+    demoUrl: "https://ai-legal-doc-explainer-two.vercel.app",
+    githubUrl: "https://github.com/UdaraChamidu/AI-Legal-Doc-Explainer",
+  },
+
+  {
+    id: 1,
+    title: "n8n AI Assistant",
+    description:
+      "Building an AI agent in n8n to automate day to day works.(ongoing)",
+    image: "/projects/project5.png",
+    tags: ["n8n", "OpenAI", "API"],
+    demoUrl:
+      "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+    githubUrl:
+      "https://github.com/UdaraChamidu/n8n-AI-Agents/blob/main/My_AI_workflow_final.json",
+  },
+
+  {
+    id: 1,
+    title: "Research Project",
+    description:
+      "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
+    image: "/projects/project7.png",
+    tags: ["Chatbot", "Python", "Streamlit"],
+    demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Eye_Disease_Assistant",
+    githubUrl:
+      "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
+  },
+
+  {
+    id: 3,
+    title: "AskBot ChatBot",
+    description:
+      "This is a LangGraph-based chatbot that uses the Gemini 2.5 Flash model via the Gemini API key. The backend is built with Python and FastAPI, and deployed on Railway.",
+    image: "/projects/askbot.png",
+    tags: ["Python", "React", "FastAPI"],
+    demoUrl:
+      "https://ask-bot-front-end-git-main-udarachamidus-projects.vercel.app/",
+    githubUrl: "https://github.com/UdaraChamidu/AskBot_FrontEnd",
+  },
+
+  {
+    id: 3,
+    title: "Video Master",
+    description:
+      "Copy and paste the Video URL or upload video file directly and ask questions.",
+    image: "/projects/project9.png",
+    tags: ["Python", "Gemini", "Streamlit"],
+    demoUrl: "video-master.streamlit.app",
+    githubUrl: "https://github.com/UdaraChamidu/Video-Master",
+  },
+
+  {
+    id: 3,
+    title: "AskDoc RAG Chatbot",
+    description:
+      "Upload pdf documents and and ask questions. (Ongoing Project)",
+    image: "/projects/project10.png",
+    tags: ["Python", "Gemini", "FastAPI"],
+    demoUrl: "video-master.streamlit.app",
+    githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
+  },
+
+  {
     id: 1,
     title: "Medical Chatbot",
     description:
@@ -44,77 +126,6 @@ const projects = [
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
-  },
-
-  {
-    id: 1,
-    title: "n8n AI Assistant",
-    description:
-      "Building an AI agent in n8n to automate day to day works.(ongoing)",
-    image: "/projects/project5.png",
-    tags: ["n8n", "OpenAI", "API"],
-    demoUrl:
-      "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
-    githubUrl:
-      "https://github.com/UdaraChamidu/n8n-AI-Agents/blob/main/My_AI_workflow_final.json",
-  },
-
-  {
-    id: 1,
-    title: "Research Project",
-    description:
-      "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
-    image: "/projects/project7.png",
-    tags: ["Chatbot", "Python", "Streamlit"],
-    demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Eye_Disease_Assistant",
-    githubUrl:
-      "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
-  },
-
-  {
-    id: 3,
-    title: "AskBot ChatBot",
-    description:
-      "This is a LangGraph-based chatbot that uses the Gemini 2.5 Flash model via the Gemini API key. The backend is built with Python and FastAPI, and deployed on Railway.",
-    image: "/projects/askbot.png",
-    tags: ["Python", "React", "FastAPI"],
-    demoUrl:
-      "https://ask-bot-front-end-git-main-udarachamidus-projects.vercel.app/",
-    githubUrl: "https://github.com/UdaraChamidu/AskBot_FrontEnd",
-  },
-
-  {
-    id: 3,
-    title: "Trip Planner Agent",
-    description:
-      "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
-    image: "/projects/project8.png",
-    tags: ["Python", "React", "FastAPI"],
-    demoUrl: "#",
-    githubUrl:
-      "https://github.com/UdaraChamidu/student_attendance_management_project",
-  },
-
-  {
-    id: 3,
-    title: "Video Master",
-    description:
-      "Copy and paste the Video URL or upload video file directly and ask questions.",
-    image: "/projects/project9.png",
-    tags: ["Python", "Gemini", "Streamlit"],
-    demoUrl: "video-master.streamlit.app",
-    githubUrl: "https://github.com/UdaraChamidu/Video-Master",
-  },
-
-  {
-    id: 3,
-    title: "AskDoc RAG Chatbot",
-    description:
-      "Upload pdf documents and and ask questions. (Ongoing Project)",
-    image: "/projects/project10.png",
-    tags: ["Python", "Gemini", "FastAPI"],
-    demoUrl: "video-master.streamlit.app",
-    githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
   },
 ];
 
