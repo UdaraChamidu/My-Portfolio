@@ -20,7 +20,7 @@ export const HeroSection = () => {
 
           {/* Overlay Text with Animated Purple Gradient */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-68">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow-md">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow-md mt-5">
               <span className="opacity-0 animate-fade-in"> Hi,</span>
               <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-1">
                 I am
@@ -41,7 +41,7 @@ export const HeroSection = () => {
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 mt-20">
           I'm a final year Computer Engineering student at Faculty of
           Engineering, University of Jaffna. Currently, I’m actively exploring
-          opportunities in AI, ML, Agents and AI automation. 
+          opportunities in AI, ML, Agents and AI automation.
         </p>
 
         {/* CTA Button */}
