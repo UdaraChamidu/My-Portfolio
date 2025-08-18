@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
 const skills = [
   // Web Development
@@ -58,10 +59,33 @@ const categories = [
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [animatedValues, setAnimatedValues] = useState({}); // store current values
 
   const filteredSkills = skills.filter(
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
+
+  // Animate skill bars and percentage whenever filteredSkills changes
+  useEffect(() => {
+    const newValues = {};
+    filteredSkills.forEach((skill) => {
+      newValues[skill.name] = 0;
+    });
+    setAnimatedValues(newValues);
+
+    filteredSkills.forEach((skill) => {
+      let start = 0;
+      const interval = setInterval(() => {
+        start += 1;
+        setAnimatedValues((prev) => ({
+          ...prev,
+          [skill.name]: start > skill.level ? skill.level : start,
+        }));
+        if (start >= skill.level) clearInterval(interval);
+      }, 15); // adjust speed here
+    });
+  }, [activeCategory]);
+
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -69,16 +93,17 @@ export const SkillsSection = () => {
           My <span className="text-primary"> Skills</span>
         </h2>
 
+        {/* Category Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category, key) => (
             <button
               key={key}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                "px-5 py-2 rounded-full transition-colors duration-300 capitalize font-medium",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-forefround hover:bd-secondary"
+                  : "bg-secondary/70 text-muted-foreground hover:bg-primary/30"
               )}
             >
               {category}
@@ -86,31 +111,58 @@ export const SkillsSection = () => {
           ))}
         </div>
 
+        {/* Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, key) => (
+          {filteredSkills.map((skill) => (
             <div
-              key={key}
+              key={skill.name}
               className="bg-card p-6 rounded-lg shadow-xs card-hover"
             >
+              {/* Skill Name */}
               <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-              </div>
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
-                />
+                <h3 className="font-semibold text-lg">{skill.name}</h3>
               </div>
 
+              {/* Progress Bar */}
+              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden relative">
+                <div
+                  className="bg-primary h-2 rounded-full origin-left relative transition-all duration-300"
+                  style={{ width: `${animatedValues[skill.name] || 0}%` }}
+                >
+                  {/* Glow pulse overlay */}
+                  <div className="absolute top-0 left-0 w-full h-full bg-primary/40 rounded-full animate-pulse-glow" />
+                </div>
+              </div>
+
+              {/* Skill Percentage */}
               <div className="text-right mt-1">
                 <span className="text-sm text-muted-foreground">
-                  {skill.level}%
+                  {animatedValues[skill.name] || 0}%
                 </span>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Animations */}
+      <style jsx>{`
+        @keyframes pulse-glow {
+          0% {
+            opacity: 0.4;
+          }
+          50% {
+            opacity: 0.7;
+          }
+          100% {
+            opacity: 0.4;
+          }
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };
