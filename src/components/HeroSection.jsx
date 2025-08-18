@@ -38,12 +38,10 @@ export const HeroSection = () => {
         </div>
 
         {/* Subtitle / Intro */}
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 mt-6">
-          I'm a passionate and driven final year university student at Faculty
-          of Engineering, University of Jaffna specializing in Computer
-          Engineering. Currently, I’m actively exploring opportunities in AI
-          research, Generative AI, Deep Learning, Machine Learning and Agentic
-          AI Systems.
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 mt-20">
+          I'm a final year Computer Engineering student at Faculty of
+          Engineering, University of Jaffna. Currently, I’m actively exploring
+          opportunities in AI, ML, Agents and AI automation. 
         </p>
 
         {/* CTA Button */}
