@@ -8,43 +8,42 @@ export const Chatbot = () => {
   ]);
   const [input, setInput] = useState("");
   const [showTip, setShowTip] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const quickReplies = ["Hello!", "Tell me about AI", "Portfolio info"];
 
   // Show tip periodically
   useEffect(() => {
     const interval = setInterval(() => {
       setShowTip(true);
-      setTimeout(() => setShowTip(false), 4000); // show tip for 4 seconds
-    }, 10000); // every 15 seconds
+      setTimeout(() => setShowTip(false), 4000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
+  const handleSend = async (messageText) => {
+    const userMessage = messageText || input;
+    if (!userMessage.trim()) return;
 
-    // Add user message immediately
-    setMessages((prev) => [...prev, { from: "user", text: input }]);
-    const userMessage = input;
+    setMessages((prev) => [...prev, { from: "user", text: userMessage }]);
     setInput("");
 
     try {
-      // Call your backend API (replace YOUR_BACKEND_URL with Railway URL)
+      setIsTyping(true);
       const response = await fetch(
         "https://my-portfolio-chatbot-portfolio-chatbot.up.railway.app/api/chat",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: userMessage }),
         }
       );
 
       const data = await response.json();
-
-      // Add bot response
+      setIsTyping(false);
       setMessages((prev) => [...prev, { from: "bot", text: data.response }]);
     } catch (error) {
-      // Show error message if backend fails
+      setIsTyping(false);
       setMessages((prev) => [
         ...prev,
         {
@@ -60,13 +59,13 @@ export const Chatbot = () => {
       {/* Chat Icon */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         {showTip && !isOpen && (
-          <div className="mb-2 px-3 py-1 bg-primary text-white rounded-lg shadow-lg text-sm animate-fade-in-out">
+          <div className="mb-2 px-3 py-1 bg-primary text-white rounded-lg shadow-lg text-sm animate-fade-in-out animate-bounce-tip">
             Chat with my assistant
           </div>
         )}
 
         <button
-          className="w-14 h-14 md:w-18 md:h-18 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:bg-primary/90 transition-colors"
+          className="w-14 h-14 md:w-18 md:h-18 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:bg-primary/90 transition-colors animate-bounce-icon"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
@@ -89,14 +88,48 @@ export const Chatbot = () => {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`p-2 rounded-lg ${
+                className={`flex items-start gap-2 p-2 rounded-lg ${
                   msg.from === "bot"
                     ? "bg-secondary/30 text-left"
                     : "bg-primary/70 text-white text-right ml-auto"
                 }`}
               >
-                {msg.text}
+                {msg.from === "bot" && (
+                  <img
+                    src="/avatar.jpg" // <-- Replace with your AI avatar image path
+                    alt="AI Avatar"
+                    className="w-8 h-8 rounded-full object-cover animate-avatar-bounce"
+                  />
+                )}
+                <span>{msg.text}</span>
               </div>
+            ))}
+
+            {/* Typing Indicator */}
+            {isTyping && (
+              <div className="flex items-center gap-2 p-2 bg-secondary/30 rounded-lg">
+                <img
+                  src="avatar.jpg" // <-- Same avatar for typing
+                  alt="AI Avatar"
+                  className="w-8 h-8 rounded-full object-cover animate-avatar-bounce"
+                />
+                <span className="text-sm text-muted-foreground">
+                  AI is typing...
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Quick Reply Buttons */}
+          <div className="flex flex-wrap gap-2 p-3 border-t border-muted-foreground">
+            {quickReplies.map((q, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleSend(q)}
+                className="px-3 py-1 bg-primary/80 text-white rounded-full hover:bg-primary/90 transition-colors text-sm"
+              >
+                {q}
+              </button>
             ))}
           </div>
 
@@ -111,7 +144,7 @@ export const Chatbot = () => {
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
             />
             <button
-              onClick={handleSend}
+              onClick={() => handleSend()}
               className="ml-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
             >
               Send
@@ -139,11 +172,9 @@ export const Chatbot = () => {
             transform: translateY(-10px);
           }
         }
-
         .animate-fade-in-out {
           animation: fade-in-out 4s ease-in-out forwards;
         }
-
         @keyframes slide-up {
           from {
             transform: translateY(20px);
@@ -154,9 +185,58 @@ export const Chatbot = () => {
             opacity: 1;
           }
         }
-
         .animate-slide-up {
           animation: slide-up 0.3s ease-out forwards;
+        }
+        @keyframes avatar-bounce {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-3px);
+          }
+        }
+        .animate-avatar-bounce {
+          animation: avatar-bounce 0.6s infinite ease-in-out;
+        }
+        .animate-pulse {
+          animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+          0%,
+          100% {
+            opacity: 0.5;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+        @keyframes bounce-icon {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-4px);
+          }
+        }
+
+        .animate-bounce-icon {
+          animation: bounce-icon 1s infinite ease-in-out;
+        }
+        @keyframes bounce-tip {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-3px);
+          }
+        }
+
+        .animate-bounce-tip {
+          animation: bounce-tip 1.5s infinite ease-in-out;
         }
       `}</style>
     </>
