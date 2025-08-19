@@ -10,7 +10,8 @@ export const Chatbot = () => {
   const [showTip, setShowTip] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
 
-  const SESSION_ID = crypto?.randomUUID?.() || Math.random().toString(36).slice(2);
+  const SESSION_ID =
+    crypto?.randomUUID?.() || Math.random().toString(36).slice(2);
   const quickReplies = ["Hello!", "Tell me about AI", "Portfolio info"];
 
   // Show tip periodically
@@ -32,11 +33,14 @@ export const Chatbot = () => {
     try {
       setIsTyping(true);
       const response = await fetch(
-        "https://my-portfolio-chatbot-portfolio-chatbot.up.railway.app/api/chat",
+        "https://udara-portfolio-chatbot.up.railway.app/api/chat",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: userMessage, session_id: SESSION_ID }),
+          body: JSON.stringify({
+            message: userMessage,
+            session_id: SESSION_ID,
+          }),
         }
       );
 
