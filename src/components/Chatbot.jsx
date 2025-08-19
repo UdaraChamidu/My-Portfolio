@@ -1,3 +1,6 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 import { useState, useEffect } from "react";
 import { MessageCircle, X } from "lucide-react";
 
@@ -106,7 +109,12 @@ export const Chatbot = () => {
                     className="w-8 h-8 rounded-full object-cover animate-avatar-bounce"
                   />
                 )}
-                <span>{msg.text}</span>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap"
+                >
+                  {msg.text}
+                </ReactMarkdown>
               </div>
             ))}
 
