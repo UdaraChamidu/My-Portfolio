@@ -18,21 +18,41 @@ export const Chatbot = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
+    // Add user message immediately
     setMessages((prev) => [...prev, { from: "user", text: input }]);
+    const userMessage = input;
     setInput("");
 
-    setTimeout(() => {
+    try {
+      // Call your backend API (replace YOUR_BACKEND_URL with Railway URL)
+      const response = await fetch(
+        "https://my-portfolio-chatbot-portfolio-chatbot.up.railway.app/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: userMessage }),
+        }
+      );
+
+      const data = await response.json();
+
+      // Add bot response
+      setMessages((prev) => [...prev, { from: "bot", text: data.response }]);
+    } catch (error) {
+      // Show error message if backend fails
       setMessages((prev) => [
         ...prev,
         {
           from: "bot",
-          text: "Thanks for your message! I'll get back to you soon.",
+          text: "⚠️ Sorry, something went wrong. Please try again later.",
         },
       ]);
-    }, 1000);
+    }
   };
 
   return (
