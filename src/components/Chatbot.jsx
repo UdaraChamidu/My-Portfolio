@@ -96,10 +96,10 @@ export const Chatbot = () => {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`flex items-start gap-2 p-2 rounded-lg ${
+                className={`p-3 rounded-lg max-w-[100%] break-words ${
                   msg.from === "bot"
-                    ? "bg-secondary/30 text-left"
-                    : "bg-primary/70 text-white text-right ml-auto"
+                    ? "bg-secondary/30 text-left self-start"
+                    : "bg-primary/70 text-white text-right self-end"
                 }`}
               >
                 {msg.from === "bot" && (
@@ -111,7 +111,20 @@ export const Chatbot = () => {
                 )}
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
-                  className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap"
+                  components={{
+                    p: ({ node, ...props }) => (
+                      <p {...props} className="text-sm leading-relaxed" />
+                    ),
+                    li: ({ node, ...props }) => (
+                      <li
+                        {...props}
+                        className="text-sm list-disc ml-5 leading-relaxed"
+                      />
+                    ),
+                    strong: ({ node, ...props }) => (
+                      <strong {...props} className="font-semibold" />
+                    ),
+                  }}
                 >
                   {msg.text}
                 </ReactMarkdown>
