@@ -25,7 +25,7 @@ export const HeroSection = () => {
               <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-1">
                 I am
               </span>
-              <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-2">
+              <span className="opacity-0 animate-fade-in-delay-2">
                 {" "}
                 Udara
               </span>
