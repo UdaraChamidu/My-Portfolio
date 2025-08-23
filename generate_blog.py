@@ -28,9 +28,9 @@ def create_blog():
     summaries = [f"- {summarize(n)}" for n in news]
 
     today = datetime.now().strftime("%Y-%m-%d")
-    filename = f"content/blogs/{today}-ai-ml-news.md"
+    filename = f"public/blogs/{today}-ai-ml-news.md"
 
-    os.makedirs("content/blogs", exist_ok=True)
+    os.makedirs("public/blogs", exist_ok=True)
     with open(filename, "w", encoding="utf-8") as f:
         f.write(f"---\n")
         f.write(f"title: 'AI/ML News {today}'\n")

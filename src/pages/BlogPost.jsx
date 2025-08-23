@@ -12,7 +12,7 @@ export default function BlogPost() {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const res = await fetch(`/content/blogs/${slug}.md`);
+        const res = await fetch(`/public/blogs/${slug}.md`);
         const text = await res.text();
         const { attributes: data, body } = fm(text);
 

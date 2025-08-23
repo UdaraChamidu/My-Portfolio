@@ -9,12 +9,12 @@ export default function BlogList() {
   useEffect(() => {
     async function loadPosts() {
       try {
-        const req = require.context("../content/blogs", false, /\.md$/);
+        const req = require.context("../public/blogs", false, /\.md$/);
         const files = req.keys();
 
         const loaded = [];
         for (const file of files) {
-          const res = await fetch(`/content/blogs/${file.replace("./", "")}`);
+          const res = await fetch(`/public/blogs/${file.replace("./", "")}`);
           const raw = await res.text();
           const { attributes: data, body: content } = fm(raw);
 
