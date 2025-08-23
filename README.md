@@ -3,6 +3,11 @@
 In this repository contains my portfolio website using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. From dark mode support to responsive animations and deployable project showcases. This web page was build with the hepl of PedroTech's youtube video
 
 ---
+## 🖼️ Screenshots
+
+<img width="1796" height="865" alt="image" src="https://github.com/user-attachments/assets/d9c1f29d-8d15-4b42-b08f-6b74e42ad80b" />
+
+---
 
 ## ⚙️ Tech Stack
 
@@ -44,11 +49,6 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 ---
 
-## 🖼️ Screenshots
-
-![image](https://github.com/user-attachments/assets/f59a4b6f-f5da-49e1-b19f-cd5b83bb1897)
-
----
 
 ## 🖼️ How to run
 
@@ -68,7 +68,7 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 3. Import your repository
 4. Click **Deploy**
 
-Your live website will be hosted on a custom subdomain (e.g. `https://your-name.vercel.app`)
+Your live website will be hosted on a custom subdomain 
 
 ---
 
