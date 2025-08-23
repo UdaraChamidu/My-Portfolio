@@ -71,3 +71,11 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 Your live website will be hosted on a custom subdomain (e.g. `https://your-name.vercel.app`)
 
 ---
+
+
+## Automatic blogging.
+
+- this will automatically run. no need to run this.
+```
+pip install google-generativeai requests
+```

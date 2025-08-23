@@ -12,17 +12,15 @@ export default function BlogPost() {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const res = await fetch(`/posts/${slug}.md`);
+        const res = await fetch(`/content/blogs/${slug}.md`);
         const text = await res.text();
-        const { attributes: data, body: content } = fm(text);
-
-        console.log("📄 Loaded:", { data, content });
+        const { attributes: data, body } = fm(text);
 
         setMeta({
           title: data?.title ?? slug,
           date: data?.date ?? "Unknown",
         });
-        setContent(content);
+        setContent(body);
       } catch (error) {
         setContent("⚠️ Error loading post.");
         setMeta({ title: "Post Not Found", date: "" });
