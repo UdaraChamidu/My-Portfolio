@@ -28,10 +28,10 @@ jobs:
           NEWSDATA_API_KEY: ${{ secrets.NEWSDATA_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Commit changes
+      - name: Commit and Push changes
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "actions@github.com"
           git add content/blogs/
           git commit -m "Add new AI/ML blog post" || echo "No changes"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
