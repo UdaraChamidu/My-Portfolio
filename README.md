@@ -1,8 +1,9 @@
 ## 🚀 Introduction
 
-In this repository contains my portfolio website using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. From dark mode support to responsive animations and deployable project showcases. This web page was build with the hepl of PedroTech's youtube video
+This repository contains my portfolio website built using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. It includes dark mode support, responsive animations, deployable project showcases, and more. This web page was built with the help of PedroTech's YouTube tutorial.
 
 ---
+
 ## 🖼️ Screenshots
 
 <img width="1796" height="865" alt="image" src="https://github.com/user-attachments/assets/d9c1f29d-8d15-4b42-b08f-6b74e42ad80b" />
@@ -23,39 +24,40 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 ## ⚡️ Features
 
-- 🌑 **Light/Dark Mode Toggle**
-  Save theme preference in local storage with beautiful transitions
+- 🌑 **Light/Dark Mode Toggle**  
+  Save theme preference in local storage with smooth transitions
 
-- 💫 **Animated Backgrounds**
+- 💫 **Animated Backgrounds**  
   Stars, meteors, scroll effects, and glowing UI elements
 
-- 📱 **Responsive Navigation**
+- 📱 **Responsive Navigation**  
   Desktop and mobile menus with glassmorphism
 
-- 👨‍💻 **Hero & About Sections**
+- 👨‍💻 **Hero & About Sections**  
   Showcase who you are with smooth intro animations and buttons
 
-- 📊 **Skills Grid**
+- 📊 **Skills Grid**  
   Filterable progress bars and categories with animated width
 
-- 🖼️ **Projects Showcase**
+- 🖼️ **Projects Showcase**  
   Display screenshots, tech stacks, and GitHub/demo links
 
-- 📩 **Contact Section**
+- 📩 **Contact Section**  
   Social icons + responsive contact form with toast notifications
 
-- 🚀 **One-Click Deployment**
+- 🚀 **One-Click Deployment**  
   Easily host your site with Vercel and GitHub
+
+- 📝 **Automatic AI Blogging (with github actions)**   
+  The site automatically fetches top AI/ML news, generates summaries, and posts them as blog articles. No manual intervention needed.
 
 ---
 
-
 ## 🖼️ How to run
 
-- npm run
-- npm install
-- npm run dev
-- npm install @emailjs/browser - for contact
+- `npm install`
+- `npm run dev`
+- For contact form: `npm install @emailjs/browser`
 
 ---
 
@@ -63,19 +65,27 @@ In this repository contains my portfolio website using **React**, **TailwindCSS*
 
 ### Deploy on Vercel
 
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com)
-3. Import your repository
-4. Click **Deploy**
+1. Push your code to GitHub  
+2. Go to [vercel.com](https://vercel.com)  
+3. Import your repository  
+4. Click **Deploy**  
 
-Your live website will be hosted on a custom subdomain 
+Your live website will be hosted on a custom subdomain.
 
 ---
 
+## 📝 Automatic Blogging
 
-## Automatic blogging.
+This portfolio supports **automatic AI/ML blogging** using Google Gemini and NewsData.io. Each day (or scheduled time), the system:
 
-- this will automatically run. no need to run this.
-```
+- Fetches top AI/ML news articles  
+- Generates summarized content using AI  
+- Optionally generates a relevant AI image  
+- Creates a new blog post in Markdown format  
+
+No manual action is required — everything is automated via **GitHub Actions**.
+
+**Setup (once)**:
+
+```bash
 pip install google-generativeai requests
-```
