@@ -2,6 +2,7 @@ import os
 import requests
 import google.generativeai as genai
 from datetime import datetime
+import json
 
 # === Config ===
 NEWS_API_KEY = os.getenv("NEWSDATA_API_KEY")
@@ -32,12 +33,18 @@ def create_blog():
 
     os.makedirs("public/blogs", exist_ok=True)
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(f"---\n")
+        f.write("---\n")
         f.write(f"title: 'AI/ML News {today}'\n")
         f.write(f"date: '{today}'\n")
-        f.write(f"---\n\n")
+        f.write("---\n\n")
         f.write("### 🚀 AI/ML Updates\n\n")
         f.write("\n".join(summaries))
+
+    # ✅ Update blogs.json so React knows about new blogs
+    blog_files = [f for f in os.listdir("public/blogs") if f.endswith(".md")]
+    blog_files.sort(reverse=True)
+    with open("public/blogs/blogs.json", "w", encoding="utf-8") as f:
+        json.dump(blog_files, f)
 
 if __name__ == "__main__":
     create_blog()
