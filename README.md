@@ -10,6 +10,10 @@ This repository contains my portfolio website built using **React**, **TailwindC
 
 ---
 
+<img width="3000" height="4315" alt="frame (1)" src="https://github.com/user-attachments/assets/02e92d57-8c17-4703-a714-6b98b7305396" />
+
+---
+
 ## ⚙️ Tech Stack
 
 - **React** – Component-based UI development
