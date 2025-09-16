@@ -63,12 +63,12 @@ const projects = [
 
   {
     id: 3,
-    title: "Video Master",
+    title: "Video Chatty",
     description:
       "Copy and paste the Video URL or upload video file directly and ask questions.",
     image: "/projects/project9.png",
     tags: ["Python", "Gemini", "Streamlit"],
-    demoUrl: "video-master.streamlit.app",
+    demoUrl: "https://video-master.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/Video-Master",
   },
 
@@ -126,6 +126,18 @@ const projects = [
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
+  },
+
+  {
+    id: 1,
+    title: "Real-time Waste Detection",
+    description:
+      "A CNN learning model that detects and classifies waste in real-time using computer vision techniques.",
+    image: "/projects/project12.png",
+    tags: ["Python", "Yolo", "Flask", "HTML"],
+    demoUrl:
+      "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
+    githubUrl: "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
   },
 ];
 
