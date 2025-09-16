@@ -66,7 +66,7 @@ const projects = [
     title: "Video Chatty",
     description:
       "Copy and paste the Video URL or upload video file directly and ask questions.",
-    image: "/projects/project9.jpg",
+    image: "/projects/project9.png",
     tags: ["Python", "Gemini", "Streamlit"],
     demoUrl: "https://video-master.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/Video-Master",

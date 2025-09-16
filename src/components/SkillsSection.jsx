@@ -38,7 +38,7 @@ const skills = [
   { name: "Vercel", level: 78, category: "Deployment" },  
   { name: "FastAPI", level: 80, category: "Deployment" },
   { name: "Github Actions", level: 70, category: "Deployment" },
-  
+
   // add databases
   { name: "MySQL", level: 75, category: "databases" },
   { name: "MongoDB", level: 72, category: "databases" },
@@ -60,10 +60,9 @@ const skills = [
   { name: "Solidworks", level: 65, category: "others" },
   { name: "Electronics", level: 72, category: "others" },
   { name: "Databases", level: 82, category: "others" },
-  { name: "JIRA", level: 78, category: "others" },
+  { name: "JIRA", level: 68, category: "others" },
   
 
-  
 ];
 
 
