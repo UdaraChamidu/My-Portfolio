@@ -9,6 +9,8 @@ const skills = [
   { name: "JavaScript", level: 84, category: "Web Development" },
   { name: "React", level: 80, category: "Web Development" },
   { name: "Tailwind CSS", level: 71, category: "Web Development" },
+  { name: "Express.js", level: 70, category: "Web Development" },
+  { name: "Next.js", level: 70, category: "Web Development" },
 
   // ML / AI
   { name: "ML", level: 93, category: "AI / ML" },
@@ -31,13 +33,26 @@ const skills = [
   { name: "Docker", level: 70, category: "Deployment" },
   { name: "Flask", level: 70, category: "Deployment" },
   { name: "Streamlit ", level: 85, category: "Deployment" },
-
+  { name: "AWS", level: 75, category: "Deployment" },
+  { name: "Railway", level: 75, category: "Deployment" },
+  { name: "Vercel", level: 78, category: "Deployment" },  
+  { name: "FastAPI", level: 80, category: "Deployment" },
+  { name: "Github Actions", level: 70, category: "Deployment" },
+  
+  // add databases
+  { name: "MySQL", level: 75, category: "databases" },
+  { name: "MongoDB", level: 72, category: "databases" },
+  { name: "Chromadb", level: 80, category: "databases" },
+  { name: "Firebase", level: 78, category: "databases" },
+  { name: "FAISS", level: 84, category: "databases" },
+ 
   // Tools
   { name: "GitHub", level: 85, category: "tools" },
   { name: "Google Colab", level: 95, category: "tools" },
   { name: "VS Code", level: 84, category: "tools" },
   { name: "Jupyter", level: 85, category: "tools" },
   { name: "HuggingFace", level: 82, category: "tools" },
+  { name: "Docker", level: 79, category: "tools" },
 
   // Add other skills as needed
   { name: "Arduino", level: 70, category: "others" },
@@ -45,7 +60,13 @@ const skills = [
   { name: "Solidworks", level: 65, category: "others" },
   { name: "Electronics", level: 72, category: "others" },
   { name: "Databases", level: 82, category: "others" },
+  { name: "JIRA", level: 78, category: "others" },
+  
+
+  
 ];
+
+
 
 const categories = [
   "all",
@@ -53,6 +74,7 @@ const categories = [
   "Programming",
   "Web Development",
   "Deployment",
+  "databases",
   "tools",
   "others",
 ];
