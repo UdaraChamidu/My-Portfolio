@@ -3,18 +3,12 @@ import { Briefcase } from "lucide-react";
 const experienceList = [
   {
     id: 1,
-    role: "AI Research Intern",
-    company: "XYZ AI Labs",
-    duration: "Jan 2024 - Present",
-    description: "Worked on deep learning models for image classification and AI automation projects.",
+    role: "AI/ML + Software Engineer Intern",
+    company: "Idea8 Pvt Ltd, Kottawa, Sri Lanka",
+    duration: "Nov 2025 - Present",
+    description: "Worked on Software Engineering projects and AI/ML models for various clients.",
   },
-  {
-    id: 2,
-    role: "Software Engineer Intern",
-    company: "ABC Technologies",
-    duration: "Jun 2023 - Dec 2023",
-    description: "Developed web applications and implemented backend APIs using Node.js and React.",
-  },
+  
 ];
 
 export const ExperienceSection = () => {

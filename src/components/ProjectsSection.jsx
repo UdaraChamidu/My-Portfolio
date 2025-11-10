@@ -139,6 +139,49 @@ const projects = [
       "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
     githubUrl: "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
   },
+
+  {
+    id: 1,
+    title: "Movie Searching Application",
+    description:
+      "A movie search web app built using React and The Movie Database (TMDb) API.",
+    image: "/projects/project13.png",
+    tags: ["React", "CSS", "HTML"],
+    demoUrl:
+      "https://movie-searching-app-tawny.vercel.app/",
+    githubUrl: "https://github.com/UdaraChamidu/Movie-Searching-App",
+  },
+
+  {
+    id: 1,
+    title: "AI Voice Assistant with ElevenLabs and n8n",
+    description:
+      "Ask questions to your documents using voice. Upload PDFs, speak your question, get spoken answers.",
+    image: "/projects/project14.png",
+    tags: ["Python", "ElevenLabs", "n8n", "Gemini"],
+    githubUrl: "https://github.com/UdaraChamidu/AI-Voice-Assistant-with-ElevenLabs-and-n8n",
+  },
+
+  {
+    id: 1,
+    title: "People Detection & Counting using Computer Vision (Ongoing)",
+    description:
+      "This project combines multiple computer vision techniques to create a comprehensive people counting system using YOLOv8 for object detection...",
+    image: "/projects/project15.png",
+    tags: ["Python", "YoloV8", "OpenCV"],
+    githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
+  },
+
+  {
+    id: 1,
+    title: "Smart Railway Gate Control System with GPS Tracking",
+    description:
+      "In this group project we were built a Smart Railway Tracking System. This use GPS technology and this product can helpful to reduce many railway accidents.",
+    image: "/projects/project15.png",
+    tags: ["C++", "ESP32", "GPS"],
+    
+    githubUrl: "https://github.com/UdaraChamidu/Smart-Railway-Gate-Control-System-with-GPS-Tracking",
+  },
 ];
 
 export const ProjectsSection = () => {
