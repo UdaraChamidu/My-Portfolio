@@ -1,6 +1,6 @@
 ## 🚀 Introduction
 
-This repository contains my portfolio website built using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. It includes dark mode support, responsive animations, deployable project showcases, and more. This web page was built with the help of PedroTech's YouTube tutorial.
+This repository contains my portfolio website built using **React**, **TailwindCSS**, **Vite**, and **Lucide Icons**. It includes dark mode support, responsive animations, deployable project showcases, and more. 
 
 ---
 
