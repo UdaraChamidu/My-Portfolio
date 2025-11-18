@@ -14,6 +14,7 @@ import { ExperienceSection } from "../components/ExperienceSection";
 import { Chatbot } from "../components/Chatbot";
 import { SkillGame } from "../components/SkillGame";
 import { FuturePlansSection } from "../components/FuturePlansSection";
+import { JourneySection } from "../components/JourneySection";
 
 export const Home = () => {
   return (
@@ -39,6 +40,7 @@ export const Home = () => {
           <Certifications />
           <ExperienceSection />
           <EducationSection />
+          <JourneySection />
           <FuturePlansSection />
           {/* <ExperienceSection /> */}
           <ContactSection />
