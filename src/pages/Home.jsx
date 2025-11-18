@@ -15,6 +15,7 @@ import { Chatbot } from "../components/Chatbot";
 import { SkillGame } from "../components/SkillGame";
 import { FuturePlansSection } from "../components/FuturePlansSection";
 import { JourneySection } from "../components/JourneySection";
+import { GithubStats } from "../components/GithubStats"
 
 export const Home = () => {
   return (
@@ -36,12 +37,14 @@ export const Home = () => {
           <AboutSection />
           <SkillsSection />
           <SkillGame />
+          
           <ProjectsSection />
           <Certifications />
           <ExperienceSection />
           <EducationSection />
           <JourneySection />
           <FuturePlansSection />
+          <GithubStats />
           {/* <ExperienceSection /> */}
           <ContactSection />
           <Chatbot />
