@@ -30,7 +30,7 @@
   }
   @keyframes pulse-subtle {
     0%,
-    100% {
+    50% {
       opacity: 1;
     }
     50% {
@@ -131,6 +131,7 @@
   @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
 }
 
+/* RESTORED: Original card style for About & Education */
 @utility gradient-border {
   @apply relative rounded-md;
   background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
