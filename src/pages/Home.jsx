@@ -1,5 +1,6 @@
 import { Navbar } from "../components/Navbar";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { DynamicBackground } from "../components/DynamicBackground";
 import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
@@ -11,33 +12,43 @@ import { Certifications } from "../components/Certifications";
 import { EducationSection } from "../components/EducationSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { Chatbot } from "../components/Chatbot";
+import { SkillGame } from "../components/SkillGame";
 
 export const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Theme Toggle */}
-      <ThemeToggle />
-      {/* Background Effects */}
-      <StarBackground />
+      <DynamicBackground />
 
-      {/* Navbar */}
-      <Navbar />
-      {/* Main Content */}
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <Certifications />
-        <ExperienceSection />
-        <EducationSection />
-        {/* <ExperienceSection /> */}
-        <ContactSection />
-        <Chatbot />
-      </main>
+      <div className="fixed inset-0 z-[5] pointer-events-none">
+         <StarBackground />
+      </div>
 
-      {/* Footer */}
+      <div className="relative z-10">
+        <ThemeToggle />
+        <Navbar />
+
+
+
+
+   
+        {/* Main Content */}
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <SkillsSection />
+          <SkillGame />
+          <ProjectsSection />
+          <Certifications />
+          <ExperienceSection />
+          <EducationSection />
+          {/* <ExperienceSection /> */}
+          <ContactSection />
+          <Chatbot />
+        </main>
+        {/* Footer */}
       <Footer />
+      </div>
     </div>
   );
 };
