@@ -13,8 +13,9 @@ const navItems = [
   { name: "Certifications", href: "#certifications" },
   { name: "Education", href: "#education" },
   { name: "Experience", href: "#experience" },
+  { name: "Future Plans", href: "#future-plans" },
   { name: "Contact", href: "#contact" },
-  { name: "Blog", href: "/blog" }
+  { name: "Blog", href: "/blog" },
 ];
 
 export const Navbar = () => {

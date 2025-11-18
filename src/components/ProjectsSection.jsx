@@ -167,7 +167,7 @@ const projects = [
     title: "People Detection & Counting using Computer Vision (Ongoing)",
     description:
       "This project combines multiple computer vision techniques to create a comprehensive people counting system using YOLOv8 for object detection...",
-    image: "/projects/project15.png",
+    image: "/projects/project16.png",
     tags: ["Python", "YoloV8", "OpenCV"],
     githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
   },

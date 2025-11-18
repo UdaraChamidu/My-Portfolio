@@ -13,6 +13,7 @@ import { EducationSection } from "../components/EducationSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { Chatbot } from "../components/Chatbot";
 import { SkillGame } from "../components/SkillGame";
+import { FuturePlansSection } from "../components/FuturePlansSection";
 
 export const Home = () => {
   return (
@@ -21,17 +22,13 @@ export const Home = () => {
       <DynamicBackground />
 
       <div className="fixed inset-0 z-[5] pointer-events-none">
-         <StarBackground />
+        <StarBackground />
       </div>
 
       <div className="relative z-10">
         <ThemeToggle />
         <Navbar />
 
-
-
-
-   
         {/* Main Content */}
         <main>
           <HeroSection />
@@ -42,12 +39,13 @@ export const Home = () => {
           <Certifications />
           <ExperienceSection />
           <EducationSection />
+          <FuturePlansSection />
           {/* <ExperienceSection /> */}
           <ContactSection />
           <Chatbot />
         </main>
         {/* Footer */}
-      <Footer />
+        <Footer />
       </div>
     </div>
   );
