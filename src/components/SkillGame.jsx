@@ -19,13 +19,14 @@ export const SkillGame = () => {
   
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [playerX, setPlayerX] = useState(50); 
-  const [items, setItems] = useState([]); 
-  
+  const [playerX, setPlayerX] = useState(50);
+  const [items, setItems] = useState([]);
+
   const gameAreaRef = useRef(null);
   const requestRef = useRef();
   const lastSpawnTime = useRef(0);
-  const scoreRef = useRef(0); 
+  const scoreRef = useRef(0);
+  const playerXRef = useRef(50);
 
   // Game Configuration
   const SPAWN_RATE = 1000; 
@@ -46,18 +47,21 @@ export const SkillGame = () => {
 
     const rect = gameAreaRef.current.getBoundingClientRect();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    
+
     let newX = ((clientX - rect.left) / rect.width) * 100;
     newX = Math.max(5, Math.min(95, newX));
+    playerXRef.current = newX;
     setPlayerX(newX);
   };
 
   const startGame = () => {
     setGameState("playing");
-    gameStateRef.current = "playing"; 
+    gameStateRef.current = "playing";
     setScore(0);
     scoreRef.current = 0;
     setItems([]);
+    playerXRef.current = 50;
+    setPlayerX(50);
     lastSpawnTime.current = performance.now();
     requestRef.current = requestAnimationFrame(gameLoop);
   };
@@ -91,10 +95,10 @@ export const SkillGame = () => {
         // HITBOX LOGIC
         // We check if the item has entered the "Player Zone" (Y > 80)
         // We use a wide X range (12%) to be forgiving/fun
-        const isColliding = 
+        const isColliding =
             item.y > 80 && // Item is low enough
             item.y < 98 && // Item hasn't fully passed yet
-            Math.abs(item.x - playerX) < 10; // Horizontal overlap (Increased from 8 to 10)
+            Math.abs(item.x - playerXRef.current) < 10; // Horizontal overlap (Increased from 8 to 10)
 
         if (isColliding) {
             if (item.type === "bug") {
