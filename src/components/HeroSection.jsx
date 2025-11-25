@@ -19,7 +19,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Overlay Text with Animated Purple Gradient */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-68">
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow-md mt-5">
               <span className="opacity-0 animate-fade-in"> Hi,</span>
               <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-1">
