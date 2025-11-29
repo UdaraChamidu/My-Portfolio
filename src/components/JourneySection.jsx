@@ -5,14 +5,26 @@ const milestones = [
   {
     year: "2012 - 2020",
     title: "High School Era",
-    description: "Graduated with Distinction in Mathematics and Science. The spark for problem-solving was lit here.",
+    description: (
+      <>
+        <div className="mb-3">
+          <p className="text-sm text-muted-foreground mb-2"><strong>School:</strong> Dhammissara National College, Nattandiya</p>
+          <strong className="text-primary">Academic Achievements:</strong>
+          <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
+            <li><strong>O/L Exams:</strong> 9 A passes</li>
+            <li><strong>A/L Exams:</strong> 3 B passes (Maths Stream: Combined Maths, Physics, Chemistry)</li>
+          </ul>
+        </div>
+        Graduated with Distinction in Mathematics and Science. The spark for problem-solving was lit here.
+      </>
+    ),
     icon: <GraduationCap className="w-5 h-5 text-white" />,
     color: "bg-green-500",
   },
   {
     year: "2022",
     title: "Started University",
-    description: "Enrolled in BSc Computer Engineering at University of Jaffna. Dive deep into algorithms and logic.",
+    description: "Enrolled in BSc Computer Engineering at University of Jaffna. Dive deep into Sftware Engineering, Artificial Intelligence, ML, DL and Mathematics .",
     icon: <Briefcase className="w-5 h-5 text-white" />,
     color: "bg-blue-500",
   },
