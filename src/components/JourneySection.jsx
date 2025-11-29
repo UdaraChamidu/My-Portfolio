@@ -38,7 +38,7 @@ const milestones = [
     color: "bg-primary",
   },
   {
-    year: "Nov 2025",
+    year: "Nov 2025 - Present",
     title: "Software Engineer Intern",
     description: "Joined Idea8 Pvt Ltd. Applying theory to real-world problems and learning from industry veterans.",
     color: "bg-primary",
@@ -68,12 +68,6 @@ export const JourneySection = () => {
               >
                 {/* Spacer for desktop alignment */}
                 <div className="hidden md:block w-5/12" />
-
-                {/* Icon/Dot Center */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full border-4 border-background z-10 shadow-lg">
-                    <div className={cn("w-full h-full rounded-full shadow-inner", item.color)}>
-                    </div>
-                </div>
 
                 {/* Content Card */}
                 <div className="w-[calc(100%-4rem)] md:w-5/12 ml-12 md:ml-0 pl-0 md:px-4">
