@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 const services = [
   {
     icon: <Brain className="w-8 h-8 text-primary" />,
-    title: "AI Powered Applications",
+    title: "AI-Powered Applications",
     description: "Custom AI solutions including Gen AI, NLP, RAG systems and multimodal AI applications for real world problems.",
     features: ["Computer Vision (ViT, CNN)", "RAG & LLM Integration", "Multimodal AI", "Medical AI Diagnostics"]
   },
   {
     icon: <Code className="w-8 h-8 text-primary" />,
-    title: "Full Stack Web Development",
+    title: "Full-Stack Web Development",
     description: "Modern web applications with MERN stack, FastAPI backends and scalable cloud deployments on AWS and Vercel.",
     features: ["MERN Stack", "FastAPI + React", "Cloud Deployment", "Real time Applications"]
   },
@@ -28,13 +28,13 @@ const services = [
   },
   {
     icon: <Zap className="w-8 h-8 text-primary" />,
-    title: "Computer Vision & Image Processing",
+    title: "Computer Vision Solutions",
     description: "Advanced computer vision solutions using ViT, YOLOv8, CNN and Deep Learning techniques for image analysis and processing.",
     features: ["Object Detection (YOLOv8)", "Medical Image Analysis", "Video Processing", "Real time Classification"]
   },
   {
     icon: <Globe className="w-8 h-8 text-primary" />,
-    title: "Consultation & Development",
+    title: "Technical Consultation",
     description: "Technical consultation, system architecture and end to end development from concept to deployment.",
     features: ["System Architecture", "Technical Consulting", "Full cycle Development", "Code Review"]
   }
@@ -98,3 +98,4 @@ export const ServicesSection = () => {
     </section>
   );
 };
+
