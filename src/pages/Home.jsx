@@ -16,6 +16,7 @@ import { SkillGame } from "../components/SkillGame";
 import { FuturePlansSection } from "../components/FuturePlansSection";
 import { JourneySection } from "../components/JourneySection";
 import { GithubStats } from "../components/GithubStats"
+import { ServicesSection } from "../components/ServicesSection";
 
 export const Home = () => {
   return (
@@ -36,8 +37,9 @@ export const Home = () => {
           <HeroSection />
           <AboutSection />
           <SkillsSection />
+          <ServicesSection />
           <SkillGame />
-          
+
           <ProjectsSection />
           <Certifications />
           <ExperienceSection />
