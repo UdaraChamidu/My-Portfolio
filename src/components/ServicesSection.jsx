@@ -4,39 +4,39 @@ import { cn } from "@/lib/utils";
 const services = [
   {
     icon: <Brain className="w-8 h-8 text-primary" />,
-    title: "AI & Machine Learning Solutions",
-    description: "Custom AI models, predictive analytics, computer vision, and NLP applications tailored to your business needs.",
-    features: ["Neural Networks", "Computer Vision", "Natural Language Processing", "Predictive Analytics"]
+    title: "AI-Powered Applications",
+    description: "Custom AI solutions including Gen AI, NLP, RAG systems and multimodal AI applications for real world problems.",
+    features: ["Computer Vision (ViT, CNN)", "RAG & LLM Integration", "Multimodal AI", "Medical AI Diagnostics"]
   },
   {
     icon: <Code className="w-8 h-8 text-primary" />,
     title: "Full-Stack Web Development",
-    description: "Modern web applications built with MERN stack, responsive design, and scalable architecture.",
-    features: ["React/Next.js", "Node.js/Express", "MongoDB", "RESTful APIs"]
+    description: "Modern web applications with MERN stack, FastAPI backends and scalable cloud deployments on AWS and Vercel.",
+    features: ["MERN Stack", "FastAPI + React", "Cloud Deployment", "Real time Applications"]
   },
   {
     icon: <Bot className="w-8 h-8 text-primary" />,
-    title: "AI Automation & Agents",
-    description: "Intelligent automation solutions using LangChain, n8n, and custom AI agents for workflow optimization.",
-    features: ["Workflow Automation", "AI Agents", "Integration Solutions", "Process Optimization"]
+    title: "AI Agents & Automation",
+    description: "Intelligent agents and automation workflows using LangChain, LangGraph, n8n and Telegram bot integrations.",
+    features: ["LangGraph Agents", "n8n Workflows", "Telegram Bots", "API Integrations"]
   },
   {
     icon: <BarChart3 className="w-8 h-8 text-primary" />,
-    title: "Data Analysis & Visualization",
-    description: "Transform your data into actionable insights with advanced analytics and interactive dashboards.",
-    features: ["Data Processing", "Statistical Analysis", "Interactive Dashboards", "Business Intelligence"]
+    title: "Machine Learning Solutions",
+    description: "ML models for prediction, classification and data analysis with deployment ready web interfaces.",
+    features: ["Predictive Models", "Classification Systems", "Data Analysis", "ML Web Apps"]
   },
   {
     icon: <Zap className="w-8 h-8 text-primary" />,
-    title: "Rapid Prototyping",
-    description: "Quick MVP development and proof-of-concept projects to validate your ideas before full-scale development.",
-    features: ["MVP Development", "Proof of Concept", "Technical Feasibility", "Quick Iterations"]
+    title: "Computer Vision & Image Processing",
+    description: "Advanced computer vision solutions using ViT, YOLOv8, CNN, and multimodal AI for image analysis and processing.",
+    features: ["Object Detection (YOLOv8)", "Medical Image Analysis", "Video Processing", "Real time Classification"]
   },
   {
     icon: <Globe className="w-8 h-8 text-primary" />,
-    title: "Consultation & Strategy",
-    description: "Technical consultation, architecture planning, and strategic guidance for your digital transformation.",
-    features: ["Tech Strategy", "System Architecture", "Code Review", "Technology Selection"]
+    title: "Consultation & Development",
+    description: "Technical consultation, system architecture and end to end development from concept to deployment.",
+    features: ["System Architecture", "Technical Consulting", "Full cycle Development", "Code Review"]
   }
 ];
 
