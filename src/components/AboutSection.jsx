@@ -12,19 +12,20 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Aspiring AI Engineer | Final Year University Student
+              AI Engineer | Software Engineer Intern | Freelancer
             </h3>
 
             <p className="text-muted-foreground">
-              Passionate about Generative AI, Machine Learning, and Agentic AI.
-              Currently exploring internship opportunities to grow in the field
-              of AI and automation.
+              Passionate about Generative AI, Machine Learning and Agentic AI.
+              Currently interning as a Software Engineer at Idea8 Pvt Ltd while
+              freelancing in AI/ML solutions and full stack development.
             </p>
 
             <p className="text-muted-foreground">
-              I’m currently looking for AI internship opportunities where I can
-              learn from experienced teams, contribute to meaningful work, and
-              take the next step toward my goal of becoming an AI engineer.
+              Through freelancing, I help clients build custom AI applications,
+              automation solutions and modern web platforms. My internship
+              provides hands on experience with industry best practices and
+              real world problem solving.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">

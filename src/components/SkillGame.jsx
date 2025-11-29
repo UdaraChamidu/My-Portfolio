@@ -190,7 +190,7 @@ export const SkillGame = () => {
           {gameState === "start" && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/80 backdrop-blur-xs z-20">
               <Brain className="w-16 h-16 text-primary mb-4 animate-bounce" />
-              <h3 className="text-2xl font-bold mb-2">Ready to Code?</h3>
+              <h3 className="text-2xl font-bold mb-2">Ready to Play?</h3>
               <button 
                 onClick={startGame}
                 className="cosmic-button flex items-center gap-2 mt-4"
