@@ -16,7 +16,11 @@ def fetch_news():
     url = f"https://newsdata.io/api/1/news?apikey={NEWS_API_KEY}&q=AI+ML&language=en"
     res = requests.get(url)
     data = res.json()
-    articles = data.get("results", [])[:5]
+    results = data.get("results", [])
+    if not isinstance(results, list):
+        print(f"Unexpected API response: {data}")
+        return []
+    articles = results[:5]
     return [a["title"] + ". " + a.get("description", "") for a in articles]
 
 def summarize(text):

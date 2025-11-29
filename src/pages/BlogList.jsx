@@ -106,7 +106,7 @@ export default function BlogList() {
               My <span className="text-primary">Blog</span>
             </h2>
             <p className="text-lg opacity-70 max-w-2xl md:max-w-xl">
-              Stay updated with the latest AI/ML news and insights
+              Stay updated with the latest AI/ML news and insights. Blogs are automatically generated daily using AI.
             </p>
           </div>
           <div className="flex justify-center md:justify-end gap-3">
