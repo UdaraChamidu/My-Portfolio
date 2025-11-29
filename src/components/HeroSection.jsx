@@ -8,7 +8,7 @@ export const HeroSection = () => {
     >
       <div className="container max-w-4xl mx-auto text-center z-10 relative">
         {/* Profile Image with Floating + Matching Purple Glow */}
-        <div className="relative flex justify-center mb-16">
+        <div className="flex justify-center mb-8">
           <div className="p-1 rounded-full bg-gradient-to-r from-primary/80 to-primary animate-[float_6s_ease-in-out_infinite]">
             <img
               src="/udara.jpg"
@@ -17,28 +17,26 @@ export const HeroSection = () => {
                          transition-transform duration-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(115,88,242,0.6)]"
             />
           </div>
-
-          {/* Overlay Text with Animated Purple Gradient */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow-md mt-5">
-              <span className="opacity-0 animate-fade-in"> Hi,</span>
-              <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-1">
-                I am
-              </span>
-              <span className="opacity-0 animate-fade-in-delay-2">
-                {" "}
-                Udara
-              </span>
-              <span className="text-primary opacity-0 animate-fade-in-delay-3">
-                {" "}
-                Herath
-              </span>
-            </h1>
-          </div>
         </div>
 
+        {/* Name with Animated Purple Gradient */}
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow-md mb-6">
+          <span className="opacity-0 animate-fade-in"> Hi,</span>
+          <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-1">
+            I am
+          </span>
+          <span className="opacity-0 animate-fade-in-delay-2">
+            {" "}
+            Udara
+          </span>
+          <span className="text-primary opacity-0 animate-fade-in-delay-3">
+            {" "}
+            Herath
+          </span>
+        </h1>
+
         {/* Subtitle / Intro */}
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 mt-20">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4">
           I'm a final year Computer Engineering student at Faculty of
           Engineering, University of Jaffna. Currently, I’m actively exploring
           opportunities in AI, ML, Agents and AI automation.
