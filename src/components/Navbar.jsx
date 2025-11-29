@@ -8,7 +8,7 @@ const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
-  { name: "Services", href: "#services" },
+  
  // { name: "Game", href: "#game" },
   { name: "Projects", href: "#projects" },
   { name: "Certifications", href: "#certifications" },
@@ -18,6 +18,7 @@ const navItems = [
   // { name: "Future Plans", href: "#future-plans" },
   { name: "Contact", href: "#contact" },
   { name: "Blog", href: "/blog" },
+  { name: "Services", href: "#services" },
 ];
 
 export const Navbar = () => {
@@ -58,7 +59,7 @@ export const Navbar = () => {
               href={item.href}
               className={cn(
                 "transition-colors duration-300",
-                item.name === "Blog"
+                (item.name === "Blog" || item.name === "Services")
                   ? "px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
                   : "text-foreground/80 hover:text-primary"
               )}
@@ -94,7 +95,7 @@ export const Navbar = () => {
                 href={item.href}
                 className={cn(
                   "transition-colors duration-300",
-                  item.name === "Blog"
+                  (item.name === "Blog" || item.name === "Services")
                     ? "px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
                     : "text-foreground/80 hover:text-primary"
                 )}

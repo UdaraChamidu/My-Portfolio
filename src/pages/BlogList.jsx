@@ -16,6 +16,7 @@ export default function BlogList() {
           throw new Error(`Failed to fetch blogs.json: ${indexRes.status} ${indexRes.statusText}`);
         }
         
+        
         const files = await indexRes.json();
  
         if (!Array.isArray(files)) {

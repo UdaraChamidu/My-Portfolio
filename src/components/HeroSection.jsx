@@ -42,9 +42,12 @@ export const HeroSection = () => {
           opportunities in AI, ML, Agents and AI automation.
         </p>
 
-        {/* CTA Button */}
-        <div className="pt-6 opacity-0 animate-fade-in-delay-4">
-          <a href="#projects" className="cosmic-button">
+        {/* CTA Buttons */}
+        <div className="pt-6 opacity-0 animate-fade-in-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#services" className="cosmic-button">
+            What I Can Build
+          </a>
+          <a href="#projects" className="cosmic-button-secondary">
             View My Work
           </a>
         </div>
