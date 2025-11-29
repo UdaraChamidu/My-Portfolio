@@ -56,7 +56,12 @@ export const Navbar = () => {
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className={cn(
+                "transition-colors duration-300",
+                item.name === "Blog"
+                  ? "px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                  : "text-foreground/80 hover:text-primary"
+              )}
             >
               {item.name}
             </a>
@@ -87,7 +92,12 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className={cn(
+                  "transition-colors duration-300",
+                  item.name === "Blog"
+                    ? "px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                    : "text-foreground/80 hover:text-primary"
+                )}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
