@@ -1,4 +1,3 @@
-import { GraduationCap, Code, Briefcase, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const milestones = [
@@ -18,36 +17,31 @@ const milestones = [
         Graduated with Distinction in Mathematics and Science. The spark for problem-solving was lit here.
       </>
     ),
-    icon: <GraduationCap className="w-5 h-5 text-white" />,
-    color: "bg-green-500",
+    color: "bg-primary",
   },
   {
     year: "2022",
     title: "Started University",
     description: "Enrolled in BSc Computer Engineering at University of Jaffna. Dive deep into Sftware Engineering, Artificial Intelligence, ML, DL and Mathematics .",
-    icon: <Briefcase className="w-5 h-5 text-white" />,
-    color: "bg-blue-500",
+    color: "bg-primary",
   },
   {
     year: "2023",
     title: "Discovered AI",
     description: "Built my first Neural Network. Realized that AI is not just hype, but the future of engineering.",
-    icon: <Star className="w-5 h-5 text-white" />,
-    color: "bg-yellow-500",
+    color: "bg-primary",
   },
   {
     year: "2024",
     title: "Full Stack & Agents",
     description: "Mastered MERN stack and started building autonomous AI agents using LangChain and n8n.",
-    icon: <Code className="w-5 h-5 text-white" />,
-    color: "bg-purple-500",
+    color: "bg-primary",
   },
   {
     year: "Nov 2025",
     title: "Software Engineer Intern",
     description: "Joined Idea8 Pvt Ltd. Applying theory to real-world problems and learning from industry veterans.",
-    icon: <Briefcase className="w-5 h-5 text-white" />,
-    color: "bg-red-500",
+    color: "bg-primary",
   },
 ];
 
@@ -77,8 +71,7 @@ export const JourneySection = () => {
 
                 {/* Icon/Dot Center */}
                 <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full border-4 border-background z-10 shadow-lg">
-                    <div className={cn("w-full h-full rounded-full flex items-center justify-center shadow-inner", item.color)}>
-                        {item.icon}
+                    <div className={cn("w-full h-full rounded-full shadow-inner", item.color)}>
                     </div>
                 </div>
 
