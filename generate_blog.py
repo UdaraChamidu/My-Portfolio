@@ -10,28 +10,41 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")  # Optional
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash-lite")
 
 def fetch_news():
     url = f"https://newsdata.io/api/1/news?apikey={NEWS_API_KEY}&q=AI+ML&language=en"
-    res = requests.get(url)
-    data = res.json()
-    results = data.get("results", [])
-    if not isinstance(results, list):
-        print(f"Unexpected API response: {data}")
+    try:
+        res = requests.get(url)
+        res.raise_for_status()
+        data = res.json()
+        results = data.get("results", [])
+        if not isinstance(results, list):
+            print(f"Unexpected API response: {data}")
+            return []
+        articles = results[:5]
+        return [a["title"] + ". " + a.get("description", "") for a in articles]
+    except Exception as e:
+        print(f"Error fetching news: {e}")
         return []
-    articles = results[:5]
-    return [a["title"] + ". " + a.get("description", "") for a in articles]
 
 def summarize(text):
     prompt = f"Summarize this AI/ML news in 1-2 short sentences:\n\n{text}"
-    response = model.generate_content(prompt)
-    return response.text.strip()
+    try:
+        response = model.generate_content(prompt)
+        return response.text.strip()
+    except Exception as e:
+        print(f"Error summarising text: {e}")
+        return "Summary unavailable."
 
 def extract_topic(text):
     prompt = f"Read this AI/ML news and generate a short, relevant topic (max 8 words):\n\n{text}\n\nTopic:"
-    response = model.generate_content(prompt)
-    return response.text.strip().replace('"', '')
+    try:
+        response = model.generate_content(prompt)
+        return response.text.strip().replace('"', '')
+    except Exception as e:
+        print(f"Error extracting topic: {e}")
+        return "General AI/ML"
 
 def generate_image_url(title):
     """
