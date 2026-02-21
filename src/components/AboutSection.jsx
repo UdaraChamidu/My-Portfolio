@@ -12,20 +12,20 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Aspiring AI Engineer | Software Engineer Intern | Freelancer
+              Aspiring AI Engineer | SaaS Developer | Freelancer
             </h3>
 
             <p className="text-muted-foreground">
-              Passionate about Generative AI, Machine Learning and Agentic AI.
+              Passionate about Generative AI, Machine Learning, and SaaS architectures.
               Currently interning as a Software Engineer at Idea8 Pvt Ltd while
-              freelancing in AI/ML solutions and full stack development.
+              freelancing in AI/ML solutions and SaaS development.
             </p>
 
             <p className="text-muted-foreground">
               Through freelancing, I help clients build custom AI applications,
-              automation solutions and modern web platforms. My internship
-              provides hands on experience with industry best practices and
-              real world problem solving.
+              scalable SaaS platforms, and intelligent automation solutions. My internship
+              provides hands-on experience with industry best practices and
+              real-world problem solving.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -59,10 +59,10 @@ export const AboutSection = () => {
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web Development</h4>
+                  <h4 className="font-semibold text-lg"> SaaS Development</h4>
                   <p className="text-muted-foreground">
-                    Creating responsive websites and web applications with
-                    modern frameworks.
+                    Building scalable, multi-tenant software as a service
+                    platforms with modern tech stacks.
                   </p>
                 </div>
               </div>

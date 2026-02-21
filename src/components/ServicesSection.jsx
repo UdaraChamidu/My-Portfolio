@@ -34,9 +34,9 @@ const services = [
   },
   {
     icon: <Globe className="w-8 h-8 text-primary" />,
-    title: "Technical Consultation",
-    description: "Technical consultation, system architecture and end to end development from concept to deployment.",
-    features: ["System Architecture", "Technical Consulting", "Full cycle Development", "Code Review"]
+    title: "SaaS Solutions",
+    description: "End-to-end SaaS development from discovery and design to deployment and scaling with multi-tenant architectures.",
+    features: ["Multi-tenant Systems", "Subscription Integration", "Scalable Cloud Infra", "API First Design"]
   }
 ];
 

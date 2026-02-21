@@ -4,7 +4,7 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 md:pt-0"
     >
       <div className="container max-w-4xl mx-auto text-center z-10 relative">
         {/* Profile Image with Floating + Matching Purple Glow */}
@@ -13,7 +13,7 @@ export const HeroSection = () => {
             <img
               src="/udara.jpg"
               alt="Udara Herath"
-              className="w-48 h-48 md:w-60 md:h-60 rounded-full object-cover shadow-lg border-4 border-primary/50
+              className="w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full object-cover shadow-lg border-4 border-primary/50
                          transition-transform duration-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(115,88,242,0.6)]"
             />
           </div>
@@ -39,7 +39,7 @@ export const HeroSection = () => {
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4">
           I'm a final year Computer Engineering student at Faculty of
           Engineering, University of Jaffna. Currently interning as a Software
-          Engineer while freelancing in AI/ML solutions and web development.
+          Engineer while freelancing in AI/ML solutions and SaaS development.
         </p>
 
         {/* CTA Buttons */}

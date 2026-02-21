@@ -2,6 +2,76 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    id: 1,
+    title: "HR Leave Management System",
+    description:
+      "A comprehensive solution for tracking employee leaves, WFH requests, announcements, and holidays with real-time updates using Socket.io.",
+    image: "/projects/hr-leave.png",
+    tags: ["React", "NestJS", "Prisma", "Socket.io", "PostgreSQL"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/UdaraChamidu/HR-Leave-Management-System",
+  },
+  {
+    id: 1,
+    title: "Insurance AI Consultant Platform",
+    description:
+      "A smart video consultation and intake system for insurance agents, featuring intelligent scheduling, compliance checklists, and RAG-integrated knowledge base.",
+    image: "/projects/insurance.png",
+    tags: ["React", "Supabase", "Prisma", "WebRTC", "Pinecone"],
+    demoUrl: "https://insurance-agent-ruby.vercel.app/",
+    githubUrl: "https://github.com/UdaraChamidu/Insurance-AI-Consultant",
+  },
+  {
+    id: 1,
+    title: "Velox Dynamics",
+    description:
+      "A high-performance business website and client portal for digital agencies, featuring interactive project tools and a sleek glassmorphism design.",
+    image: "/projects/velox.png",
+    tags: ["React", "Vite", "Framer Motion", "Tailwind CSS"],
+    demoUrl: "https://veloxdynamics.vercel.app",
+    githubUrl: "https://github.com/UdaraChamidu/Velox-Dynamics-Elite-Engineering-Agency",
+  },
+  {
+    id: 1,
+    title: "Lumina AI",
+    description:
+      "A premium, next-generation chatbot interface featuring a 'Glassmorphism' aesthetic, powered by Gemini AI and integrated with Supabase for secure auth.",
+    image: "/projects/lumina.png",
+    tags: ["React", "FastAPI", "Gemini AI", "Supabase"],
+    demoUrl: "https://phpstack-1409163-6105388.cloudwaysapps.com",
+    githubUrl: "https://github.com/UdaraChamidu/Lumina-AI",
+  },
+  {
+    id: 1,
+    title: "Level Up Trading Platform",
+    description:
+      "A professional-grade trade management solution for Crypto traders, featuring real-time performance analytics, risk calculators, and structured journal review.",
+    image: "/projects/levelup.png",
+    tags: ["React", "PWA", "Tailwind CSS", "ICT Methodology"],
+    demoUrl: "https://leveluptrading.vercel.app",
+    githubUrl: "https://github.com/UdaraChamidu/Level-Up-Trading-Platform",
+  },
+  {
+    id: 1,
+    title: "UniLife - Student Services Hub",
+    description:
+      "A comprehensive student platform featuring interactive campus maps, real-time messaging, AI-powered assistance, and a marketplace.",
+    image: "/projects/unilife.png",
+    tags: ["React 19", "TypeScript", "Firebase", "Tailwind CSS"],
+    demoUrl: "https://uni-life-services.vercel.app",
+    githubUrl: "https://github.com/UdaraChamidu/UniLife-Services",
+  },
+  {
+    id: 1,
+    title: "Lanka Yard (LK Yard)",
+    description:
+      "A digital marketplace and professional directory for Sri Lanka's construction industry, connecting clients with contractors, rentals, and suppliers.",
+    image: "/projects/lkyard.png",
+    tags: ["React", "Firebase", "Tailwind CSS", "Firestore"],
+    demoUrl: "https://lkyard.lk",
+    githubUrl: "https://github.com/UdaraChamidu/LK-Yard",
+  },
+  {
     id: 3,
     title: "Trip Planner Agent",
     description:
@@ -167,7 +237,7 @@ const projects = [
     title: "People Detection & Counting using Computer Vision (Ongoing)",
     description:
       "This project combines multiple computer vision techniques to create a comprehensive people counting system using YOLOv8 for object detection...",
-    image: "/projects/project16.png",
+    image: "/projects/people.png",
     tags: ["Python", "YoloV8", "OpenCV"],
     githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
   },

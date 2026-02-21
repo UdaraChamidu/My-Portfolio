@@ -42,11 +42,11 @@ export const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         <a
-          className="text-xl font-bold text-primary flex items-center"
+          className="text-lg md:text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
           <span className="relative z-10">
-            <span className="text-glow text-foreground"> Udara Herath's </span>{" "}
+            <span className="text-glow text-foreground"> Udara Herath's </span>
             Portfolio
           </span>
         </a>
