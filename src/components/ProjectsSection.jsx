@@ -1,4 +1,6 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const projects = [
   {
@@ -8,6 +10,8 @@ const projects = [
       "A comprehensive solution for tracking employee leaves, WFH requests, announcements, and holidays with real-time updates using Socket.io.",
     image: "/projects/hr-leave.png",
     tags: ["React", "NestJS", "Prisma", "Socket.io", "PostgreSQL"],
+    category: "SaaS / Full-Stack",
+    featured: true,
     demoUrl: "#",
     githubUrl: "https://github.com/UdaraChamidu/HR-Leave-Management-System",
   },
@@ -18,6 +22,8 @@ const projects = [
       "A smart video consultation and intake system for insurance agents, featuring intelligent scheduling, compliance checklists, and RAG-integrated knowledge base.",
     image: "/projects/insurance.png",
     tags: ["React", "Supabase", "Prisma", "WebRTC", "Pinecone"],
+    category: "AI / ML",
+    featured: true,
     demoUrl: "https://insurance-agent-ruby.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/Insurance-AI-Consultant",
   },
@@ -28,6 +34,8 @@ const projects = [
       "A high-performance business website and client portal for digital agencies, featuring interactive project tools and a sleek glassmorphism design.",
     image: "/projects/velox.png",
     tags: ["React", "Vite", "Framer Motion", "Tailwind CSS"],
+    category: "SaaS / Full-Stack",
+    featured: true,
     demoUrl: "https://veloxdynamics.vercel.app",
     githubUrl: "https://github.com/UdaraChamidu/Velox-Dynamics-Elite-Engineering-Agency",
   },
@@ -38,6 +46,8 @@ const projects = [
       "A premium, next-generation chatbot interface featuring a 'Glassmorphism' aesthetic, powered by Gemini AI and integrated with Supabase for secure auth.",
     image: "/projects/lumina.png",
     tags: ["React", "FastAPI", "Gemini AI", "Supabase"],
+    category: "AI / ML",
+    featured: true,
     demoUrl: "https://phpstack-1409163-6105388.cloudwaysapps.com",
     githubUrl: "https://github.com/UdaraChamidu/Lumina-AI",
   },
@@ -48,6 +58,8 @@ const projects = [
       "A professional-grade trade management solution for Crypto traders, featuring real-time performance analytics, risk calculators, and structured journal review.",
     image: "/projects/levelup.png",
     tags: ["React", "PWA", "Tailwind CSS", "ICT Methodology"],
+    category: "SaaS / Full-Stack",
+    featured: true,
     demoUrl: "https://leveluptrading.vercel.app",
     githubUrl: "https://github.com/UdaraChamidu/Level-Up-Trading-Platform",
   },
@@ -58,6 +70,8 @@ const projects = [
       "A comprehensive student platform featuring interactive campus maps, real-time messaging, AI-powered assistance, and a marketplace.",
     image: "/projects/unilife.png",
     tags: ["React 19", "TypeScript", "Firebase", "Tailwind CSS"],
+    category: "SaaS / Full-Stack",
+    featured: true,
     demoUrl: "https://uni-life-services.vercel.app",
     githubUrl: "https://github.com/UdaraChamidu/UniLife-Services",
   },
@@ -68,6 +82,8 @@ const projects = [
       "A digital marketplace and professional directory for Sri Lanka's construction industry, connecting clients with contractors, rentals, and suppliers.",
     image: "/projects/lkyard.png",
     tags: ["React", "Firebase", "Tailwind CSS", "Firestore"],
+    category: "SaaS / Full-Stack",
+    featured: true,
     demoUrl: "https://lkyard.lk",
     githubUrl: "https://github.com/UdaraChamidu/LK-Yard",
   },
@@ -78,6 +94,8 @@ const projects = [
       "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
     image: "/projects/project8.png",
     tags: ["Python", "React", "FastAPI"],
+    category: "AI / ML",
+    featured: true,
     demoUrl: "#",
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
@@ -90,6 +108,8 @@ const projects = [
       "The AI , Take legal PDF docs as input. It can Summarize simply , Highlight key clauses & risks and Answer specific user questions about the doc. Optionally show confidence or lawyer advice",
     image: "/projects/project11.png",
     tags: ["Python", "Gemini", "FastAPI", "React"],
+    category: "AI / ML",
+    featured: true,
     demoUrl: "https://ai-legal-doc-explainer-two.vercel.app",
     githubUrl: "https://github.com/UdaraChamidu/AI-Legal-Doc-Explainer",
   },
@@ -101,6 +121,7 @@ const projects = [
       "Building an AI agent in n8n to automate day to day works.(ongoing)",
     image: "/projects/project5.png",
     tags: ["n8n", "OpenAI", "API"],
+    category: "AI / ML",
     demoUrl:
       "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
     githubUrl:
@@ -114,6 +135,7 @@ const projects = [
       "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
     image: "/projects/project7.png",
     tags: ["Chatbot", "Python", "Streamlit"],
+    category: "AI / ML",
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Eye_Disease_Assistant",
     githubUrl:
       "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
@@ -126,6 +148,7 @@ const projects = [
       "This is a LangGraph-based chatbot that uses the Gemini 2.5 Flash model via the Gemini API key. The backend is built with Python and FastAPI, and deployed on Railway.",
     image: "/projects/askbot.png",
     tags: ["Python", "React", "FastAPI"],
+    category: "AI / ML",
     demoUrl:
       "https://ask-bot-front-end-git-main-udarachamidus-projects.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/AskBot_FrontEnd",
@@ -138,6 +161,7 @@ const projects = [
       "Copy and paste the Video URL or upload video file directly and ask questions.",
     image: "/projects/project9.png",
     tags: ["Python", "Gemini", "Streamlit"],
+    category: "AI / ML",
     demoUrl: "https://video-master.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/Video-Master",
   },
@@ -149,6 +173,7 @@ const projects = [
       "Upload pdf documents and and ask questions. (Ongoing Project)",
     image: "/projects/project10.png",
     tags: ["Python", "Gemini", "FastAPI"],
+    category: "AI / ML",
     demoUrl: "video-master.streamlit.app",
     githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
   },
@@ -160,6 +185,7 @@ const projects = [
       "A medical chat application that enables upload medical images and symptoms to diognisis diseases.",
     image: "/projects/project1.png",
     tags: ["Python", "Groq", "FastAPI"],
+    category: "AI / ML",
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
@@ -171,6 +197,7 @@ const projects = [
       "A web application for managing student attendance, including features for tracking attendance, generating reports, and managing student data.",
     image: "/projects/project3.png",
     tags: ["PHP", "MySQL", "HTML", "JavaScript"],
+    category: "SaaS / Full-Stack",
     demoUrl: "#",
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
@@ -182,6 +209,7 @@ const projects = [
       "A RAG based PDF chatbot that allows users to interact with PDF documents using natural language.",
     image: "/projects/project2.png",
     tags: ["Python", "LangChain", "Streamlit"],
+    category: "AI / ML",
     demoUrl: "https://pdfchatty.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/RAG-Based-PDF-Chatbot",
   },
@@ -193,6 +221,7 @@ const projects = [
       "A machine learning model that predicts laptop prices based on various features such as brand, processor, RAM, storage and more.",
     image: "/projects/project4.png",
     tags: ["Python", "HTML", "NumPy", "Pandas"],
+    category: "AI / ML",
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
@@ -205,6 +234,7 @@ const projects = [
       "A CNN learning model that detects and classifies waste in real-time using computer vision techniques.",
     image: "/projects/project12.png",
     tags: ["Python", "Yolo", "Flask", "HTML"],
+    category: "AI / ML",
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
     githubUrl: "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
@@ -217,6 +247,7 @@ const projects = [
       "A movie search web app built using React and The Movie Database (TMDb) API.",
     image: "/projects/project13.png",
     tags: ["React", "CSS", "HTML"],
+    category: "Web Development",
     demoUrl:
       "https://movie-searching-app-tawny.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/Movie-Searching-App",
@@ -229,6 +260,7 @@ const projects = [
       "Ask questions to your documents using voice. Upload PDFs, speak your question, get spoken answers.",
     image: "/projects/project14.png",
     tags: ["Python", "ElevenLabs", "n8n", "Gemini"],
+    category: "AI / ML",
     githubUrl: "https://github.com/UdaraChamidu/AI-Voice-Assistant-with-ElevenLabs-and-n8n",
   },
 
@@ -239,6 +271,7 @@ const projects = [
       "This project combines multiple computer vision techniques to create a comprehensive people counting system using YOLOv8 for object detection...",
     image: "/projects/people.png",
     tags: ["Python", "YoloV8", "OpenCV"],
+    category: "AI / ML",
     githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
   },
 
@@ -249,12 +282,26 @@ const projects = [
       "In this group project we were built a Smart Railway Tracking System. This use GPS technology and this product can helpful to reduce many railway accidents.",
     image: "/projects/project15.png",
     tags: ["C++", "ESP32", "GPS"],
-    
+    category: "Embedded Systems",
     githubUrl: "https://github.com/UdaraChamidu/Smart-Railway-Gate-Control-System-with-GPS-Tracking",
   },
 ];
 
+const categories = [
+  
+  "SaaS / Full-Stack",
+  "AI / ML",
+  "Embedded Systems",
+  "Web Development",
+];
+
 export const ProjectsSection = () => {
+  const [activeCategory, setActiveCategory] = useState("AI / ML");
+
+  const filteredProjects = projects.filter((project) =>
+    activeCategory === "all" ? project.featured : project.category === activeCategory
+  );
+
   return (
     <section id="projects" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
@@ -263,13 +310,31 @@ export const ProjectsSection = () => {
           Featured <span className="text-primary"> Projects </span>
         </h2>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
           Here are some of my recent projects. Each project was carefully
           crafted with attention to detail, performance, and user experience.
         </p>
 
+        {/* Category Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category, key) => (
+            <button
+              key={key}
+              onClick={() => setActiveCategory(category)}
+              className={cn(
+                "px-5 py-2 rounded-full transition-colors duration-300 capitalize font-medium",
+                activeCategory === category
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary/70 text-muted-foreground hover:bg-primary/30"
+              )}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, key) => (
+          {filteredProjects.map((project, key) => (
             <div
               key={key}
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"

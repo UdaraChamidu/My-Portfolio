@@ -4,6 +4,10 @@ import remarkGfm from "remark-gfm";
 import { useState, useEffect } from "react";
 import { MessageCircle, X } from "lucide-react";
 
+const API_BASE =
+  import.meta.env.VITE_CHATBOT_API_BASE ||
+  "https://udara-portfolio-chatbot.up.railway.app";
+
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -36,7 +40,7 @@ export const Chatbot = () => {
     try {
       setIsTyping(true);
       const response = await fetch(
-        "https://udara-portfolio-chatbot.up.railway.app/api/chat",
+        `${API_BASE.replace(/\/$/, "")}/api/chat`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -48,6 +52,9 @@ export const Chatbot = () => {
       );
 
       const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.detail || `Request failed with ${response.status}`);
+      }
       setIsTyping(false);
       setMessages((prev) => [...prev, { from: "bot", text: data.response }]);
     } catch (error) {
@@ -56,9 +63,10 @@ export const Chatbot = () => {
         ...prev,
         {
           from: "bot",
-          text: "⚠️ Sorry, something went wrong. Please try again later.",
+          text: "Sorry, something went wrong. Please try again later.",
         },
       ]);
+      console.error("Chatbot request failed:", error);
     }
   };
 
@@ -268,3 +276,4 @@ export const Chatbot = () => {
     </>
   );
 };
+

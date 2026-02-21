@@ -6,46 +6,46 @@ const skills = [
   // Web Development
   { name: "HTML", level: 75, category: "Web Development" },
   { name: "CSS", level: 85, category: "Web Development" },
-  { name: "JavaScript", level: 84, category: "Web Development" },
-  { name: "React", level: 80, category: "Web Development" },
+  { name: "JavaScript", level: 84, category: "Web Development", featured: true },
+  { name: "React", level: 80, category: "Web Development", featured: true },
   { name: "Tailwind CSS", level: 71, category: "Web Development" },
   { name: "Express.js", level: 70, category: "Web Development" },
   { name: "Next.js", level: 70, category: "Web Development" },
 
   // ML / AI
-  { name: "ML", level: 93, category: "AI / ML" },
+  { name: "ML", level: 93, category: "AI / ML", featured: true },
   { name: "DL", level: 87, category: "AI / ML" },
   { name: "NLP", level: 74, category: "AI / ML" },
-  { name: "Gen AI", level: 90, category: "AI / ML" },
+  { name: "Gen AI", level: 90, category: "AI / ML", featured: true },
   { name: "Computer Vision", level: 74, category: "AI / ML" },
   { name: "AI Agents", level: 65, category: "AI / ML" },
-  { name: "LLMs", level: 74, category: "AI / ML" },
+  { name: "LLMs", level: 74, category: "AI / ML", featured: true },
   { name: "Vector Stores", level: 83, category: "AI / ML" },
-  { name: "RAG", level: 87, category: "AI / ML" },
-  { name: "n8n", level: 84, category: "AI / ML" },
+  { name: "RAG", level: 87, category: "AI / ML", featured: true },
+  { name: "n8n", level: 84, category: "AI / ML", featured: true },
 
   // Programming
-  { name: "Python", level: 90, category: "Programming" },
-  { name: "Java", level: 82, category: "Programming" },
-  { name: "C++", level: 85, category: "Programming" },
+  { name: "Python", level: 90, category: "Programming", featured: true },
+  { name: "Java", level: 82, category: "Programming", featured: true },
+  { name: "C++", level: 85, category: "Programming", featured: true },
 
   // Deployment
-  { name: "Docker", level: 70, category: "Deployment" },
+  { name: "Docker", level: 70, category: "Deployment", featured: true },
   { name: "Flask", level: 70, category: "Deployment" },
   { name: "Streamlit ", level: 85, category: "Deployment" },
   { name: "AWS", level: 75, category: "Deployment" },
   { name: "Railway", level: 75, category: "Deployment" },
-  { name: "Vercel", level: 78, category: "Deployment" },  
-  { name: "FastAPI", level: 80, category: "Deployment" },
+  { name: "Vercel", level: 78, category: "Deployment" },
+  { name: "FastAPI", level: 80, category: "Deployment", featured: true },
   { name: "Github Actions", level: 70, category: "Deployment" },
 
   // add databases
-  { name: "MySQL", level: 75, category: "databases" },
+  { name: "MySQL", level: 75, category: "databases", featured: true },
   { name: "MongoDB", level: 72, category: "databases" },
   { name: "Chromadb", level: 80, category: "databases" },
   { name: "Firebase", level: 78, category: "databases" },
   { name: "FAISS", level: 84, category: "databases" },
- 
+
   // Tools
   { name: "GitHub", level: 85, category: "tools" },
   { name: "Google Colab", level: 95, category: "tools" },
@@ -82,8 +82,8 @@ export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [animatedValues, setAnimatedValues] = useState({}); // store current values
 
-  const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
+  const filteredSkills = skills.filter((skill) =>
+    activeCategory === "all" ? skill.featured : skill.category === activeCategory
   );
 
   // Animate skill bars and percentage whenever filteredSkills changes
