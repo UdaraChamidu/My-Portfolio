@@ -100,6 +100,18 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
   },
+  {
+    id: 1,
+    title: "AI Email Automation System",
+    description:
+      "A client email workflow for a USA business that monitors Gmail, filters spam and irrelevant messages, generates AI-powered draft replies, tracks email status in Excel, and supports approval-based sending with dashboard reporting.",
+    image: "/projects/project17.png",
+    tags: ["n8n", "Gmail", "Generative AI", "Excel Dashboard"],
+    category: "AI Agents & Automation",
+    featured: true,
+    demoUrl: "#",
+    githubUrl: "#",
+  },
 
   {
     id: 1,
