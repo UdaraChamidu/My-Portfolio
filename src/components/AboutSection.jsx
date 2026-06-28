@@ -12,20 +12,22 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Aspiring AI Engineer | SaaS Developer | Freelancer
+              AI Automation Engineer | SaaS Developer | Freelancer
             </h3>
 
             <p className="text-muted-foreground">
               Passionate about Generative AI, Machine Learning, and SaaS architectures.
-              Currently interning as a Software Engineer at Idea8 Pvt Ltd while
-              freelancing in AI/ML solutions and SaaS development.
+              Currently working as an AI Automation Engineer at Atlantic Bridge
+              Exchange Limited in the United Kingdom, while also contributing to
+              Technology Center Lanka and serving clients through Veloxdy.com.
             </p>
 
             <p className="text-muted-foreground">
-              Through freelancing, I help clients build custom AI applications,
-              scalable SaaS platforms, and intelligent automation solutions. My internship
-              provides hands-on experience with industry best practices and
-              real-world problem solving.
+              I build custom AI applications, scalable SaaS platforms, and
+              intelligent automation workflows across RAG systems, AI agents,
+              voice automation, and full-stack web products. I also freelance
+              on Upwork, helping clients turn business ideas into production
+              ready web applications and AI-powered systems.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -78,8 +80,8 @@ export const AboutSection = () => {
                     Machine & Deep Learning
                   </h4>
                   <p className="text-muted-foreground">
-                    Leading projects from conception to completion with agile
-                    methodologies.
+                    Building prediction, classification, NLP, and computer
+                    vision solutions with deployment-ready interfaces.
                   </p>
                 </div>
               </div>
@@ -95,8 +97,8 @@ export const AboutSection = () => {
                     Generative & Agentic AI
                   </h4>
                   <p className="text-muted-foreground">
-                    Designing intuitive user interfaces and seamless user
-                    experiences.
+                    Creating RAG systems, AI agents, voice workflows, and
+                    business automation pipelines with modern LLM tooling.
                   </p>
                 </div>
               </div>

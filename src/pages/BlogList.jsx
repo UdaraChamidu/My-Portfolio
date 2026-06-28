@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import fm from "front-matter";
 import { Home } from "lucide-react";
 
+const BLOG_LIST_LIMIT = 48;
+
 export default function BlogList() {
   const [posts, setPosts] = useState([]);
+  const [totalPosts, setTotalPosts] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,9 +28,10 @@ export default function BlogList() {
 
         // Filter out blogs.json and only process .md files
         const mdFiles = files.filter(file => file.endsWith('.md'));
+        setTotalPosts(mdFiles.length);
 
         const loaded = [];
-        for (const file of mdFiles) {
+        for (const file of mdFiles.slice(0, BLOG_LIST_LIMIT)) {
           try {
             const res = await fetch(`/blogs/${file}`);
             
@@ -107,8 +111,13 @@ export default function BlogList() {
               My <span className="text-primary">Blog</span>
             </h2>
             <p className="text-lg opacity-70 max-w-2xl md:max-w-xl">
-              Stay updated with the latest AI/ML news and insights. Blogs are automatically generated daily using AI.
+              Stay updated with focused AI/ML news and insights. Showing the latest posts from the archive for a faster reading experience.
             </p>
+            {!loading && totalPosts > posts.length && (
+              <p className="text-sm opacity-50 mt-2">
+                Showing latest {posts.length} of {totalPosts} archived posts.
+              </p>
+            )}
           </div>
           <div className="flex justify-center md:justify-end gap-3">
             <Link

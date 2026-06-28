@@ -5,6 +5,8 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Home, Sparkles, Tag } from "lucide-react";
 
+const RELATED_POST_SCAN_LIMIT = 30;
+
 export default function BlogPost() {
   const { slug } = useParams();
   const [content, setContent] = useState("");
@@ -37,7 +39,7 @@ export default function BlogPost() {
 
         const candidates = [];
 
-        for (const file of files) {
+        for (const file of files.slice(0, RELATED_POST_SCAN_LIMIT)) {
           if (!file.endsWith(".md")) continue;
           const fileSlug = file.replace(".md", "");
           if (fileSlug === slug) continue;

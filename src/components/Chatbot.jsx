@@ -1,25 +1,50 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { useState, useEffect } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { MessageCircle, Send, X } from "lucide-react";
 
-const API_BASE =
-  import.meta.env.VITE_CHATBOT_API_BASE ||
-  "https://udara-portfolio-chatbot.up.railway.app";
+const CHAT_MODEL = import.meta.env.VITE_CHATBOT_MODEL;
+
+const portfolioContext = `
+You are Udara Herath's portfolio assistant. Answer in a concise, friendly way.
+Key facts:
+- Udara Herath is a final year BSc Computer Engineering undergraduate at the University of Jaffna.
+- Current role: AI Automation Engineer at Atlantic Bridge Exchange Limited, United Kingdom, from June 2026.
+- Also working with Technology Center Lanka.
+- Runs Veloxdy.com, a personal business for web application creation, AI solutions, automation support, and client-focused digital products.
+- Freelances on Upwork for AI, automation, SaaS, and web application projects.
+- Completed AI/ML + Software Engineer Internship at Idea8 Pvt Ltd, Kottawa, Sri Lanka from November 2025 to May 2026.
+- Focus areas: Generative AI, RAG systems, agentic AI, AI voice agents, n8n/LangGraph automation, FastAPI, React, NestJS, Supabase, Pinecone, TensorFlow, and SaaS platforms.
+- Portfolio CV is available at /Herath_CV_AI.pdf.
+If asked for contact or hiring, guide the visitor to the contact section.
+`;
+
+const getAssistantText = (result) => {
+  if (typeof result === "string") return result;
+
+  const content = result?.message?.content ?? result?.content ?? result?.text;
+  if (typeof content === "string") return content;
+  if (Array.isArray(content)) {
+    return content
+      .map((part) => part?.text ?? part?.content ?? "")
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  return "I am here, but I could not format that response clearly.";
+};
 
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { from: "bot", text: "Hi! How can I help you?" },
+    { from: "bot", text: "Hi! I am Udara's AI assistant. How can I help?" },
   ]);
   const [input, setInput] = useState("");
   const [showTip, setShowTip] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-
-  const SESSION_ID =
-    crypto?.randomUUID?.() || Math.random().toString(36).slice(2);
-  const quickReplies = ["Hello!", "Tell me about AI", "Portfolio info"];
+  const chatHistoryRef = useRef([]);
+  const quickReplies = ["Current role", "Portfolio projects", "View CV"];
 
   // Show tip periodically
   useEffect(() => {
@@ -39,34 +64,41 @@ export const Chatbot = () => {
 
     try {
       setIsTyping(true);
-      const response = await fetch(
-        `${API_BASE.replace(/\/$/, "")}/api/chat`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: userMessage,
-            session_id: SESSION_ID,
-          }),
-        }
-      );
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data?.detail || `Request failed with ${response.status}`);
+      if (!window.puter?.ai?.chat) {
+        throw new Error("Puter.js AI SDK is not available.");
       }
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { from: "bot", text: data.response }]);
+
+      const conversation = [
+        { role: "system", content: portfolioContext },
+        ...chatHistoryRef.current,
+        { role: "user", content: userMessage },
+      ];
+
+      const result = await window.puter.ai.chat(
+        conversation,
+        CHAT_MODEL ? { model: CHAT_MODEL } : undefined
+      );
+      const botText = getAssistantText(result);
+
+      chatHistoryRef.current = [
+        ...chatHistoryRef.current,
+        { role: "user", content: userMessage },
+        { role: "assistant", content: botText },
+      ].slice(-10);
+
+      setMessages((prev) => [...prev, { from: "bot", text: botText }]);
     } catch (error) {
-      setIsTyping(false);
       setMessages((prev) => [
         ...prev,
         {
           from: "bot",
-          text: "Sorry, something went wrong. Please try again later.",
+          text: "Sorry, I could not reach the AI service right now. You can still view my CV or use the contact section.",
         },
       ]);
       console.error("Chatbot request failed:", error);
+    } finally {
+      setIsTyping(false);
     }
   };
 
@@ -179,9 +211,10 @@ export const Chatbot = () => {
             />
             <button
               onClick={() => handleSend()}
-              className="ml-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+              className="ml-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors inline-flex items-center justify-center"
+              aria-label="Send message"
             >
-              Send
+              <Send size={18} />
             </button>
           </div>
         </div>

@@ -50,7 +50,8 @@ export const ServicesSection = () => {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Leveraging my expertise in AI, ML, and software engineering to create innovative solutions
-            that drive your business forward. Let's turn your ideas into reality.
+            that drive your business forward through Veloxdy.com, my web application
+            and AI solutions business. Let's turn your ideas into reality.
           </p>
         </div>
 
@@ -90,9 +91,19 @@ export const ServicesSection = () => {
           <p className="text-muted-foreground mb-6">
             Have a specific project in mind? Let's discuss how we can bring it to life.
           </p>
-          <a href="#contact" className="cosmic-button">
-            Start Your Project
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" className="cosmic-button">
+              Start Your Project
+            </a>
+            <a
+              href="https://veloxdy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cosmic-button-secondary"
+            >
+              Visit Veloxdy
+            </a>
+          </div>
         </div>
       </div>
     </section>

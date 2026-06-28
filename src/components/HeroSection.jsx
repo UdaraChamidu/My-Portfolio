@@ -38,8 +38,11 @@ export const HeroSection = () => {
         {/* Subtitle / Intro */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4">
           I'm a final year Computer Engineering student at Faculty of
-          Engineering, University of Jaffna. Currently interning as a Software
-          Engineer while freelancing in AI/ML solutions and SaaS development.
+          Engineering, University of Jaffna. I now work as an AI Automation
+          Engineer at Atlantic Bridge Exchange Limited in the United Kingdom,
+          while also working with Technology Center Lanka, freelancing on
+          Upwork, and building web applications and AI solutions through
+          Veloxdy.com.
         </p>
 
         {/* CTA Buttons */}

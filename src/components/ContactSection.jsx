@@ -3,6 +3,7 @@ import {
   Instagram,
   Facebook,
   Github,
+  Globe,
   Linkedin,
   Mail,
   MapPin,
@@ -150,6 +151,23 @@ export const ContactSection = () => {
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     +94 76 172 0686
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <Globe className="h-6 w-6 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-medium text-left">Business</h4>
+                  <a
+                    href="https://veloxdy.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Veloxdy.com
                   </a>
                 </div>
               </div>

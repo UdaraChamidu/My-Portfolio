@@ -38,9 +38,15 @@ const milestones = [
     color: "bg-primary",
   },
   {
-    year: "Nov 2025 - Present",
-    title: "Software Engineer Intern",
-    description: "Joined Idea8 Pvt Ltd. Applying theory to real-world problems and learning from industry veterans.",
+    year: "Nov 2025 - May 2026",
+    title: "AI/ML + Software Engineer Intern",
+    description: "Completed an internship at Idea8 Pvt Ltd, applying AI/ML and software engineering skills to real-world client projects.",
+    color: "bg-primary",
+  },
+  {
+    year: "Jun 2026 - Present",
+    title: "AI Automation Engineer",
+    description: "Started working with Atlantic Bridge Exchange Limited in the United Kingdom while also contributing to Technology Center Lanka and growing Veloxdy.com.",
     color: "bg-primary",
   },
 ];

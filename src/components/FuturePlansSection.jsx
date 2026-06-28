@@ -15,14 +15,14 @@ const plans = [
   },
   {
     id: 3,
-    title: "Complete the Internship",
-    description: "The internship on Software Engineering + AI/ML with Idea8 Pvt Ltd completing with hands on knowledge and experiences.",
+    title: "Grow as an AI Automation Engineer",
+    description: "Apply production AI automation experience at Atlantic Bridge Exchange Limited and Technology Center Lanka to solve real business problems.",
     icon: <BookOpen className="w-6 h-6 text-primary" />,
   },
   {
     id: 4,
-    title: "Launch an AI SaaS",
-    description: "Develop and deploy a full scale, production ready AI SaaS product that solves a specific real world problem.",
+    title: "Scale Veloxdy.com",
+    description: "Grow Veloxdy into a trusted business for web application creation, AI solutions, automation support, and production-ready SaaS products.",
     icon: <Lightbulb className="w-6 h-6 text-primary" />,
   },
 ];

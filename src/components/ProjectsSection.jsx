@@ -22,21 +22,21 @@ const projects = [
       "A smart video consultation and intake system for insurance agents, featuring intelligent scheduling, compliance checklists, and RAG-integrated knowledge base.",
     image: "/projects/insurance.png",
     tags: ["React", "Supabase", "Prisma", "WebRTC", "Pinecone"],
-    category: "AI / ML",
+    category: "AI Solutions",
     featured: true,
     demoUrl: "https://insurance-agent-ruby.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/Insurance-AI-Consultant",
   },
   {
     id: 1,
-    title: "Velox Dynamics",
+    title: "Veloxdy.com",
     description:
-      "A high-performance business website and client portal for digital agencies, featuring interactive project tools and a sleek glassmorphism design.",
+      "My personal business website for web application creation, AI solutions, automation support, and client-focused digital product development.",
     image: "/projects/velox.png",
-    tags: ["React", "Vite", "Framer Motion", "Tailwind CSS"],
+    tags: ["Web Apps", "AI Solutions", "Automation", "SaaS"],
     category: "SaaS / Full-Stack",
     featured: true,
-    demoUrl: "https://veloxdynamics.vercel.app",
+    demoUrl: "https://veloxdy.com",
     githubUrl: "https://github.com/UdaraChamidu/Velox-Dynamics-Elite-Engineering-Agency",
   },
   {
@@ -46,7 +46,7 @@ const projects = [
       "A premium, next-generation chatbot interface featuring a 'Glassmorphism' aesthetic, powered by Gemini AI and integrated with Supabase for secure auth.",
     image: "/projects/lumina.png",
     tags: ["React", "FastAPI", "Gemini AI", "Supabase"],
-    category: "AI / ML",
+    category: "RAG & Chatbots",
     featured: true,
     demoUrl: "https://phpstack-1409163-6105388.cloudwaysapps.com",
     githubUrl: "https://github.com/UdaraChamidu/Lumina-AI",
@@ -94,7 +94,7 @@ const projects = [
       "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
     image: "/projects/project8.png",
     tags: ["Python", "React", "FastAPI"],
-    category: "AI / ML",
+    category: "AI Agents & Automation",
     featured: true,
     demoUrl: "#",
     githubUrl:
@@ -108,7 +108,7 @@ const projects = [
       "The AI , Take legal PDF docs as input. It can Summarize simply , Highlight key clauses & risks and Answer specific user questions about the doc. Optionally show confidence or lawyer advice",
     image: "/projects/project11.png",
     tags: ["Python", "Gemini", "FastAPI", "React"],
-    category: "AI / ML",
+    category: "RAG & Chatbots",
     featured: true,
     demoUrl: "https://ai-legal-doc-explainer-two.vercel.app",
     githubUrl: "https://github.com/UdaraChamidu/AI-Legal-Doc-Explainer",
@@ -121,7 +121,7 @@ const projects = [
       "Building an AI agent in n8n to automate day to day works.(ongoing)",
     image: "/projects/project5.png",
     tags: ["n8n", "OpenAI", "API"],
-    category: "AI / ML",
+    category: "AI Agents & Automation",
     demoUrl:
       "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
     githubUrl:
@@ -135,7 +135,7 @@ const projects = [
       "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
     image: "/projects/project7.png",
     tags: ["Chatbot", "Python", "Streamlit"],
-    category: "AI / ML",
+    category: "Vision / DL / Image Processing",
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Eye_Disease_Assistant",
     githubUrl:
       "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
@@ -148,7 +148,7 @@ const projects = [
       "This is a LangGraph-based chatbot that uses the Gemini 2.5 Flash model via the Gemini API key. The backend is built with Python and FastAPI, and deployed on Railway.",
     image: "/projects/askbot.png",
     tags: ["Python", "React", "FastAPI"],
-    category: "AI / ML",
+    category: "RAG & Chatbots",
     demoUrl:
       "https://ask-bot-front-end-git-main-udarachamidus-projects.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/AskBot_FrontEnd",
@@ -161,7 +161,7 @@ const projects = [
       "Copy and paste the Video URL or upload video file directly and ask questions.",
     image: "/projects/project9.png",
     tags: ["Python", "Gemini", "Streamlit"],
-    category: "AI / ML",
+    category: "AI Solutions",
     demoUrl: "https://video-master.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/Video-Master",
   },
@@ -173,7 +173,7 @@ const projects = [
       "Upload pdf documents and and ask questions. (Ongoing Project)",
     image: "/projects/project10.png",
     tags: ["Python", "Gemini", "FastAPI"],
-    category: "AI / ML",
+    category: "RAG & Chatbots",
     demoUrl: "video-master.streamlit.app",
     githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
   },
@@ -185,7 +185,7 @@ const projects = [
       "A medical chat application that enables upload medical images and symptoms to diognisis diseases.",
     image: "/projects/project1.png",
     tags: ["Python", "Groq", "FastAPI"],
-    category: "AI / ML",
+    category: "Computer Vision / DL / Image Processing",
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
@@ -209,7 +209,7 @@ const projects = [
       "A RAG based PDF chatbot that allows users to interact with PDF documents using natural language.",
     image: "/projects/project2.png",
     tags: ["Python", "LangChain", "Streamlit"],
-    category: "AI / ML",
+    category: "RAG & Chatbots",
     demoUrl: "https://pdfchatty.streamlit.app/",
     githubUrl: "https://github.com/UdaraChamidu/RAG-Based-PDF-Chatbot",
   },
@@ -221,7 +221,7 @@ const projects = [
       "A machine learning model that predicts laptop prices based on various features such as brand, processor, RAM, storage and more.",
     image: "/projects/project4.png",
     tags: ["Python", "HTML", "NumPy", "Pandas"],
-    category: "AI / ML",
+    category: "Machine Learning",
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
@@ -234,7 +234,7 @@ const projects = [
       "A CNN learning model that detects and classifies waste in real-time using computer vision techniques.",
     image: "/projects/project12.png",
     tags: ["Python", "Yolo", "Flask", "HTML"],
-    category: "AI / ML",
+    category: "Computer Vision / DL / Image Processing",
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
     githubUrl: "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
@@ -260,7 +260,7 @@ const projects = [
       "Ask questions to your documents using voice. Upload PDFs, speak your question, get spoken answers.",
     image: "/projects/project14.png",
     tags: ["Python", "ElevenLabs", "n8n", "Gemini"],
-    category: "AI / ML",
+    category: "AI Agents & Automation",
     githubUrl: "https://github.com/UdaraChamidu/AI-Voice-Assistant-with-ElevenLabs-and-n8n",
   },
 
@@ -271,7 +271,7 @@ const projects = [
       "This project combines multiple computer vision techniques to create a comprehensive people counting system using YOLOv8 for object detection...",
     image: "/projects/people.png",
     tags: ["Python", "YoloV8", "OpenCV"],
-    category: "AI / ML",
+    category: "Computer Vision / DL / Image Processing",
     githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
   },
 
@@ -288,18 +288,24 @@ const projects = [
 ];
 
 const categories = [
-  
+  "All Featured",
+  "AI Solutions",
+  "Machine Learning",
+  "Computer Vision / DL / Image Processing",
+  "RAG & Chatbots",
+  "AI Agents & Automation",
   "SaaS / Full-Stack",
-  "AI / ML",
-  "Embedded Systems",
   "Web Development",
+  "Embedded Systems",
 ];
 
 export const ProjectsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("AI / ML");
+  const [activeCategory, setActiveCategory] = useState("All Featured");
 
   const filteredProjects = projects.filter((project) =>
-    activeCategory === "all" ? project.featured : project.category === activeCategory
+    activeCategory === "All Featured"
+      ? project.featured
+      : project.category === activeCategory
   );
 
   return (
@@ -311,8 +317,9 @@ export const ProjectsSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Here are some of my recent projects. Each project was carefully
-          crafted with attention to detail, performance, and user experience.
+          Explore my work by focused project area, from AI products and
+          machine learning models to computer vision, automation, SaaS, and web
+          applications.
         </p>
 
         {/* Category Filter Buttons */}

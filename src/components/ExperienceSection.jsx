@@ -3,12 +3,36 @@ import { Briefcase } from "lucide-react";
 const experienceList = [
   {
     id: 1,
+    role: "AI Automation Engineer",
+    company: "Atlantic Bridge Exchange Limited, United Kingdom",
+    duration: "Jun 2026 - Present",
+    description:
+      "Building AI automation workflows, intelligent agents, and production-ready systems that connect business processes with modern AI capabilities.",
+  },
+  {
+    id: 2,
+    role: "AI/Software Engineering Contributor",
+    company: "Technology Center Lanka, Sri Lanka",
+    duration: "2026 - Present",
+    description:
+      "Working on AI, automation, and software engineering initiatives with a focus on practical, scalable technology solutions.",
+  },
+  {
+    id: 3,
+    role: "Founder / AI Solutions & Web App Developer",
+    company: "Veloxdy.com",
+    duration: "2026 - Present",
+    description:
+      "Building a personal business focused on custom web application development, AI solutions, automation systems, and practical digital products for clients.",
+  },
+  {
+    id: 4,
     role: "AI/ML + Software Engineer Intern",
     company: "Idea8 Pvt Ltd, Kottawa, Sri Lanka",
-    duration: "Nov 2025 - Present",
-    description: "Worked on Software Engineering projects and AI/ML models for various clients.",
+    duration: "Nov 2025 - May 2026",
+    description:
+      "Completed an internship working on software engineering projects, AI/ML models, SaaS platforms, and client-focused automation systems.",
   },
-  
 ];
 
 export const ExperienceSection = () => {
@@ -20,7 +44,7 @@ export const ExperienceSection = () => {
           My <span className="text-primary">Experiences</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experienceList.map((exp) => (
             <div
               key={exp.id}
