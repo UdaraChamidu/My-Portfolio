@@ -1,10 +1,5 @@
-const FALLBACK_BLOG_IMAGE = "/blogs/ai-news-cover.jpg";
-
 export const getBlogImage = (imageUrl) => {
-  if (!imageUrl || imageUrl.includes("picsum.photos")) {
-    return FALLBACK_BLOG_IMAGE;
-  }
-  return imageUrl;
+  return imageUrl || "/blogs/2026-04-16-ai-ml-news-cover.jpg";
 };
 
 export const cleanMarkdownPreview = (value = "", limit = 165) => {

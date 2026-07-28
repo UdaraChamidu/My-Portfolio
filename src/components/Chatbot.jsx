@@ -4,37 +4,6 @@ import remarkGfm from "remark-gfm";
 import { useState, useEffect, useRef } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 
-const CHAT_MODEL = import.meta.env.VITE_CHATBOT_MODEL;
-
-const portfolioContext = `
-You are Udara Herath's portfolio assistant. Answer in a concise, friendly way.
-Key facts:
-- Udara Herath is a final year BSc Computer Engineering undergraduate at the University of Jaffna.
-- Current role: AI Automation Engineer at Atlantic Bridge Exchange Limited, United Kingdom, from June 2026.
-- Also working with Technology Center Lanka.
-- Runs Veloxdy.com, a personal business for web application creation, AI solutions, automation support, and client-focused digital products.
-- Freelances on Upwork for AI, automation, SaaS, and web application projects.
-- Completed AI/ML + Software Engineer Internship at Idea8 Pvt Ltd, Kottawa, Sri Lanka from November 2025 to May 2026.
-- Focus areas: Generative AI, RAG systems, agentic AI, AI voice agents, n8n/LangGraph automation, FastAPI, React, NestJS, Supabase, Pinecone, TensorFlow, and SaaS platforms.
-- Portfolio CV is available at /Herath_CV_AI.pdf.
-If asked for contact or hiring, guide the visitor to the contact section.
-`;
-
-const getAssistantText = (result) => {
-  if (typeof result === "string") return result;
-
-  const content = result?.message?.content ?? result?.content ?? result?.text;
-  if (typeof content === "string") return content;
-  if (Array.isArray(content)) {
-    return content
-      .map((part) => part?.text ?? part?.content ?? "")
-      .filter(Boolean)
-      .join("\n");
-  }
-
-  return "I am here, but I could not format that response clearly.";
-};
-
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -65,27 +34,27 @@ export const Chatbot = () => {
     try {
       setIsTyping(true);
 
-      if (!window.puter?.ai?.chat) {
-        throw new Error("Puter.js AI SDK is not available.");
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMessage,
+          history: chatHistoryRef.current,
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.error || "Chat request failed.");
       }
 
-      const conversation = [
-        { role: "system", content: portfolioContext },
-        ...chatHistoryRef.current,
-        { role: "user", content: userMessage },
-      ];
-
-      const result = await window.puter.ai.chat(
-        conversation,
-        CHAT_MODEL ? { model: CHAT_MODEL } : undefined
-      );
-      const botText = getAssistantText(result);
+      const botText = result.text;
 
       chatHistoryRef.current = [
         ...chatHistoryRef.current,
-        { role: "user", content: userMessage },
-        { role: "assistant", content: botText },
-      ].slice(-10);
+        { role: "user", text: userMessage },
+        { role: "model", text: botText },
+      ].slice(-8);
 
       setMessages((prev) => [...prev, { from: "bot", text: botText }]);
     } catch (error) {
