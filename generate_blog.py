@@ -3,7 +3,6 @@ import requests
 import google.generativeai as genai
 from datetime import datetime
 import json
-import hashlib
 
 NEWS_API_KEY = os.getenv("NEWSDATA_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -74,11 +73,8 @@ def generate_image_url(title):
         except Exception as e:
             print(f"Unsplash API error: {e}")
     
-    # Fallback: Use deterministic placeholder based on title hash
-    # This ensures the same title always gets the same image
-    title_hash = hashlib.md5(title.encode()).hexdigest()
-    seed = int(title_hash[:8], 16) % 1000
-    return f"https://picsum.photos/seed/{seed}/1200/600"
+    # Use a curated local AI-news image instead of an unrelated random photo.
+    return "/blogs/ai-news-cover.jpg"
 
 def create_blog():
     news = fetch_news()

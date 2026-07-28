@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import fm from "front-matter";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Calendar, Home, Sparkles, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Home, Sparkles, Tag } from "lucide-react";
+import { cleanMarkdownPreview, formatBlogDate, getBlogImage } from "@/lib/blog";
 
 const RELATED_POST_SCAN_LIMIT = 30;
 
@@ -14,13 +16,6 @@ export default function BlogPost() {
   const [loading, setLoading] = useState(true);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const [relatedLoading, setRelatedLoading] = useState(true);
-
-  // Generate image URL based on title (will be replaced with AI-generated images from front matter)
-  const getImageUrl = (title, imageUrl) => {
-    if (imageUrl) return imageUrl;
-    const seed = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return `https://picsum.photos/seed/${seed}/1200/600`;
-  };
 
   useEffect(() => {
     let isMounted = true;
@@ -55,22 +50,13 @@ export default function BlogPost() {
             ? relatedTopics.some((topic) => topics.includes(topic))
             : true;
 
-          const summarySource = attributes?.summary ?? relatedBody ?? "";
-          const cleanSummary = summarySource
-            .replace(/[#>*_`-]/g, " ")
-            .replace(/\s+/g, " ")
-            .trim();
-          const preview = cleanSummary.length > 140
-            ? `${cleanSummary.slice(0, 137)}...`
-            : cleanSummary;
-
           candidates.push({
             slug: fileSlug,
             title: attributes?.title ?? fileSlug,
             date: attributes?.date ?? "Unknown",
             imageUrl: attributes?.imageUrl ?? "",
             topics: relatedTopics,
-            summary: preview,
+            summary: cleanMarkdownPreview(attributes?.summary ?? relatedBody, 140),
             overlap: hasOverlap ? 1 : 0,
           });
 
@@ -133,7 +119,7 @@ export default function BlogPost() {
       } catch (error) {
         console.error("Error loading post:", error);
         if (isMounted) {
-          setContent("⚠️ Error loading post.");
+          setContent("This post could not be loaded.");
           setMeta({ title: "Post Not Found", date: "", topics: [], imageUrl: "" });
           setRelatedPosts([]);
           setRelatedLoading(false);
@@ -170,7 +156,7 @@ export default function BlogPost() {
 
   return (
     <section className="min-h-screen py-12 md:py-24 px-4 bg-background text-foreground">
-      <div className="container max-w-4xl mx-auto">
+      <div className="container max-w-5xl mx-auto">
         {/* Navigation Buttons */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
           <Link
@@ -190,11 +176,11 @@ export default function BlogPost() {
         </div>
 
         {meta.title ? (
-          <article className="space-y-8">
+          <article>
             {/* Header */}
-            <header className="space-y-6">
+            <header className="max-w-3xl mx-auto space-y-5 text-left">
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-foreground">
+              <h1 className="text-3xl md:text-5xl font-bold leading-tight text-foreground">
                 {meta.title}
               </h1>
 
@@ -203,7 +189,7 @@ export default function BlogPost() {
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   <span>
-                    {new Date(meta.date).toLocaleDateString("en-US", {
+                    {formatBlogDate(meta.date, {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
@@ -227,35 +213,46 @@ export default function BlogPost() {
             </header>
 
             {/* Featured Image */}
-            <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative w-full aspect-[16/8] max-h-[480px] mt-8 overflow-hidden border-y md:border border-border md:rounded-lg bg-card">
               <img
-                src={getImageUrl(meta.title, meta.imageUrl)}
+                src={getBlogImage(meta.imageUrl)}
                 alt={meta.title}
                 className="w-full h-full object-cover"
                 loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
             </div>
 
             {/* Content */}
-            <div className="prose prose-lg dark:prose-invert max-w-none
-                          prose-headings:text-foreground prose-headings:font-bold
-                          prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                          prose-p:text-foreground/90 prose-p:leading-relaxed
-                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                          prose-strong:text-foreground prose-strong:font-semibold
-                          prose-ul:text-foreground/90 prose-ol:text-foreground/90
-                          prose-li:marker:text-primary
-                          prose-blockquote:border-l-primary prose-blockquote:border-l-4
-                          prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-foreground/80
-                          prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-                          prose-pre:bg-background/50 prose-pre:border prose-pre:border-primary/20
-                          space-y-6">
-              <ReactMarkdown>{content}</ReactMarkdown>
+            <div className="max-w-3xl mx-auto py-10 text-left">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: ({ node, ...props }) => <h2 {...props} className="mt-10 mb-5 text-2xl md:text-3xl font-bold leading-tight text-foreground" />,
+                  h2: ({ node, ...props }) => <h2 {...props} className="mt-10 mb-4 text-xl md:text-2xl font-semibold leading-snug text-foreground" />,
+                  h3: ({ node, ...props }) => <h3 {...props} className="mt-8 mb-3 text-lg md:text-xl font-semibold text-foreground" />,
+                  p: ({ node, ...props }) => <p {...props} className="my-5 text-[1.05rem] leading-8 text-foreground/85" />,
+                  a: ({ node, ...props }) => <a {...props} className="font-medium text-primary underline underline-offset-4 hover:text-primary/75" target="_blank" rel="noopener noreferrer" />,
+                  strong: ({ node, ...props }) => <strong {...props} className="font-semibold text-foreground" />,
+                  ul: ({ node, ...props }) => <ul {...props} className="my-5 ml-6 list-disc space-y-2 text-foreground/85 marker:text-primary" />,
+                  ol: ({ node, ...props }) => <ol {...props} className="my-5 ml-6 list-decimal space-y-2 text-foreground/85 marker:font-semibold marker:text-primary" />,
+                  li: ({ node, ...props }) => <li {...props} className="pl-1 leading-7" />,
+                  blockquote: ({ node, ...props }) => <blockquote {...props} className="my-7 border-l-4 border-primary bg-primary/5 px-5 py-1 italic text-foreground/80" />,
+                  hr: () => <hr className="my-10 border-border" />,
+                  code: ({ node, className, children, ...props }) => className
+                    ? <code {...props} className={`${className} text-sm`}>{children}</code>
+                    : <code {...props} className="rounded bg-primary/10 px-1.5 py-0.5 text-sm text-primary">{children}</code>,
+                  pre: ({ node, ...props }) => <pre {...props} className="my-7 overflow-x-auto rounded-md border border-border bg-card p-5 text-left" />,
+                  table: ({ node, ...props }) => <div className="my-7 overflow-x-auto"><table {...props} className="w-full border-collapse text-sm" /></div>,
+                  th: ({ node, ...props }) => <th {...props} className="border border-border bg-card px-4 py-3 text-left font-semibold" />,
+                  td: ({ node, ...props }) => <td {...props} className="border border-border px-4 py-3 align-top leading-6" />,
+                }}
+              >
+                {content}
+              </ReactMarkdown>
             </div>
 
             {(relatedLoading || relatedPosts.length > 0) && (
-              <section className="pt-4">
+              <section className="max-w-4xl mx-auto border-t border-border pt-10">
                 <h2 className="text-2xl font-semibold flex items-center gap-2 mb-6">
                   <Sparkles className="w-5 h-5 text-primary" />
                   <span>Related Reading</span>
@@ -283,7 +280,7 @@ export default function BlogPost() {
                         <article className="h-full rounded-2xl overflow-hidden border border-primary/20 bg-background/80 hover:border-primary/40 shadow-md hover:shadow-lg transition-all duration-300">
                           <div className="h-40 overflow-hidden">
                             <img
-                              src={getImageUrl(post.title, post.imageUrl)}
+                              src={getBlogImage(post.imageUrl)}
                               alt={post.title}
                               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                               loading="lazy"
@@ -320,7 +317,7 @@ export default function BlogPost() {
                             )}
                             <div className="flex items-center text-primary font-medium text-sm">
                               Continue Reading
-                              <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </div>
                           </div>
                         </article>
@@ -332,7 +329,7 @@ export default function BlogPost() {
             )}
 
             {/* Footer */}
-            <div className="pt-8 border-t border-primary/20 flex flex-wrap items-center gap-3">
+            <div className="max-w-4xl mx-auto mt-10 pt-8 border-t border-primary/20 flex flex-wrap items-center gap-5">
               <Link
                 to="/blog"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"

@@ -1,16 +1,13 @@
-import { MessageCircle } from "lucide-react";
 import {
-  Instagram,
   Facebook,
   Github,
   Globe,
   Linkedin,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Send,
-  Twitch,
-  Twitter,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -194,27 +191,43 @@ export const ContactSection = () => {
             {/* Socials */}
             <div className="pt-8 text-center">
               <h4 className="font-medium mb-4">Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
+              <div className="flex items-center space-x-5 justify-center">
                 <a
                   href="https://www.linkedin.com/in/udara-herath-530006217"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                  title="LinkedIn"
                 >
-                  <Linkedin />
+                  <Linkedin className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
                 <a
                   href="https://github.com/UdaraChamidu"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                  title="GitHub"
                 >
-                  <Github className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
+                  <Github className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
                 <a
                   href="https://www.facebook.com/udara.chamidu/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Facebook profile"
+                  title="Facebook"
                 >
-                  <Facebook className="h-6 w-6 text-primary hover:text-primary-dark transition-colors" />
+                  <Facebook className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
+                </a>
+                <a
+                  href="https://medium.com/@chamiduudara321"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Medium profile"
+                  title="Medium"
+                  className="inline-flex h-6 w-7 items-center justify-center text-primary hover:text-primary/70 transition-colors"
+                >
+                  <span className="font-serif text-xl font-black leading-none">M</span>
                 </a>
               </div>
             </div>

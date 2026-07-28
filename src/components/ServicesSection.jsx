@@ -1,5 +1,4 @@
-import { Brain, Code, Zap, BarChart3, Bot, Globe } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Brain, Code, Zap, BarChart3, Bot, Globe, BriefcaseBusiness } from "lucide-react";
 
 const services = [
   {
@@ -102,6 +101,15 @@ export const ServicesSection = () => {
               className="cosmic-button-secondary"
             >
               Visit Veloxdy
+            </a>
+            <a
+              href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cosmic-button-secondary inline-flex items-center justify-center gap-2"
+            >
+              <BriefcaseBusiness className="h-4 w-4" />
+              Hire Me on Upwork
             </a>
           </div>
         </div>

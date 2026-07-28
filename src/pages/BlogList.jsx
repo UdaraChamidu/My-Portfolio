@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import fm from "front-matter";
-import { Home } from "lucide-react";
+import { ArrowRight, Calendar, Home } from "lucide-react";
+import { cleanMarkdownPreview, formatBlogDate, getBlogImage } from "@/lib/blog";
 
 const BLOG_LIST_LIMIT = 48;
 
@@ -62,7 +63,7 @@ export default function BlogList() {
             loaded.push({
               slug: file.replace(".md", ""),
               title: data?.title ?? "Untitled Post",
-              summary: data?.summary ?? (content ? content.slice(0, 120) + "..." : "No content"),
+              summary: cleanMarkdownPreview(data?.summary ?? content),
               date: data?.date ?? "Unknown",
               topics: Array.isArray(data?.topics) ? data.topics : [],
               imageUrl: data?.imageUrl ?? "",
@@ -93,14 +94,6 @@ export default function BlogList() {
 
     loadPosts();
   }, []);
-
-  // Generate image URL based on title or use provided imageUrl
-  const getImageUrl = (title, imageUrl) => {
-    if (imageUrl) return imageUrl;
-    // Using a hash-based approach for consistent images per title
-    const seed = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return `https://picsum.photos/seed/${seed}/800/400`;
-  };
 
   return (
     <section id="blog" className="py-24 px-4 relative bg-background min-h-screen">
@@ -164,7 +157,7 @@ export default function BlogList() {
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group block"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <article className="h-full rounded-2xl overflow-hidden 
                                   bg-background/80 dark:bg-background/30
@@ -177,7 +170,7 @@ export default function BlogList() {
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5">
                     <img
-                      src={getImageUrl(post.title, post.imageUrl)}
+                      src={getBlogImage(post.imageUrl)}
                       alt={post.title}
                       className="w-full h-full object-cover 
                                group-hover:scale-110 transition-transform duration-500"
@@ -188,16 +181,17 @@ export default function BlogList() {
 
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-3 text-xs text-muted-foreground">
+                      <Calendar className="h-3.5 w-3.5 flex-none" />
                       <span className="text-xs font-medium text-primary/80">
-                        {new Date(post.date).toLocaleDateString("en-US", {
+                        {formatBlogDate(post.date, {
                           month: "short",
                           day: "numeric",
                           year: "numeric",
                         })}
                       </span>
-                      <span className="text-xs opacity-50">•</span>
-                      <span className="text-xs opacity-60">
+                      <span aria-hidden="true">/</span>
+                      <span className="truncate">
                         {post.topics?.[0] ?? "AI/ML News"}
                       </span>
                     </div>
@@ -206,7 +200,7 @@ export default function BlogList() {
                       {post.title}
                     </h3>
                     
-                    <p className="text-sm opacity-80 mb-4 line-clamp-3 flex-1">
+                    <p className="text-sm text-muted-foreground leading-6 mb-4 line-clamp-3 flex-1">
                       {post.summary}
                     </p>
 
@@ -225,7 +219,7 @@ export default function BlogList() {
 
                     <div className="flex items-center text-primary font-medium text-sm mt-auto">
                       Read More
-                      <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </article>
