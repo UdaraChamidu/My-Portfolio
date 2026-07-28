@@ -62,7 +62,7 @@ export const Chatbot = () => {
         ...prev,
         {
           from: "bot",
-          text: "Sorry, I could not reach the AI service right now. You can still view my CV or use the contact section.",
+          text: error.message || "Sorry, I could not reach the AI service right now. You can still view my CV or use the contact section.",
         },
       ]);
       console.error("Chatbot request failed:", error);

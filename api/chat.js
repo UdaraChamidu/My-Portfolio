@@ -14,7 +14,7 @@ Key facts:
 When a visitor wants to hire or contact Udara, direct them to the portfolio contact section. Do not invent personal, employment, or project details.
 `;
 
-const MODEL = process.env.CHATBOT_MODEL || "gemini-2.5-flash-lite";
+const DEFAULT_MODELS = ["gemini-2.5-flash-lite", "gemini-2.5-flash"];
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_ITEMS = 8;
 
@@ -24,7 +24,11 @@ export default async function handler(request, response) {
     return response.status(405).json({ error: "Method not allowed." });
   }
 
-  if (!process.env.GEMINI_API_KEY) {
+  const apiKey = process.env.GEMINI_API_KEY
+    ?.trim()
+    .replace(/^["']|["']$/g, "");
+
+  if (!apiKey) {
     return response.status(503).json({ error: "Chat service is not configured." });
   }
 
@@ -47,47 +51,76 @@ export default async function handler(request, response) {
     : [];
 
   try {
-    const geminiResponse = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": process.env.GEMINI_API_KEY,
-        },
-        body: JSON.stringify({
-          system_instruction: {
-            parts: [{ text: PORTFOLIO_CONTEXT }],
+    const requestedModel = process.env.CHATBOT_MODEL?.trim();
+    const models = [...new Set([requestedModel, ...DEFAULT_MODELS].filter(Boolean))];
+    let lastFailure = null;
+
+    for (const model of models) {
+      const geminiResponse = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": apiKey,
           },
-          contents: [
-            ...history,
-            { role: "user", parts: [{ text: message }] },
-          ],
-          generationConfig: {
-            temperature: 0.4,
-            maxOutputTokens: 350,
-          },
-        }),
+          body: JSON.stringify({
+            systemInstruction: {
+              parts: [{ text: PORTFOLIO_CONTEXT }],
+            },
+            contents: [
+              ...history,
+              { role: "user", parts: [{ text: message }] },
+            ],
+            generationConfig: {
+              maxOutputTokens: 350,
+            },
+          }),
+        }
+      );
+
+      const data = await geminiResponse.json().catch(() => ({}));
+
+      if (geminiResponse.ok) {
+        const text = data?.candidates?.[0]?.content?.parts
+          ?.map((part) => part.text || "")
+          .join("")
+          .trim();
+
+        if (text) {
+          return response.status(200).json({ text });
+        }
+
+        lastFailure = {
+          status: 502,
+          code: data?.promptFeedback?.blockReason || "EMPTY_RESPONSE",
+        };
+        continue;
       }
-    );
 
-    if (!geminiResponse.ok) {
-      const details = await geminiResponse.text();
-      console.error("Gemini API error:", geminiResponse.status, details);
-      return response.status(502).json({ error: "The AI service is temporarily unavailable." });
+      lastFailure = {
+        status: geminiResponse.status,
+        code: data?.error?.status || "GEMINI_REQUEST_FAILED",
+        message: data?.error?.message || "",
+      };
+      console.error("Gemini API error:", model, lastFailure);
+
+      if (geminiResponse.status === 401 || geminiResponse.status === 403) {
+        break;
+      }
     }
 
-    const data = await geminiResponse.json();
-    const text = data?.candidates?.[0]?.content?.parts
-      ?.map((part) => part.text || "")
-      .join("")
-      .trim();
+    const configurationError =
+      lastFailure?.status === 401 ||
+      lastFailure?.status === 403 ||
+      lastFailure?.code === "PERMISSION_DENIED";
 
-    if (!text) {
-      return response.status(502).json({ error: "The AI service returned an empty response." });
-    }
-
-    return response.status(200).json({ text });
+    return response.status(502).json({
+      error: configurationError
+        ? "Chat authentication failed. The Gemini key must allow server-side Generative Language API requests."
+        : "The AI service is temporarily unavailable. Please try again shortly.",
+      code: lastFailure?.code || "GEMINI_REQUEST_FAILED",
+    });
   } catch (error) {
     console.error("Chat endpoint failed:", error);
     return response.status(500).json({ error: "The chat service could not be reached." });
