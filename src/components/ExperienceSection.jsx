@@ -19,6 +19,15 @@ const experienceList = [
   },
   {
     id: 3,
+    role: "Freelance AI Engineer, AI Automation & Full-Stack Developer",
+    company: "Upwork.com",
+    duration: "2026 - Present",
+    description:
+      "Delivering client-focused AI solutions, intelligent automation workflows, API integrations, and full-stack web applications for international businesses.",
+    url: "https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share",
+  },
+  {
+    id: 4,
     role: "Founder / AI Solutions & Web App Developer",
     company: "Veloxdy.com",
     duration: "2026 - Present",
@@ -26,7 +35,7 @@ const experienceList = [
       "Building a personal business focused on custom web application development, AI solutions, automation systems, and practical digital products for clients.",
   },
   {
-    id: 4,
+    id: 5,
     role: "AI/ML + Software Engineer Intern",
     company: "Idea8 Pvt Ltd, Kottawa, Sri Lanka",
     duration: "Nov 2025 - May 2026",
@@ -56,7 +65,18 @@ export const ExperienceSection = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold">{exp.role}</h4>
-                  <p className="text-muted-foreground">{exp.company}</p>
+                  {exp.url ? (
+                    <a
+                      href={exp.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {exp.company}
+                    </a>
+                  ) : (
+                    <p className="text-muted-foreground">{exp.company}</p>
+                  )}
                   <p className="text-sm text-muted-foreground">{exp.duration}</p>
                 </div>
               </div>

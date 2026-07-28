@@ -8,7 +8,7 @@ export const HeroSection = () => {
     >
       <div className="container max-w-4xl mx-auto text-center z-10 relative">
         {/* Profile Image with Floating + Matching Purple Glow */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6 mt-6">
           <div className="p-1 rounded-full bg-gradient-to-r from-primary/80 to-primary animate-[float_6s_ease-in-out_infinite]">
             <img
               src="/udara.jpg"
