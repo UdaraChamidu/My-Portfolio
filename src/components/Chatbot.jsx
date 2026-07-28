@@ -13,6 +13,7 @@ export const Chatbot = () => {
   const [showTip, setShowTip] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const chatHistoryRef = useRef([]);
+  const messagesEndRef = useRef(null);
   const quickReplies = ["Current role", "Portfolio projects", "View CV"];
 
   // Show tip periodically
@@ -23,6 +24,12 @@ export const Chatbot = () => {
     }, 10000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [isOpen, messages, isTyping]);
 
   const handleSend = async (messageText) => {
     const userMessage = messageText || input;
@@ -153,6 +160,7 @@ export const Chatbot = () => {
                 </span>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Quick Reply Buttons */}

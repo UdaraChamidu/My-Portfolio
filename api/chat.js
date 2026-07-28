@@ -1,5 +1,7 @@
 const PORTFOLIO_CONTEXT = `
 You are Udara Herath's portfolio assistant. Answer concisely and professionally.
+Always finish the answer. Use 2-5 complete sentences unless the visitor asks for
+more detail. Never end halfway through a sentence or list.
 
 Key facts:
 - Udara Herath is a final-year BSc Computer Engineering undergraduate at the University of Jaffna.
@@ -17,6 +19,8 @@ When a visitor wants to hire or contact Udara, direct them to the portfolio cont
 const DEFAULT_MODELS = ["gemini-2.5-flash-lite", "gemini-2.5-flash"];
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_ITEMS = 8;
+const DETAILED_REQUEST_PATTERN =
+  /\b(detail(?:ed|s)?|explain|elaborate|tell me more|in depth|step[- ]by[- ]step|compare|complete list|all projects)\b/i;
 
 export default async function handler(request, response) {
   if (request.method !== "POST") {
@@ -39,6 +43,8 @@ export default async function handler(request, response) {
   if (!message) {
     return response.status(400).json({ error: "Please enter a message." });
   }
+
+  const maxOutputTokens = DETAILED_REQUEST_PATTERN.test(message) ? 1600 : 700;
 
   const history = Array.isArray(request.body?.history)
     ? request.body.history
@@ -73,7 +79,10 @@ export default async function handler(request, response) {
               { role: "user", parts: [{ text: message }] },
             ],
             generationConfig: {
-              maxOutputTokens: 350,
+              maxOutputTokens,
+              thinkingConfig: {
+                thinkingBudget: 0,
+              },
             },
           }),
         }
