@@ -11,7 +11,7 @@ export const HeroSection = () => {
         <div className="flex justify-center mb-6 mt-6">
           <div className="p-1 rounded-full bg-gradient-to-r from-primary/80 to-primary animate-[float_6s_ease-in-out_infinite]">
             <img
-              src="/udara.jpeg"
+              src="/udara.jpg"
               alt="Udara Herath"
               className="w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full object-cover shadow-lg border-4 border-primary/50
                          transition-transform duration-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(115,88,242,0.6)]"
