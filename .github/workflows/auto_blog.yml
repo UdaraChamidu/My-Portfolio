@@ -1,9 +1,7 @@
 name: Auto AI/ML Blog
 
 on:
-  schedule:
-    - cron: "0 6 * * *" # run every day at 6 AM UTC
-  workflow_dispatch: # allow manual run
+  workflow_dispatch: # retained for manual archival use only
 
 jobs:
   build:

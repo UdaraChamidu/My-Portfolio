@@ -12,10 +12,7 @@ import { Certifications } from "../components/Certifications";
 import { EducationSection } from "../components/EducationSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { Chatbot } from "../components/Chatbot";
-import { SkillGame } from "../components/SkillGame";
-import { FuturePlansSection } from "../components/FuturePlansSection";
 import { JourneySection } from "../components/JourneySection";
-import { GithubStats } from "../components/GithubStats"
 import { ServicesSection } from "../components/ServicesSection";
 
 export const Home = () => {
@@ -38,16 +35,11 @@ export const Home = () => {
           <AboutSection />
           <SkillsSection />
           <ServicesSection />
-          <SkillGame />
-
           <ProjectsSection />
           <Certifications />
           <ExperienceSection />
           <EducationSection />
           <JourneySection />
-          <FuturePlansSection />
-          <GithubStats />
-          {/* <ExperienceSection /> */}
           <ContactSection />
           <Chatbot />
         </main>
