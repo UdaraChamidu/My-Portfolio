@@ -58,20 +58,20 @@ retained.
 
 ### Experience
 
-- [ ] Label roles as full-time, part-time, contract, freelance, internship, or founder work.
-- [ ] Verify company names, locations, and dates.
-- [ ] Replace generic responsibility statements with specific contributions.
-- [ ] Add measurable outcomes where they can be shared safely.
-- [ ] Clearly explain overlapping current roles.
-- [ ] Preserve client confidentiality where required.
+- [x] Label roles as employment, collaboration, freelance, internship, or founder work.
+- [-] Verify company names, locations, dates, and exact engagement types.
+- [x] Replace generic responsibility statements with specific contributions.
+- [!] Add measurable outcomes where they can be shared safely.
+- [x] Clearly explain overlapping current roles.
+- [x] Preserve client confidentiality where required.
 
 ### Certifications
 
-- [ ] Keep only three to five relevant certifications on the main page.
-- [ ] Remove expired signed URLs and general dashboard links.
-- [ ] Add permanent verification links where available.
-- [ ] Remove beginner certificates that no longer strengthen the profile.
-- [ ] Correct issuer naming and duplicate IDs.
+- [x] Organize all certifications into focused categories on the main page.
+- [x] Remove expired signed URLs and general dashboard links.
+- [x] Add permanent verification links where available.
+- [x] Separate foundational certificates from advanced AI credentials.
+- [x] Correct issuer naming and duplicate IDs.
 
 ### General Content
 
@@ -85,7 +85,7 @@ retained.
 - [x] No placeholder links remain.
 - [x] No known incorrect project links remain.
 - [ ] Every visible claim is accurate.
-- [-] Project and experience copy uses professional English.
+- [x] Project and experience copy uses professional English.
 - [x] All repeated project IDs and missing project-tag keys are fixed.
 
 ---
@@ -314,11 +314,11 @@ allows:
 
 ### Experience
 
-- [ ] Replace cards with one clear professional timeline.
-- [ ] Put current roles first.
-- [ ] Add engagement type and location.
-- [ ] Use two to four outcome-oriented bullets per role.
-- [ ] Link Upwork and Veloxdy entries to their profiles.
+- [x] Replace cards with one clear professional timeline.
+- [x] Put current roles first.
+- [x] Add engagement type and location.
+- [x] Use two to four outcome-oriented bullets per role.
+- [x] Link Upwork and Veloxdy entries to their profiles.
 
 ### Technical Capabilities
 
