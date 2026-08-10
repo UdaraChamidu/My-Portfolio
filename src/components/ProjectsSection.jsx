@@ -4,347 +4,345 @@ import { cn } from "@/lib/utils";
 
 const projects = [
   {
-    id: 1,
-    title: "HR Leave Management System",
-    description:
-      "A comprehensive solution for tracking employee leaves, WFH requests, announcements, and holidays with real-time updates using Socket.io.",
-    image: "/projects/hr-leave.png",
-    tags: ["React", "NestJS", "Prisma", "Socket.io", "PostgreSQL"],
-    category: "SaaS / Full-Stack",
-    featured: true,
-    demoUrl: "#",
-    githubUrl: "https://github.com/UdaraChamidu/HR-Leave-Management-System",
-  },
-  {
-    id: 1,
+    id: "insurance-ai-consultant",
     title: "Insurance AI Consultant Platform",
     description:
-      "A smart video consultation and intake system for insurance agents, featuring intelligent scheduling, compliance checklists, and RAG-integrated knowledge base.",
+      "An AI-enabled consultation and client-intake platform for insurance professionals, combining video meetings, scheduling, compliance workflows, and a RAG knowledge base.",
     image: "/projects/insurance.png",
-    tags: ["React", "Supabase", "Prisma", "WebRTC", "Pinecone"],
-    category: "AI Solutions",
+    tags: ["React", "Supabase", "WebRTC", "Pinecone"],
+    category: "AI",
+    workType: "Client project",
     featured: true,
     demoUrl: "https://insurance-agent-ruby.vercel.app/",
-    githubUrl: "https://github.com/UdaraChamidu/Insurance-AI-Consultant",
   },
   {
-    id: 1,
+    id: "ai-email-automation",
+    title: "AI Email Automation System",
+    description:
+      "A client workflow that monitors Gmail, filters irrelevant messages, creates context-aware draft replies, and records priority, approval, and sending status in an Excel dashboard.",
+    image: "/projects/project17.png",
+    tags: ["n8n", "Gmail", "Generative AI", "Excel"],
+    category: "AI Automation",
+    workType: "Client project",
+    featured: true,
+  },
+  {
+    id: "level-up-trading",
+    title: "Level Up Trading Platform",
+    description:
+      "A responsive trade-management platform with performance analytics, risk calculators, structured journaling, and progressive web app support for active traders.",
+    image: "/projects/levelup.png",
+    tags: ["React", "PWA", "Tailwind CSS", "Analytics"],
+    category: "Full Stack",
+    workType: "Personal project",
+    featured: true,
+    demoUrl: "https://leveluptrading.vercel.app",
+  },
+  {
+    id: "laptop-price-predictor",
+    title: "Laptop Price Predictor",
+    description:
+      "A deployed machine-learning application that estimates laptop prices from specifications such as brand, processor, memory, storage, and display features.",
+    image: "/projects/project4.png",
+    tags: ["Python", "Pandas", "NumPy", "Machine Learning"],
+    category: "ML / DL",
+    workType: "Personal project",
+    featured: true,
+    demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
+    githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
+  },
+  {
+    id: "waste-detection",
+    title: "Real-Time Waste Detection",
+    description:
+      "A computer-vision system that detects and classifies waste from live imagery to support faster and more consistent waste sorting workflows.",
+    image: "/projects/project12.png",
+    tags: ["Python", "YOLO", "Flask", "Computer Vision"],
+    category: "Computer Vision",
+    workType: "Academic project",
+    featured: true,
+    demoUrl:
+      "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
+    githubUrl:
+      "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
+  },
+  {
+    id: "smart-railway-gate",
+    title: "Smart Railway Gate Control System",
+    description:
+      "An ESP32-based group project that uses GPS tracking to support automated railway-gate control and reduce accident risk at level crossings.",
+    image: "/projects/project15.png",
+    tags: ["C++", "ESP32", "GPS", "Embedded Systems"],
+    category: "Embedded Systems",
+    workType: "Academic project",
+    featured: true,
+    githubUrl:
+      "https://github.com/UdaraChamidu/Smart-Railway-Gate-Control-System-with-GPS-Tracking",
+  },
+  {
+    id: "hr-leave-management",
+    title: "HR Leave Management System",
+    description:
+      "A full-stack HR platform for leave and work-from-home requests, company announcements, holidays, and real-time employee updates.",
+    image: "/projects/hr-leave.png",
+    tags: ["React", "NestJS", "Prisma", "PostgreSQL"],
+    category: "Full Stack",
+    workType: "Internship work",
+  },
+  {
+    id: "veloxdy",
     title: "Veloxdy.com",
     description:
-      "My personal business website for web application creation, AI solutions, automation support, and client-focused digital product development.",
+      "The business website for my web application, AI solution, automation, and client-focused digital product services.",
     image: "/projects/velox.png",
-    tags: ["Web Apps", "AI Solutions", "Automation", "SaaS"],
-    category: "SaaS / Full-Stack",
-    featured: true,
+    tags: ["React", "Web Development", "AI Services", "Automation"],
+    category: "Full Stack",
+    workType: "Personal project",
     demoUrl: "https://veloxdy.com",
-    githubUrl: "https://github.com/UdaraChamidu/Velox-Dynamics-Elite-Engineering-Agency",
+    githubUrl:
+      "https://github.com/UdaraChamidu/Velox-Dynamics-Elite-Engineering-Agency",
   },
   {
-    id: 1,
+    id: "lumina-ai",
     title: "Lumina AI",
     description:
-      "A premium, next-generation chatbot interface featuring a 'Glassmorphism' aesthetic, powered by Gemini AI and integrated with Supabase for secure auth.",
+      "A Gemini-powered conversational AI application with a React interface, FastAPI backend, and Supabase authentication and data services.",
     image: "/projects/lumina.png",
-    tags: ["React", "FastAPI", "Gemini AI", "Supabase"],
-    category: "RAG & Chatbots",
-    featured: true,
+    tags: ["React", "FastAPI", "Gemini", "Supabase"],
+    category: "AI",
+    workType: "Internship work",
     demoUrl: "https://phpstack-1409163-6105388.cloudwaysapps.com",
     githubUrl: "https://github.com/UdaraChamidu/Lumina-AI",
   },
   {
-    id: 1,
-    title: "Level Up Trading Platform",
+    id: "unilife",
+    title: "UniLife Student Services Hub",
     description:
-      "A professional-grade trade management solution for Crypto traders, featuring real-time performance analytics, risk calculators, and structured journal review.",
-    image: "/projects/levelup.png",
-    tags: ["React", "PWA", "Tailwind CSS", "ICT Methodology"],
-    category: "SaaS / Full-Stack",
-    featured: true,
-    demoUrl: "https://leveluptrading.vercel.app",
-    githubUrl: "https://github.com/UdaraChamidu/Level-Up-Trading-Platform",
-  },
-  {
-    id: 1,
-    title: "UniLife - Student Services Hub",
-    description:
-      "A comprehensive student platform featuring interactive campus maps, real-time messaging, AI-powered assistance, and a marketplace.",
+      "A student-services platform with campus maps, real-time messaging, AI assistance, and a marketplace in one responsive application.",
     image: "/projects/unilife.png",
-    tags: ["React 19", "TypeScript", "Firebase", "Tailwind CSS"],
-    category: "SaaS / Full-Stack",
-    featured: true,
+    tags: ["React", "TypeScript", "Firebase", "Tailwind CSS"],
+    category: "Full Stack",
+    workType: "Personal project",
     demoUrl: "https://uni-life-services.vercel.app",
-    githubUrl: "https://github.com/UdaraChamidu/UniLife-Services",
   },
   {
-    id: 1,
-    title: "Lanka Yard (LK Yard)",
+    id: "lanka-yard",
+    title: "Lanka Yard",
     description:
-      "A digital marketplace and professional directory for Sri Lanka's construction industry, connecting clients with contractors, rentals, and suppliers.",
+      "A marketplace and professional directory that connects Sri Lankan construction clients with contractors, equipment rentals, and suppliers.",
     image: "/projects/lkyard.png",
-    tags: ["React", "Firebase", "Tailwind CSS", "Firestore"],
-    category: "SaaS / Full-Stack",
-    featured: true,
+    tags: ["React", "Firebase", "Firestore", "Tailwind CSS"],
+    category: "Full Stack",
+    workType: "Personal project",
     demoUrl: "https://lkyard.lk",
-    githubUrl: "https://github.com/UdaraChamidu/LK-Yard",
   },
   {
-    id: 3,
+    id: "trip-planner-agent",
     title: "Trip Planner Agent",
     description:
-      "An intelligent travel assistant built with FastAPI, LangGraph and OpenAI that answers user questions through agentic reasoning and returns smart, natural responses.",
+      "An AI travel assistant built with FastAPI, LangGraph, and OpenAI for conversational trip-planning requests and agent-based response generation.",
     image: "/projects/project8.png",
-    tags: ["Python", "React", "FastAPI"],
-    category: "AI Agents & Automation",
-    featured: true,
-    demoUrl: "#",
-    githubUrl:
-      "https://github.com/UdaraChamidu/student_attendance_management_project",
+    tags: ["Python", "LangGraph", "OpenAI", "FastAPI"],
+    category: "AI",
+    workType: "Personal project",
+    githubUrl: "https://github.com/UdaraChamidu/Trip_Planner_Agent",
   },
   {
-    id: 1,
-    title: "AI Email Automation System",
+    id: "legal-document-explainer",
+    title: "AI Legal Document Explainer",
     description:
-      "A client email workflow for a USA business that monitors Gmail, filters spam and irrelevant messages, generates AI-powered draft replies, tracks email status in Excel, and supports approval-based sending with dashboard reporting.",
-    image: "/projects/project17.png",
-    tags: ["n8n", "Gmail", "Generative AI", "Excel Dashboard"],
-    category: "AI Agents & Automation",
-    featured: true,
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-
-  {
-    id: 1,
-    title: "Legal Document Explainer ",
-    description:
-      "The AI , Take legal PDF docs as input. It can Summarize simply , Highlight key clauses & risks and Answer specific user questions about the doc. Optionally show confidence or lawyer advice",
+      "An AI document application that summarizes legal PDFs, identifies key clauses and risks, and answers contextual questions without replacing professional legal advice.",
     image: "/projects/project11.png",
     tags: ["Python", "Gemini", "FastAPI", "React"],
-    category: "RAG & Chatbots",
-    featured: true,
+    category: "AI",
+    workType: "Personal project",
     demoUrl: "https://ai-legal-doc-explainer-two.vercel.app",
     githubUrl: "https://github.com/UdaraChamidu/AI-Legal-Doc-Explainer",
   },
-
   {
-    id: 1,
+    id: "n8n-ai-assistant",
     title: "n8n AI Assistant",
     description:
-      "Building an AI agent in n8n to automate day to day works.(ongoing)",
+      "An ongoing AI-agent workflow that connects language models and external APIs to automate recurring day-to-day tasks.",
     image: "/projects/project5.png",
-    tags: ["n8n", "OpenAI", "API"],
-    category: "AI Agents & Automation",
+    tags: ["n8n", "OpenAI", "APIs", "Automation"],
+    category: "AI Automation",
+    workType: "Personal project",
+    status: "Ongoing",
     demoUrl:
-      "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADaj23QBzc37-AoJdt04GuyP1DRJf15rN1Y",
+      "https://www.linkedin.com/posts/udara-herath-530006217_ai-n8n-openai-activity-7346547954507292672-4SaZ",
     githubUrl:
-      "https://github.com/UdaraChamidu/n8n-AI-Agents/blob/main/My_AI_workflow_final.json",
+      "https://github.com/UdaraChamidu/Zenra---n8n_AI_Agents/blob/main/My_AI_workflow_final.json",
   },
-
   {
-    id: 1,
-    title: "Research Project",
+    id: "eye-disease-assistant",
+    title: "Eye Disease Classification & Assistant",
     description:
-      "Eye Disease Classification with Chatbot Integration (Ongoing Project)",
+      "An ongoing research project that combines eye-disease image classification with a conversational assistant for accessible result exploration.",
     image: "/projects/project7.png",
-    tags: ["Chatbot", "Python", "Streamlit"],
-    category: "Vision / DL / Image Processing",
+    tags: ["Python", "Deep Learning", "Streamlit", "Chatbot"],
+    category: "Computer Vision",
+    workType: "Academic research",
+    status: "Ongoing research",
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Eye_Disease_Assistant",
     githubUrl:
       "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
   },
-
   {
-    id: 3,
-    title: "AskBot ChatBot",
+    id: "askbot",
+    title: "AskBot",
     description:
-      "This is a LangGraph-based chatbot that uses the Gemini 2.5 Flash model via the Gemini API key. The backend is built with Python and FastAPI, and deployed on Railway.",
+      "A LangGraph-based conversational AI application using Gemini, a FastAPI backend, and a React frontend deployed as separate services.",
     image: "/projects/askbot.png",
-    tags: ["Python", "React", "FastAPI"],
-    category: "RAG & Chatbots",
+    tags: ["Python", "LangGraph", "FastAPI", "React"],
+    category: "AI",
+    workType: "Personal project",
     demoUrl:
       "https://ask-bot-front-end-git-main-udarachamidus-projects.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/AskBot_FrontEnd",
   },
-
   {
-    id: 3,
+    id: "video-chatty",
     title: "Video Chatty",
     description:
-      "Copy and paste the Video URL or upload video file directly and ask questions.",
+      "A multimodal AI application that accepts a video URL or uploaded video and answers questions about its content.",
     image: "/projects/project9.png",
-    tags: ["Python", "Gemini", "Streamlit"],
-    category: "AI Solutions",
-    demoUrl: "https://video-master.streamlit.app/",
-    githubUrl: "https://github.com/UdaraChamidu/Video-Master",
+    tags: ["Python", "Gemini", "Streamlit", "Multimodal AI"],
+    category: "AI",
+    workType: "Personal project",
+    githubUrl: "https://github.com/UdaraChamidu/Video-Chatty",
   },
-
   {
-    id: 3,
+    id: "askdoc-rag",
     title: "AskDoc RAG Chatbot",
     description:
-      "Upload pdf documents and and ask questions. (Ongoing Project)",
+      "An ongoing RAG application for uploading PDF documents and asking grounded natural-language questions about their contents.",
     image: "/projects/project10.png",
-    tags: ["Python", "Gemini", "FastAPI"],
-    category: "RAG & Chatbots",
-    demoUrl: "video-master.streamlit.app",
+    tags: ["Python", "Gemini", "FastAPI", "RAG"],
+    category: "AI",
+    workType: "Personal project",
+    status: "Ongoing",
     githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
   },
-
   {
-    id: 1,
-    title: "Medical Chatbot",
+    id: "medical-chatbot",
+    title: "Medical Image Assistant",
     description:
-      "A medical chat application that enables upload medical images and symptoms to diognisis diseases.",
+      "A multimodal prototype that combines uploaded medical images and symptom descriptions to produce an AI-assisted informational response.",
     image: "/projects/project1.png",
-    tags: ["Python", "Groq", "FastAPI"],
-    category: "Computer Vision / DL / Image Processing",
+    tags: ["Python", "Groq", "FastAPI", "Multimodal AI"],
+    category: "Computer Vision",
+    workType: "Personal project",
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
-
   {
-    id: 3,
+    id: "attendance-management",
     title: "Attendance Management System",
     description:
-      "A web application for managing student attendance, including features for tracking attendance, generating reports, and managing student data.",
+      "A web application for recording student attendance, maintaining student information, and generating attendance reports.",
     image: "/projects/project3.png",
     tags: ["PHP", "MySQL", "HTML", "JavaScript"],
-    category: "SaaS / Full-Stack",
-    demoUrl: "#",
+    category: "Full Stack",
+    workType: "Academic project",
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
   },
   {
-    id: 2,
+    id: "pdf-rag-chatbot",
     title: "Chat with PDFs",
     description:
-      "A RAG based PDF chatbot that allows users to interact with PDF documents using natural language.",
+      "A RAG-based application that lets users upload PDF documents and ask grounded questions using natural language.",
     image: "/projects/project2.png",
-    tags: ["Python", "LangChain", "Streamlit"],
-    category: "RAG & Chatbots",
-    demoUrl: "https://pdfchatty.streamlit.app/",
-    githubUrl: "https://github.com/UdaraChamidu/RAG-Based-PDF-Chatbot",
+    tags: ["Python", "LangChain", "Streamlit", "RAG"],
+    category: "AI",
+    workType: "Personal project",
+    githubUrl: "https://github.com/UdaraChamidu/PDF_Chatty-RAG_Chatbot",
   },
-
   {
-    id: 1,
-    title: "Laptop Price Predictor",
+    id: "movie-search",
+    title: "Movie Search Application",
     description:
-      "A machine learning model that predicts laptop prices based on various features such as brand, processor, RAM, storage and more.",
-    image: "/projects/project4.png",
-    tags: ["Python", "HTML", "NumPy", "Pandas"],
-    category: "Machine Learning",
-    demoUrl:
-      "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
-    githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
-  },
-
-  {
-    id: 1,
-    title: "Real-time Waste Detection",
-    description:
-      "A CNN learning model that detects and classifies waste in real-time using computer vision techniques.",
-    image: "/projects/project12.png",
-    tags: ["Python", "Yolo", "Flask", "HTML"],
-    category: "Computer Vision / DL / Image Processing",
-    demoUrl:
-      "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
-    githubUrl: "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
-  },
-
-  {
-    id: 1,
-    title: "Movie Searching Application",
-    description:
-      "A movie search web app built using React and The Movie Database (TMDb) API.",
+      "A responsive React application for searching and exploring movie information through The Movie Database API.",
     image: "/projects/project13.png",
-    tags: ["React", "CSS", "HTML"],
-    category: "Web Development",
-    demoUrl:
-      "https://movie-searching-app-tawny.vercel.app/",
+    tags: ["React", "REST API", "CSS", "TMDB"],
+    category: "Full Stack",
+    workType: "Personal project",
+    demoUrl: "https://movie-searching-app-tawny.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/Movie-Searching-App",
   },
-
   {
-    id: 1,
-    title: "AI Voice Assistant with ElevenLabs and n8n",
+    id: "ai-voice-assistant",
+    title: "AI Voice Assistant",
     description:
-      "Ask questions to your documents using voice. Upload PDFs, speak your question, get spoken answers.",
+      "A document assistant that accepts spoken questions and returns spoken, context-aware answers using n8n, Gemini, and ElevenLabs.",
     image: "/projects/project14.png",
-    tags: ["Python", "ElevenLabs", "n8n", "Gemini"],
-    category: "AI Agents & Automation",
-    githubUrl: "https://github.com/UdaraChamidu/AI-Voice-Assistant-with-ElevenLabs-and-n8n",
+    tags: ["n8n", "Gemini", "ElevenLabs", "Voice AI"],
+    category: "AI Automation",
+    workType: "Personal project",
+    githubUrl:
+      "https://github.com/UdaraChamidu/AI-Voice-Assistant-with-ElevenLabs-and-n8n",
   },
-
   {
-    id: 1,
-    title: "People Detection & Counting using Computer Vision (Ongoing)",
+    id: "people-detection-counting",
+    title: "People Detection & Counting",
     description:
-      "This project combines multiple computer vision techniques to create a comprehensive people counting system using YOLOv8 for object detection...",
+      "An ongoing computer-vision system using YOLOv8 and OpenCV to detect people and estimate counts from image or video streams.",
     image: "/projects/people.png",
-    tags: ["Python", "YoloV8", "OpenCV"],
-    category: "Computer Vision / DL / Image Processing",
+    tags: ["Python", "YOLOv8", "OpenCV", "Object Detection"],
+    category: "Computer Vision",
+    workType: "Personal project",
+    status: "Ongoing",
     githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
-  },
-
-  {
-    id: 1,
-    title: "Smart Railway Gate Control System with GPS Tracking",
-    description:
-      "In this group project we were built a Smart Railway Tracking System. This use GPS technology and this product can helpful to reduce many railway accidents.",
-    image: "/projects/project15.png",
-    tags: ["C++", "ESP32", "GPS"],
-    category: "Embedded Systems",
-    githubUrl: "https://github.com/UdaraChamidu/Smart-Railway-Gate-Control-System-with-GPS-Tracking",
   },
 ];
 
 const categories = [
-  "All Featured",
-  "AI Solutions",
-  "Machine Learning",
-  "Computer Vision / DL / Image Processing",
-  "RAG & Chatbots",
-  "AI Agents & Automation",
-  "SaaS / Full-Stack",
-  "Web Development",
+  "Featured",
+  "AI",
+  "AI Automation",
+  "ML / DL",
+  "Computer Vision",
+  "Full Stack",
   "Embedded Systems",
 ];
 
 export const ProjectsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All Featured");
+  const [activeCategory, setActiveCategory] = useState("Featured");
 
   const filteredProjects = projects.filter((project) =>
-    activeCategory === "All Featured"
+    activeCategory === "Featured"
       ? project.featured
       : project.category === activeCategory
   );
 
   return (
     <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          {" "}
-          Featured <span className="text-primary"> Projects </span>
+          Selected <span className="text-primary">Projects</span>
         </h2>
 
         <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Explore my work by focused project area, from AI products and
-          machine learning models to computer vision, automation, SaaS, and web
-          applications.
+          A focused selection of AI, automation, machine learning, computer
+          vision, full-stack, and embedded systems work.
         </p>
 
-        {/* Category Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
+        <div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          aria-label="Project categories"
+        >
+          {categories.map((category) => (
             <button
-              key={key}
+              key={category}
+              type="button"
               onClick={() => setActiveCategory(category)}
+              aria-pressed={activeCategory === category}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize font-medium",
+                "px-4 py-2 rounded-md transition-colors duration-200 font-medium",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-muted-foreground hover:bg-primary/30"
+                  : "border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
               )}
             >
               {category}
@@ -352,63 +350,90 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, key) => (
-            <div
-              key={key}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
+            <article
+              key={project.id}
+              className="group bg-card border border-border rounded-lg overflow-hidden flex h-full flex-col transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden bg-secondary/20">
                 <img
                   src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt={`${project.title} project preview`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  width="640"
+                  height="360"
                 />
+                <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
+                  {project.category}
+                </span>
+                <span className="absolute right-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
+                  {project.workType}
+                </span>
               </div>
 
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="p-5 flex flex-1 flex-col text-left">
+                {project.status && (
+                  <p className="mb-2 text-xs font-semibold uppercase text-primary">
+                    {project.status}
+                  </p>
+                )}
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-muted-foreground text-sm leading-6 mb-5 flex-1">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
                   {project.tags.map((tag) => (
-                    <span className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
+                    <span
+                      key={`${project.id}-${tag}`}
+                      className="px-2 py-1 text-xs font-medium border border-border rounded-md bg-secondary/60 text-secondary-foreground"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                    </a>
+                {(project.demoUrl || project.githubUrl) && (
+                  <div className="flex flex-wrap items-center gap-4 border-t border-border pt-4">
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/75"
+                      >
+                        <ExternalLink size={16} />
+                        View project
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-primary"
+                      >
+                        <Github size={16} />
+                        Source
+                      </a>
+                    )}
                   </div>
-                </div>
+                )}
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
         <div className="text-center mt-12">
           <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
+            className="cosmic-button w-fit inline-flex items-center mx-auto gap-2"
             target="_blank"
+            rel="noopener noreferrer"
             href="https://github.com/UdaraChamidu"
           >
-            Check My Github <ArrowRight size={16} />
+            View GitHub Profile <ArrowRight size={16} />
           </a>
         </div>
       </div>
