@@ -8,6 +8,8 @@ const experienceList = [
     engagementType: "Employment",
     location: "United Kingdom | Remote",
     duration: "Jun 2026 - Present",
+    image: "/Experiances/1.png",
+    url: "http://38.52.133.152/home/",
     contributions: [
       "Build AI automation workflows and intelligent agents for practical business processes.",
       "Develop and integrate production-oriented AI and software systems.",
@@ -15,11 +17,13 @@ const experienceList = [
   },
   {
     id: 2,
-    role: "AI/Software Engineering Contributor",
+    role: "AI Engineer",
     company: "Technology Center Lanka",
     engagementType: "Professional collaboration",
-    location: "Sri Lanka",
-    duration: "2026 - Present",
+    location: "Negombo, Sri Lanka | Hybrid",
+    duration: "May 2026 - Present",
+    image: "/Experiances/2.jpg",
+    url: "https://github.com/TechCenterSriLanka",
     contributions: [
       "Contribute to AI, automation, and software engineering initiatives.",
       "Support the development of practical and scalable technology solutions.",
@@ -31,7 +35,8 @@ const experienceList = [
     company: "Upwork",
     engagementType: "Freelance",
     location: "Remote | International clients",
-    duration: "2026 - Present",
+    duration: "Jan 2026 - Present",
+    image: "/Experiances/4.png",
     contributions: [
       "Deliver AI solutions, automation workflows, and API integrations for business clients.",
       "Build full-stack web applications from requirements through deployment.",
@@ -44,7 +49,8 @@ const experienceList = [
     company: "Veloxdy.com",
     engagementType: "Founder",
     location: "Sri Lanka | Remote",
-    duration: "2026 - Present",
+    duration: "Apr 2026 - Present",
+    image: "/Experiances/5.png",
     contributions: [
       "Lead a personal business focused on web applications, AI solutions, and automation systems.",
       "Translate client requirements into practical digital products and technical solutions.",
@@ -58,6 +64,8 @@ const experienceList = [
     engagementType: "Internship",
     location: "Kottawa, Sri Lanka",
     duration: "Nov 2025 - May 2026",
+    image: "/Experiances/3.png",
+    url: "https://www.idea8.us/",
     contributions: [
       "Contributed to software engineering, AI and machine-learning projects during a seven-month internship.",
       "Developed the Lumina AI application and supported SaaS and automation work.",
@@ -100,7 +108,7 @@ export const ExperienceSection = () => {
                 aria-hidden="true"
               />
 
-              <div className="col-start-2 text-left md:col-start-3 md:row-start-1">
+              <div className="col-start-2 rounded-lg border border-border bg-card p-5 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-lg md:col-start-3 md:row-start-1 md:p-6">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <span className="rounded-md border border-primary/25 bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
                     {exp.engagementType}
@@ -113,29 +121,47 @@ export const ExperienceSection = () => {
                   )}
                 </div>
 
-                <h3 className="text-left text-xl font-semibold leading-snug md:text-2xl">
-                  {exp.role}
-                </h3>
-                {exp.url ? (
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="min-w-0">
+                    <h3 className="text-left text-xl font-semibold leading-snug md:text-2xl">
+                      {exp.role}
+                    </h3>
+                    <a
+                      href={exp.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-flex items-center gap-1.5 font-medium text-primary hover:text-primary/75"
+                    >
+                      {exp.company}
+                      <ExternalLink
+                        className="h-3.5 w-3.5"
+                        aria-hidden="true"
+                      />
+                    </a>
+
+                    <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
+                      <MapPin className="h-4 w-4" aria-hidden="true" />
+                      {exp.location}
+                    </p>
+                  </div>
+
                   <a
                     href={exp.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1.5 font-medium text-primary hover:text-primary/75"
+                    className="flex h-16 w-full shrink-0 items-center justify-center rounded-md border border-border bg-white p-2 sm:w-36"
+                    aria-label={`Visit ${exp.company}`}
                   >
-                    {exp.company}
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <img
+                      src={exp.image}
+                      alt={`${exp.company} logo`}
+                      className="h-full w-full object-contain"
+                      loading="lazy"
+                      width="144"
+                      height="64"
+                    />
                   </a>
-                ) : (
-                  <p className="mt-1 font-medium text-foreground/80">
-                    {exp.company}
-                  </p>
-                )}
-
-                <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4" aria-hidden="true" />
-                  {exp.location}
-                </p>
+                </div>
 
                 <ul className="mt-5 max-w-2xl space-y-2 text-base leading-7 text-muted-foreground">
                   {exp.contributions.map((contribution) => (

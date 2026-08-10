@@ -12,22 +12,20 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              AI Automation Engineer | SaaS Developer | Freelancer
+              Engineering practical AI and software products
             </h3>
 
             <p className="text-muted-foreground">
-              Passionate about Generative AI, Machine Learning, and SaaS architectures.
-              Currently working as an AI Automation Engineer at Atlantic Bridge
-              Exchange Limited in the United Kingdom, while also contributing to
-              Technology Center Lanka and serving clients through Veloxdy.com.
+              I am a final-year B.Sc. (Hons) Computer Engineering undergraduate
+              at the University of Jaffna, based in Sri Lanka and available for
+              remote collaboration.
             </p>
 
             <p className="text-muted-foreground">
-              I build custom AI applications, scalable SaaS platforms, and
-              intelligent automation workflows across RAG systems, AI agents,
-              voice automation, and full-stack web products. I also freelance
-              on Upwork, helping clients turn business ideas into production
-              ready web applications and AI-powered systems.
+              My work combines applied AI, automation, and full-stack
+              engineering. I focus on translating business requirements into
+              maintainable systems with thoughtful human oversight, reliable
+              integrations, and clear deployment paths.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -63,7 +61,7 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg"> SaaS Development</h4>
                   <p className="text-muted-foreground">
-                    Building scalable, multi-tenant software as a service
+                    Building scalable, multi-tenant software-as-a-service
                     platforms with modern tech stacks.
                   </p>
                 </div>
@@ -77,7 +75,7 @@ export const AboutSection = () => {
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
-                    Machine & Deep Learning
+                    Machine Learning & Deep Learning
                   </h4>
                   <p className="text-muted-foreground">
                     Building prediction, classification, NLP, and computer

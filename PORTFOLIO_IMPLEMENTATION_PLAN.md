@@ -59,7 +59,7 @@ retained.
 ### Experience
 
 - [x] Label roles as employment, collaboration, freelance, internship, or founder work.
-- [-] Verify company names, locations, dates, and exact engagement types.
+- [x] Verify company names, locations, dates, and exact engagement types.
 - [x] Replace generic responsibility statements with specific contributions.
 - [!] Add measurable outcomes where they can be shared safely.
 - [x] Clearly explain overlapping current roles.
@@ -75,16 +75,16 @@ retained.
 
 ### General Content
 
-- [ ] Correct spelling and grammar throughout the portfolio.
-- [ ] Use consistent terminology for AI, machine learning, SaaS, and automation.
-- [ ] Remove repeated claims across Hero, About, Services, Experience, and Journey.
-- [ ] Ensure every professional claim is accurate and defensible.
+- [x] Correct spelling and grammar throughout the portfolio.
+- [x] Use consistent terminology for AI, machine learning, SaaS, and automation.
+- [x] Remove repeated claims across Hero, About, Services, Experience, and Journey.
+- [x] Ensure every professional claim is accurate and defensible.
 
 ### Phase 1 Acceptance Criteria
 
 - [x] No placeholder links remain.
 - [x] No known incorrect project links remain.
-- [ ] Every visible claim is accurate.
+- [x] Every visible claim is accurate.
 - [x] Project and experience copy uses professional English.
 - [x] All repeated project IDs and missing project-tag keys are fixed.
 
@@ -94,19 +94,18 @@ retained.
 
 ### Navigation
 
-- [ ] Reduce navigation to Projects, Services, Experience, Reviews, About, and Contact.
-- [ ] Add a visible Download CV action.
-- [ ] Add active-section highlighting.
-- [ ] Verify mobile navigation, focus handling, and menu closing behavior.
+- [x] Reduce navigation to About, Projects, Services, Experience, Credentials, and Contact; add Reviews when approved testimonials exist.
+- [x] Add a visible Download CV action.
+- [x] Add active-section highlighting.
+- [x] Verify mobile navigation, focus handling, and menu closing behavior.
 
 ### Main Page Composition
 
-- [ ] Reorder sections according to the proposed page order.
-- [ ] Remove the Journey section because it repeats Experience.
+- [x] Place About directly after Hero, followed by projects and professional evidence.
+- [x] Remove the Journey section because it repeats Experience.
 - [ ] Combine Education and selected Certifications into a compact Credentials section.
-- [ ] Remove percentage-based skill presentation.
+- [x] Remove percentage-based skill presentation.
 - [ ] Reduce repeated calls to action.
-- [ ] Keep Chatbot as a secondary contact option.
 
 ### Dormant Features
 
@@ -120,9 +119,9 @@ retained.
 ### Phase 2 Acceptance Criteria
 
 - [ ] A visitor can understand Udara's role within five seconds.
-- [ ] Projects and professional evidence appear before personal history.
+- [x] Projects and professional evidence appear before personal history.
 - [ ] The page contains no substantial duplicated sections.
-- [ ] Desktop and mobile navigation remain concise and usable.
+- [x] Desktop and mobile navigation remain concise and usable.
 
 ---
 

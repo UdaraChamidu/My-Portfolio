@@ -37,12 +37,9 @@ export const HeroSection = () => {
 
         {/* Subtitle / Intro */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4">
-          I'm a final year Computer Engineering student at Faculty of
-          Engineering, University of Jaffna. I now work as an AI Automation
-          Engineer at Atlantic Bridge Exchange Limited in the United Kingdom,
-          while also working with Technology Center Lanka, freelancing on
-          Upwork, and building web applications and AI solutions through
-          Veloxdy.com.
+          AI Automation Engineer and full-stack developer building practical
+          AI workflows, intelligent applications, and web platforms for
+          businesses and international clients.
         </p>
 
         {/* CTA Buttons */}
@@ -62,40 +59,6 @@ export const HeroSection = () => {
         <ArrowDown className="h-5 w-5 text-primary" />
       </div>
 
-      {/* Floating Animation & Gradient Text */}
-      <style jsx>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-          100% {
-            transform: translateY(0px);
-          }
-        }
-
-        @keyframes gradient-shimmer {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .animated-gradient {
-          background: linear-gradient(90deg, #7358f2, #9579f9, #7358f2);
-          background-size: 200% 200%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradient-shimmer 3s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 };

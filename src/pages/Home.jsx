@@ -1,10 +1,10 @@
+import { lazy, Suspense } from "react";
 import { Navbar } from "../components/Navbar";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { DynamicBackground } from "../components/DynamicBackground";
 import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
-import { SkillsSection } from "../components/SkillsSection";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
@@ -12,8 +12,13 @@ import { Certifications } from "../components/Certifications";
 import { EducationSection } from "../components/EducationSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { Chatbot } from "../components/Chatbot";
-import { JourneySection } from "../components/JourneySection";
 import { ServicesSection } from "../components/ServicesSection";
+
+const SkillsSection = lazy(() =>
+  import("../components/SkillsSection").then((module) => ({
+    default: module.SkillsSection,
+  }))
+);
 
 export const Home = () => {
   return (
@@ -33,13 +38,20 @@ export const Home = () => {
         <main>
           <HeroSection />
           <AboutSection />
-          <SkillsSection />
-          <ServicesSection />
           <ProjectsSection />
-          <Certifications />
+          <ServicesSection />
           <ExperienceSection />
-          <EducationSection />
-          <JourneySection />
+          <Suspense
+            fallback={
+              <div className="min-h-96 bg-secondary/30" aria-hidden="true" />
+            }
+          >
+            <SkillsSection />
+          </Suspense>
+          <div id="credentials">
+            <EducationSection />
+            <Certifications />
+          </div>
           <ContactSection />
           <Chatbot />
         </main>

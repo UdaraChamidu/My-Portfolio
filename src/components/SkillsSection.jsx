@@ -1,130 +1,144 @@
 import { useState } from "react";
+import {
+  Bot,
+  BrainCircuit,
+  CircuitBoard,
+  Database,
+  Eye,
+  GitBranch,
+  HardDrive,
+  Languages,
+  Network,
+  Search,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
+import { FaAws, FaJava } from "react-icons/fa";
+import {
+  SiArduino,
+  SiCplusplus,
+  SiCss,
+  SiDocker,
+  SiExpress,
+  SiFastapi,
+  SiFirebase,
+  SiFlask,
+  SiGithub,
+  SiGithubactions,
+  SiGooglecolab,
+  SiHtml5,
+  SiHuggingface,
+  SiJavascript,
+  SiJira,
+  SiJupyter,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiPython,
+  SiRailway,
+  SiReact,
+  SiStreamlit,
+  SiTailwindcss,
+  SiVercel,
+} from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 import { cn } from "@/lib/utils";
-import { useEffect } from "react";
 
 const skills = [
-  // Web Development
-  { name: "HTML", level: 75, category: "Web Development" },
-  { name: "CSS", level: 85, category: "Web Development" },
-  { name: "JavaScript", level: 84, category: "Web Development", featured: true },
-  { name: "React", level: 80, category: "Web Development", featured: true },
-  { name: "Tailwind CSS", level: 71, category: "Web Development" },
-  { name: "Express.js", level: 70, category: "Web Development" },
-  { name: "Next.js", level: 70, category: "Web Development" },
+  { name: "Machine Learning", category: "AI & Automation", icon: BrainCircuit, core: true },
+  { name: "Deep Learning", category: "AI & Automation", icon: Network },
+  { name: "Natural Language Processing", category: "AI & Automation", icon: Languages },
+  { name: "Generative AI", category: "AI & Automation", icon: Sparkles, core: true },
+  { name: "Computer Vision", category: "AI & Automation", icon: Eye },
+  { name: "AI Agents", category: "AI & Automation", icon: Bot, core: true },
+  { name: "Large Language Models", category: "AI & Automation", icon: BrainCircuit },
+  { name: "Vector Stores", category: "AI & Automation", icon: Database },
+  { name: "RAG", category: "AI & Automation", icon: Search, core: true },
+  { name: "n8n", category: "AI & Automation", icon: Workflow, core: true },
 
-  // ML / AI
-  { name: "ML", level: 93, category: "AI / ML", featured: true },
-  { name: "DL", level: 87, category: "AI / ML" },
-  { name: "NLP", level: 74, category: "AI / ML" },
-  { name: "Gen AI", level: 90, category: "AI / ML", featured: true },
-  { name: "Computer Vision", level: 74, category: "AI / ML" },
-  { name: "AI Agents", level: 65, category: "AI / ML" },
-  { name: "LLMs", level: 74, category: "AI / ML", featured: true },
-  { name: "Vector Stores", level: 83, category: "AI / ML" },
-  { name: "RAG", level: 87, category: "AI / ML", featured: true },
-  { name: "n8n", level: 84, category: "AI / ML", featured: true },
+  { name: "Python", category: "Programming", icon: SiPython, core: true },
+  { name: "Java", category: "Programming", icon: FaJava },
+  { name: "C++", category: "Programming", icon: SiCplusplus },
 
-  // Programming
-  { name: "Python", level: 90, category: "Programming", featured: true },
-  { name: "Java", level: 82, category: "Programming", featured: true },
-  { name: "C++", level: 85, category: "Programming", featured: true },
+  { name: "HTML", category: "Web Development", icon: SiHtml5 },
+  { name: "CSS", category: "Web Development", icon: SiCss },
+  { name: "JavaScript", category: "Web Development", icon: SiJavascript, core: true },
+  { name: "React", category: "Web Development", icon: SiReact, core: true },
+  { name: "Tailwind CSS", category: "Web Development", icon: SiTailwindcss },
+  { name: "Express.js", category: "Web Development", icon: SiExpress },
+  { name: "Next.js", category: "Web Development", icon: SiNextdotjs },
 
-  // Deployment
-  { name: "Docker", level: 70, category: "Deployment", featured: true },
-  { name: "Flask", level: 70, category: "Deployment" },
-  { name: "Streamlit ", level: 85, category: "Deployment" },
-  { name: "AWS", level: 75, category: "Deployment" },
-  { name: "Railway", level: 75, category: "Deployment" },
-  { name: "Vercel", level: 78, category: "Deployment" },
-  { name: "FastAPI", level: 80, category: "Deployment", featured: true },
-  { name: "Github Actions", level: 70, category: "Deployment" },
+  { name: "Docker", category: "Cloud & Deployment", icon: SiDocker, core: true },
+  { name: "Flask", category: "Cloud & Deployment", icon: SiFlask },
+  { name: "Streamlit", category: "Cloud & Deployment", icon: SiStreamlit },
+  { name: "AWS", category: "Cloud & Deployment", icon: FaAws },
+  { name: "Railway", category: "Cloud & Deployment", icon: SiRailway },
+  { name: "Vercel", category: "Cloud & Deployment", icon: SiVercel },
+  { name: "FastAPI", category: "Cloud & Deployment", icon: SiFastapi, core: true },
+  { name: "GitHub Actions", category: "Cloud & Deployment", icon: SiGithubactions },
 
-  // add databases
-  { name: "MySQL", level: 75, category: "databases", featured: true },
-  { name: "MongoDB", level: 72, category: "databases" },
-  { name: "Chromadb", level: 80, category: "databases" },
-  { name: "Firebase", level: 78, category: "databases" },
-  { name: "FAISS", level: 84, category: "databases" },
+  { name: "MySQL", category: "Data", icon: SiMysql, core: true },
+  { name: "MongoDB", category: "Data", icon: SiMongodb },
+  { name: "ChromaDB", category: "Data", icon: Database },
+  { name: "Firebase", category: "Data", icon: SiFirebase },
+  { name: "FAISS", category: "Data", icon: HardDrive },
 
-  // Tools
-  { name: "GitHub", level: 85, category: "tools" },
-  { name: "Google Colab", level: 95, category: "tools" },
-  { name: "VS Code", level: 84, category: "tools" },
-  { name: "Jupyter", level: 85, category: "tools" },
-  { name: "HuggingFace", level: 82, category: "tools" },
-  { name: "Docker", level: 79, category: "tools" },
-
-  // Add other skills as needed
-  { name: "Arduino", level: 70, category: "others" },
-  { name: "Matlab", level: 78, category: "others" },
-  { name: "Solidworks", level: 65, category: "others" },
-  { name: "Electronics", level: 72, category: "others" },
-  { name: "Databases", level: 82, category: "others" },
-  { name: "JIRA", level: 68, category: "others" },
-  
-
+  { name: "GitHub", category: "Tools & Engineering", icon: SiGithub },
+  { name: "Google Colab", category: "Tools & Engineering", icon: SiGooglecolab },
+  { name: "VS Code", category: "Tools & Engineering", icon: VscVscode },
+  { name: "Jupyter", category: "Tools & Engineering", icon: SiJupyter },
+  { name: "Hugging Face", category: "Tools & Engineering", icon: SiHuggingface },
+  { name: "Arduino", category: "Tools & Engineering", icon: SiArduino },
+  { name: "MATLAB", category: "Tools & Engineering", icon: CircuitBoard },
+  { name: "SolidWorks", category: "Tools & Engineering", icon: CircuitBoard },
+  { name: "Electronics", category: "Tools & Engineering", icon: CircuitBoard },
+  { name: "Git", category: "Tools & Engineering", icon: GitBranch },
+  { name: "Jira", category: "Tools & Engineering", icon: SiJira },
 ];
 
-
-
 const categories = [
-  "all",
-  "AI / ML",
+  "Core",
+  "AI & Automation",
   "Programming",
   "Web Development",
-  "Deployment",
-  "databases",
-  "tools",
-  "others",
+  "Cloud & Deployment",
+  "Data",
+  "Tools & Engineering",
 ];
 
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [animatedValues, setAnimatedValues] = useState({}); // store current values
+  const [activeCategory, setActiveCategory] = useState("Core");
 
   const filteredSkills = skills.filter((skill) =>
-    activeCategory === "all" ? skill.featured : skill.category === activeCategory
+    activeCategory === "Core" ? skill.core : skill.category === activeCategory
   );
-
-  // Animate skill bars and percentage whenever filteredSkills changes
-  useEffect(() => {
-    const newValues = {};
-    filteredSkills.forEach((skill) => {
-      newValues[skill.name] = 0;
-    });
-    setAnimatedValues(newValues);
-
-    filteredSkills.forEach((skill) => {
-      let start = 0;
-      const interval = setInterval(() => {
-        start += 1;
-        setAnimatedValues((prev) => ({
-          ...prev,
-          [skill.name]: start > skill.level ? skill.level : start,
-        }));
-        if (start >= skill.level) clearInterval(interval);
-      }, 15); // adjust speed here
-    });
-  }, [activeCategory]);
 
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary"> Skills</span>
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          Technical <span className="text-primary">Capabilities</span>
         </h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
+          Technologies and engineering practices used across AI automation,
+          full-stack development, data systems, and deployment.
+        </p>
 
-        {/* Category Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
+        <div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          aria-label="Skill categories"
+        >
+          {categories.map((category) => (
             <button
-              key={key}
+              key={category}
+              type="button"
               onClick={() => setActiveCategory(category)}
+              aria-pressed={activeCategory === category}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize font-medium",
+                "px-4 py-2 rounded-md transition-colors duration-200 font-medium",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-muted-foreground hover:bg-primary/30"
+                  : "border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
               )}
             >
               {category}
@@ -132,58 +146,31 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill) => (
-            <div
-              key={skill.name}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
-            >
-              {/* Skill Name */}
-              <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg">{skill.name}</h3>
-              </div>
+        <div
+          key={activeCategory}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+        >
+          {filteredSkills.map((skill, index) => {
+            const Icon = skill.icon;
 
-              {/* Progress Bar */}
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden relative">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left relative transition-all duration-300"
-                  style={{ width: `${animatedValues[skill.name] || 0}%` }}
-                >
-                  {/* Glow pulse overlay */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-primary/40 rounded-full animate-pulse-glow" />
-                </div>
+            return (
+              <div
+                key={skill.name}
+                className="group flex min-h-32 flex-col items-center justify-center gap-3 rounded-lg border border-border bg-card p-4 opacity-0 shadow-xs animate-[skill-enter_450ms_ease-out_forwards] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg motion-reduce:animate-none motion-reduce:opacity-100 motion-reduce:hover:translate-y-0"
+                style={{ animationDelay: `${Math.min(index * 45, 360)}ms` }}
+              >
+                <Icon
+                  className="h-9 w-9 text-primary transition-transform duration-300 group-hover:scale-110"
+                  aria-hidden="true"
+                />
+                <h3 className="text-center text-sm font-semibold leading-5">
+                  {skill.name}
+                </h3>
               </div>
-
-              {/* Skill Percentage */}
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {animatedValues[skill.name] || 0}%
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
-
-      {/* Animations */}
-      <style jsx>{`
-        @keyframes pulse-glow {
-          0% {
-            opacity: 0.4;
-          }
-          50% {
-            opacity: 0.7;
-          }
-          100% {
-            opacity: 0.4;
-          }
-        }
-
-        .animate-pulse-glow {
-          animation: pulse-glow 2s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 };

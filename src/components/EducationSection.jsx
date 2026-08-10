@@ -3,17 +3,18 @@ import { Book } from "lucide-react";
 const educationList = [
   {
     id: 1,
-    degree: "B.Sc (Hons) in Computer Engineering",
+    degree: "B.Sc. (Hons) in Computer Engineering",
     institute: "Faculty of Engineering, University of Jaffna",
     duration: "2022 - Present",
-    description: "Specializing in AI, Machine Learning, and Deep Learning and more...",
+    description:
+      "Coursework and project work in artificial intelligence, machine learning, deep learning, and software engineering.",
   },
   {
     id: 2,
     degree: "High School Diploma",
     institute: "Dhammissara National College, Nattandiya",
     duration: "2012 - 2020",
-    description: "Focus on Mathematics and Science. Graduated with Distinction.",
+    description: "Focused on mathematics and science.",
   },
 ];
 

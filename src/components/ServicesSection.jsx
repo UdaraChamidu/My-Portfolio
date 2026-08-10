@@ -4,38 +4,38 @@ const services = [
   {
     icon: <Brain className="w-8 h-8 text-primary" />,
     title: "AI-Powered Applications",
-    description: "Custom AI solutions including Gen AI, NLP, RAG systems and multimodal AI applications for real world problems.",
+    description: "Custom generative AI, NLP, RAG, and multimodal applications designed around practical business requirements.",
     features: ["Computer Vision (ViT, CNN)", "RAG & LLM Integration", "Multimodal AI", "Medical AI Diagnostics"]
   },
   {
     icon: <Code className="w-8 h-8 text-primary" />,
     title: "Full-Stack Web Development",
-    description: "Modern web applications with MERN stack, FastAPI backends and scalable cloud deployments on AWS and Vercel.",
-    features: ["MERN Stack", "FastAPI + React", "Cloud Deployment", "Real time Applications"]
+    description: "Modern full-stack applications with React interfaces, API backends, and scalable deployments on AWS and Vercel.",
+    features: ["MERN Stack", "FastAPI + React", "Cloud Deployment", "Real-Time Applications"]
   },
   {
     icon: <Bot className="w-8 h-8 text-primary" />,
     title: "AI Agents & Automation",
-    description: "Intelligent agents and automation workflows using LangChain, LangGraph, n8n and Telegram bot integrations.",
+    description: "Intelligent agents and automation workflows using LangChain, LangGraph, n8n, and external API integrations.",
     features: ["LangGraph Agents", "n8n Workflows", "Telegram Bots", "API Integrations"]
   },
   {
     icon: <BarChart3 className="w-8 h-8 text-primary" />,
     title: "Machine Learning Solutions",
-    description: "ML models for prediction, classification and data analysis with deployment ready web interfaces.",
+    description: "Machine learning models for prediction, classification, and data analysis with deployment-ready web interfaces.",
     features: ["Predictive Models", "Classification Systems", "Data Analysis", "ML Web Apps"]
   },
   {
     icon: <Zap className="w-8 h-8 text-primary" />,
     title: "Computer Vision Solutions",
-    description: "Advanced computer vision solutions using ViT, YOLOv8, CNN and Deep Learning techniques for image analysis and processing.",
-    features: ["Object Detection (YOLOv8)", "Medical Image Analysis", "Video Processing", "Real time Classification"]
+    description: "Computer vision solutions using ViT, YOLOv8, convolutional neural networks, and deep learning for image and video analysis.",
+    features: ["Object Detection (YOLOv8)", "Medical Image Analysis", "Video Processing", "Real-Time Classification"]
   },
   {
     icon: <Globe className="w-8 h-8 text-primary" />,
     title: "SaaS Solutions",
     description: "End-to-end SaaS development from discovery and design to deployment and scaling with multi-tenant architectures.",
-    features: ["Multi-tenant Systems", "Subscription Integration", "Scalable Cloud Infra", "API First Design"]
+    features: ["Multi-Tenant Systems", "Subscription Integration", "Scalable Cloud Infrastructure", "API-First Design"]
   }
 ];
 
@@ -48,9 +48,8 @@ export const ServicesSection = () => {
             What I Can <span className="text-primary">Build For You</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Leveraging my expertise in AI, ML, and software engineering to create innovative solutions
-            that drive your business forward through Veloxdy.com, my web application
-            and AI solutions business. Let's turn your ideas into reality.
+            Focused engineering services for organizations that need practical
+            automation, AI applications, and dependable web platforms.
           </p>
         </div>
 
@@ -88,7 +87,8 @@ export const ServicesSection = () => {
 
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-6">
-            Have a specific project in mind? Let's discuss how we can bring it to life.
+            Have a specific project in mind? Let us discuss how we can bring it
+            to life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#contact" className="cosmic-button">

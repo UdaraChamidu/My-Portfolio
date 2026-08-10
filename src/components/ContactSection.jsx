@@ -76,7 +76,7 @@ export const ContactSection = () => {
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
           Have a project in mind or want to collaborate? Feel free to reach out.
-          I'm always open to discussing new opportunities.
+          I am always open to discussing new opportunities.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -140,7 +140,7 @@ export const ContactSection = () => {
                   <MessageCircle className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-medium text-left">Whatsapp</h4>
+                  <h4 className="font-medium text-left">WhatsApp</h4>
                   <a
                     href="https://wa.me/94761720686"
                     target="_blank"
