@@ -22,14 +22,15 @@ milestone on the main page.
 1. Navigation
 2. Hero
 3. Professional proof strip
-4. Featured case studies
-5. Services
-6. Client reviews
-7. Experience
-8. Technical capabilities
-9. About and credentials
-10. Contact
-11. Footer and chatbot
+4. About
+5. Featured projects and case studies
+6. Services
+7. Client reviews when approved content is available
+8. Experience
+9. Technical capabilities
+10. Credentials
+11. Contact
+12. Footer and chatbot
 
 ---
 
@@ -94,7 +95,7 @@ retained.
 
 ### Navigation
 
-- [x] Reduce navigation to About, Projects, Services, Experience, Credentials, and Contact; add Reviews when approved testimonials exist.
+- [x] Use About Me, Projects, Services, Experience, Credentials, and Contact navigation; add Reviews when approved testimonials exist.
 - [x] Add a visible Download CV action.
 - [x] Add active-section highlighting.
 - [x] Verify mobile navigation, focus handling, and menu closing behavior.
@@ -114,13 +115,13 @@ retained.
 - [x] Pause scheduled blog generation.
 - [x] Remove GitHub Stats from the public page.
 - [x] Remove Future Plans from the public page.
-- [ ] Permanently delete dormant files only after final approval.
+- [x] Permanently delete dormant files after final approval.
 
 ### Phase 2 Acceptance Criteria
 
-- [ ] A visitor can understand Udara's role within five seconds.
+- [x] A visitor can understand Udara's role within five seconds.
 - [x] Projects and professional evidence appear before personal history.
-- [ ] The page contains no substantial duplicated sections.
+- [x] The page contains no substantial duplicated sections.
 - [x] Desktop and mobile navigation remain concise and usable.
 
 ---
@@ -159,26 +160,26 @@ retained.
 
 ### Hero
 
-- [ ] Use `AI Automation Engineer & Full-Stack Developer` as the primary role.
-- [ ] Replace the long affiliation paragraph with a concise value proposition.
-- [ ] Keep current role and availability in one supporting sentence.
-- [ ] Add View Projects, Contact Me, and Download CV actions.
-- [ ] Use a professional portrait treatment with restrained animation.
-- [ ] Remove the animated scroll indicator.
+- [x] Use `AI Automation Engineer & Full-Stack Developer` as the primary role.
+- [x] Replace the long affiliation paragraph with a concise value proposition.
+- [x] Keep current role in the professional proof strip without an additional availability sentence.
+- [x] Add View Projects, Contact Me, and View Services actions; keep Download CV in navigation.
+- [x] Use a professional portrait treatment with restrained animation.
+- [x] Remove the animated scroll indicator.
 
 ### Professional Proof Strip
 
-- [ ] Add current UK role.
-- [ ] Add Upwork freelancing status.
-- [ ] Add Veloxdy founder status.
-- [ ] Add only verified project, client, workflow, or experience statistics.
-- [ ] Ensure the proof strip remains compact on mobile.
+- [x] Add current UK role.
+- [x] Add Upwork freelancing status.
+- [x] Add Veloxdy founder status.
+- [x] Add only verified project, client, workflow, or experience statistics.
+- [x] Ensure the proof strip remains compact on mobile.
 
 ### Phase 4 Acceptance Criteria
 
-- [ ] The first viewport states role, value, proof, and next action clearly.
-- [ ] The hero does not read like a list of affiliations.
-- [ ] No unverified statistics are displayed.
+- [x] The first viewport states role, value, proof, and next action clearly.
+- [x] The hero does not read like a list of affiliations.
+- [x] No unverified statistics are displayed.
 
 ---
 
@@ -225,23 +226,24 @@ retained.
 
 ### Final Service Groups
 
-- [ ] AI Agents and Business Automation.
-- [ ] AI Applications, RAG, and Machine Learning.
-- [ ] Full-Stack SaaS and Web Applications.
+- [x] AI Applications and RAG.
+- [x] Full-Stack Web Applications.
+- [x] AI Agents and Business Automation.
+- [x] Machine Learning Solutions.
 
 ### Service Content
 
-- [ ] Explain the business problem each service solves.
-- [ ] Identify suitable client types.
-- [ ] List practical deliverables instead of broad technology claims.
-- [ ] Link each service to a relevant case study.
-- [ ] Provide Start a Project, Upwork, and Veloxdy actions without duplication.
+- [x] Explain the business problem each service solves.
+- [x] Identify suitable client types.
+- [x] List practical deliverables instead of broad technology claims.
+- [x] Link each service to relevant project evidence.
+- [x] Provide Start a Project, Upwork, and Veloxdy actions without duplication.
 
 ### Phase 6 Acceptance Criteria
 
-- [ ] Services are understandable to non-technical business clients.
-- [ ] Each service is supported by visible project evidence.
-- [ ] The section contains three focused offers rather than six overlapping cards.
+- [x] Services are understandable to non-technical business clients.
+- [x] Each service is supported by visible project evidence.
+- [x] The section contains four focused offers rather than six overlapping cards.
 
 ---
 
@@ -321,25 +323,25 @@ allows:
 
 ### Technical Capabilities
 
-- [ ] Replace percentages with Production Experience.
-- [ ] Add Applied AI and Automation.
-- [ ] Add Full-Stack Engineering.
-- [ ] Add Cloud, Databases, and Deployment.
-- [ ] Add Familiar or Currently Developing only when useful.
+- [x] Replace arbitrary percentages with evidence-neutral technology icons.
+- [x] Add AI and Automation capabilities.
+- [x] Add Programming and Web Development capabilities.
+- [x] Add Cloud, Data, and Deployment capabilities.
+- [x] Keep the default view focused on core capabilities.
 - [ ] Connect important capabilities to project evidence.
 
 ### About And Credentials
 
-- [ ] Write a short professional introduction.
-- [ ] Include degree, university, location, and remote availability.
-- [ ] Show three to five selected certifications.
-- [ ] Provide a View All Credentials option only if needed.
-- [ ] Keep personal history brief and relevant.
+- [x] Write a short professional introduction.
+- [x] Include degree, university, location, and remote availability.
+- [x] Show all certifications in focused categories, as requested.
+- [x] Keep Education and Certifications under one Credentials navigation target.
+- [x] Keep personal history brief and relevant.
 
 ### Phase 8 Acceptance Criteria
 
-- [ ] Experience does not repeat the hero or About section.
-- [ ] Skills are supported by evidence instead of arbitrary percentages.
+- [x] Experience does not repeat the hero or About section.
+- [x] Skills avoid arbitrary percentages and use recognizable technology labels.
 - [ ] Education and certifications occupy appropriate visual space.
 
 ---
@@ -459,17 +461,18 @@ allows:
 
 - [ ] Exact client reviews and public source links
 - [ ] Permission status for client names, companies, photos, and logos
-- [ ] Strongest four to six projects
+- [x] Strongest four to six projects
 - [ ] Individual contribution to each selected project
 - [ ] Measurable project outcomes that may be shared
-- [ ] Engagement type for every current role
+- [x] Engagement type for every current role
 - [ ] Verified Upwork statistics that may be displayed
 - [ ] Preferred custom portfolio domain
 - [ ] Final professional portrait and social-preview preference
 
-## Recommended Starting Point
+## Next Session Starting Point
 
-Implement Phase 1 and Phase 2 first. Content accuracy and information
-architecture should be finalized before the visual redesign. Update this file
-after each implementation step so it remains the source of truth for the
-portfolio modernization work.
+Phase 1, Phase 4, and Phase 6 are complete. Phase 2 is substantially complete;
+the remaining work is to consolidate Education and Certifications into a more
+compact Credentials presentation and reduce repeated calls to action. Continue
+with the remaining Phase 2 items, then proceed to the Phase 3 visual system or
+Phase 5 case studies as priorities allow.

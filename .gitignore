@@ -24,4 +24,9 @@ dist-ssr
 *.sw?
 .env
 
-chatbot 
+# Local browser and visual QA artifacts
+.hero-qa-*/
+.browser-qa/
+
+chatbot/
+PORTFOLIO_IMPLEMENTATION_PLAN.md

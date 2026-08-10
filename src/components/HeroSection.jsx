@@ -1,64 +1,119 @@
-import { ArrowDown } from "lucide-react";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  ExternalLink,
+  Mail,
+  Rocket,
+} from "lucide-react";
+
+const proofItems = [
+  {
+    label: "Current UK role",
+    value: "Atlantic Bridge Exchange Limited",
+    icon: Building2,
+    url: "http://38.52.133.152/home/",
+  },
+  {
+    label: "International freelance work",
+    value: "Upwork AI & Full-Stack Developer",
+    icon: BriefcaseBusiness,
+    url: "https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share",
+  },
+  {
+    label: "Founder",
+    value: "Veloxdy AI & Web Solutions",
+    icon: Rocket,
+    url: "https://veloxdy.com",
+  },
+];
 
 export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 md:pt-0"
+      className="relative flex min-h-screen items-center px-4 pb-10 pt-28 md:pb-14 md:pt-32"
     >
-      <div className="container max-w-4xl mx-auto text-center z-10 relative">
-        {/* Profile Image with Floating + Matching Purple Glow */}
-        <div className="flex justify-center mb-6 mt-6">
-          <div className="p-1 rounded-full bg-gradient-to-r from-primary/80 to-primary animate-[float_6s_ease-in-out_infinite]">
-            <img
-              src="/udara.jpg"
-              alt="Udara Herath"
-              className="w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full object-cover shadow-lg border-4 border-primary/50
-                         transition-transform duration-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(115,88,242,0.6)]"
-            />
-          </div>
+      <div className="container relative z-10 mx-auto max-w-6xl text-center">
+        <div className="mx-auto -mt-10 mb-7 h-52 w-52 overflow-hidden rounded-full border-4 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:h-60 sm:w-60">
+          <img
+            src="/udara.jpg"
+            alt="Udara Herath"
+            className="h-full w-full rounded-full object-cover"
+            width="240"
+            height="240"
+            fetchPriority="high"
+          />
         </div>
 
-        {/* Name with Animated Purple Gradient */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight drop-shadow-md mb-6">
-          <span className="opacity-0 animate-fade-in"> Hi,</span>
-          <span className="text-primary ml-2 opacity-0 animate-fade-in-delay-1">
-            I am
-          </span>
-          <span className="opacity-0 animate-fade-in-delay-2">
-            {" "}
-            Udara
-          </span>
-          <span className="text-primary opacity-0 animate-fade-in-delay-3">
-            {" "}
-            Herath
-          </span>
+        <h1 className="mb-4 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
+          Hi, I am <span className="text-primary">Udara Herath</span>
         </h1>
-
-        {/* Subtitle / Intro */}
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4">
-          AI Automation Engineer and full-stack developer building practical
-          AI workflows, intelligent applications, and web platforms for
-          businesses and international clients.
+        <p className="mx-auto mb-5 max-w-3xl text-xl font-semibold leading-snug text-foreground/90 sm:text-2xl md:text-3xl">
+          AI Automation Engineer & Full-Stack Developer
         </p>
 
-        {/* CTA Buttons */}
-        <div className="pt-6 opacity-0 animate-fade-in-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#services" className="cosmic-button">
-            What I Can Build
+        <p className="mx-auto max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          I design AI agents, automation workflows, and full-stack web
+          applications that help businesses reduce repetitive work, connect
+          their tools, and turn ideas into reliable digital products.
+        </p>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            View Projects
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
-          <a href="#projects" className="cosmic-button-secondary">
-            View My Work
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Contact Me
+          </a>
+          <a
+            href="#services"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+          >
+            <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
+            View Services
           </a>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
-        <ArrowDown className="h-5 w-5 text-primary" />
-      </div>
+        <div className="mt-12 grid border-y border-border text-left md:grid-cols-3">
+          {proofItems.map((item) => {
+            const Icon = item.icon;
 
+            return (
+              <a
+                key={item.label}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex min-h-20 items-center gap-3 border-b border-border px-4 py-3 transition-colors hover:bg-secondary/40 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs font-medium text-muted-foreground">
+                    {item.label}
+                  </span>
+                  <span className="mt-0.5 block text-sm font-semibold leading-5 text-foreground">
+                    {item.value}
+                  </span>
+                </span>
+                <ExternalLink
+                  className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
+                  aria-hidden="true"
+                />
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 };
