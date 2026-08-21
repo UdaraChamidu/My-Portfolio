@@ -8,11 +8,11 @@ import { AboutSection } from "../components/AboutSection";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
-import { Certifications } from "../components/Certifications";
-import { EducationSection } from "../components/EducationSection";
+import { CredentialsSection } from "../components/CredentialsSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { Chatbot } from "../components/Chatbot";
 import { ServicesSection } from "../components/ServicesSection";
+import { ReviewsSection } from "../components/ReviewsSection";
 
 const SkillsSection = lazy(() =>
   import("../components/SkillsSection").then((module) => ({
@@ -40,6 +40,7 @@ export const Home = () => {
           <AboutSection />
           <ProjectsSection />
           <ServicesSection />
+          <ReviewsSection />
           <ExperienceSection />
           <Suspense
             fallback={
@@ -48,10 +49,7 @@ export const Home = () => {
           >
             <SkillsSection />
           </Suspense>
-          <div id="credentials">
-            <EducationSection />
-            <Certifications />
-          </div>
+          <CredentialsSection />
           <ContactSection />
           <Chatbot />
         </main>

@@ -1,12 +1,10 @@
 import {
-  Facebook,
+  BriefcaseBusiness,
   Github,
   Globe,
   Linkedin,
   Mail,
   MapPin,
-  MessageCircle,
-  Phone,
   Send,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -75,8 +73,8 @@ export const ContactSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Have a project in mind or want to collaborate? Feel free to reach out.
-          I am always open to discussing new opportunities.
+          Have a project, collaboration, or engineering opportunity in mind?
+          Send a message and include a little context about what you need.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -99,55 +97,6 @@ export const ContactSection = () => {
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     chamiduudara321@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium text-left">Outlook</h4>
-                  <a
-                    href="mailto:2021e049@eng.jfn.ac.lk"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    2021e049@eng.jfn.ac.lk
-                  </a>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium text-left">Phone</h4>
-                  <a
-                    href="tel:+94761720686"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +94 76 172 0686
-                  </a>
-                </div>
-              </div>
-
-              {/* Whatsapp */}
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MessageCircle className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium text-left">WhatsApp</h4>
-                  <a
-                    href="https://wa.me/94761720686"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +94 76 172 0686
                   </a>
                 </div>
               </div>
@@ -211,13 +160,13 @@ export const ContactSection = () => {
                   <Github className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
                 <a
-                  href="https://www.facebook.com/udara.chamidu/"
+                  href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Facebook profile"
-                  title="Facebook"
+                  aria-label="Upwork profile"
+                  title="Upwork"
                 >
-                  <Facebook className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
+                  <BriefcaseBusiness className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
                 <a
                   href="https://medium.com/@chamiduudara321"
@@ -253,7 +202,8 @@ export const ContactSection = () => {
                   name="user_name"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="udara chamidu..."
+                  autoComplete="name"
+                  placeholder="Your name"
                 />
               </div>
 
@@ -270,7 +220,8 @@ export const ContactSection = () => {
                   name="user_email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="abc@gmail.com"
+                  autoComplete="email"
+                  placeholder="you@example.com"
                 />
               </div>
 
@@ -285,8 +236,9 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
+                  rows={6}
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+                  placeholder="Tell me about your project, goals, and timeline."
                 />
               </div>
 
@@ -294,7 +246,7 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
+                  "cosmic-button w-full flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}

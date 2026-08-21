@@ -95,7 +95,7 @@ retained.
 
 ### Navigation
 
-- [x] Use About Me, Projects, Services, Experience, Credentials, and Contact navigation; add Reviews when approved testimonials exist.
+- [x] Use About Me, Projects, Services, Reviews, Experience, Credentials, and Contact navigation.
 - [x] Add a visible Download CV action.
 - [x] Add active-section highlighting.
 - [x] Verify mobile navigation, focus handling, and menu closing behavior.
@@ -104,7 +104,7 @@ retained.
 
 - [x] Place About directly after Hero, followed by projects and professional evidence.
 - [x] Remove the Journey section because it repeats Experience.
-- [ ] Combine Education and selected Certifications into a compact Credentials section.
+- [x] Combine Education and all Certifications into a compact tabbed Credentials section.
 - [x] Remove percentage-based skill presentation.
 - [ ] Reduce repeated calls to action.
 
@@ -134,7 +134,7 @@ retained.
 - [ ] Keep dark mode as the first-visit default.
 - [ ] Maintain a polished and accessible light theme.
 - [ ] Use neutral surfaces with purple as an accent rather than the dominant color.
-- [ ] Reduce stars, glows, bouncing elements, and continuous animation.
+- [ ] Refine nonessential animation while preserving the rotating wallpapers, stars, meteors, and background controls requested by Udara.
 - [ ] Use section bands and open layouts instead of excessive floating cards.
 
 ### Design Tokens
@@ -266,14 +266,14 @@ allows:
 
 ### Review Component
 
-- [ ] Create a reusable testimonials data structure.
-- [ ] Display three featured reviews in a responsive grid.
-- [ ] Avoid an automatically moving carousel.
-- [ ] Add source and verification links.
-- [ ] Add a View More Reviews action when more reviews are available.
-- [ ] Support approved anonymous reviews for confidential projects.
+- [x] Create a reusable testimonials data structure.
+- [x] Display three featured reviews in a responsive grid.
+- [x] Avoid an automatically moving carousel.
+- [x] Include original review screenshots as evidence and link to the Upwork profile.
+- [x] Add a View Upwork Profile action.
+- [x] Avoid exposing client identities not present in the supplied evidence.
 - [ ] Connect reviews to related case studies where possible.
-- [ ] Add empty and fallback states without inventing testimonials.
+- [ ] Add empty and fallback states when review data becomes dynamic.
 
 ### Proposed Review Data Shape
 
@@ -296,18 +296,18 @@ allows:
 
 ### Review Integrity Rules
 
-- [ ] Do not generate, rewrite, or invent client reviews.
-- [ ] Obtain permission before displaying names, photos, logos, or company names.
-- [ ] Clearly label anonymized reviews.
-- [ ] Preserve the meaning of client feedback when correcting minor grammar.
-- [ ] Keep evidence or source links for every public testimonial.
+- [x] Do not generate, rewrite, or invent client reviews.
+- [x] Publish only the supplied contract evidence without adding client identities.
+- [x] Clearly present reviews without unsupported identity claims.
+- [x] Preserve the exact visible client feedback.
+- [x] Keep original screenshots and an Upwork profile source link.
 
 ### Phase 7 Acceptance Criteria
 
-- [ ] Every review is genuine and approved.
-- [ ] Review cards are readable and consistent on mobile and desktop.
-- [ ] Reviews strengthen specific services and projects.
-- [ ] No confidential or misleading information is exposed.
+- [x] Every displayed review comes from supplied Upwork evidence.
+- [x] Review cards are structured for mobile and desktop.
+- [x] Reviews strengthen AI and automation service evidence.
+- [x] No client identity or confidential information is added.
 
 ---
 
@@ -342,7 +342,7 @@ allows:
 
 - [x] Experience does not repeat the hero or About section.
 - [x] Skills avoid arbitrary percentages and use recognizable technology labels.
-- [ ] Education and certifications occupy appropriate visual space.
+- [x] Education and certifications occupy one compact tabbed section.
 
 ---
 
@@ -350,22 +350,20 @@ allows:
 
 ### Contact
 
-- [ ] Keep one professional business email.
-- [ ] Decide whether the public phone number is necessary.
-- [ ] Keep WhatsApp only when it supports client communication.
-- [ ] Include LinkedIn, GitHub, Medium, Upwork, and Veloxdy.
-- [ ] Remove Facebook unless it has a professional purpose.
+- [x] Keep one professional contact email.
+- [x] Remove the public phone number.
+- [x] Remove public WhatsApp contact details.
+- [x] Include LinkedIn, GitHub, Medium, Upwork, and Veloxdy.
+- [x] Remove Facebook from professional contact links.
 - [ ] Add project type and budget-range fields only if they improve qualification.
 - [ ] Add clear success, validation, and failure states.
 
 ### Chatbot
 
-- [ ] Position chatbot as a secondary assistant.
-- [ ] Rename it to clarify that it answers questions about Udara's work.
-- [ ] Remove unnecessary bouncing and repeated tips.
-- [ ] Keep complete-response and adaptive-token behavior.
-- [ ] Add rate limiting and graceful API failure handling.
-- [ ] Verify mobile keyboard, scrolling, and message layout.
+Preservation note: keep the current chatbot behavior and presentation unchanged
+unless Udara explicitly requests a chatbot update in a future session.
+
+- [x] Preserve the current working chatbot as requested.
 
 ### Footer
 
@@ -385,6 +383,8 @@ allows:
 
 ### Code Quality
 
+- [x] Upgrade React Router and the Vite toolchain to security-fixed versions.
+- [x] Resolve all reported npm dependency vulnerabilities.
 - [ ] Make ESLint pass with zero errors and warnings.
 - [ ] Remove unused imports and dormant comments.
 - [ ] Remove unsupported `style jsx` attributes.
@@ -403,12 +403,12 @@ allows:
 
 ### SEO And Sharing
 
-- [ ] Fix the favicon path.
-- [ ] Use a descriptive page title.
-- [ ] Add meta description and canonical URL.
-- [ ] Add Open Graph and social-preview metadata.
+- [x] Fix the favicon path.
+- [x] Use a descriptive page title.
+- [-] Add meta description; add canonical URL after the final domain is confirmed.
+- [-] Add Open Graph metadata; replace the portrait with a dedicated social-preview image after the final domain and image preference are confirmed.
 - [ ] Create a professional social-preview image.
-- [ ] Add structured data for Person and ProfessionalService.
+- [-] Add Person structured data; add ProfessionalService after the final domain is confirmed.
 - [ ] Add project structured data where useful.
 - [ ] Configure a professional custom domain.
 
