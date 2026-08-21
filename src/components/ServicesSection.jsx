@@ -11,54 +11,54 @@ const services = [
   {
     id: "ai-applications",
     icon: BrainCircuit,
-    title: "AI Applications & RAG",
+    title: "AI Agents, RAG & Conversational Systems",
     description:
-      "Turn business knowledge, documents, and user requests into useful AI-powered product experiences.",
+      "Transform business knowledge and user conversations into grounded, useful AI product experiences.",
     deliverables: [
-      "RAG and document-question answering systems",
-      "Conversational and multimodal AI applications",
-      "Secure model, API, and data-source integrations",
+      "RAG assistants and document-question answering systems",
+      "Text, voice, and multimodal conversational agents",
+      "LLM, vector database, API, and knowledge-source integration",
     ],
-    bestFor: "Knowledge-heavy teams, internal tools, and customer-facing AI products",
-  },
-  {
-    id: "full-stack-development",
-    icon: Code2,
-    title: "Full-Stack Web Applications",
-    description:
-      "Build responsive, maintainable web products from validated requirements through deployment.",
-    deliverables: [
-      "React interfaces and API-driven backends",
-      "Authentication, databases, and third-party integrations",
-      "Cloud deployment and production handover",
-    ],
-    bestFor: "Startups, service businesses, operational platforms, and MVPs",
+    bestFor: "Knowledge-heavy teams, internal assistants, and customer-facing AI products",
   },
   {
     id: "ai-automation",
     icon: Workflow,
     title: "AI Agents & Business Automation",
     description:
-      "Reduce repetitive work with connected workflows that keep people in control of important decisions.",
+      "Reduce repetitive work with reliable connected workflows that keep people in control of important decisions.",
     deliverables: [
-      "n8n workflows and AI-assisted business processes",
-      "Email, document, CRM, and external API automation",
-      "Human approval, tracking, and failure-handling flows",
+      "n8n agents and multi-step business process automation",
+      "Email, calling, intake, CRM, document, and API workflows",
+      "Human approval, audit logging, monitoring, and follow-up flows",
     ],
-    bestFor: "Teams managing repetitive communication, data entry, and approval processes",
+    bestFor: "Teams managing repetitive communication, intake, data entry, and approvals",
+  },
+  {
+    id: "full-stack-development",
+    icon: Code2,
+    title: "Full-Stack SaaS & Web Applications",
+    description:
+      "Build responsive, maintainable digital products from validated requirements through production deployment.",
+    deliverables: [
+      "React interfaces and FastAPI, Node.js, or NestJS backends",
+      "Authentication, databases, multi-tenant logic, and integrations",
+      "Cloud deployment, testing, documentation, and handover",
+    ],
+    bestFor: "Startups, service businesses, operational platforms, SaaS products, and MVPs",
   },
   {
     id: "machine-learning",
     icon: BrainCircuit,
-    title: "Machine Learning Solutions",
+    title: "Applied ML & Computer Vision",
     description:
-      "Develop and integrate prediction or classification capabilities around a clearly defined use case.",
+      "Develop prediction, classification, and vision capabilities around a clearly defined operational use case.",
     deliverables: [
-      "Data preparation and model development",
-      "Prediction and classification interfaces",
-      "Model evaluation, API integration, and deployment",
+      "Data preparation, model training, and evaluation",
+      "Prediction, classification, detection, and analysis interfaces",
+      "Model API integration, deployment, and result monitoring",
     ],
-    bestFor: "Organizations with structured data and a measurable prediction problem",
+    bestFor: "Organizations with usable data and a measurable prediction or vision problem",
   },
 ];
 

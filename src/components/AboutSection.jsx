@@ -1,4 +1,4 @@
-import { Briefcase, Code, User } from "lucide-react";
+import { Blocks, BrainCircuit, Workflow } from "lucide-react";
 
 export const AboutSection = () => {
   return (
@@ -20,14 +20,24 @@ export const AboutSection = () => {
             <p className="leading-7 text-muted-foreground">
               I am a final-year B.Sc. (Hons) Computer Engineering undergraduate
               at the University of Jaffna, based in Sri Lanka and available for
-              remote collaboration.
+              remote collaboration. I am also a Top Rated Upwork professional
+              with a 100% Job Success Score across AI and software engineering
+              engagements.
             </p>
 
             <p className="leading-7 text-muted-foreground">
-              My work combines applied AI, automation, and full-stack
-              engineering. I focus on translating business requirements into
-              maintainable systems with thoughtful human oversight, reliable
-              integrations, and clear deployment paths.
+              My strongest work sits at the intersection of conversational AI,
+              business automation, and full-stack product engineering. I build
+              AI agents, RAG applications, voice workflows, client-intake
+              systems, and SaaS platforms that connect models with real
+              operational tools and data.
+            </p>
+
+            <p className="leading-7 text-muted-foreground">
+              I approach projects as complete systems rather than isolated AI
+              demos: clear user workflows, maintainable APIs, secure data
+              handling, human review where decisions matter, and practical
+              deployment for continued use.
             </p>
 
           </div>
@@ -36,13 +46,15 @@ export const AboutSection = () => {
             <div className="surface-card surface-card-interactive p-5 md:p-6">
               <div className="flex items-start gap-4">
                 <div className="icon-tile">
-                  <Code className="h-6 w-6 text-primary" />
+                  <BrainCircuit className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="text-lg font-semibold">SaaS Development</h4>
+                  <h4 className="text-lg font-semibold">
+                    AI Agents & Conversational Systems
+                  </h4>
                   <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                    Building scalable, multi-tenant software-as-a-service
-                    platforms with modern tech stacks.
+                    Building RAG assistants, voice agents, multimodal tools,
+                    and context-aware conversational applications.
                   </p>
                 </div>
               </div>
@@ -51,15 +63,15 @@ export const AboutSection = () => {
             <div className="surface-card surface-card-interactive p-5 md:p-6">
               <div className="flex items-start gap-4">
                 <div className="icon-tile">
-                  <Briefcase className="h-6 w-6 text-primary" />
+                  <Workflow className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
-                    Machine Learning & Deep Learning
+                    Business Workflow Automation
                   </h4>
                   <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                    Building prediction, classification, NLP, and computer
-                    vision solutions with deployment-ready interfaces.
+                    Connecting AI, n8n, communication tools, APIs, and business
+                    systems with approval and tracking workflows.
                   </p>
                 </div>
               </div>
@@ -68,15 +80,16 @@ export const AboutSection = () => {
             <div className="surface-card surface-card-interactive p-5 md:p-6">
               <div className="flex items-start gap-4">
                 <div className="icon-tile">
-                  <User className="h-6 w-6 text-primary" />
+                  <Blocks className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
-                    Generative & Agentic AI
+                    Full-Stack AI Products
                   </h4>
                   <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                    Creating RAG systems, AI agents, voice workflows, and
-                    business automation pipelines with modern LLM tooling.
+                    Delivering responsive React applications, backend APIs,
+                    databases, authentication, integrations, and cloud
+                    deployment as one maintainable product.
                   </p>
                 </div>
               </div>

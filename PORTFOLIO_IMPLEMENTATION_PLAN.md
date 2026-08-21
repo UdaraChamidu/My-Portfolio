@@ -178,6 +178,7 @@ also commented in `HeroSection.jsx` for consistency.
 - [x] Add Upwork freelancing status.
 - [x] Add Veloxdy founder status.
 - [x] Add only verified project, client, workflow, or experience statistics.
+- [x] Present the user-confirmed Top Rated Upwork status and 100% Job Success Score without publishing the profile URL.
 - [x] Ensure the proof strip remains compact on mobile.
 
 ### Phase 4 Acceptance Criteria

@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  Award,
   BriefcaseBusiness,
   // Building2, // Restore with the temporarily hidden UK proof item.
   ExternalLink,
@@ -17,9 +18,9 @@ const proofItems = [
   },
   */
   {
-    label: "International freelance work",
-    value: "Upwork AI & Full-Stack Developer",
-    icon: BriefcaseBusiness,
+    label: "Top Rated on Upwork",
+    value: "AI Engineer | 100% Job Success Score",
+    icon: Award,
   },
   {
     label: "Founder",
