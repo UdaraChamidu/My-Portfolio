@@ -79,14 +79,14 @@ export const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8">
           {/* Contact Information */}
-          <div className="surface-card space-y-8 p-6 md:p-8">
+          <div className="surface-card space-y-6 p-6 md:p-7">
             <h3 className="border-b border-border pb-4 text-left text-xl font-semibold md:text-2xl">
               Contact Information
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Email */}
               <div className="flex items-start space-x-4">
                 <div className="icon-tile">
@@ -140,7 +140,7 @@ export const ContactSection = () => {
             </div>
 
             {/* Socials */}
-            <div className="pt-8 text-center">
+            <div className="border-t border-border pt-5 text-center">
               <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <a

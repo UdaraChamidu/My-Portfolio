@@ -68,7 +68,7 @@ retained.
 
 ### Certifications
 
-- [x] Organize all certifications into focused categories on the main page.
+- [x] Show three strong Featured certifications by default, with AI & Automation and Full Stack & Engineering category views for the remaining credentials.
 - [x] Remove expired signed URLs and general dashboard links.
 - [x] Add permanent verification links where available.
 - [x] Separate foundational certificates from advanced AI credentials.
@@ -339,7 +339,8 @@ allows:
 
 - [x] Write a short professional introduction.
 - [x] Include degree, university, location, and remote availability.
-- [x] Show all certifications in focused categories, as requested.
+- [x] Show three Featured certifications by default, keep all credentials accessible through category filters, and keep Education available as the secondary tab.
+- [x] Add verified secondary-education subjects and grades.
 - [x] Keep Education and Certifications under one Credentials navigation target.
 - [x] Keep personal history brief and relevant.
 
@@ -372,8 +373,8 @@ unless Udara explicitly requests a chatbot update in a future session.
 
 ### Footer
 
-- [ ] Add concise navigation and professional social links.
-- [ ] Keep copyright and Veloxdy relationship clear.
+- [x] Add concise navigation without duplicating the Contact section.
+- [x] Keep copyright and Veloxdy relationship clear.
 - [ ] Add privacy information if analytics or form tracking is introduced.
 
 ### Phase 9 Acceptance Criteria

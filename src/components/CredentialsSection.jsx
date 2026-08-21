@@ -16,7 +16,12 @@ const education = [
     degree: "Secondary Education",
     institute: "Dhammissara National College, Nattandiya",
     duration: "2012 - 2020",
-    description: "Focused on mathematics and science.",
+    description: "G.C.E. Advanced Level studies in the Physical Science stream.",
+    results: [
+      { subject: "Combined Mathematics", grade: "B" },
+      { subject: "Physics", grade: "B" },
+      { subject: "Chemistry", grade: "B" },
+    ],
   },
 ];
 
@@ -28,6 +33,7 @@ const certifications = [
     date: "2025",
     category: "AI & Automation",
     image: "/projects/c1.png",
+    featured: true,
   },
   {
     id: "anthropic-mcp",
@@ -37,6 +43,7 @@ const certifications = [
     category: "AI & Automation",
     image: "/projects/c4.png",
     verifyUrl: "https://verify.skilljar.com/c/v5gqbrcjunk2",
+    featured: true,
   },
   {
     id: "udemy-h2o-ai-agents",
@@ -65,6 +72,7 @@ const certifications = [
     category: "AI & Automation",
     image: "/projects/c6.png",
     verifyUrl: "https://code.sliit.org/certificates/ycxfp9tcgp",
+    featured: true,
   },
   {
     id: "simplilearn-ai-introduction",
@@ -81,7 +89,7 @@ const certifications = [
     title: "Docker for Beginners",
     issuer: "KodeKloud",
     date: "2025",
-    category: "Engineering Foundations",
+    category: "Full Stack & Engineering",
     image: "/projects/c2.png",
     verifyUrl:
       "https://learn.kodekloud.com/user/certificate/a14ac195-3b98-4efb-9177-34b764c3d581",
@@ -91,7 +99,7 @@ const certifications = [
     title: "Python for Beginners",
     issuer: "University of Moratuwa",
     date: "2022",
-    category: "Engineering Foundations",
+    category: "Full Stack & Engineering",
     image: "/projects/c8.png",
     verifyUrl:
       "https://open.uom.lk/lms/mod/customcert/verify_certificate.php",
@@ -102,7 +110,7 @@ const certifications = [
     title: "Web Design for Beginners",
     issuer: "University of Moratuwa",
     date: "2022",
-    category: "Engineering Foundations",
+    category: "Full Stack & Engineering",
     image: "/projects/c9.jpg",
     verifyUrl:
       "https://open.uom.lk/lms/mod/customcert/verify_certificate.php",
@@ -111,18 +119,19 @@ const certifications = [
 ];
 
 const certificationCategories = [
-  "All",
+  "Featured",
   "AI & Automation",
-  "Engineering Foundations",
+  "Full Stack & Engineering",
 ];
 
 export const CredentialsSection = () => {
-  const [activeView, setActiveView] = useState("education");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeView, setActiveView] = useState("certifications");
+  const [activeCategory, setActiveCategory] = useState("Featured");
 
-  const filteredCertifications = certifications.filter(
-    (certification) =>
-      activeCategory === "All" || certification.category === activeCategory
+  const filteredCertifications = certifications.filter((certification) =>
+    activeCategory === "Featured"
+      ? certification.featured
+      : certification.category === activeCategory
   );
 
   return (
@@ -148,21 +157,6 @@ export const CredentialsSection = () => {
             <button
               type="button"
               role="tab"
-              aria-selected={activeView === "education"}
-              onClick={() => setActiveView("education")}
-              className={cn(
-                "filter-control inline-flex items-center gap-2",
-                activeView === "education"
-                  ? "filter-control-active"
-                  : ""
-              )}
-            >
-              <GraduationCap className="h-4 w-4" aria-hidden="true" />
-              Education
-            </button>
-            <button
-              type="button"
-              role="tab"
               aria-selected={activeView === "certifications"}
               onClick={() => setActiveView("certifications")}
               className={cn(
@@ -174,6 +168,21 @@ export const CredentialsSection = () => {
             >
               <BookOpen className="h-4 w-4" aria-hidden="true" />
               Certifications
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeView === "education"}
+              onClick={() => setActiveView("education")}
+              className={cn(
+                "filter-control inline-flex items-center gap-2",
+                activeView === "education"
+                  ? "filter-control-active"
+                  : ""
+              )}
+            >
+              <GraduationCap className="h-4 w-4" aria-hidden="true" />
+              Education
             </button>
           </div>
         </div>
@@ -204,6 +213,23 @@ export const CredentialsSection = () => {
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
                   {item.description}
                 </p>
+                {item.results && (
+                  <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3">
+                    {item.results.map((result) => (
+                      <div
+                        key={result.subject}
+                        className="rounded-md border border-border bg-secondary/60 px-3 py-2"
+                      >
+                        <p className="text-xs text-muted-foreground">
+                          {result.subject}
+                        </p>
+                        <p className="mt-0.5 font-semibold text-primary">
+                          Grade {result.grade}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </article>
             ))}
           </div>
@@ -221,9 +247,7 @@ export const CredentialsSection = () => {
                   aria-pressed={activeCategory === category}
                   className={cn(
                     "filter-control",
-                    activeCategory === category
-                      ? "filter-control-active"
-                      : ""
+                    activeCategory === category ? "filter-control-active" : ""
                   )}
                 >
                   {category}
