@@ -1,6 +1,11 @@
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { ArrowRight, BookOpen, ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import {
+  caseStudiesPublic,
+  featuredCaseStudyIds,
+} from "@/data/caseStudies";
 
 const projects = [
   {
@@ -24,6 +29,27 @@ const projects = [
     tags: ["n8n", "Gmail", "Generative AI", "Excel"],
     category: "AI Automation",
     workType: "Client project",
+  },
+  {
+    id: "ai-voice-agent-platform",
+    title: "AI Voice Agent Platform",
+    description:
+      "A production-ready outbound-calling platform with natural real-time conversations, long-term vector memory, automated follow-ups, and a multi-tenant campaign analytics dashboard.",
+    image: "/projects/project18.png",
+    tags: ["React", "n8n", "Twilio / Vapi", "Pinecone"],
+    category: "AI Automation",
+    workType: "Professional project",
+    featured: true,
+  },
+  {
+    id: "biabot-client-intake",
+    title: "BiaBot: AI Client Intake Platform",
+    description:
+      "A full-stack conversational intake platform that captures client requirements through text or voice, extracts structured data, generates review-ready summaries, and automates internal handoffs to Monday.com.",
+    image: "/projects/project19.png",
+    tags: ["React", "FastAPI", "OpenAI", "Google Cloud Run"],
+    category: "AI",
+    workType: "Professional project",
     featured: true,
   },
   {
@@ -35,7 +61,6 @@ const projects = [
     tags: ["React", "PWA", "Tailwind CSS", "Analytics"],
     category: "Full Stack",
     workType: "Personal project",
-    featured: true,
     demoUrl: "https://leveluptrading.vercel.app",
   },
   {
@@ -47,7 +72,6 @@ const projects = [
     tags: ["Python", "Pandas", "NumPy", "Machine Learning"],
     category: "ML / DL",
     workType: "Personal project",
-    featured: true,
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Laptop-Price-Predictor",
     githubUrl: "https://github.com/UdaraChamidu/Laptop-Price-Predictor",
   },
@@ -60,7 +84,6 @@ const projects = [
     tags: ["Python", "YOLO", "Flask", "Computer Vision"],
     category: "Computer Vision",
     workType: "Academic project",
-    featured: true,
     demoUrl:
       "https://huggingface.co/spaces/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
     githubUrl:
@@ -75,7 +98,6 @@ const projects = [
     tags: ["C++", "ESP32", "GPS", "Embedded Systems"],
     category: "Embedded Systems",
     workType: "Academic project",
-    featured: true,
     githubUrl:
       "https://github.com/UdaraChamidu/Smart-Railway-Gate-Control-System-with-GPS-Tracking",
   },
@@ -88,6 +110,7 @@ const projects = [
     tags: ["React", "NestJS", "Prisma", "PostgreSQL"],
     category: "Full Stack",
     workType: "Internship work",
+    featured: true,
   },
   {
     id: "veloxdy",
@@ -111,6 +134,7 @@ const projects = [
     tags: ["React", "FastAPI", "Gemini", "Supabase"],
     category: "AI",
     workType: "Internship work",
+    featured: true,
     demoUrl: "https://phpstack-1409163-6105388.cloudwaysapps.com",
     githubUrl: "https://github.com/UdaraChamidu/Lumina-AI",
   },
@@ -395,8 +419,21 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                {(project.demoUrl || project.githubUrl) && (
+                {((caseStudiesPublic &&
+                  featuredCaseStudyIds.includes(project.id)) ||
+                  project.demoUrl ||
+                  project.githubUrl) && (
                   <div className="flex flex-wrap items-center gap-4 border-t border-border pt-4">
+                    {caseStudiesPublic &&
+                      featuredCaseStudyIds.includes(project.id) && (
+                      <Link
+                        to={`/projects/${project.id}`}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/75"
+                      >
+                        <BookOpen size={16} aria-hidden="true" />
+                        View case study
+                      </Link>
+                      )}
                     {project.demoUrl && (
                       <a
                         href={project.demoUrl}

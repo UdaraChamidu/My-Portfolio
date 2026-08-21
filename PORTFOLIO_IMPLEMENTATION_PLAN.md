@@ -185,38 +185,43 @@ retained.
 
 ## Phase 5: Featured Case Studies
 
+Visibility note: the reusable case-study pages are implemented but currently
+disabled for public visitors. Set `caseStudiesPublic` to `true` in
+`src/data/caseStudies.js` when the content and supporting media are ready to
+publish.
+
 ### Project Card Requirements
 
-- [ ] Project name and concise outcome-oriented summary.
-- [ ] Project type: client, employment, academic, or personal.
-- [ ] Udara's role and individual contribution.
-- [ ] Relevant technologies only.
-- [ ] High-quality and consistent project image.
-- [ ] Correct demo, repository, or case-study action.
+- [x] Project name and concise outcome-oriented summary.
+- [x] Project type: client, employment, academic, personal, or professional.
+- [x] Udara's role and individual contribution on Featured case-study pages.
+- [x] Relevant technologies only.
+- [x] High-quality and consistent project image.
+- [x] Correct demo, repository, or case-study action.
 
 ### Case Study Detail Requirements
 
-- [ ] Problem or business context.
-- [ ] Constraints and responsibilities.
-- [ ] Solution architecture.
-- [ ] Important implementation decisions.
-- [ ] Security, privacy, or human-approval considerations where relevant.
+- [x] Problem or business context.
+- [x] Constraints and responsibilities based on currently verified information.
+- [x] Solution architecture.
+- [x] Important implementation decisions.
+- [x] Security, privacy, or human-approval considerations where relevant.
 - [ ] Measurable result or clearly stated current status.
 - [ ] Screenshots, workflow diagrams, or dashboard media.
 - [ ] Related client review where permission exists.
 
 ### Recommended Initial Case Studies
 
-- [ ] AI Email Automation System for a USA business client.
-- [ ] Insurance AI Consultant Platform.
-- [ ] One strong SaaS or full-stack client product.
-- [ ] One strong RAG, AI agent, or chatbot project.
-- [ ] One machine learning or computer vision project with evaluation results.
+- [x] Insurance AI Consultant Platform.
+- [x] BiaBot AI Client Intake Platform.
+- [x] AI Voice Agent Platform.
+- [x] Lumina AI.
+- [x] HR Leave Management System.
 
 ### Phase 5 Acceptance Criteria
 
-- [ ] Four to six excellent projects are visible on the main page.
-- [ ] Every case study explains problem, contribution, and result.
+- [x] Five selected projects are visible in the Featured view.
+- [x] Every Featured case study explains the problem, contribution, architecture, and current outcome without invented metrics.
 - [ ] Confidential projects reveal no protected client information.
 - [ ] All links, images, and responsive layouts work correctly.
 
