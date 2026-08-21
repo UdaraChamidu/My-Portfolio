@@ -9,6 +9,14 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
 
   --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -78,11 +86,19 @@
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --primary: 250 47% 60%;
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 35% 18%;
+    --muted: 220 18% 94%;
+    --muted-foreground: 218 12% 42%;
+
+    --primary: 250 55% 54%;
     --primary-foreground: 210 40% 98%;
 
     --border: 214 32% 91%;
+    --input: 214 25% 84%;
+    --ring: 250 55% 54%;
   }
 
   .dark {
@@ -90,11 +106,19 @@
     --foreground: 213 31% 91%;
 
     --card: 222 47% 8%;
+    --card-foreground: 213 31% 91%;
+
+    --secondary: 220 25% 12%;
+    --secondary-foreground: 214 25% 90%;
+    --muted: 220 22% 14%;
+    --muted-foreground: 215 16% 68%;
 
     --primary: 250 65% 65%;
-    --primary-foreground: 213 31% 91%;
+    --primary-foreground: 222 47% 8%;
 
     --border: 217 33% 20%;
+    --input: 217 28% 27%;
+    --ring: 250 65% 65%;
   }
 
   * {
@@ -103,11 +127,93 @@
 
   html {
     @apply scroll-smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
+    letter-spacing: 0;
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.24);
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply relative px-4 py-20 md:py-24;
+  }
+
+  .section-band {
+    @apply border-y border-border bg-secondary/45;
+  }
+
+  .section-inner {
+    @apply container mx-auto max-w-6xl;
+  }
+
+  .section-header {
+    @apply mx-auto mb-10 max-w-3xl text-center md:mb-12;
+  }
+
+  .section-kicker {
+    @apply mb-3 text-sm font-semibold text-primary;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold leading-tight md:text-4xl;
+  }
+
+  .section-description {
+    @apply mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg;
+  }
+
+  .surface-card {
+    @apply rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-[border-color,box-shadow,transform] duration-300;
+  }
+
+  .surface-card-interactive {
+    @apply hover:border-primary/40 hover:shadow-lg;
+  }
+
+  .icon-tile {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary;
+  }
+
+  .button-primary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-[background-color,box-shadow,transform] duration-200 hover:bg-primary/90 hover:shadow-md active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .button-secondary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium text-foreground transition-[border-color,color,background-color] duration-200 hover:border-primary/50 hover:bg-secondary hover:text-primary;
+  }
+
+  .filter-control {
+    @apply rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:border-primary/50 hover:text-foreground;
+  }
+
+  .filter-control-active {
+    @apply border-primary bg-primary text-primary-foreground hover:text-primary-foreground;
+  }
+
+  .meta-tag {
+    @apply rounded-md border border-border bg-secondary/70 px-2.5 py-1 text-xs font-medium text-secondary-foreground;
+  }
+
+  .form-control {
+    @apply w-full rounded-md border border-input bg-background px-4 py-3 text-foreground transition-[border-color,box-shadow] placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25;
+  }
+
+  .icon-button {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-card/90 text-foreground shadow-md backdrop-blur-md transition-[border-color,color,background-color,transform] duration-200 hover:border-primary/50 hover:bg-secondary hover:text-primary active:scale-95;
   }
 }
 
@@ -150,15 +256,11 @@
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
-         hover:scale-105 active:scale-95;
+  @apply inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-md active:translate-y-px;
 }
 
 @utility cosmic-button-secondary {
-  @apply px-6 py-2 rounded-full border-2 border-primary text-primary bg-transparent font-medium
-         transition-all duration-300 hover:bg-primary hover:text-primary-foreground
-         hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
+  @apply inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-5 py-2.5 font-medium text-foreground transition-all duration-200 hover:border-primary/50 hover:bg-secondary hover:text-primary;
 }
 
 @utility star {
@@ -176,4 +278,15 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

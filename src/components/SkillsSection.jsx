@@ -114,18 +114,21 @@ export const SkillsSection = () => {
   );
 
   return (
-    <section id="skills" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Technical <span className="text-primary">Capabilities</span>
-        </h2>
-        <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
-          Technologies and engineering practices used across AI automation,
-          full-stack development, data systems, and deployment.
-        </p>
+    <section id="skills" className="section-shell">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">Engineering Toolkit</p>
+          <h2 className="section-title">
+            Technical <span className="text-primary">Capabilities</span>
+          </h2>
+          <p className="section-description">
+            Technologies and engineering practices used across AI automation,
+            full-stack development, data systems, and deployment.
+          </p>
+        </div>
 
         <div
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="mb-10 flex flex-wrap justify-center gap-2 md:mb-12"
           aria-label="Skill categories"
         >
           {categories.map((category) => (
@@ -135,10 +138,10 @@ export const SkillsSection = () => {
               onClick={() => setActiveCategory(category)}
               aria-pressed={activeCategory === category}
               className={cn(
-                "px-4 py-2 rounded-md transition-colors duration-200 font-medium",
+                "filter-control",
                 activeCategory === category
-                  ? "bg-primary text-primary-foreground"
-                  : "border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                  ? "filter-control-active"
+                  : ""
               )}
             >
               {category}
@@ -156,7 +159,7 @@ export const SkillsSection = () => {
             return (
               <div
                 key={skill.name}
-                className="group flex min-h-32 flex-col items-center justify-center gap-3 rounded-lg border border-border bg-card p-4 opacity-0 shadow-xs animate-[skill-enter_450ms_ease-out_forwards] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg motion-reduce:animate-none motion-reduce:opacity-100 motion-reduce:hover:translate-y-0"
+                className="surface-card surface-card-interactive group flex min-h-32 flex-col items-center justify-center gap-3 p-4 opacity-0 animate-[skill-enter_450ms_ease-out_forwards] motion-reduce:animate-none motion-reduce:opacity-100"
                 style={{ animationDelay: `${Math.min(index * 45, 360)}ms` }}
               >
                 <Icon

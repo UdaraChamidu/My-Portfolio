@@ -130,29 +130,29 @@ retained.
 
 ### Design Direction
 
-- [ ] Use a quiet, modern technology-consultant visual style.
-- [ ] Keep dark mode as the first-visit default.
-- [ ] Maintain a polished and accessible light theme.
-- [ ] Use neutral surfaces with purple as an accent rather than the dominant color.
-- [ ] Refine nonessential animation while preserving the rotating wallpapers, stars, meteors, and background controls requested by Udara.
-- [ ] Use section bands and open layouts instead of excessive floating cards.
+- [x] Use a quiet, modern technology-consultant visual style.
+- [x] Keep dark mode as the first-visit default.
+- [x] Maintain a polished light theme with explicit surface and text tokens.
+- [x] Use neutral surfaces with purple as an accent rather than the dominant color.
+- [x] Refine nonessential animation while preserving the rotating wallpapers, stars, meteors, and background controls requested by Udara.
+- [x] Use section bands and open layouts instead of excessive floating cards.
 
 ### Design Tokens
 
-- [ ] Define consistent background, surface, border, text, and accent colors.
-- [ ] Define a consistent typography scale.
-- [ ] Define spacing and container-width rules.
-- [ ] Standardize buttons, links, tags, cards, inputs, and icon buttons.
-- [ ] Keep card corner radius at approximately 6-8px.
-- [ ] Define responsive image ratios for project and review media.
-- [ ] Add reduced-motion support.
+- [x] Define consistent background, surface, border, text, and accent colors.
+- [x] Define a consistent typography scale.
+- [x] Define spacing and container-width rules.
+- [x] Standardize buttons, links, tags, cards, inputs, and icon buttons.
+- [x] Keep card corner radius at approximately 6-8px.
+- [x] Define stable image ratios and dimensions for project and review media.
+- [x] Add reduced-motion support, including pausing wallpaper autoplay by default for visitors who request it.
 
 ### Phase 3 Acceptance Criteria
 
-- [ ] All sections feel like one coherent product.
-- [ ] Text hierarchy is clear on desktop and mobile.
-- [ ] Animation supports interaction without distracting visitors.
-- [ ] Color contrast meets accessibility requirements.
+- [x] All sections use one shared visual system.
+- [-] Text hierarchy and responsive layouts are implemented; final visual viewport QA remains in Phase 11.
+- [x] Animation supports interaction without changing the requested background experience.
+- [-] Contrast tokens are improved; formal contrast verification remains in Phase 10.
 
 ---
 

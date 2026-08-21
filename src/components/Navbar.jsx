@@ -83,7 +83,7 @@ export const Navbar = () => {
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-all duration-300",
         isScrolled
-          ? "border-b border-border bg-background/90 py-3 shadow-xs backdrop-blur-md"
+          ? "border-b border-border bg-background/92 py-3 shadow-md backdrop-blur-xl"
           : "py-5"
       )}
     >
@@ -112,7 +112,7 @@ export const Navbar = () => {
           <a
             href="/Herath_CV_AI.pdf"
             download
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="button-primary min-h-10 px-4 py-2 text-sm"
           >
             <Download className="h-4 w-4" aria-hidden="true" />
             Download CV
@@ -123,7 +123,7 @@ export const Navbar = () => {
           ref={menuButtonRef}
           type="button"
           onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-          className="relative z-50 rounded-md border border-border bg-card p-2 text-foreground lg:hidden"
+          className="icon-button relative z-50 lg:hidden"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
@@ -157,7 +157,7 @@ export const Navbar = () => {
                 href="/Herath_CV_AI.pdf"
                 download
                 onClick={closeMenu}
-                className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 font-medium text-primary-foreground"
+                className="button-primary mt-4"
               >
                 <Download className="h-5 w-5" aria-hidden="true" />
                 Download CV

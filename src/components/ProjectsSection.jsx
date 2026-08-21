@@ -341,19 +341,21 @@ export const ProjectsSection = () => {
   );
 
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Selected <span className="text-primary">Projects</span>
-        </h2>
-
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          A focused selection of AI, automation, machine learning, computer
-          vision, full-stack, and embedded systems work.
-        </p>
+    <section id="projects" className="section-shell">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">Selected Engineering Work</p>
+          <h2 className="section-title">
+            Featured <span className="text-primary">Projects</span>
+          </h2>
+          <p className="section-description">
+            Explore AI, automation, machine learning, computer vision,
+            full-stack, and embedded systems work by category.
+          </p>
+        </div>
 
         <div
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="mb-10 flex flex-wrap justify-center gap-2 md:mb-12"
           aria-label="Project categories"
         >
           {categories.map((category) => (
@@ -363,10 +365,10 @@ export const ProjectsSection = () => {
               onClick={() => setActiveCategory(category)}
               aria-pressed={activeCategory === category}
               className={cn(
-                "px-4 py-2 rounded-md transition-colors duration-200 font-medium",
+                "filter-control",
                 activeCategory === category
-                  ? "bg-primary text-primary-foreground"
-                  : "border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                  ? "filter-control-active"
+                  : ""
               )}
             >
               {category}
@@ -374,11 +376,11 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
             <article
               key={project.id}
-              className="group bg-card border border-border rounded-lg overflow-hidden flex h-full flex-col transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
+              className="surface-card surface-card-interactive group flex h-full flex-col overflow-hidden"
             >
               <div className="relative h-48 overflow-hidden bg-secondary/20">
                 <img
@@ -412,7 +414,7 @@ export const ProjectsSection = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={`${project.id}-${tag}`}
-                      className="px-2 py-1 text-xs font-medium border border-border rounded-md bg-secondary/60 text-secondary-foreground"
+                    className="meta-tag"
                     >
                       {tag}
                     </span>
@@ -463,9 +465,9 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="mt-12 text-center">
           <a
-            className="cosmic-button w-fit inline-flex items-center mx-auto gap-2"
+            className="button-secondary mx-auto w-fit"
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/UdaraChamidu"

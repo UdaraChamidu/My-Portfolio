@@ -75,13 +75,14 @@ const experienceList = [
 
 export const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="experience" className="section-shell section-band">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">Professional Timeline</p>
+          <h2 className="section-title">
             Professional <span className="text-primary">Experience</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
+          <p className="section-description">
             Current roles span employment, professional collaboration,
             freelance client work, and building Veloxdy.
           </p>
@@ -108,9 +109,9 @@ export const ExperienceSection = () => {
                 aria-hidden="true"
               />
 
-              <div className="col-start-2 rounded-lg border border-border bg-card p-5 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-lg md:col-start-3 md:row-start-1 md:p-6">
+              <div className="surface-card surface-card-interactive col-start-2 p-5 text-left md:col-start-3 md:row-start-1 md:p-6">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <span className="rounded-md border border-primary/25 bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                  <span className="meta-tag border-primary/25 bg-primary/10 text-primary">
                     {exp.engagementType}
                   </span>
                   {exp.duration.includes("Present") && (

@@ -30,16 +30,16 @@ const reviews = [
 
 export const ReviewsSection = () => {
   return (
-    <section id="reviews" className="relative px-4 py-24 bg-secondary/30">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold text-primary">
+    <section id="reviews" className="section-shell">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">
             Verified Freelance Work
           </p>
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          <h2 className="section-title">
             Client <span className="text-primary">Reviews</span>
           </h2>
-          <p className="leading-7 text-muted-foreground">
+          <p className="section-description">
             Ratings and feedback from completed and ongoing Upwork contracts.
             Screenshots are included as the original review evidence.
           </p>
@@ -49,7 +49,7 @@ export const ReviewsSection = () => {
           {reviews.map((review) => (
             <article
               key={review.id}
-              className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card text-left transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
+              className="surface-card surface-card-interactive flex h-full flex-col overflow-hidden text-left"
             >
               <div className="flex h-44 items-center justify-center border-b border-border bg-[#181818] p-3">
                 <img
@@ -78,7 +78,7 @@ export const ReviewsSection = () => {
                 {review.quote && (
                   <blockquote className="mt-4 flex gap-3 border-l-2 border-primary pl-4 text-sm italic leading-6 text-muted-foreground">
                     <Quote className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                    <span>“{review.quote}”</span>
+                    <span>&quot;{review.quote}&quot;</span>
                   </blockquote>
                 )}
 
@@ -86,7 +86,7 @@ export const ReviewsSection = () => {
                   {review.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-border bg-secondary/60 px-2 py-1 text-xs font-medium text-secondary-foreground"
+                      className="meta-tag"
                     >
                       {tag}
                     </span>
@@ -102,7 +102,7 @@ export const ReviewsSection = () => {
             href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium transition-colors hover:border-primary/50 hover:text-primary"
+            className="button-secondary"
           >
             <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
             View Upwork Profile

@@ -126,13 +126,14 @@ export const CredentialsSection = () => {
   );
 
   return (
-    <section id="credentials" className="relative px-4 py-24">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mx-auto mb-8 max-w-2xl text-center">
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+    <section id="credentials" className="section-shell section-band">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">Education and Learning</p>
+          <h2 className="section-title">
             Education & <span className="text-primary">Credentials</span>
           </h2>
-          <p className="leading-7 text-muted-foreground">
+          <p className="section-description">
             Academic foundations and continued professional learning across AI,
             automation, and software engineering.
           </p>
@@ -150,10 +151,10 @@ export const CredentialsSection = () => {
               aria-selected={activeView === "education"}
               onClick={() => setActiveView("education")}
               className={cn(
-                "inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium transition-colors",
+                "filter-control inline-flex items-center gap-2",
                 activeView === "education"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "filter-control-active"
+                  : ""
               )}
             >
               <GraduationCap className="h-4 w-4" aria-hidden="true" />
@@ -165,10 +166,10 @@ export const CredentialsSection = () => {
               aria-selected={activeView === "certifications"}
               onClick={() => setActiveView("certifications")}
               className={cn(
-                "inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium transition-colors",
+                "filter-control inline-flex items-center gap-2",
                 activeView === "certifications"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "filter-control-active"
+                  : ""
               )}
             >
               <BookOpen className="h-4 w-4" aria-hidden="true" />
@@ -182,7 +183,7 @@ export const CredentialsSection = () => {
             {education.map((item) => (
               <article
                 key={item.id}
-                className="rounded-lg border border-border bg-card p-6 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
+                className="surface-card surface-card-interactive p-6 text-left"
               >
                 <div className="mb-4 flex items-start gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -209,7 +210,7 @@ export const CredentialsSection = () => {
         ) : (
           <div>
             <div
-              className="mb-10 flex flex-wrap justify-center gap-3"
+              className="mb-10 flex flex-wrap justify-center gap-2"
               aria-label="Certification categories"
             >
               {certificationCategories.map((category) => (
@@ -219,10 +220,10 @@ export const CredentialsSection = () => {
                   onClick={() => setActiveCategory(category)}
                   aria-pressed={activeCategory === category}
                   className={cn(
-                    "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                    "filter-control",
                     activeCategory === category
-                      ? "bg-primary text-primary-foreground"
-                      : "border border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                      ? "filter-control-active"
+                      : ""
                   )}
                 >
                   {category}
@@ -234,7 +235,7 @@ export const CredentialsSection = () => {
               {filteredCertifications.map((certification) => (
                 <article
                   key={certification.id}
-                  className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card text-left transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
+                  className="surface-card surface-card-interactive group flex h-full flex-col overflow-hidden text-left"
                 >
                   <div className="relative flex h-44 items-center justify-center border-b border-border bg-secondary/20">
                     <img

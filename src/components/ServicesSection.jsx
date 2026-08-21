@@ -65,16 +65,16 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section id="services" className="relative px-4 py-24">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="mb-3 text-sm font-semibold text-primary">
+    <section id="services" className="section-shell section-band">
+      <div className="section-inner">
+        <div className="section-header">
+          <p className="section-kicker">
             Engineering Services
           </p>
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          <h2 className="section-title">
             Practical Solutions for <span className="text-primary">Real Work</span>
           </h2>
-          <p className="text-base leading-7 text-muted-foreground md:text-lg">
+          <p className="section-description">
             Focused AI, automation, machine learning, and full-stack engineering
             services designed around your workflow, users, and business goals.
           </p>
@@ -87,10 +87,10 @@ export const ServicesSection = () => {
             return (
               <article
                 key={service.id}
-                className="group flex h-full flex-col rounded-lg border border-border bg-card p-6 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-lg md:p-7"
+                className="surface-card surface-card-interactive group flex h-full flex-col p-6 text-left md:p-7"
               >
                 <div className="mb-5 flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <span className="icon-tile h-12 w-12 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
                   <div>
@@ -160,7 +160,7 @@ export const ServicesSection = () => {
           <div className="flex flex-wrap justify-center gap-3 md:justify-end">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="button-primary"
             >
               Start a Project
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -169,7 +169,7 @@ export const ServicesSection = () => {
               href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium transition-colors hover:border-primary/50 hover:text-primary"
+              className="button-secondary"
             >
               <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
               Upwork
@@ -178,7 +178,7 @@ export const ServicesSection = () => {
               href="https://veloxdy.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium transition-colors hover:border-primary/50 hover:text-primary"
+              className="button-secondary"
             >
               Veloxdy
               <ExternalLink className="h-4 w-4" aria-hidden="true" />

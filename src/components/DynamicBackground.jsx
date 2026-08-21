@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Image as ImageIcon, RefreshCcw, Pause, Play } from "lucide-react";
+import { Image as ImageIcon, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // A curated list of high-quality tech/abstract wallpapers
@@ -21,7 +21,9 @@ const WALLPAPERS = [
 
 export const DynamicBackground = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(
+    () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   // Configuration
   // const CHANGE_INTERVAL = 10000; // Change every 10 seconds
@@ -65,13 +67,14 @@ export const DynamicBackground = () => {
       </div>
 
       {/* CONTROLS (z-50) - Always clickable */}
-      <div className="fixed bottom-6 left-6 z-50 flex gap-3">
+      <div className="fixed bottom-4 left-4 z-50 flex gap-2 sm:bottom-6 sm:left-6">
         {/* Change Wallpaper Button */}
         <button
           onClick={nextWallpaper}
-          className="p-3 rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white 
-                     hover:bg-primary/80 transition-all duration-300 shadow-xl active:scale-95 group"
+          type="button"
+          className="icon-button group border-white/20 bg-black/45 text-white hover:bg-primary hover:text-white"
           title="Next Wallpaper"
+          aria-label="Show next background wallpaper"
         >
           <ImageIcon
             size={20}
@@ -82,13 +85,15 @@ export const DynamicBackground = () => {
         {/* AutoPlay Toggle */}
         <button
           onClick={toggleAutoPlay}
+          type="button"
           className={cn(
-            "p-3 rounded-full backdrop-blur-md border border-white/20 text-white transition-all duration-300 shadow-xl active:scale-95",
+            "icon-button border-white/20 text-white",
             isAutoPlaying
-              ? "bg-green-500/20 hover:bg-green-500/40"
-              : "bg-red-500/20 hover:bg-red-500/40"
+              ? "bg-emerald-950/70 hover:bg-emerald-800"
+              : "bg-black/45 hover:bg-primary"
           )}
           title={isAutoPlaying ? "Pause Slideshow" : "Play Slideshow"}
+          aria-label={isAutoPlaying ? "Pause background slideshow" : "Play background slideshow"}
         >
           {isAutoPlaying ? <Pause size={20} /> : <Play size={20} />}
         </button>

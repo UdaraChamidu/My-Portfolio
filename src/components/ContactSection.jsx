@@ -66,28 +66,30 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary"> Touch</span>
-        </h2>
-
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Have a project, collaboration, or engineering opportunity in mind?
-          Send a message and include a little context about what you need.
-        </p>
+    <section id="contact" className="section-shell">
+      <div className="section-inner max-w-5xl">
+        <div className="section-header">
+          <p className="section-kicker">Start a Conversation</p>
+          <h2 className="section-title">
+            Get In <span className="text-primary">Touch</span>
+          </h2>
+          <p className="section-description">
+            Have a project, collaboration, or engineering opportunity in mind?
+            Send a message and include a little context about what you need.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="bg-card p-8 rounded-lg shadow-md space-y-8">
-            <h3 className="text-2xl font-semibold mb-6 border-b border-muted-foreground pb-2">
+          <div className="surface-card space-y-8 p-6 md:p-8">
+            <h3 className="border-b border-border pb-4 text-left text-xl font-semibold md:text-2xl">
               Contact Information
             </h3>
 
             <div className="space-y-6">
               {/* Email */}
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="icon-tile">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
@@ -102,7 +104,7 @@ export const ContactSection = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="icon-tile">
                   <Globe className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
@@ -120,7 +122,7 @@ export const ContactSection = () => {
 
               {/* Location */}
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="icon-tile">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
@@ -140,13 +142,14 @@ export const ContactSection = () => {
             {/* Socials */}
             <div className="pt-8 text-center">
               <h4 className="font-medium mb-4">Connect With Me</h4>
-              <div className="flex items-center space-x-5 justify-center">
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
                   href="https://www.linkedin.com/in/udara-herath-530006217"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
                   title="LinkedIn"
+                  className="icon-button"
                 >
                   <Linkedin className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
@@ -156,6 +159,7 @@ export const ContactSection = () => {
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
                   title="GitHub"
+                  className="icon-button"
                 >
                   <Github className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
@@ -165,6 +169,7 @@ export const ContactSection = () => {
                   rel="noopener noreferrer"
                   aria-label="Upwork profile"
                   title="Upwork"
+                  className="icon-button"
                 >
                   <BriefcaseBusiness className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
@@ -174,7 +179,7 @@ export const ContactSection = () => {
                   rel="noopener noreferrer"
                   aria-label="Medium profile"
                   title="Medium"
-                  className="inline-flex h-6 w-7 items-center justify-center text-primary hover:text-primary/70 transition-colors"
+                  className="icon-button"
                 >
                   <span className="font-serif text-xl font-black leading-none">M</span>
                 </a>
@@ -183,8 +188,8 @@ export const ContactSection = () => {
           </div>
 
           {/* Send a Message */}
-          <div className="bg-card p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold mb-6 border-b border-muted-foreground pb-2">
+          <div className="surface-card p-6 md:p-8">
+            <h3 className="mb-6 border-b border-border pb-4 text-left text-xl font-semibold md:text-2xl">
               Send a Message
             </h3>
 
@@ -201,7 +206,7 @@ export const ContactSection = () => {
                   id="name"
                   name="user_name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="form-control"
                   autoComplete="name"
                   placeholder="Your name"
                 />
@@ -219,7 +224,7 @@ export const ContactSection = () => {
                   id="email"
                   name="user_email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="form-control"
                   autoComplete="email"
                   placeholder="you@example.com"
                 />
@@ -237,7 +242,7 @@ export const ContactSection = () => {
                   name="message"
                   required
                   rows={6}
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+                  className="form-control resize-y"
                   placeholder="Tell me about your project, goals, and timeline."
                 />
               </div>
@@ -246,7 +251,7 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
+                  "button-primary w-full"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}

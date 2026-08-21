@@ -2,65 +2,45 @@ import { Briefcase, Code, User } from "lucide-react";
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 px-4 relative">
-      {" "}
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          About <span className="text-primary"> Me</span>
-        </h2>
+    <section id="about" className="section-shell section-band">
+      <div className="section-inner max-w-5xl">
+        <div className="section-header">
+          <p className="section-kicker">Professional Profile</p>
+          <h2 className="section-title">
+            About <span className="text-primary">Me</span>
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">
+        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-12">
+          <div className="space-y-5 text-left">
+            <h3 className="text-2xl font-semibold leading-tight">
               Engineering practical AI and software products
             </h3>
 
-            <p className="text-muted-foreground">
+            <p className="leading-7 text-muted-foreground">
               I am a final-year B.Sc. (Hons) Computer Engineering undergraduate
               at the University of Jaffna, based in Sri Lanka and available for
               remote collaboration.
             </p>
 
-            <p className="text-muted-foreground">
+            <p className="leading-7 text-muted-foreground">
               My work combines applied AI, automation, and full-stack
               engineering. I focus on translating business requirements into
               maintainable systems with thoughtful human oversight, reliable
               integrations, and clear deployment paths.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                Get In Touch
-              </a>
-
-              <a
-                href="/Herath_CV_AI.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
-              >
-                View CV
-              </a>
-
-              <a
-                href="/Herath_CV_AI.pdf"
-                download
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
-              >
-                Download CV
-              </a>
-            </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
+          <div className="grid grid-cols-1 gap-4">
+            <div className="surface-card surface-card-interactive p-5 md:p-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="icon-tile">
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg"> SaaS Development</h4>
-                  <p className="text-muted-foreground">
+                  <h4 className="text-lg font-semibold">SaaS Development</h4>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
                     Building scalable, multi-tenant software-as-a-service
                     platforms with modern tech stacks.
                   </p>
@@ -68,16 +48,16 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="gradient-border p-6 card-hover">
+            <div className="surface-card surface-card-interactive p-5 md:p-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="icon-tile">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
                     Machine Learning & Deep Learning
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
                     Building prediction, classification, NLP, and computer
                     vision solutions with deployment-ready interfaces.
                   </p>
@@ -85,16 +65,16 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="gradient-border p-6 card-hover">
+            <div className="surface-card surface-card-interactive p-5 md:p-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="icon-tile">
                   <User className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
                     Generative & Agentic AI
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">
                     Creating RAG systems, AI agents, voice workflows, and
                     business automation pipelines with modern LLM tooling.
                   </p>

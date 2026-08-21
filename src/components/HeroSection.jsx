@@ -34,7 +34,7 @@ export const HeroSection = () => {
       id="hero"
       className="relative flex min-h-screen items-center px-4 pb-10 pt-28 md:pb-14 md:pt-32"
     >
-      <div className="container relative z-10 mx-auto max-w-6xl text-center">
+      <div className="section-inner relative z-10 text-center">
         <div className="mx-auto -mt-10 mb-7 h-52 w-52 overflow-hidden rounded-full border-4 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:h-60 sm:w-60">
           <img
             src="/udara.jpg"
@@ -61,28 +61,28 @@ export const HeroSection = () => {
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="button-primary"
           >
             View Projects
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+            className="button-secondary"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
             Contact Me
           </a>
           <a
             href="#services"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+            className="button-secondary"
           >
             <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
             View Services
           </a>
         </div>
 
-        <div className="mt-12 grid border-y border-border text-left md:grid-cols-3">
+        <div className="surface-card mt-12 grid overflow-hidden text-left md:grid-cols-3">
           {proofItems.map((item) => {
             const Icon = item.icon;
 
@@ -92,9 +92,9 @@ export const HeroSection = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-h-20 items-center gap-3 border-b border-border px-4 py-3 transition-colors hover:bg-secondary/40 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+                className="group flex min-h-24 items-center gap-3 border-b border-border px-4 py-4 transition-colors hover:bg-secondary/60 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <span className="icon-tile">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span className="min-w-0 flex-1">
