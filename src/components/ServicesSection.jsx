@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   BrainCircuit,
-  BriefcaseBusiness,
   Check,
   Code2,
   ExternalLink,
@@ -164,15 +163,6 @@ export const ServicesSection = () => {
             >
               Start a Project
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-secondary"
-            >
-              <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
-              Upwork
             </a>
             <a
               href="https://veloxdy.com"

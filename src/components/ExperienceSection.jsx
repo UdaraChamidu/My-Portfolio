@@ -1,6 +1,7 @@
 import { ExternalLink, MapPin } from "lucide-react";
 
 const experienceList = [
+  /* Temporarily hidden. Remove this comment wrapper to restore both roles.
   {
     id: 1,
     role: "AI Automation Engineer",
@@ -29,6 +30,7 @@ const experienceList = [
       "Support the development of practical and scalable technology solutions.",
     ],
   },
+  */
   {
     id: 3,
     role: "Freelance AI Engineer, AI Automation & Full-Stack Developer",
@@ -41,7 +43,6 @@ const experienceList = [
       "Deliver AI solutions, automation workflows, and API integrations for business clients.",
       "Build full-stack web applications from requirements through deployment.",
     ],
-    url: "https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share",
   },
   {
     id: 4,
@@ -83,8 +84,8 @@ export const ExperienceSection = () => {
             Professional <span className="text-primary">Experience</span>
           </h2>
           <p className="section-description">
-            Current roles span employment, professional collaboration,
-            freelance client work, and building Veloxdy.
+            Experience across international freelance client work, building
+            Veloxdy, and AI/ML software engineering during my internship.
           </p>
         </div>
 
@@ -127,18 +128,24 @@ export const ExperienceSection = () => {
                     <h3 className="text-left text-xl font-semibold leading-snug md:text-2xl">
                       {exp.role}
                     </h3>
-                    <a
-                      href={exp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 inline-flex items-center gap-1.5 font-medium text-primary hover:text-primary/75"
-                    >
-                      {exp.company}
-                      <ExternalLink
-                        className="h-3.5 w-3.5"
-                        aria-hidden="true"
-                      />
-                    </a>
+                    {exp.url ? (
+                      <a
+                        href={exp.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-flex items-center gap-1.5 font-medium text-primary hover:text-primary/75"
+                      >
+                        {exp.company}
+                        <ExternalLink
+                          className="h-3.5 w-3.5"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    ) : (
+                      <p className="mt-1 font-medium text-primary">
+                        {exp.company}
+                      </p>
+                    )}
 
                     <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
                       <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -146,13 +153,7 @@ export const ExperienceSection = () => {
                     </p>
                   </div>
 
-                  <a
-                    href={exp.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-16 w-full shrink-0 items-center justify-center rounded-md border border-border bg-white p-2 sm:w-36"
-                    aria-label={`Visit ${exp.company}`}
-                  >
+                  <div className="flex h-16 w-full shrink-0 items-center justify-center rounded-md border border-border bg-white p-2 sm:w-36">
                     <img
                       src={exp.image}
                       alt={`${exp.company} logo`}
@@ -161,7 +162,7 @@ export const ExperienceSection = () => {
                       width="144"
                       height="64"
                     />
-                  </a>
+                  </div>
                 </div>
 
                 <ul className="mt-5 max-w-2xl space-y-2 text-base leading-7 text-muted-foreground">

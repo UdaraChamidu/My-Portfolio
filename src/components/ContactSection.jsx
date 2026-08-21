@@ -1,5 +1,4 @@
 import {
-  BriefcaseBusiness,
   Github,
   Globe,
   Linkedin,
@@ -162,16 +161,6 @@ export const ContactSection = () => {
                   className="icon-button"
                 >
                   <Github className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
-                </a>
-                <a
-                  href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Upwork profile"
-                  title="Upwork"
-                  className="icon-button"
-                >
-                  <BriefcaseBusiness className="h-6 w-6 text-primary hover:text-primary/70 transition-colors" />
                 </a>
                 <a
                   href="https://medium.com/@chamiduudara321"

@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, ExternalLink, Quote, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 const reviews = [
   {
@@ -97,18 +97,6 @@ export const ReviewsSection = () => {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
-          <a
-            href="https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-secondary"
-          >
-            <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
-            View Upwork Profile
-            <ExternalLink className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </section>
   );

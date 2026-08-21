@@ -59,6 +59,11 @@ retained.
 
 ### Experience
 
+Visibility note: the Atlantic Bridge Exchange Limited and Technology Center
+Lanka roles are retained as commented data in `ExperienceSection.jsx` but are
+currently hidden from public visitors. The Atlantic Bridge Hero proof item is
+also commented in `HeroSection.jsx` for consistency.
+
 - [x] Label roles as employment, collaboration, freelance, internship, or founder work.
 - [x] Verify company names, locations, dates, and exact engagement types.
 - [x] Replace generic responsibility statements with specific contributions.
@@ -242,7 +247,7 @@ publish.
 - [x] Identify suitable client types.
 - [x] List practical deliverables instead of broad technology claims.
 - [x] Link each service to relevant project evidence.
-- [x] Provide Start a Project, Upwork, and Veloxdy actions without duplication.
+- [x] Provide Start a Project and Veloxdy actions without exposing the Upwork profile URL.
 
 ### Phase 6 Acceptance Criteria
 
@@ -274,8 +279,8 @@ allows:
 - [x] Create a reusable testimonials data structure.
 - [x] Display three featured reviews in a responsive grid.
 - [x] Avoid an automatically moving carousel.
-- [x] Include original review screenshots as evidence and link to the Upwork profile.
-- [x] Add a View Upwork Profile action.
+- [x] Include original review screenshots as evidence without exposing the private Upwork profile URL.
+- [x] Remove direct Upwork profile actions for privacy while retaining verified platform attribution.
 - [x] Avoid exposing client identities not present in the supplied evidence.
 - [ ] Connect reviews to related case studies where possible.
 - [ ] Add empty and fallback states when review data becomes dynamic.
@@ -305,7 +310,7 @@ allows:
 - [x] Publish only the supplied contract evidence without adding client identities.
 - [x] Clearly present reviews without unsupported identity claims.
 - [x] Preserve the exact visible client feedback.
-- [x] Keep original screenshots and an Upwork profile source link.
+- [x] Keep original screenshots and Upwork source attribution without a public profile link.
 
 ### Phase 7 Acceptance Criteria
 
@@ -324,7 +329,7 @@ allows:
 - [x] Put current roles first.
 - [x] Add engagement type and location.
 - [x] Use two to four outcome-oriented bullets per role.
-- [x] Link Upwork and Veloxdy entries to their profiles.
+- [x] Link Veloxdy to its website and keep the Upwork experience entry non-clickable for privacy.
 
 ### Technical Capabilities
 
@@ -359,7 +364,7 @@ allows:
 - [x] Keep one professional contact email.
 - [x] Remove the public phone number.
 - [x] Remove public WhatsApp contact details.
-- [x] Include LinkedIn, GitHub, Medium, Upwork, and Veloxdy.
+- [x] Include LinkedIn, GitHub, Medium, and Veloxdy; mention Upwork experience without publishing its profile URL.
 - [x] Remove Facebook from professional contact links.
 - [ ] Add project type and budget-range fields only if they improve qualification.
 - [ ] Add clear success, validation, and failure states.

@@ -1,24 +1,25 @@
 import {
   ArrowRight,
   BriefcaseBusiness,
-  Building2,
+  // Building2, // Restore with the temporarily hidden UK proof item.
   ExternalLink,
   Mail,
   Rocket,
 } from "lucide-react";
 
 const proofItems = [
+  /* Temporarily hidden. Remove this comment wrapper to restore the UK role.
   {
     label: "Current UK role",
     value: "Atlantic Bridge Exchange Limited",
     icon: Building2,
     url: "http://38.52.133.152/home/",
   },
+  */
   {
     label: "International freelance work",
     value: "Upwork AI & Full-Stack Developer",
     icon: BriefcaseBusiness,
-    url: "https://www.upwork.com/freelancers/~012b58cc3d56501f62?mp_source=share",
   },
   {
     label: "Founder",
@@ -82,16 +83,23 @@ export const HeroSection = () => {
           </a>
         </div>
 
-        <div className="surface-card mt-12 grid overflow-hidden text-left md:grid-cols-3">
+        {/* Restore md:grid-cols-3 when the hidden UK proof item is enabled. */}
+        <div className="surface-card mt-12 grid overflow-hidden text-left md:grid-cols-2">
           {proofItems.map((item) => {
             const Icon = item.icon;
+            const Wrapper = item.url ? "a" : "div";
+            const linkProps = item.url
+              ? {
+                  href: item.url,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                }
+              : {};
 
             return (
-              <a
+              <Wrapper
                 key={item.label}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...linkProps}
                 className="group flex min-h-24 items-center gap-3 border-b border-border px-4 py-4 transition-colors hover:bg-secondary/60 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
               >
                 <span className="icon-tile">
@@ -105,11 +113,13 @@ export const HeroSection = () => {
                     {item.value}
                   </span>
                 </span>
-                <ExternalLink
-                  className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
-                  aria-hidden="true"
-                />
-              </a>
+                {item.url && (
+                  <ExternalLink
+                    className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
+                    aria-hidden="true"
+                  />
+                )}
+              </Wrapper>
             );
           })}
         </div>
