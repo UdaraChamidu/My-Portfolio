@@ -52,6 +52,7 @@ const projects = [
     workType: "Professional project",
     featured: true,
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore the project.
   {
     id: "level-up-trading",
     title: "Level Up Trading Platform",
@@ -63,6 +64,7 @@ const projects = [
     workType: "Personal project",
     demoUrl: "https://leveluptrading.vercel.app",
   },
+  */
   {
     id: "laptop-price-predictor",
     title: "Laptop Price Predictor",
@@ -112,6 +114,7 @@ const projects = [
     workType: "Internship work",
     featured: true,
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore the project.
   {
     id: "veloxdy",
     title: "Veloxdy.com",
@@ -125,6 +128,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/Velox-Dynamics-Elite-Engineering-Agency",
   },
+  */
   {
     id: "lumina-ai",
     title: "Lumina AI",
@@ -212,6 +216,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/Eye-Disease-Classification-With-Integrated-Chatbot",
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore the project.
   {
     id: "askbot",
     title: "AskBot",
@@ -248,6 +253,8 @@ const projects = [
     status: "Ongoing",
     githubUrl: "https://github.com/UdaraChamidu/AskDoc-RAG-chatbot-backend",
   },
+  */
+  /* Temporarily hidden. Remove this comment wrapper to restore the project.
   {
     id: "medical-chatbot",
     title: "Medical Image Assistant",
@@ -260,6 +267,7 @@ const projects = [
     demoUrl: "https://huggingface.co/spaces/UdaraChamidu/Medical-Chatbot",
     githubUrl: "https://github.com/UdaraChamidu/Medical-Chatbot",
   },
+  */
   {
     id: "attendance-management",
     title: "Attendance Management System",
@@ -272,6 +280,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/student_attendance_management_project",
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore the project.
   {
     id: "pdf-rag-chatbot",
     title: "Chat with PDFs",
@@ -295,6 +304,7 @@ const projects = [
     demoUrl: "https://movie-searching-app-tawny.vercel.app/",
     githubUrl: "https://github.com/UdaraChamidu/Movie-Searching-App",
   },
+  */
   {
     id: "ai-voice-assistant",
     title: "AI Voice Assistant",
@@ -307,6 +317,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/AI-Voice-Assistant-with-ElevenLabs-and-n8n",
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore the project.
   {
     id: "people-detection-counting",
     title: "People Detection & Counting",
@@ -319,6 +330,7 @@ const projects = [
     status: "Ongoing",
     githubUrl: "https://github.com/UdaraChamidu/People-Detection-Counting",
   },
+  */
 ];
 
 const categories = [

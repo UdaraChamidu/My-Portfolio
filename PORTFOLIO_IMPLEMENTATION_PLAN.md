@@ -38,6 +38,12 @@ milestone on the main page.
 
 ### Projects
 
+Visibility note: AskBot, Video Chatty, AskDoc RAG Chatbot, Chat with PDFs,
+Medical Image Assistant, People Detection & Counting, Level Up Trading
+Platform, Veloxdy.com, and Movie Search Application are retained as commented
+data in `ProjectsSection.jsx` but are currently hidden from public visitors.
+UniLife Student Services Hub and all five Featured projects remain visible.
+
 - [x] Give every project a unique and stable ID.
 - [x] Remove or hide demo and GitHub buttons when their links do not exist.
 - [x] Verify public repository and live-demo URLs; remove links confirmed as unavailable.
