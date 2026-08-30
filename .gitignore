@@ -28,5 +28,8 @@ dist-ssr
 .hero-qa-*/
 .browser-qa/
 
+# Confidential project media that must never be deployed
+private-assets/
+
 chatbot/
 PORTFOLIO_IMPLEMENTATION_PLAN.md

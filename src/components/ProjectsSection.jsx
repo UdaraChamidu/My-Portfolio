@@ -1,4 +1,10 @@
-import { ArrowRight, BookOpen, ExternalLink, Github } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  ExternalLink,
+  FileText,
+  Github,
+} from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -6,6 +12,8 @@ import {
   caseStudiesPublic,
   featuredCaseStudyIds,
 } from "@/data/caseStudies";
+import { projectDetails } from "@/data/projectDetails";
+import { ProjectDetailsModal } from "@/components/ProjectDetailsModal";
 
 const projects = [
   {
@@ -24,21 +32,22 @@ const projects = [
     id: "ai-email-automation",
     title: "AI Email Automation System",
     description:
-      "A client workflow that monitors Gmail, filters irrelevant messages, creates context-aware draft replies, and records priority, approval, and sending status in an Excel dashboard.",
-    image: "/projects/project17.png",
-    tags: ["n8n", "Gmail", "Generative AI", "Excel"],
+      "A human-in-the-loop n8n system that classifies Gmail messages, prepares context-aware reply drafts, and tracks each email through approval and sending.",
+    image: "/projects/case-studies/email-automation/main-workflow.png",
+    tags: ["n8n", "Gmail", "OpenAI", "Google Sheets"],
     category: "AI Automation",
     workType: "Client project",
+    featured: true,
   },
   {
     id: "ai-voice-agent-platform",
-    title: "AI Voice Agent Platform",
+    title: "AI Voice Agent SaaS Platform",
     description:
-      "A production-ready outbound-calling platform with natural real-time conversations, long-term vector memory, automated follow-ups, and a multi-tenant campaign analytics dashboard.",
+      "A client SaaS platform for automated outbound calling, context-aware voice conversations, callback scheduling, and centralized campaign analytics.",
     image: "/projects/project18.png",
     tags: ["React", "n8n", "Twilio / Vapi", "Pinecone"],
     category: "AI Automation",
-    workType: "Professional project",
+    workType: "Client project",
     featured: true,
   },
   {
@@ -46,10 +55,10 @@ const projects = [
     title: "BiaBot: AI Client Intake Platform",
     description:
       "A full-stack conversational intake platform that captures client requirements through text or voice, extracts structured data, generates review-ready summaries, and automates internal handoffs to Monday.com.",
-    image: "/projects/project19.png",
+    image: "/projects/case-studies/biabot-client-intake/user-interface.webp",
     tags: ["React", "FastAPI", "OpenAI", "Google Cloud Run"],
     category: "AI",
-    workType: "Professional project",
+    workType: "Client project",
     featured: true,
   },
   /* Temporarily hidden. Remove this comment wrapper to restore the project.
@@ -105,10 +114,11 @@ const projects = [
   },
   {
     id: "hr-leave-management",
-    title: "HR Leave Management System",
+    title: "Idea8 HR Management Platform",
     description:
-      "A full-stack HR platform for leave and work-from-home requests, company announcements, holidays, and real-time employee updates.",
-    image: "/projects/hr-leave.png",
+      "A production full-stack platform for employee management, leave and work-from-home approvals, real-time notifications, and HR analytics.",
+    image:
+      "/projects/case-studies/hr-leave-management/cover-dashboard.png",
     tags: ["React", "NestJS", "Prisma", "PostgreSQL"],
     category: "Full Stack",
     workType: "Internship work",
@@ -133,9 +143,9 @@ const projects = [
     id: "lumina-ai",
     title: "Lumina AI",
     description:
-      "A Gemini-powered conversational AI application with a React interface, FastAPI backend, and Supabase authentication and data services.",
-    image: "/projects/lumina.png",
-    tags: ["React", "FastAPI", "Gemini", "Supabase"],
+      "A secure Gemini medical-information chatbot with n8n orchestration, authentication, persistent usage controls, and layered anti-abuse protection.",
+    image: "/projects/case-studies/lumina-ai/main-interface.webp",
+    tags: ["React", "n8n", "Gemini", "Supabase"],
     category: "AI",
     workType: "Internship work",
     featured: true,
@@ -345,6 +355,7 @@ const categories = [
 
 export const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("Featured");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = projects.filter((project) =>
     activeCategory === "Featured"
@@ -433,11 +444,22 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                {((caseStudiesPublic &&
+                {(projectDetails[project.id] ||
+                  (caseStudiesPublic &&
                   featuredCaseStudyIds.includes(project.id)) ||
                   project.demoUrl ||
                   project.githubUrl) && (
                   <div className="flex flex-wrap items-center gap-4 border-t border-border pt-4">
+                    {projectDetails[project.id] && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProject(projectDetails[project.id])}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/75"
+                      >
+                        <FileText size={16} aria-hidden="true" />
+                        View details
+                      </button>
+                    )}
                     {caseStudiesPublic &&
                       featuredCaseStudyIds.includes(project.id) && (
                       <Link
@@ -488,6 +510,12 @@ export const ProjectsSection = () => {
           </a>
         </div>
       </div>
+      {selectedProject && (
+        <ProjectDetailsModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 };

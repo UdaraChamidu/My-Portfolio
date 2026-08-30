@@ -202,6 +202,13 @@ disabled for public visitors. Set `caseStudiesPublic` to `true` in
 `src/data/caseStudies.js` when the content and supporting media are ready to
 publish.
 
+The AI Voice Agent SaaS and Idea8 HR Management Platform now have in-page
+case-study modals with public media and live-platform actions. The voice-agent
+video uses performance-safe opt-in loading, while projects without videos omit
+that media block. Confidential screenshots are stored outside `public/` under
+the ignored `private-assets/` directory so they cannot be included in
+production builds.
+
 ### Project Card Requirements
 
 - [x] Project name and concise outcome-oriented summary.
