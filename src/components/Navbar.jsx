@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 const navItems = [
   { name: "About Me", href: "#about" },
@@ -81,7 +82,7 @@ export const Navbar = () => {
     <nav
       aria-label="Primary navigation"
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         isScrolled
           ? "border-b border-border bg-background/92 py-3 shadow-md backdrop-blur-xl"
           : "py-5"
@@ -131,40 +132,42 @@ export const Navbar = () => {
           {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        {isMenuOpen && (
-          <div
-            id="mobile-navigation"
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-background/95 px-6 backdrop-blur-md lg:hidden"
-          >
-            <div className="flex w-full max-w-sm flex-col gap-2">
-              {navItems.map((item, index) => (
+        {isMenuOpen &&
+          createPortal(
+            <div
+              id="mobile-navigation"
+              className="fixed inset-0 z-40 flex flex-col items-center overflow-y-auto overscroll-contain bg-background/95 px-6 pb-8 pt-24 backdrop-blur-md lg:hidden"
+            >
+              <div className="flex w-full max-w-sm flex-col gap-2">
+                {navItems.map((item, index) => (
+                  <a
+                    key={item.href}
+                    ref={index === 0 ? firstMobileLinkRef : undefined}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className={cn(
+                      "rounded-md px-4 py-3 text-center text-lg font-medium transition-colors",
+                      activeSection === item.href.slice(1)
+                        ? "bg-primary/10 text-primary"
+                        : "text-foreground/80 hover:bg-secondary"
+                    )}
+                  >
+                    {item.name}
+                  </a>
+                ))}
                 <a
-                  key={item.href}
-                  ref={index === 0 ? firstMobileLinkRef : undefined}
-                  href={item.href}
+                  href="/Herath_CV_AI.pdf"
+                  download
                   onClick={closeMenu}
-                  className={cn(
-                    "rounded-md px-4 py-3 text-center text-lg font-medium transition-colors",
-                    activeSection === item.href.slice(1)
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground/80 hover:bg-secondary"
-                  )}
+                  className="button-primary mt-4"
                 >
-                  {item.name}
+                  <Download className="h-5 w-5" aria-hidden="true" />
+                  Download CV
                 </a>
-              ))}
-              <a
-                href="/Herath_CV_AI.pdf"
-                download
-                onClick={closeMenu}
-                className="button-primary mt-4"
-              >
-                <Download className="h-5 w-5" aria-hidden="true" />
-                Download CV
-              </a>
-            </div>
-          </div>
-        )}
+              </div>
+            </div>,
+            document.body
+          )}
       </div>
     </nav>
   );
