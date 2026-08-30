@@ -460,7 +460,8 @@ export const ProjectsSection = () => {
                         View details
                       </button>
                     )}
-                    {caseStudiesPublic &&
+                    {!projectDetails[project.id] &&
+                      caseStudiesPublic &&
                       featuredCaseStudyIds.includes(project.id) && (
                       <Link
                         to={`/projects/${project.id}`}
@@ -470,7 +471,7 @@ export const ProjectsSection = () => {
                         View case study
                       </Link>
                       )}
-                    {project.demoUrl && (
+                    {!projectDetails[project.id] && project.demoUrl && (
                       <a
                         href={project.demoUrl}
                         target="_blank"
@@ -481,7 +482,7 @@ export const ProjectsSection = () => {
                         View project
                       </a>
                     )}
-                    {project.githubUrl && (
+                    {!projectDetails[project.id] && project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"

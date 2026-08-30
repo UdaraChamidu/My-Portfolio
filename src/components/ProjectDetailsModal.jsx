@@ -150,7 +150,7 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="aspect-video w-full object-cover object-top"
+                    className="aspect-video w-full bg-secondary/20 object-contain"
                     loading="lazy"
                     width="1280"
                     height="720"
