@@ -1,8 +1,9 @@
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import PropTypes from "prop-types";
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({ embedded = false }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -34,7 +35,10 @@ export const ThemeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className={cn("icon-button fixed right-16 top-3 z-50 lg:right-5 lg:top-4")}
+      className={cn(
+        "icon-button",
+        embedded ? "relative" : "fixed right-16 top-3 z-50 lg:right-5 lg:top-4"
+      )}
       aria-label={isDarkMode ? "Use light theme" : "Use dark theme"}
       title={isDarkMode ? "Use light theme" : "Use dark theme"}
     >
@@ -45,4 +49,8 @@ export const ThemeToggle = () => {
       )}
     </button>
   );
+};
+
+ThemeToggle.propTypes = {
+  embedded: PropTypes.bool,
 };

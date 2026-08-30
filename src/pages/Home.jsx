@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { Navbar } from "../components/Navbar";
-import { ThemeToggle } from "../components/ThemeToggle";
 import { DynamicBackground } from "../components/DynamicBackground";
 import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
@@ -31,7 +30,6 @@ export const Home = () => {
       </div>
 
       <div className="relative z-10">
-        <ThemeToggle />
         <Navbar />
 
         {/* Main Content */}

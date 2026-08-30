@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "About Me", href: "#about" },
@@ -110,6 +111,7 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
+          <ThemeToggle embedded />
           <a
             href="/Herath_CV_AI.pdf"
             download
@@ -120,17 +122,20 @@ export const Navbar = () => {
           </a>
         </div>
 
-        <button
-          ref={menuButtonRef}
-          type="button"
-          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-          className="icon-button relative z-50 lg:hidden"
-          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-navigation"
-        >
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle embedded />
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+            className="icon-button relative z-50"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
 
         {isMenuOpen &&
           createPortal(
