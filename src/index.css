@@ -215,6 +215,64 @@
   .icon-button {
     @apply inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-card/90 text-foreground shadow-md backdrop-blur-md transition-[border-color,color,background-color,transform] duration-200 hover:border-primary/50 hover:bg-secondary hover:text-primary active:scale-95;
   }
+
+  .article-markdown {
+    @apply text-base leading-8 text-foreground md:text-lg;
+  }
+
+  .article-markdown h2 {
+    @apply mb-4 mt-10 text-2xl font-semibold md:text-3xl;
+  }
+
+  .article-markdown h3 {
+    @apply mb-3 mt-8 text-xl font-semibold md:text-2xl;
+  }
+
+  .article-markdown p,
+  .article-markdown ul,
+  .article-markdown ol,
+  .article-markdown blockquote,
+  .article-markdown pre,
+  .article-markdown table {
+    @apply my-5;
+  }
+
+  .article-markdown ul {
+    @apply list-disc pl-7;
+  }
+
+  .article-markdown ol {
+    @apply list-decimal pl-7;
+  }
+
+  .article-markdown a {
+    @apply font-medium text-primary underline underline-offset-4;
+  }
+
+  .article-markdown blockquote {
+    @apply border-l-4 border-primary pl-5 italic text-muted-foreground;
+  }
+
+  .article-markdown code {
+    @apply rounded bg-secondary px-1.5 py-0.5 text-sm;
+  }
+
+  .article-markdown pre {
+    @apply overflow-x-auto rounded-lg border border-border bg-card p-5;
+  }
+
+  .article-markdown pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .article-markdown table {
+    @apply block w-full overflow-x-auto border-collapse;
+  }
+
+  .article-markdown th,
+  .article-markdown td {
+    @apply border border-border px-4 py-2;
+  }
 }
 
 @utility container {

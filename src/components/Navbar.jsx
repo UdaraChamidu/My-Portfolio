@@ -111,6 +111,9 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
+          <a href="/writing" className="py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
+            Writing
+          </a>
           <ThemeToggle embedded />
           <a
             href="/Herath_CV_AI.pdf"
@@ -160,6 +163,13 @@ export const Navbar = () => {
                     {item.name}
                   </a>
                 ))}
+                <a
+                  href="/writing"
+                  onClick={closeMenu}
+                  className="rounded-md px-4 py-3 text-center text-lg font-medium text-foreground/80 transition-colors hover:bg-secondary"
+                >
+                  Writing
+                </a>
                 <a
                   href="/Herath_CV_AI.pdf"
                   download

@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { CaseStudy } from "./pages/CaseStudy";
+import { Article } from "./pages/Article";
+import { Writing } from "./pages/Writing";
 import { caseStudiesPublic } from "./data/caseStudies";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -13,6 +15,8 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/" element={<Home />} />
+          <Route path="/writing" element={<Writing />} />
+          <Route path="/writing/:slug" element={<Article />} />
           {caseStudiesPublic && (
             <Route path="/projects/:projectId" element={<CaseStudy />} />
           )}
