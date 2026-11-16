@@ -1,21 +1,21 @@
 import { ExternalLink, MapPin } from "lucide-react";
 
 const experienceList = [
-  /* Temporarily hidden. Remove this comment wrapper to restore both roles.
   {
     id: 1,
     role: "AI Automation Engineer",
     company: "Atlantic Bridge Exchange Limited",
     engagementType: "Employment",
     location: "United Kingdom | Remote",
-    duration: "Jun 2026 - Present",
-    image: "/Experiances/1.png",
-    url: "http://38.52.133.152/home/",
+    duration: "May 2026 - Present",
+    image: "/Experiances/2.jpg",
     contributions: [
-      "Build AI automation workflows and intelligent agents for practical business processes.",
-      "Develop and integrate production-oriented AI and software systems.",
+      "Design and develop AI agents and automated business workflows.",
+      "Integrate LLMs, APIs, databases, and external services.",
+      "Build and maintain AI-powered software and automation solutions.",
     ],
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore this role.
   {
     id: 2,
     role: "AI Engineer",
@@ -84,8 +84,8 @@ export const ExperienceSection = () => {
             Professional <span className="text-primary">Experience</span>
           </h2>
           <p className="section-description">
-            Experience across international freelance client work, building
-            Veloxdy, and AI/ML software engineering during my internship.
+            Experience in AI automation engineering, international freelance
+            client work, building Veloxdy, and AI/ML software engineering.
           </p>
         </div>
 
