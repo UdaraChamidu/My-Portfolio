@@ -17,6 +17,55 @@ import { ProjectDetailsModal } from "@/components/ProjectDetailsModal";
 
 const projects = [
   {
+    id: "promotr-nightclub-ai",
+    title: "Promotr: AI Nightclub Booking & Guest Engagement",
+    description:
+      "An AI-powered nightclub platform for guest inquiries, booking requests, and staff handoffs across communication channels, with a centralized administration dashboard.",
+    tags: ["Next.js", "TypeScript", "Supabase", "OpenAI", "Instagram API", "n8n", "Gmail API", "Twilio", "Vercel"],
+    category: "AI Automation",
+    workType: "Client project",
+    featured: true,
+  },
+  {
+    id: "elevenlabs-lauren-voice-agent",
+    title: "AI Voice Agent for Call Automation",
+    description:
+      "An ElevenLabs conversational voice agent optimized for outbound calls, natural dialogue, interruption handling, call transfers, voicemail workflows, and TrackDrive call operations.",
+    tags: ["ElevenLabs", "Voice AI", "TrackDrive", "API Integrations", "Telephony"],
+    category: "AI Automation",
+    workType: "Client project",
+    featured: true,
+  },
+  {
+    id: "german-energy-data-automation",
+    title: "German Energy Data Monitoring & Grafana Analytics",
+    description:
+      "An automated pipeline that retrieves German and European electricity-market and grid data, normalizes it into PostgreSQL, and visualizes time-series trends through Grafana dashboards.",
+    tags: ["n8n", "PostgreSQL", "Grafana", "REST APIs", "SQL", "JavaScript", "JSON/XML"],
+    category: "AI Automation",
+    workType: "Client project",
+    featured: true,
+  },
+  {
+    id: "linkedin-ai-publishing-automation",
+    title: "AI LinkedIn Content Creation & Publishing Automation",
+    description:
+      "A Make.com workflow connecting Telegram topic selection, AI post drafting, human approval, image generation, and LinkedIn publication.",
+    tags: ["Make.com", "Telegram", "OpenAI", "LinkedIn", "Image Generation", "Webhooks"],
+    category: "AI Automation",
+    featured: false,
+  },
+  {
+    id: "quickbooks-cloudy-ai-mcp",
+    title: "QuickBooks & Cloudy AI MCP Integration",
+    description:
+      "Integration work connecting QuickBooks and Cloudy AI through Model Context Protocol and accounting APIs to support AI-connected accounting workflows.",
+    tags: ["MCP", "QuickBooks", "Cloudy AI", "APIs", "AI Tool Integration"],
+    category: "AI Automation",
+    workType: "Client project",
+    featured: false,
+  },
+  {
     id: "insurance-ai-consultant",
     title: "Insurance AI Consultant Platform",
     description:
@@ -405,7 +454,13 @@ export const ProjectsSection = () => {
               key={project.id}
               className="surface-card surface-card-interactive group flex h-full flex-col overflow-hidden"
             >
-              <div className="relative h-48 overflow-hidden bg-secondary/20">
+              <div
+                className={cn(
+                  "relative overflow-hidden bg-secondary/20",
+                  project.image ? "h-48" : "h-16"
+                )}
+              >
+                {project.image && (
                 <img
                   src={project.image}
                   alt={`${project.title} project preview`}
@@ -414,12 +469,15 @@ export const ProjectsSection = () => {
                   width="640"
                   height="360"
                 />
+                )}
                 <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
                   {project.category}
                 </span>
+                {project.workType && (
                 <span className="absolute right-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
                   {project.workType}
                 </span>
+                )}
               </div>
 
               <div className="p-5 flex flex-1 flex-col text-left">
