@@ -14,7 +14,7 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-12">
           <div className="space-y-5 text-left">
             <h3 className="text-2xl font-semibold leading-tight">
-              Engineering practical AI and software products
+              Building intelligent agents and business automation
             </h3>
 
             <p className="leading-7 text-muted-foreground">
@@ -26,11 +26,11 @@ export const AboutSection = () => {
             </p>
 
             <p className="leading-7 text-muted-foreground">
-              My strongest work sits at the intersection of conversational AI,
-              business automation, and full-stack product engineering. I build
-              AI agents, RAG applications, voice workflows, client-intake
-              systems, and SaaS platforms that connect models with real
-              operational tools and data.
+              I specialize in agentic AI, conversational voice systems, and
+              business process automation. I build LLM applications, RAG
+              assistants, and custom AI-powered tools, connecting models to
+              business knowledge, APIs, and operational systems through MCP
+              and tool integrations.
             </p>
 
             <p className="leading-7 text-muted-foreground">
@@ -84,12 +84,11 @@ export const AboutSection = () => {
                 </div>
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">
-                    Full-Stack AI Products
+                    Custom AI Applications & Integrations
                   </h4>
                   <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                    Delivering responsive React applications, backend APIs,
-                    databases, authentication, integrations, and cloud
-                    deployment as one maintainable product.
+                    Connecting LLMs, MCP tools, backend APIs, and databases
+                    in tailored AI applications for practical business workflows.
                   </p>
                 </div>
               </div>

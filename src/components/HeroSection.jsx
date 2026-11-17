@@ -52,13 +52,13 @@ export const HeroSection = () => {
           Hi, I am <span className="text-primary">Udara Herath</span>
         </h1>
         <p className="mx-auto mb-5 max-w-3xl text-xl font-semibold leading-snug text-foreground/90 sm:text-2xl md:text-3xl">
-          AI Automation Engineer & Full-Stack Developer
+          AI Engineer | Intelligent Agents & Automation
         </p>
 
         <p className="mx-auto max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          I design AI agents, automation workflows, and full-stack web
-          applications that help businesses reduce repetitive work, connect
-          their tools, and turn ideas into reliable digital products.
+          I build intelligent agents, conversational voice systems, and
+          LLM-powered applications that help businesses automate workflows,
+          connect their tools, and put their knowledge to work.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <a
