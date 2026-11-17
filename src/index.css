@@ -149,7 +149,7 @@
 
 @layer components {
   .section-shell {
-    @apply relative px-4 py-20 md:py-24;
+    @apply relative px-4 py-14 md:py-16;
   }
 
   .section-band {
@@ -158,14 +158,18 @@
 
   .section-inner {
     @apply container mx-auto max-w-6xl;
+    padding-inline: 0;
+    @media (width >= 640px) {
+      padding-inline: 1.5rem;
+    }
   }
 
   .section-header {
-    @apply mx-auto mb-10 max-w-3xl text-center md:mb-12;
+    @apply mx-auto mb-7 max-w-3xl text-center md:mb-8;
   }
 
   .section-kicker {
-    @apply mb-3 text-sm font-semibold text-primary;
+    @apply mb-2 text-sm font-semibold text-primary;
   }
 
   .section-title {
@@ -173,7 +177,7 @@
   }
 
   .section-description {
-    @apply mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg;
+    @apply mx-auto mt-3 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg;
   }
 
   .surface-card {
@@ -341,6 +345,130 @@
   transition: background-color 250ms ease;
 }
 
+.portfolio-content .surface-card-interactive {
+  transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+}
+
+.portfolio-content .surface-card-interactive:hover,
+.portfolio-content .surface-card-interactive:focus-within {
+  border-color: hsl(var(--primary) / 0.65);
+  box-shadow: 0 8px 24px hsl(var(--primary) / 0.12);
+  transform: translateY(-3px);
+}
+
+.portfolio-content .icon-tile,
+.portfolio-content .skill-logo-float {
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}
+
+.portfolio-content .surface-card-interactive:hover .icon-tile,
+.portfolio-content .skill-logo-float:hover,
+.contact-item:hover .icon-tile,
+.contact-item:focus-within .icon-tile {
+  background-color: hsl(var(--primary) / 0.18);
+  box-shadow: 0 0 16px hsl(var(--primary) / 0.12);
+}
+
+.portfolio-content .button-primary:hover,
+.portfolio-content .button-secondary:hover,
+.portfolio-content .icon-button:hover {
+  box-shadow: 0 4px 18px hsl(var(--primary) / 0.2);
+}
+
+.portfolio-content .filter-control:not(.filter-control-active):hover {
+  background-color: hsl(var(--primary) / 0.08);
+  color: hsl(var(--primary));
+}
+
+.reveal-enter {
+  opacity: 0;
+  translate: 0 14px;
+}
+
+.hero-entrance {
+  animation: hero-entrance 650ms ease both;
+}
+
+@keyframes hero-entrance {
+  from { opacity: 0; translate: 0 12px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+.hero-portrait {
+  transition: box-shadow 300ms ease;
+}
+
+.hero-portrait:hover {
+  box-shadow: 0 0 36px hsl(var(--primary) / 0.4);
+}
+
+.reveal-enter.reveal-visible {
+  animation: portfolio-reveal 550ms ease both;
+}
+
+@keyframes portfolio-reveal {
+  to { opacity: 1; translate: 0 0; }
+}
+
+.experience-entry {
+  position: relative;
+}
+
+.experience-entry::before {
+  content: "";
+  position: absolute;
+  inset: 0 18px auto;
+  height: 2px;
+  background: hsl(var(--primary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms ease;
+}
+
+.experience-entry:hover::before,
+.experience-entry:focus-within::before {
+  transform: scaleX(1);
+}
+
+.company-logo {
+  transition: transform 250ms ease;
+}
+
+.experience-entry:hover .company-logo {
+  transform: scale(1.04);
+}
+
+.contact-item {
+  border-radius: 6px;
+  transition: background-color 250ms ease;
+}
+
+.contact-item:hover,
+.contact-item:focus-within {
+  background-color: hsl(var(--primary) / 0.06);
+}
+
+.portfolio-content a > svg {
+  transition: translate 250ms ease;
+}
+
+.portfolio-content a:hover > svg {
+  translate: 2px 0;
+}
+
+.portfolio-footer a {
+  transition: color 200ms ease;
+}
+
+.portfolio-footer a:hover,
+.portfolio-footer a:focus-visible {
+  color: hsl(var(--primary));
+}
+
+.portfolio-footer .icon-button:hover {
+  box-shadow: 0 0 18px hsl(var(--primary) / 0.15);
+}
+
 .service-row::before {
   content: "";
   position: absolute;
@@ -401,5 +529,16 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .reveal-enter {
+    opacity: 1;
+    translate: none;
+  }
+
+  .portfolio-content .surface-card-interactive:hover,
+  .portfolio-content .surface-card-interactive:focus-within,
+  .experience-entry:hover .company-logo {
+    transform: none;
   }
 }

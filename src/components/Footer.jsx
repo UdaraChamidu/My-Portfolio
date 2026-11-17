@@ -2,7 +2,7 @@ import { ArrowUp, ExternalLink } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative border-t border-border bg-card/92 px-4 py-8 backdrop-blur-md">
+    <footer className="portfolio-footer relative border-t border-border bg-card/92 px-4 py-6 backdrop-blur-md">
       <div className="section-inner">
         <div className="flex flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
           <a href="#hero" className="text-lg font-bold text-foreground">

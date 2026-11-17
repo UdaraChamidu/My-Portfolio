@@ -434,7 +434,7 @@ export const ProjectsSection = () => {
         </div>
 
         <div
-          className="mb-10 flex flex-wrap justify-center gap-2 md:mb-12"
+          className="mb-6 flex flex-wrap justify-center gap-2 md:mb-7"
           aria-label="Project categories"
         >
           {categories.map((category) => (
@@ -455,7 +455,7 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div key={activeCategory} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
             <article
               key={project.id}
@@ -471,7 +471,7 @@ export const ProjectsSection = () => {
                 <img
                   src={project.image}
                   alt={`${project.title} project preview`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                   width="640"
                   height="360"

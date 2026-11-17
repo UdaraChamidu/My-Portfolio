@@ -11,18 +11,24 @@ export const AboutSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-12">
-          <div className="space-y-5 text-left">
+        <div className="grid grid-cols-1 items-start gap-7 md:grid-cols-2 md:gap-9">
+          <div className="space-y-4 text-left">
             <h3 className="text-2xl font-semibold leading-tight">
               Building intelligent agents and business automation
             </h3>
 
             <p className="leading-7 text-muted-foreground">
+              I work remotely as an AI Automation Engineer at Atlantic Bridge
+              Exchange Limited in the United Kingdom, designing AI agents,
+              automated workflows, and integrations across business systems.
+              Based in Sri Lanka, I also work with international clients as a
+              Top Rated Upwork professional with a 100% Job Success Score.
+            </p>
+
+            <p className="leading-7 text-muted-foreground">
               I am a final-year B.Sc. (Hons) Computer Engineering undergraduate
-              at the University of Jaffna, based in Sri Lanka and available for
-              remote collaboration. I am also a Top Rated Upwork professional
-              with a 100% Job Success Score across AI and software engineering
-              engagements.
+              at the University of Jaffna and the founder of Veloxdy, where I
+              build AI solutions and web applications.
             </p>
 
             <p className="leading-7 text-muted-foreground">

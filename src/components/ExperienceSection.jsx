@@ -89,43 +89,28 @@ export const ExperienceSection = () => {
           </p>
         </div>
 
-        <div className="relative mx-auto max-w-4xl">
-          <div
-            className="absolute bottom-0 left-[7px] top-2 w-px bg-border md:left-[181px]"
-            aria-hidden="true"
-          />
-
-          <div className="space-y-12">
+        <div className="grid items-start gap-5 lg:grid-cols-2">
           {experienceList.map((exp) => (
             <article
               key={exp.id}
-              className="relative grid grid-cols-[16px_minmax(0,1fr)] gap-x-5 md:grid-cols-[160px_16px_minmax(0,1fr)] md:gap-x-5"
+              className="experience-entry surface-card surface-card-interactive h-full p-5 text-left"
             >
-              <p className="col-start-2 mb-3 text-sm font-medium text-muted-foreground md:col-start-1 md:row-start-1 md:mb-0 md:pt-0.5 md:text-right">
-                {exp.duration}
-              </p>
-
-              <span
-                className="col-start-1 row-start-1 mt-1.5 h-4 w-4 rounded-full border-4 border-background bg-primary md:col-start-2"
-                aria-hidden="true"
-              />
-
-              <div className="surface-card surface-card-interactive col-start-2 p-5 text-left md:col-start-3 md:row-start-1 md:p-6">
-                <div className="mb-3 flex flex-wrap items-center gap-2">
+                <div className="mb-4 flex flex-wrap items-center gap-2">
                   <span className="meta-tag border-primary/25 bg-primary/10 text-primary">
                     {exp.engagementType}
                   </span>
+                  <span className="text-xs font-medium text-muted-foreground">{exp.duration}</span>
                   {exp.duration.includes("Present") && (
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground/70">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                       Current
                     </span>
                   )}
                 </div>
 
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h3 className="text-left text-xl font-semibold leading-snug md:text-2xl">
+                    <h3 className="text-left text-lg font-semibold leading-snug">
                       {exp.role}
                     </h3>
                     {exp.url ? (
@@ -147,17 +132,17 @@ export const ExperienceSection = () => {
                       </p>
                     )}
 
-                    <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4" aria-hidden="true" />
+                    <p className="mt-2 flex items-start gap-1.5 text-xs leading-5 text-muted-foreground">
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                       {exp.location}
                     </p>
                   </div>
 
-                  <div className="flex h-16 w-full shrink-0 items-center justify-center rounded-md border border-border bg-white p-2 sm:w-36">
+                  <div className="flex h-12 w-16 shrink-0 items-center justify-center rounded-md border border-border bg-white p-1.5 sm:w-24">
                     <img
                       src={exp.image}
                       alt={`${exp.company} logo`}
-                      className="h-full w-full object-contain"
+                      className="company-logo h-full w-full object-contain"
                       loading="lazy"
                       width="144"
                       height="64"
@@ -165,7 +150,7 @@ export const ExperienceSection = () => {
                   </div>
                 </div>
 
-                <ul className="mt-5 max-w-2xl space-y-2 text-base leading-7 text-muted-foreground">
+                <ul className="mt-4 space-y-2 border-t border-border pt-4 text-base leading-6 text-muted-foreground">
                   {exp.contributions.map((contribution) => (
                     <li key={contribution} className="flex gap-2">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -173,10 +158,8 @@ export const ExperienceSection = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
             </article>
           ))}
-          </div>
         </div>
       </div>
     </section>

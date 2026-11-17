@@ -11,6 +11,12 @@ import {
   Network,
   Search,
   Sparkles,
+  AudioLines,
+  Phone,
+  Mic,
+  Volume2,
+  Webhook,
+  Plug,
 } from "lucide-react";
 import { FaAws, FaJava } from "react-icons/fa";
 import {
@@ -40,7 +46,17 @@ import {
   SiStreamlit,
   SiTailwindcss,
   SiVercel,
+  SiElevenlabs,
+  SiDeepgram,
+  SiMake,
+  SiLangchain,
+  SiLanggraph,
+  SiModelcontextprotocol,
+  SiSupabase,
+  SiPostgresql,
+  SiClaude,
 } from "react-icons/si";
+import { TbBrandOpenai, TbBrandTwilio } from "react-icons/tb";
 import { VscVscode } from "react-icons/vsc";
 import { cn } from "@/lib/utils";
 
@@ -55,6 +71,25 @@ const skills = [
   { name: "Vector Stores", category: "AI & Automation", icon: Database },
   { name: "RAG", category: "AI & Automation", icon: Search, core: true },
   { name: "n8n", category: "AI & Automation", icon: SiN8N, core: true },
+  { name: "Make.com", category: "AI & Automation", icon: SiMake, core: true },
+  { name: "Webhooks", category: "AI & Automation", icon: Webhook },
+  { name: "REST APIs", category: "AI & Automation", icon: Plug },
+  { name: "MCP", category: "AI & Automation", icon: SiModelcontextprotocol, core: true },
+  { name: "Tool Calling", category: "AI & Automation", icon: Plug },
+  { name: "OpenAI", category: "AI & Automation", icon: TbBrandOpenai, core: true },
+  { name: "Gemini", category: "AI & Automation", icon: Sparkles },
+  { name: "Claude", category: "AI & Automation", icon: SiClaude },
+  { name: "LangChain", category: "AI & Automation", icon: SiLangchain },
+  { name: "LangGraph", category: "AI & Automation", icon: SiLanggraph, core: true },
+
+  { name: "Voice Agents", category: "Voice AI", icon: AudioLines, core: true },
+  { name: "ElevenLabs", category: "Voice AI", icon: SiElevenlabs },
+  { name: "Twilio", category: "Voice AI", icon: TbBrandTwilio },
+  { name: "Vapi", category: "Voice AI", icon: Phone },
+  { name: "Deepgram", category: "Voice AI", icon: SiDeepgram },
+  { name: "Speech-to-Text", category: "Voice AI", icon: Mic },
+  { name: "Text-to-Speech", category: "Voice AI", icon: Volume2 },
+  { name: "WebRTC", category: "Voice AI", icon: Network },
 
   { name: "Python", category: "Programming", icon: SiPython, core: true },
   { name: "Java", category: "Programming", icon: FaJava },
@@ -82,6 +117,9 @@ const skills = [
   { name: "ChromaDB", category: "Data", icon: Database },
   { name: "Firebase", category: "Data", icon: SiFirebase },
   { name: "FAISS", category: "Data", icon: HardDrive },
+  { name: "Supabase", category: "Data", icon: SiSupabase },
+  { name: "PostgreSQL", category: "Data", icon: SiPostgresql },
+  { name: "Pinecone", category: "Data", icon: Database },
 
   { name: "GitHub", category: "Tools & Engineering", icon: SiGithub },
   { name: "Google Colab", category: "Tools & Engineering", icon: SiGooglecolab },
@@ -99,6 +137,7 @@ const skills = [
 const categories = [
   "Core",
   "AI & Automation",
+  "Voice AI",
   "Programming",
   "Web Development",
   "Cloud & Deployment",
@@ -128,7 +167,7 @@ export const SkillsSection = () => {
         </div>
 
         <div
-          className="mb-10 flex flex-wrap justify-center gap-2 md:mb-12"
+          className="mb-6 flex flex-wrap justify-center gap-2 md:mb-7"
           aria-label="Skill categories"
         >
           {categories.map((category) => (
@@ -151,7 +190,7 @@ export const SkillsSection = () => {
 
         <div
           key={activeCategory}
-          className="skill-logo-grid grid grid-cols-3 gap-x-4 gap-y-8 py-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
+          className="skill-logo-grid grid grid-cols-3 gap-x-4 gap-y-6 py-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
         >
           {filteredSkills.map((skill, index) => {
             const Icon = skill.icon;

@@ -36,8 +36,8 @@ export const HeroSection = () => {
       id="hero"
       className="relative flex min-h-screen items-center px-4 pb-10 pt-28 md:pb-14 md:pt-32"
     >
-      <div className="section-inner relative z-10 text-center">
-        <div className="mx-auto -mt-10 mb-7 h-52 w-52 overflow-hidden rounded-full border-4 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:h-60 sm:w-60">
+      <div className="hero-entrance section-inner relative z-10 text-center">
+        <div className="hero-portrait mx-auto -mt-10 mb-7 h-52 w-52 overflow-hidden rounded-full border-4 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:h-60 sm:w-60">
           <img
             src="/udara2.png"
             alt="Udara Herath"

@@ -149,7 +149,7 @@ export const CredentialsSection = () => {
         </div>
 
         <div
-          className="mb-10 flex justify-center"
+          className="mb-6 flex justify-center"
           role="tablist"
           aria-label="Credential views"
         >
@@ -236,7 +236,7 @@ export const CredentialsSection = () => {
         ) : (
           <div>
             <div
-              className="mb-10 flex flex-wrap justify-center gap-2"
+              className="mb-6 flex flex-wrap justify-center gap-2"
               aria-label="Certification categories"
             >
               {certificationCategories.map((category) => (
@@ -255,17 +255,17 @@ export const CredentialsSection = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div key={activeCategory} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
               {filteredCertifications.map((certification) => (
                 <article
                   key={certification.id}
                   className="surface-card surface-card-interactive group flex h-full flex-col overflow-hidden text-left"
                 >
-                  <div className="relative flex h-44 items-center justify-center border-b border-border bg-secondary/20">
+                  <div className="relative flex h-40 items-center justify-center border-b border-border bg-secondary/20">
                     <img
                       src={certification.image}
                       alt={`${certification.title} certificate`}
-                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                      className="h-full w-full object-contain"
                       loading="lazy"
                       width="640"
                       height="360"

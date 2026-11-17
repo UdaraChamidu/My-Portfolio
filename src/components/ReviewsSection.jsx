@@ -45,13 +45,13 @@ export const ReviewsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {reviews.map((review) => (
             <article
               key={review.id}
               className="surface-card surface-card-interactive flex h-full flex-col overflow-hidden text-left"
             >
-              <div className="flex h-44 items-center justify-center border-b border-border bg-[#181818] p-3">
+              <a href={review.image} target="_blank" rel="noopener noreferrer" aria-label={`Open full review for ${review.title}`} className="flex h-36 items-center justify-center border-b border-border bg-[#181818] p-3 focus-visible:ring-2 focus-visible:ring-primary">
                 <img
                   src={review.image}
                   alt={`Upwork review evidence for ${review.title}`}
@@ -60,10 +60,10 @@ export const ReviewsSection = () => {
                   width="960"
                   height="320"
                 />
-              </div>
+              </a>
 
               <div className="flex flex-1 flex-col p-5">
-                <div className="mb-3 flex items-center gap-2 text-sm">
+                <div className="mb-3 flex flex-wrap items-center gap-2 text-xs">
                   <span className="inline-flex items-center gap-1 font-semibold text-foreground">
                     <Star className="h-4 w-4 fill-primary text-primary" aria-hidden="true" />
                     {review.rating}

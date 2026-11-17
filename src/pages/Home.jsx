@@ -1,4 +1,5 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
+import { usePortfolioMotion } from "../hooks/usePortfolioMotion";
 import { Navbar } from "../components/Navbar";
 import { DynamicBackground } from "../components/DynamicBackground";
 import { StarBackground } from "@/components/StarBackground";
@@ -20,6 +21,8 @@ const SkillsSection = lazy(() =>
 );
 
 export const Home = () => {
+  const mainRef = useRef(null);
+  usePortfolioMotion(mainRef);
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Theme Toggle */}
@@ -33,7 +36,7 @@ export const Home = () => {
         <Navbar />
 
         {/* Main Content */}
-        <main>
+        <main ref={mainRef} className="portfolio-content">
           <HeroSection />
           <AboutSection />
           <ProjectsSection />

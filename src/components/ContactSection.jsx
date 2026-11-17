@@ -80,29 +80,29 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8">
           {/* Contact Information */}
-          <div className="surface-card space-y-6 p-6 md:p-7">
+          <div className="contact-panel surface-card surface-card-interactive space-y-4 p-5 md:p-6">
             <h3 className="border-b border-border pb-4 text-left text-xl font-semibold md:text-2xl">
               Contact Information
             </h3>
 
             <div className="space-y-4">
               {/* Email */}
-              <div className="flex items-start space-x-4">
+              <div className="contact-item flex items-start gap-3 p-2">
                 <div className="icon-tile">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div className="text-left">
+                <div className="min-w-0 text-left">
                   <h4 className="font-medium text-left">Email</h4>
                   <a
                     href="mailto:chamiduudara321@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="break-all text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     chamiduudara321@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
+              <div className="contact-item flex items-start gap-3 p-2">
                 <div className="icon-tile">
                   <Globe className="h-6 w-6 text-primary" />
                 </div>
@@ -120,7 +120,7 @@ export const ContactSection = () => {
               </div>
 
               {/* Location */}
-              <div className="flex items-start space-x-4">
+              <div className="contact-item flex items-start gap-3 p-2">
                 <div className="icon-tile">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
@@ -177,12 +177,12 @@ export const ContactSection = () => {
           </div>
 
           {/* Send a Message */}
-          <div className="surface-card p-6 md:p-8">
-            <h3 className="mb-6 border-b border-border pb-4 text-left text-xl font-semibold md:text-2xl">
+          <div className="contact-panel surface-card surface-card-interactive p-5 md:p-6">
+            <h3 className="mb-4 border-b border-border pb-4 text-left text-xl font-semibold md:text-2xl">
               Send a Message
             </h3>
 
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 text-left">
               <div>
                 <label
                   htmlFor="name"
@@ -230,7 +230,7 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  rows={6}
+                  rows={5}
                   className="form-control resize-y"
                   placeholder="Tell me about your project, goals, and timeline."
                 />
