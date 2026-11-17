@@ -54,7 +54,7 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
         <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-md sm:px-6">
           <div className="min-w-0">
             <p className="text-xs font-semibold text-primary">
-              {project.type} | {project.status}
+              {[project.type, project.status].filter(Boolean).join(" | ")}
             </p>
             <p className="truncate text-sm font-medium text-muted-foreground">
               {project.period}
@@ -95,8 +95,8 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
             {[
               ["Role", project.role],
               ["Engagement", project.engagement],
-              ["Delivery", `${project.status} | ${project.period}`],
-            ].map(([label, value]) => (
+              ["Delivery", [project.status, project.period].filter(Boolean).join(" | ")],
+            ].filter(([, value]) => value).map(([label, value]) => (
               <div key={label} className="surface-card p-4">
                 <p className="text-xs font-semibold text-primary">{label}</p>
                 <p className="mt-1 text-sm font-medium leading-6">{value}</p>
@@ -138,6 +138,7 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
             </ol>
           </DetailSection>
 
+          {project.images?.length > 0 && (
           <DetailSection title="Product gallery">
             <div className="grid gap-5 lg:grid-cols-2">
               {project.images.map((image, index) => (
@@ -162,6 +163,7 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
               ))}
             </div>
           </DetailSection>
+          )}
 
           {project.video && (
             <DetailSection title="Product demonstration">
@@ -213,6 +215,8 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
                 ))}
               </div>
 
+              {project.architecture?.length > 0 && (
+              <>
               <h3 className="mb-4 mt-8 text-xl font-semibold md:text-2xl">
                 Solution architecture
               </h3>
@@ -229,9 +233,12 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
                   </li>
                 ))}
               </ol>
+              </>
+              )}
             </section>
           </div>
 
+          {project.challenges?.length > 0 && (
           <DetailSection title="Engineering challenges">
             <div className="grid gap-3 md:grid-cols-2">
               {project.challenges.map((challenge) => (
@@ -243,12 +250,15 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
               ))}
             </div>
           </DetailSection>
+          )}
 
+          {project.outcome && (
           <DetailSection title="Outcome">
             <p className="max-w-4xl leading-7 text-muted-foreground">
               {project.outcome}
             </p>
           </DetailSection>
+          )}
 
           <div className="surface-card flex flex-col gap-5 border-primary/20 bg-primary/5 p-5 sm:flex-row sm:items-center sm:justify-between md:p-6">
             <div className="flex gap-3">

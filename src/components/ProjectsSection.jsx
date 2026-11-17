@@ -149,6 +149,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/Image-Processing-Based-Smart-Waste-Management-System",
   },
+  /* Temporarily hidden. Remove this comment wrapper to restore the embedded project.
   {
     id: "smart-railway-gate",
     title: "Smart Railway Gate Control System",
@@ -161,6 +162,7 @@ const projects = [
     githubUrl:
       "https://github.com/UdaraChamidu/Smart-Railway-Gate-Control-System-with-GPS-Tracking",
   },
+  */
   {
     id: "hr-leave-management",
     title: "Idea8 HR Management Platform",
@@ -399,7 +401,7 @@ const categories = [
   "ML / DL",
   "Computer Vision",
   "Full Stack",
-  "Embedded Systems",
+  // "Embedded Systems", // Restore alongside the embedded project above.
 ];
 
 export const ProjectsSection = () => {
@@ -422,7 +424,7 @@ export const ProjectsSection = () => {
           </h2>
           <p className="section-description">
             Explore AI, automation, machine learning, computer vision,
-            full-stack, and embedded systems work by category.
+            and full-stack work by category.
           </p>
         </div>
 
