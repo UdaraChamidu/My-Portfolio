@@ -11,7 +11,6 @@ import {
   Network,
   Search,
   Sparkles,
-  Workflow,
 } from "lucide-react";
 import { FaAws, FaJava } from "react-icons/fa";
 import {
@@ -34,6 +33,7 @@ import {
   SiMongodb,
   SiMysql,
   SiNextdotjs,
+  SiN8N,
   SiPython,
   SiRailway,
   SiReact,
@@ -54,7 +54,7 @@ const skills = [
   { name: "Large Language Models", category: "AI & Automation", icon: BrainCircuit },
   { name: "Vector Stores", category: "AI & Automation", icon: Database },
   { name: "RAG", category: "AI & Automation", icon: Search, core: true },
-  { name: "n8n", category: "AI & Automation", icon: Workflow, core: true },
+  { name: "n8n", category: "AI & Automation", icon: SiN8N, core: true },
 
   { name: "Python", category: "Programming", icon: SiPython, core: true },
   { name: "Java", category: "Programming", icon: FaJava },
@@ -151,7 +151,7 @@ export const SkillsSection = () => {
 
         <div
           key={activeCategory}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          className="skill-logo-grid grid grid-cols-3 gap-x-4 gap-y-8 py-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
         >
           {filteredSkills.map((skill, index) => {
             const Icon = skill.icon;
@@ -159,14 +159,17 @@ export const SkillsSection = () => {
             return (
               <div
                 key={skill.name}
-                className="surface-card surface-card-interactive group flex min-h-32 flex-col items-center justify-center gap-3 p-4 opacity-0 animate-[skill-enter_450ms_ease-out_forwards] motion-reduce:animate-none motion-reduce:opacity-100"
-                style={{ animationDelay: `${Math.min(index * 45, 360)}ms` }}
+                className="group flex min-w-0 flex-col items-center gap-3"
               >
-                <Icon
-                  className="h-9 w-9 text-primary transition-transform duration-300 group-hover:scale-110"
-                  aria-hidden="true"
-                />
-                <h3 className="text-center text-sm font-semibold leading-5">
+                <span
+                  className="skill-logo-float flex h-16 w-16 items-center justify-center rounded-lg border border-border bg-background/80 text-primary shadow-sm"
+                  style={{
+                    animationDelay: `${index * -0.65}s`,
+                  }}
+                >
+                  <Icon className="h-8 w-8" aria-hidden="true" />
+                </span>
+                <h3 className="text-center text-xs font-medium leading-5 text-foreground/80 sm:text-sm">
                   {skill.name}
                 </h3>
               </div>

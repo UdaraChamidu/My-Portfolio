@@ -331,6 +331,61 @@
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
+.service-logo-float,
+.skill-logo-float {
+  animation: skill-logo-float 4.5s ease-in-out infinite;
+}
+
+.service-row {
+  position: relative;
+  transition: background-color 250ms ease;
+}
+
+.service-row::before {
+  content: "";
+  position: absolute;
+  inset: 18px auto 18px 0;
+  width: 2px;
+  background: hsl(var(--primary));
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 250ms ease;
+}
+
+.service-row:hover,
+.service-row:focus-within {
+  background-color: hsl(var(--primary) / 0.045);
+}
+
+.service-row:hover::before,
+.service-row:focus-within::before {
+  transform: scaleY(1);
+}
+
+.service-main-icon {
+  transition: color 250ms ease, background-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+}
+
+.service-row:hover .service-main-icon,
+.service-row:focus-within .service-main-icon {
+  color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.12);
+  box-shadow: 0 4px 16px hsl(var(--primary) / 0.15);
+  transform: translateY(-3px) rotate(-4deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-row .service-main-icon,
+  .service-row::before {
+    transform: none;
+  }
+}
+
+@keyframes skill-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

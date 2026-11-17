@@ -5,11 +5,54 @@ import {
   AudioLines,
   Plug,
   ExternalLink,
-  Pause,
-  Play,
   Workflow,
+  Database,
+  Webhook,
+  Bot,
+  Search,
+  Sparkles,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {
+  SiN8N, SiMake, SiElevenlabs, SiDeepgram, SiModelcontextprotocol,
+  SiPython, SiFastapi, SiNextdotjs, SiSupabase, SiPostgresql,
+  SiLangchain, SiLanggraph, SiGmail, SiGooglesheets, SiTelegram, SiReact,
+  SiClaude, SiAnthropic, SiOpenrouter,
+} from "react-icons/si";
+import { TbBrandOpenai, TbBrandTwilio } from "react-icons/tb";
+
+const technologyIcons = {
+  n8n: [SiN8N, "#ea4b71"],
+  "Make.com": [SiMake, "#bd66ee"],
+  ElevenLabs: [SiElevenlabs, "#b4a0ff"],
+  Deepgram: [SiDeepgram, "#13cfa0"],
+  MCP: [SiModelcontextprotocol, "#b4a0ff"],
+  Python: [SiPython, "#dfb943"],
+  FastAPI: [SiFastapi, "#27bba6"],
+  "Next.js": [SiNextdotjs, "currentColor"],
+  Supabase: [SiSupabase, "#3ecf8e"],
+  PostgreSQL: [SiPostgresql, "#669bc6"],
+  OpenAI: [TbBrandOpenai, "#49b99c"],
+  Gemini: [Sparkles, "#779bf6"],
+  Twilio: [TbBrandTwilio, "#ef526d"],
+  Vapi: [AudioLines, "#42c9af"],
+  Webhooks: [Webhook, "#df9b64"],
+  "CRM integrations": [Plug, "#6fa3ee"],
+  "Workflow orchestration": [Workflow, "#b492ed"],
+  LLMs: [Bot, "#b492ed"],
+  RAG: [Search, "#56bacb"],
+  Pinecone: [Database, "#57bfa0"],
+  "Vector databases": [Database, "#669bc6"],
+  "Tool calling": [Plug, "#df9b64"],
+  LangChain: [SiLangchain, "#56baa7"],
+  LangGraph: [SiLanggraph, "#9ab8ed"],
+  Gmail: [SiGmail, "#ea6c61"],
+  "Google Sheets": [SiGooglesheets, "#40b67b"],
+  Telegram: [SiTelegram, "#4eafe0"],
+  React: [SiReact, "#61dafb"],
+  Claude: [SiClaude, "#d99a7c"],
+  Anthropic: [SiAnthropic, "#d9b9a0"],
+  OpenRouter: [SiOpenrouter, "#9aafff"],
+};
 
 const services = [
   {
@@ -23,7 +66,7 @@ const services = [
       "Lead qualification, customer support, and appointment scheduling",
       "Context-aware conversations and human handoffs",
     ],
-    technologies: ["ElevenLabs", "Twilio", "Vapi", "Deepgram", "OpenAI", "API integrations"],
+    technologies: ["ElevenLabs", "Twilio", "Vapi", "Deepgram", "OpenAI", "Gemini", "Claude", "OpenRouter"],
     bestFor: "Sales, support, and appointment-based businesses",
   },
   {
@@ -38,7 +81,7 @@ const services = [
       "Decision logic, human approvals, and automated follow-ups",
     ],
     bestFor: "Teams managing repetitive communication, intake, data entry, and approvals",
-    technologies: ["n8n", "Make.com", "REST APIs", "Webhooks", "CRM integrations", "Workflow orchestration"],
+    technologies: ["n8n", "Make.com", "Webhooks", "MCP", "Tool calling", "Gmail", "Google Sheets", "Telegram", "OpenAI", "Claude"],
   },
   {
     id: "agentic-ai-llm",
@@ -51,7 +94,7 @@ const services = [
       "Agent workflows with tool calling and multi-step reasoning",
       "MCP, vector databases, and business knowledge integration",
     ],
-    technologies: ["OpenAI", "Gemini", "LLMs", "RAG", "Pinecone", "Vector databases", "MCP", "Tool calling"],
+    technologies: ["OpenAI", "Gemini", "Claude", "Anthropic", "OpenRouter", "LangChain", "LangGraph", "Pinecone", "MCP", "RAG", "Supabase", "PostgreSQL", "Tool calling"],
     bestFor: "Teams building knowledge assistants and tool-connected AI agents",
   },
   {
@@ -65,48 +108,12 @@ const services = [
       "Database, API, and communication-platform integrations",
       "AI capabilities embedded into existing business systems",
     ],
-    technologies: ["Python", "FastAPI", "Next.js", "Supabase", "PostgreSQL", "APIs", "AI integrations"],
+    technologies: ["Python", "FastAPI", "Next.js", "React", "Supabase", "PostgreSQL", "OpenAI", "MCP"],
     bestFor: "Businesses integrating AI into new or existing applications",
   },
 ];
 
 export const ServicesSection = () => {
-  const videoRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !isPaused && !motionPreference.matches) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    }, { threshold: 0.2 });
-    const handleMotionChange = () => {
-      if (motionPreference.matches) video.pause();
-    };
-    observer.observe(video);
-    motionPreference.addEventListener("change", handleMotionChange);
-    return () => {
-      observer.disconnect();
-      motionPreference.removeEventListener("change", handleMotionChange);
-      video.pause();
-    };
-  }, [isPaused]);
-
-  const toggleAnimation = () => {
-    if (isPlaying) {
-      setIsPaused(true);
-      videoRef.current.pause();
-    } else {
-      setIsPaused(false);
-      videoRef.current.play().catch(() => {});
-    }
-  };
-
   return (
     <section id="services" className="section-shell section-band">
       <div className="section-inner">
@@ -117,75 +124,69 @@ export const ServicesSection = () => {
           <h2 className="section-title">
             Practical Solutions for <span className="text-primary">Real Work</span>
           </h2>
-        </div>
-
-        <div className="mb-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
-          <p className="mx-auto max-w-2xl text-center text-lg leading-8 text-muted-foreground lg:mx-0 lg:text-left">
+          <p className="section-description">
             Intelligent agents, voice AI, LLM solutions, and connected automation
             designed around your workflow, users, and business goals.
           </p>
-          <div className="relative mx-auto w-full max-w-80 overflow-hidden rounded-lg">
-            <video
-              ref={videoRef}
-              className="aspect-video w-full object-contain"
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Services animation"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-            >
-              <source src="/animations/sd_watermarked_preview.mp4" type="video/mp4" />
-            </video>
-            <button
-              type="button"
-              onClick={toggleAnimation}
-              className="icon-button absolute bottom-2 right-2 bg-background/90"
-              aria-label={isPlaying ? "Pause services animation" : "Play services animation"}
-              title={isPlaying ? "Pause animation" : "Play animation"}
-            >
-              {isPlaying ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-            </button>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {services.map((service) => {
+        <div className="divide-y divide-border border-y border-border">
+          {[services[1], services[0], services[2], services[3]].map((service, index) => {
             const Icon = service.icon;
 
             return (
               <article
                 key={service.id}
-                className="surface-card surface-card-interactive group flex h-full flex-col p-6 text-left md:p-7"
+                aria-labelledby={`${service.id}-title`}
+                className="service-row group grid min-w-0 gap-4 px-2 py-5 text-left sm:px-4 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,2fr)] lg:gap-8 lg:py-6"
               >
-                <div className="mb-5 flex items-start gap-4">
-                  <span className="icon-tile h-12 w-12 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="min-w-0">
+                <div className="flex min-w-0 items-start gap-4">
+                  <span className="service-main-icon icon-tile h-12 w-12 shrink-0">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
                     <p className="mb-1 text-xs font-semibold uppercase text-muted-foreground">
-                      Service
+                      Service {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="text-xl font-semibold leading-snug md:text-2xl">
+                    <h3 id={`${service.id}-title`} className="text-lg font-semibold leading-snug md:text-xl">
                       {service.title}
                     </h3>
                   </div>
                 </div>
+                <div className="mt-5 flex flex-wrap gap-3 py-1 lg:pl-16" aria-label={`${service.title} technologies`}>
+                  {service.technologies.map((technology, toolIndex) => {
+                    const [TechnologyIcon, color] = technologyIcons[technology];
+                    return (
+                      <span key={technology} tabIndex={0} aria-label={technology} className="group/technology relative inline-flex h-9 w-9 items-center justify-center rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                        <TechnologyIcon className="service-logo-float h-6 w-6" style={{ color, animationDelay: `${toolIndex * -0.6}s` }} aria-hidden="true" />
+                        <span aria-hidden="true" className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-background px-2 py-1 text-xs text-foreground opacity-0 shadow-md transition-opacity group-hover/technology:opacity-100 group-focus/technology:opacity-100">
+                          {technology}
+                        </span>
+                      </span>
+                    );
+                  })}
+                </div>
+                </div>
 
-                <p className="mb-6 leading-7 text-muted-foreground">
+                <div className="min-w-0">
+                <p className="mb-3 text-sm leading-6 text-muted-foreground">
                   {service.description}
                 </p>
+                <p className="mb-3 text-xs leading-5 text-muted-foreground">
+                  <span className="font-semibold text-foreground">Best suited for: </span>
+                  {service.bestFor}
+                </p>
 
-                <div className="mb-6">
-                  <h4 className="mb-3 text-sm font-semibold text-foreground">
+                <div className="mb-3">
+                  <h4 className="mb-2 text-sm font-semibold text-foreground">
                     Typical deliverables
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-1">
                     {service.deliverables.map((deliverable) => (
                       <li
                         key={deliverable}
-                        className="flex gap-3 text-sm leading-6 text-muted-foreground"
+                        className="flex gap-2 text-sm leading-5 text-muted-foreground"
                       >
                         <Check
                           className="mt-1 h-4 w-4 shrink-0 text-primary"
@@ -197,31 +198,16 @@ export const ServicesSection = () => {
                   </ul>
                 </div>
 
-                <div className="mb-6 flex flex-wrap gap-2" aria-label="Technologies">
-                  {service.technologies.map((technology) => (
-                    <span key={technology} className="meta-tag">
-                      {technology}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto border-t border-border pt-5">
-                  <p className="mb-4 text-sm leading-6">
-                    <span className="font-semibold text-foreground">
-                      Best suited for:
-                      {" "}
-                    </span>
-                    <span className="text-muted-foreground">
-                      {service.bestFor}
-                    </span>
-                  </p>
+                <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-3">
                   <a
-                    href="#projects"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/75"
+                    href="#contact"
+                    aria-label={`Discuss your project: ${service.title}`}
+                    className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary hover:text-primary/75"
                   >
-                    View related projects
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    Discuss your project
+                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-focus-within:translate-x-1 motion-reduce:transform-none" aria-hidden="true" />
                   </a>
+                </div>
                 </div>
               </article>
             );
