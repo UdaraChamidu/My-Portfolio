@@ -346,7 +346,48 @@
 }
 
 .portfolio-content .surface-card-interactive {
-  transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+  transition: background-color 250ms ease, border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+}
+
+.portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card {
+  --glass-opacity: 0.35;
+  --glass-hover-opacity: 0.88;
+  background-color: hsl(var(--card) / var(--glass-opacity));
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.dark .portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card {
+  --glass-opacity: 0.12;
+  --glass-hover-opacity: 0.72;
+}
+
+.portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card:is(:hover, :focus-within) {
+  background-color: hsl(var(--card) / var(--glass-hover-opacity));
+}
+
+@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card {
+    background-color: hsl(var(--card) / var(--glass-opacity));
+  }
+}
+
+@media (hover: none) {
+  .portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card {
+    --glass-opacity: 0.6;
+  }
+
+  .dark .portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card {
+    --glass-opacity: 0.38;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .portfolio-content :is(#hero, #about, #projects, #reviews, #experience, #credentials, #contact) .surface-card {
+    background-color: hsl(var(--card));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 .portfolio-content .surface-card-interactive:hover,
@@ -482,7 +523,7 @@
 
 .service-row:hover,
 .service-row:focus-within {
-  background-color: hsl(var(--primary) / 0.045);
+  background-color: hsl(var(--card) / 0.65);
 }
 
 .service-row:hover::before,
