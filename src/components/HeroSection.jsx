@@ -39,7 +39,7 @@ export const HeroSection = () => {
       <div className="hero-entrance section-inner relative z-10 text-center">
         <div className="hero-portrait mx-auto -mt-10 mb-7 h-52 w-52 overflow-hidden rounded-full border-4 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:h-60 sm:w-60">
           <img
-            src="/udara2.png"
+            src="/profile.jpg"
             alt="Udara Herath"
             className="h-full w-full rounded-full object-cover object-[center_35%]"
             width="240"

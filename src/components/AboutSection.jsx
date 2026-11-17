@@ -18,34 +18,29 @@ export const AboutSection = () => {
             </h3>
 
             <p className="leading-7 text-muted-foreground">
-              I work remotely as an AI Automation Engineer at Atlantic Bridge
-              Exchange Limited in the United Kingdom, designing AI agents,
-              automated workflows, and integrations across business systems.
-              Based in Sri Lanka, I also work with international clients as a
-              Top Rated Upwork professional with a 100% Job Success Score.
+              Based in Sri Lanka, I work remotely as an AI Automation Engineer
+              at Atlantic Bridge Exchange Limited, UK. I also serve international
+              clients as a{" "}
+              <strong className="font-semibold text-primary">
+                Top Rated AI Engineer on Upwork
+              </strong>{" "}
+              with a{" "}
+              <strong className="font-semibold text-foreground">
+                100% Job Success Score
+              </strong>.
             </p>
 
             <p className="leading-7 text-muted-foreground">
-              I am a final-year B.Sc. (Hons) Computer Engineering undergraduate
-              at the University of Jaffna and the founder of Veloxdy, where I
-              build AI solutions and web applications.
+              I build voice agents, RAG assistants, and automated workflows,
+              connecting AI with business knowledge, APIs, and tools through
+              MCP. My focus is reliable systems with secure data handling
+              and human review where it matters.
             </p>
 
             <p className="leading-7 text-muted-foreground">
-              I specialize in agentic AI, conversational voice systems, and
-              business process automation. I build LLM applications, RAG
-              assistants, and custom AI-powered tools, connecting models to
-              business knowledge, APIs, and operational systems through MCP
-              and tool integrations.
+              I am also the founder of Veloxdy and a final-year B.Sc. (Hons)
+              Computer Engineering undergraduate at the University of Jaffna.
             </p>
-
-            <p className="leading-7 text-muted-foreground">
-              I approach projects as complete systems rather than isolated AI
-              demos: clear user workflows, maintainable APIs, secure data
-              handling, human review where decisions matter, and practical
-              deployment for continued use.
-            </p>
-
           </div>
 
           <div className="grid grid-cols-1 gap-4">

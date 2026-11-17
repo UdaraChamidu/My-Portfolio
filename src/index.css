@@ -453,6 +453,92 @@
 
 .experience-entry {
   position: relative;
+  scroll-margin-block: 6rem;
+}
+
+.experience-entry[data-active="true"] {
+  border-color: hsl(var(--primary) / 0.6);
+  box-shadow: 0 4px 22px hsl(var(--primary) / 0.09);
+}
+
+.experience-journey {
+  position: relative;
+}
+
+.experience-rail {
+  position: absolute;
+  top: 23px;
+  inset-inline: var(--milestone-inset);
+  height: 2px;
+  background: hsl(var(--border));
+}
+
+.experience-rail > span {
+  display: block;
+  height: 100%;
+  background: hsl(var(--primary));
+  transform-origin: left;
+  transition: transform 450ms ease;
+}
+
+.experience-milestone-dot {
+  transition: background-color 250ms ease, color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+}
+
+.experience-milestone[aria-current="step"] .experience-milestone-dot,
+.experience-milestone:hover .experience-milestone-dot,
+.experience-milestone:focus-visible .experience-milestone-dot {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 0 0 5px hsl(var(--primary) / 0.12);
+  transform: translateY(-2px);
+}
+
+.experience-grid {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.experience-grid::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 30px;
+  bottom: 30px;
+  width: 2px;
+  background: hsl(var(--primary) / 0.3);
+}
+
+.experience-step {
+  position: absolute;
+  top: 24px;
+  left: -30px;
+  display: flex;
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid hsl(var(--primary) / 0.5);
+  border-radius: 50%;
+  background: hsl(var(--background));
+  color: hsl(var(--primary));
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.experience-entry[data-active="true"] .experience-step {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+@media (width >= 1024px) {
+  .experience-grid { padding-left: 0; }
+  .experience-grid::before { display: none; }
+  .experience-step {
+    position: static;
+    height: 22px;
+    width: 22px;
+  }
 }
 
 .experience-entry::before {
@@ -580,6 +666,10 @@
   .portfolio-content .surface-card-interactive:hover,
   .portfolio-content .surface-card-interactive:focus-within,
   .experience-entry:hover .company-logo {
+    transform: none;
+  }
+
+  .experience-milestone .experience-milestone-dot {
     transform: none;
   }
 }

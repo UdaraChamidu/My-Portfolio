@@ -116,7 +116,7 @@ export const Navbar = () => {
           </a>
           <ThemeToggle embedded />
           <a
-            href="/Herath_CV_AI.pdf"
+            href="/Udara_Herath_AI_Automation_Engineer_CV.pdf"
             download
             className="button-primary min-h-10 px-4 py-2 text-sm"
           >
@@ -171,7 +171,7 @@ export const Navbar = () => {
                   Writing
                 </a>
                 <a
-                  href="/Herath_CV_AI.pdf"
+                  href="/Udara_Herath_AI_Automation_Engineer_CV.pdf"
                   download
                   onClick={closeMenu}
                   className="button-primary mt-4"

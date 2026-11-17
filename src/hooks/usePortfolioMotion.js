@@ -8,7 +8,7 @@ export const usePortfolioMotion = (containerRef) => {
 
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const tracked = new Set();
-    const selector = ".section-header, article.surface-card, .service-row, #about .surface-card, .contact-panel, .skill-logo-grid";
+    const selector = ".section-header, article.surface-card, .service-row, #about .surface-card, .contact-panel, .skill-logo-grid, .experience-journey";
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
