@@ -214,6 +214,13 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
                   </span>
                 ))}
               </div>
+              {project.technologyNotes?.length > 0 && (
+                <ul className="mt-4 space-y-2 text-sm leading-6 text-muted-foreground">
+                  {project.technologyNotes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                </ul>
+              )}
 
               {project.architecture?.length > 0 && (
               <>

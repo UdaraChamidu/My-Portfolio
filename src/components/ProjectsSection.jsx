@@ -18,6 +18,7 @@ import { ProjectDetailsModal } from "@/components/ProjectDetailsModal";
 const projects = [
   {
     id: "promotr-nightclub-ai",
+    image: "/projects/thumbnails/promotor.jpg",
     title: "Promotr: AI Nightclub Booking & Guest Engagement",
     description:
       "An AI-powered nightclub platform for guest inquiries, booking requests, and staff handoffs across communication channels, with a centralized administration dashboard.",
@@ -28,7 +29,8 @@ const projects = [
   },
   {
     id: "elevenlabs-lauren-voice-agent",
-    title: "AI Voice Agent for Call Automation",
+    image: "/projects/thumbnails/elevenlabs Lauren AI Voice Agent Workflow.png",
+    title: "Lauren: ElevenLabs Voice Agent for Call Automation",
     description:
       "An ElevenLabs conversational voice agent optimized for outbound calls, natural dialogue, interruption handling, call transfers, voicemail workflows, and TrackDrive call operations.",
     tags: ["ElevenLabs", "Voice AI", "TrackDrive", "API Integrations", "Telephony"],
@@ -38,16 +40,18 @@ const projects = [
   },
   {
     id: "german-energy-data-automation",
+    image: "/projects/thumbnails/german energy.jpg",
     title: "German Energy Data Monitoring & Grafana Analytics",
     description:
       "An automated pipeline that retrieves German and European electricity-market and grid data, normalizes it into PostgreSQL, and visualizes time-series trends through Grafana dashboards.",
     tags: ["n8n", "PostgreSQL", "Grafana", "REST APIs", "SQL", "JavaScript", "JSON/XML"],
     category: "AI Automation",
-    workType: "Client project",
+    workType: "Employment project",
     featured: true,
   },
   {
     id: "linkedin-ai-publishing-automation",
+    image: "/projects/thumbnails/linkedin.jpg",
     title: "AI LinkedIn Content Creation & Publishing Automation",
     description:
       "A Make.com workflow connecting Telegram topic selection, AI post drafting, human approval, image generation, and LinkedIn publication.",
@@ -57,6 +61,7 @@ const projects = [
   },
   {
     id: "quickbooks-cloudy-ai-mcp",
+    image: "/projects/thumbnails/mcp.jpg",
     title: "QuickBooks & Cloudy AI MCP Integration",
     description:
       "Integration work connecting QuickBooks and Cloudy AI through Model Context Protocol and accounting APIs to support AI-connected accounting workflows.",
@@ -70,7 +75,7 @@ const projects = [
     title: "Insurance AI Consultant Platform",
     description:
       "An AI-enabled consultation and client-intake platform for insurance professionals, combining video meetings, scheduling, compliance workflows, and a RAG knowledge base.",
-    image: "/projects/insurance.png",
+    image: "/projects/thumbnails/insurance.jpg",
     tags: ["React", "Supabase", "WebRTC", "Pinecone"],
     category: "AI",
     workType: "Client project",
@@ -82,7 +87,7 @@ const projects = [
     title: "AI Email Automation System",
     description:
       "A human-in-the-loop n8n system that classifies Gmail messages, prepares context-aware reply drafts, and tracks each email through approval and sending.",
-    image: "/projects/case-studies/email-automation/main-workflow.png",
+    image: "/projects/thumbnails/email automation.jpg",
     tags: ["n8n", "Gmail", "OpenAI", "Google Sheets"],
     category: "AI Automation",
     workType: "Client project",
@@ -93,7 +98,7 @@ const projects = [
     title: "AI Voice Agent SaaS Platform",
     description:
       "A client SaaS platform for automated outbound calling, context-aware voice conversations, callback scheduling, and centralized campaign analytics.",
-    image: "/projects/project18.png",
+    image: "/projects/thumbnails/voice agent.jpg",
     tags: ["React", "n8n", "Twilio / Vapi", "Pinecone"],
     category: "AI Automation",
     workType: "Client project",
@@ -104,7 +109,7 @@ const projects = [
     title: "BiaBot: AI Client Intake Platform",
     description:
       "A full-stack conversational intake platform that captures client requirements through text or voice, extracts structured data, generates review-ready summaries, and automates internal handoffs to Monday.com.",
-    image: "/projects/case-studies/biabot-client-intake/user-interface.webp",
+    image: "/projects/thumbnails/biabot client intake chatbot.jpg",
     tags: ["React", "FastAPI", "OpenAI", "Google Cloud Run"],
     category: "AI",
     workType: "Client project",
