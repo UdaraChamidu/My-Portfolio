@@ -439,6 +439,24 @@
   transition: box-shadow 300ms ease;
 }
 
+.hero-client {
+  min-height: min(850px, 94svh);
+}
+
+.hero-client-title {
+  font-size: 2.5rem;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .hero-client-title { font-size: 3.75rem; }
+}
+
+@media (min-width: 1024px) {
+  .hero-client-title { font-size: 4rem; }
+}
+
 .hero-portrait:hover {
   box-shadow: 0 0 36px hsl(var(--primary) / 0.4);
 }

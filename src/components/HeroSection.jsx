@@ -4,8 +4,8 @@ import {
   BriefcaseBusiness,
   // Building2, // Restore with the temporarily hidden UK proof item.
   ExternalLink,
-  Mail,
   Rocket,
+  Workflow,
 } from "lucide-react";
 
 const proofItems = [
@@ -34,58 +34,67 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center px-4 pb-10 pt-28 md:pb-14 md:pt-32"
+      className="hero-client relative flex items-center px-4 pb-10 pt-28 md:pb-12 md:pt-28"
     >
-      <div className="hero-entrance section-inner relative z-10 text-center">
-        <div className="hero-portrait mx-auto -mt-10 mb-7 h-52 w-52 overflow-hidden rounded-full border-4 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:h-60 sm:w-60">
-          <img
-            src="/profile.jpg"
-            alt="Udara Herath"
-            className="h-full w-full rounded-full object-cover object-[center_35%]"
-            width="240"
-            height="240"
-            fetchPriority="high"
-          />
-        </div>
+      <div className="hero-entrance section-inner relative z-10">
+        <div className="grid items-center gap-7 lg:grid-cols-[3fr_2fr] lg:gap-10">
+          <div className="min-w-0 text-center lg:text-left">
+          <div className="mb-5">
+            <p className="text-2xl font-semibold text-primary sm:text-3xl">Udara Herath</p>
+            <p className="mt-2 text-lg leading-snug text-foreground/90 sm:text-xl">AI Engineer & Automation Specialist</p>
+          </div>
 
-        <h1 className="mb-4 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
-          Hi, I am <span className="text-primary">Udara Herath</span>
+        <h1 className="hero-client-title font-bold">
+          Turn your ideas into{" "}
+          <span className="block text-primary">intelligent solutions.</span>
         </h1>
-        <p className="mx-auto mb-5 max-w-3xl text-xl font-semibold leading-snug text-foreground/90 sm:text-2xl md:text-3xl">
-          AI Engineer | Intelligent Agents & Automation
-        </p>
 
-        <p className="mx-auto max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-          I build intelligent agents, conversational voice systems, and
-          LLM-powered applications that help businesses automate workflows,
-          connect their tools, and put their knowledge to work.
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8 lg:mx-0">
+          I help businesses turn ideas into AI agents, voice systems, and
+          custom applications that work. From automating repetitive tasks to
+          connecting your tools, I build around what your business needs.
         </p>
-        <div className="mt-7 flex flex-wrap justify-center gap-3">
+        <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
           <a
-            href="#projects"
+            href="#contact"
             className="button-primary"
           >
-            View Projects
+            Discuss Your Project
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
           <a
-            href="#contact"
+            href="#projects"
             className="button-secondary"
           >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-            Contact Me
+            <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
+            Explore My Work
           </a>
           <a
             href="#services"
             className="button-secondary"
           >
-            <BriefcaseBusiness className="h-4 w-4" aria-hidden="true" />
+            <Workflow className="h-4 w-4" aria-hidden="true" />
             View Services
           </a>
         </div>
+          </div>
+
+          <div className="order-first flex justify-center lg:order-last lg:justify-end">
+            <div className="hero-portrait aspect-square w-44 overflow-hidden rounded-full border-2 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:w-56 lg:w-full lg:max-w-80 xl:max-w-[360px]">
+              <img
+                src="/profile.jpg"
+                alt="Udara Herath"
+                className="h-full w-full rounded-full object-cover object-[center_35%]"
+                width="360"
+                height="360"
+                fetchPriority="high"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Restore md:grid-cols-3 when the hidden UK proof item is enabled. */}
-        <div className="surface-card mt-12 grid overflow-hidden text-left md:grid-cols-2">
+        <div className="mt-8 grid border-y border-border/70 text-left sm:grid-cols-2 lg:mt-10">
           {proofItems.map((item) => {
             const Icon = item.icon;
             const Wrapper = item.url ? "a" : "div";
@@ -101,7 +110,7 @@ export const HeroSection = () => {
               <Wrapper
                 key={item.label}
                 {...linkProps}
-                className="group flex min-h-24 items-center gap-3 border-b border-border px-4 py-4 transition-colors hover:bg-secondary/60 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+                className="group flex items-center gap-3 border-b border-border/70 px-3 py-4 transition-colors hover:bg-primary/5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:px-5"
               >
                 <span className="icon-tile">
                   <Icon className="h-5 w-5" aria-hidden="true" />
