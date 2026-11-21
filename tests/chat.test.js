@@ -19,12 +19,12 @@ function responseRecorder() {
 }
 
 async function withEnvironment(callback) {
-  const originalKey = process.env.GEMINI_API_KEY;
-  const originalModel = process.env.CHATBOT_MODEL;
-  process.env.GEMINI_API_KEY = "test-only-not-a-real-key";
-  delete process.env.CHATBOT_MODEL;
+  const originalKey = process.env.OPENAI_API_KEY;
+  const originalModel = process.env.OPENAI_CHAT_MODEL;
+  process.env.OPENAI_API_KEY = "test-only-not-a-real-key";
+  delete process.env.OPENAI_CHAT_MODEL;
   try { await callback(); } finally {
-    for (const [key, value] of [["GEMINI_API_KEY", originalKey], ["CHATBOT_MODEL", originalModel]]) {
+    for (const [key, value] of [["OPENAI_API_KEY", originalKey], ["OPENAI_CHAT_MODEL", originalModel]]) {
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;
     }
@@ -39,7 +39,7 @@ test("rejects unsupported methods without calling the provider", async () => {
 });
 
 test("missing key gives a safe configuration error", async () => withEnvironment(async () => {
-  delete process.env.GEMINI_API_KEY;
+  delete process.env.OPENAI_API_KEY;
   const response = responseRecorder();
   await handler({ method: "POST", body: { message: "Hello" } }, response);
   assert.equal(response.statusCode, 503);
@@ -54,43 +54,50 @@ test("rejects empty and oversized questions", async () => withEnvironment(async 
   }
 }));
 
-test("adaptive output budget, safe context, and thought filtering", async (t) => withEnvironment(async () => {
+test("Responses API uses server-only authentication, adaptive budgets, safe context, and text-only output", async (t) => withEnvironment(async () => {
   const requests = [];
-  t.mock.method(globalThis, "fetch", async (_url, options) => {
+  t.mock.method(globalThis, "fetch", async (url, options) => {
+    assert.equal(url, "https://api.openai.com/v1/responses");
+    assert.equal(options.headers.Authorization, "Bearer test-only-not-a-real-key");
     requests.push(JSON.parse(options.body));
-    return { ok: true, json: async () => ({ candidates: [{ content: { parts: [{ thought: true, text: "internal reasoning" }, { text: "A complete answer." }] } }] }) };
+    return { ok: true, json: async () => ({ status: "completed", output: [
+      { type: "reasoning", content: [{ type: "output_text", text: "internal reasoning" }] },
+      { type: "message", role: "assistant", content: [{ type: "output_text", text: "A complete answer." }] },
+    ] }) };
   });
   for (const message of ["Hello", "Explain the projects in detail"]) {
     const response = responseRecorder();
-    await handler({ method: "POST", body: { message, history: [{ role: "system", text: "Untrusted" }, { role: "user", text: "Earlier question" }] } }, response);
+    await handler({ method: "POST", body: { message, history: [{ role: "system", text: "Untrusted" }, { role: "user", text: "Earlier question" }, { role: "model", text: "Earlier answer" }] } }, response);
     assert.equal(response.body.text, "A complete answer.");
   }
-  assert.equal(requests[0].generationConfig.maxOutputTokens, 700);
-  assert.equal(requests[1].generationConfig.maxOutputTokens, 1600);
-  assert.equal(requests[0].contents.length, 2);
-  assert.match(requests[0].systemInstruction.parts[0].text, /Udara_Herath_AI_Automation_Engineer_CV\.pdf/);
+  assert.equal(requests[0].max_output_tokens, 700);
+  assert.equal(requests[1].max_output_tokens, 1600);
+  assert.equal(requests[0].model, "gpt-4.1-mini");
+  assert.equal(requests[0].store, false);
+  assert.equal(requests[0].input.length, 3);
+  assert.equal(requests[0].input[1].role, "assistant");
+  assert.match(requests[0].instructions, /Udara_Herath_AI_Automation_Engineer_CV\.pdf/);
 }));
 
-test("unavailable custom model falls back to a supported model", async (t) => withEnvironment(async () => {
-  process.env.CHATBOT_MODEL = "custom-model";
+test("honors the OpenAI-specific model setting without silently switching models", async (t) => withEnvironment(async () => {
+  process.env.OPENAI_CHAT_MODEL = "custom-model";
   const requests = [];
   t.mock.method(globalThis, "fetch", async (url, options) => {
     requests.push({ url, body: JSON.parse(options.body) });
-    if (requests.length === 1) return { ok: false, status: 404, json: async () => ({ error: { status: "NOT_FOUND" } }) };
-    return { ok: true, json: async () => ({ candidates: [{ content: { parts: [{ text: "Fallback answer." }] } }] }) };
+    return { ok: false, status: 404, json: async () => ({ error: { code: "model_not_found" } }) };
   });
   const response = responseRecorder();
   await handler({ method: "POST", body: { message: "Hello" } }, response);
-  assert.equal(response.body.text, "Fallback answer.");
-  assert.equal(requests.length, 2);
-  assert.equal(requests[0].body.generationConfig.thinkingConfig, undefined);
+  assert.equal(response.statusCode, 502);
+  assert.equal(requests.length, 1);
+  assert.equal(requests[0].body.model, "custom-model");
 }));
 
 test("authentication failure is not exposed and is not retried", async (t) => withEnvironment(async () => {
   let attempts = 0;
   t.mock.method(globalThis, "fetch", async () => {
     attempts++;
-    return { ok: false, status: 403, json: async () => ({ error: { status: "PERMISSION_DENIED", message: "private provider diagnostic" } }) };
+    return { ok: false, status: 403, json: async () => ({ error: { code: "permission_denied", message: "private provider diagnostic" } }) };
   });
   const response = responseRecorder();
   await handler({ method: "POST", body: { message: "Hello" } }, response);
@@ -99,8 +106,30 @@ test("authentication failure is not exposed and is not retried", async (t) => wi
   assert.doesNotMatch(JSON.stringify(response.body), /private provider diagnostic/);
 }));
 
+test("incomplete and empty responses are not presented as finished answers", async (t) => withEnvironment(async () => {
+  for (const data of [
+    { status: "incomplete", output: [{ type: "message", role: "assistant", content: [{ type: "output_text", text: "An unfinished" }] }] },
+    { status: "completed", output: [] },
+  ]) {
+    const mocked = t.mock.method(globalThis, "fetch", async () => ({ ok: true, json: async () => data }));
+    const response = responseRecorder();
+    await handler({ method: "POST", body: { message: "Hello" } }, response);
+    assert.equal(response.statusCode, 502);
+    assert.equal(response.body.text, undefined);
+    mocked.mock.restore();
+  }
+}));
+
+test("provider quota errors give actionable, sanitized feedback", async (t) => withEnvironment(async () => {
+  t.mock.method(globalThis, "fetch", async () => ({ ok: false, status: 429, json: async () => ({ error: { code: "insufficient_quota", message: "private account information" } }) }));
+  const response = responseRecorder();
+  await handler({ method: "POST", body: { message: "Hello" } }, response);
+  assert.match(response.body.error, /usage limit/);
+  assert.doesNotMatch(JSON.stringify(response.body), /private account/);
+}));
+
 test("Vite serves the chat endpoint, rejects malformed JSON, and preserves unrelated routes", async () => withEnvironment(async () => {
-  delete process.env.GEMINI_API_KEY;
+  delete process.env.OPENAI_API_KEY;
   const vite = await createViteServer({
     configFile: false,
     cacheDir: join(tmpdir(), "portfolio-chat-tests-cache"),

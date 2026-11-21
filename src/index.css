@@ -462,7 +462,7 @@
 }
 
 .chat-panel {
-  background: hsl(var(--card) / 0.78);
+  background: hsl(var(--card) / 0.62);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }

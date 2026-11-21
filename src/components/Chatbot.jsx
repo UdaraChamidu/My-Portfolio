@@ -20,6 +20,7 @@ export const Chatbot = () => {
   const chatHistoryRef = useRef([]);
   const messageListRef = useRef(null);
   const launcherRef = useRef(null);
+  const panelRef = useRef(null);
   const inputRef = useRef(null);
   const pendingRef = useRef(false);
   const requestRef = useRef(null);
@@ -40,8 +41,17 @@ export const Chatbot = () => {
         launcherRef.current?.focus({ preventScroll: true });
       }
     };
+    const onPointerDown = (event) => {
+      if (!panelRef.current?.contains(event.target) && !launcherRef.current?.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
   }, [isOpen]);
 
   const handleSend = async (messageText) => {
@@ -105,6 +115,7 @@ export const Chatbot = () => {
 
       {isOpen && (
         <section
+          ref={panelRef}
           id="portfolio-chat"
           role="dialog"
           aria-labelledby="chat-title"
