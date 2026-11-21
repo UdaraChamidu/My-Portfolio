@@ -40,7 +40,9 @@ export const HeroSection = () => {
         <div className="grid items-center gap-7 lg:grid-cols-[3fr_2fr] lg:gap-6">
           <div className="min-w-0 text-center lg:text-left">
           <div className="mb-5">
-            <p className="text-2xl font-semibold text-primary sm:text-3xl">Hi, I am Udara Herath</p>
+            <p className="text-2xl font-semibold text-foreground sm:text-3xl">
+              Hi, I am <span className="text-primary">Udara Herath</span>
+            </p>
             <p className="mt-2 text-lg leading-snug text-foreground/90 sm:text-xl">AI Engineer & Automation Specialist</p>
           </div>
 
