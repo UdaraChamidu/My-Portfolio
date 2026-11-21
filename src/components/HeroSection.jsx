@@ -37,10 +37,10 @@ export const HeroSection = () => {
       className="hero-client relative flex items-center px-4 pb-10 pt-28 md:pb-12 md:pt-28"
     >
       <div className="hero-entrance section-inner relative z-10">
-        <div className="grid items-center gap-7 lg:grid-cols-[3fr_2fr] lg:gap-10">
+        <div className="grid items-center gap-7 lg:grid-cols-[3fr_2fr] lg:gap-6">
           <div className="min-w-0 text-center lg:text-left">
           <div className="mb-5">
-            <p className="text-2xl font-semibold text-primary sm:text-3xl">Udara Herath</p>
+            <p className="text-2xl font-semibold text-primary sm:text-3xl">Hi, I am Udara Herath</p>
             <p className="mt-2 text-lg leading-snug text-foreground/90 sm:text-xl">AI Engineer & Automation Specialist</p>
           </div>
 
@@ -79,7 +79,7 @@ export const HeroSection = () => {
         </div>
           </div>
 
-          <div className="order-first flex justify-center lg:order-last lg:justify-end">
+          <div className="order-first flex justify-center lg:order-last">
             <div className="hero-portrait aspect-square w-44 overflow-hidden rounded-full border-2 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:w-56 lg:w-full lg:max-w-80 xl:max-w-[360px]">
               <img
                 src="/profile.jpg"
