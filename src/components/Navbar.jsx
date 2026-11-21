@@ -111,9 +111,11 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
+          {/* Writing navigation is temporarily hidden.
           <a href="/writing" className="py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary">
             Writing
           </a>
+          */}
           <ThemeToggle embedded />
           <a
             href="/Udara_Herath_AI_Automation_Engineer_CV.pdf"
@@ -163,6 +165,7 @@ export const Navbar = () => {
                     {item.name}
                   </a>
                 ))}
+                {/* Writing navigation is temporarily hidden.
                 <a
                   href="/writing"
                   onClick={closeMenu}
@@ -170,6 +173,7 @@ export const Navbar = () => {
                 >
                   Writing
                 </a>
+                */}
                 <a
                   href="/Udara_Herath_AI_Automation_Engineer_CV.pdf"
                   download
