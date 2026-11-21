@@ -461,6 +461,27 @@
   box-shadow: 0 0 36px hsl(var(--primary) / 0.4);
 }
 
+.chat-panel {
+  background: hsl(var(--card) / 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.chat-message { overflow-wrap: anywhere; }
+.chat-message p + p, .chat-message ul, .chat-message ol { margin-top: 0.5rem; }
+.chat-message ul { list-style: disc; padding-left: 1.25rem; }
+.chat-message ol { list-style: decimal; padding-left: 1.25rem; }
+.chat-message pre, .chat-message table { max-width: 100%; overflow-x: auto; }
+.chat-message h1, .chat-message h2, .chat-message h3 { font-size: 1rem; font-weight: 600; margin-block: 0.5rem; }
+
+@supports not (backdrop-filter: blur(18px)) {
+  .chat-panel { background: hsl(var(--card) / 0.97); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .chat-panel { background: hsl(var(--card)); backdrop-filter: none; }
+}
+
 .reveal-enter.reveal-visible {
   animation: portfolio-reveal 550ms ease both;
 }
