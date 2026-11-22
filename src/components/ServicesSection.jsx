@@ -11,6 +11,10 @@ import {
   Bot,
   Search,
   Sparkles,
+  MessagesSquare,
+  ListChecks,
+  Code2,
+  Rocket,
 } from "lucide-react";
 import {
   SiN8N, SiMake, SiElevenlabs, SiDeepgram, SiModelcontextprotocol,
@@ -19,6 +23,14 @@ import {
   SiClaude, SiAnthropic, SiOpenrouter,
 } from "react-icons/si";
 import { TbBrandOpenai, TbBrandTwilio } from "react-icons/tb";
+import { chooseEnquiryService } from "@/data/enquiryOptions";
+
+const processSteps = [
+  { title: "Understand", text: "Explore your goals and current workflow.", icon: MessagesSquare },
+  { title: "Plan", text: "Agree on a practical scope and approach.", icon: ListChecks },
+  { title: "Build", text: "Develop, integrate, and review together.", icon: Code2 },
+  { title: "Launch & Support", text: "Prepare the handover and agree on next steps.", icon: Rocket },
+];
 
 const technologyIcons = {
   n8n: [SiN8N, "#ea4b71"],
@@ -201,6 +213,7 @@ export const ServicesSection = () => {
                 <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-3">
                   <a
                     href="#contact"
+                    onClick={() => chooseEnquiryService(service.id)}
                     aria-label={`Discuss your project: ${service.title}`}
                     className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary hover:text-primary/75"
                   >
@@ -214,7 +227,24 @@ export const ServicesSection = () => {
           })}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-5 border-t border-border pt-8 text-center md:flex-row md:text-left">
+        <div className="mt-8 border-b border-border pb-7">
+          <h3 className="mb-5 text-left text-lg font-semibold">How we work together</h3>
+          <ol className="process-strip grid grid-cols-2 gap-x-5 gap-y-6 md:grid-cols-4">
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+              return <li key={step.title} className="process-step relative min-w-0 text-left" style={{ "--step-delay": `${index * 1.5}s` }}>
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="process-node icon-tile h-9 w-9"><Icon size={18} aria-hidden="true" /></span>
+                  <span className="text-xs font-semibold text-primary">0{index + 1}</span>
+                </div>
+                <h4 className="text-sm font-semibold">{step.title}</h4>
+                <p className="mt-1 max-w-52 text-xs leading-5 text-muted-foreground">{step.text}</p>
+              </li>;
+            })}
+          </ol>
+        </div>
+
+        <div className="mt-7 flex flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
           <div>
             <h3 className="text-xl font-semibold">Have a project in mind?</h3>
             <p className="mt-1 text-sm text-muted-foreground">

@@ -1,8 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { sendContactEnquiry } from "../src/lib/contactDelivery.js";
+import { buildContactMessage, sendContactEnquiry } from "../src/lib/contactDelivery.js";
 
 const enquiry = { user_name: "Test Visitor", user_email: "visitor@example.test", message: "Test enquiry" };
+
+test("optional fields are included in the existing email message without template changes", () => {
+  assert.equal(buildContactMessage("  Build a workflow  ", "ai-automation", "Within a month"), "Service: AI Workflow Automation\n\nTimeline: Within a month\n\nBuild a workflow");
+  assert.equal(buildContactMessage("Project details", "", ""), "Project details");
+  assert.equal(buildContactMessage("Project details", "spoofed service", "spoofed timeline"), "Project details");
+});
 
 test("sends the enquiry before its acknowledgement", async () => {
   const calls = [];

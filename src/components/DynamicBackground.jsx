@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Image as ImageIcon, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,12 +21,59 @@ const WALLPAPERS = [
 
 export const DynamicBackground = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(null);
+  const currentRef = useRef(0);
+  const pendingRef = useRef(false);
+  const mountedRef = useRef(false);
+  const cacheRef = useRef(new Map());
+  const [imageWidth] = useState(() => window.innerWidth < 640 ? 960 : window.innerWidth < 1200 ? 1600 : 2080);
   const [isAutoPlaying, setIsAutoPlaying] = useState(
     () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
-  // Configuration
-  // const CHANGE_INTERVAL = 10000; // Change every 10 seconds
+  const wallpaperUrl = useCallback((index) => {
+    const url = new URL(WALLPAPERS[index]);
+    url.searchParams.set("w", String(imageWidth));
+    return url.href;
+  }, [imageWidth]);
+
+  const preload = useCallback((index) => {
+    const src = wallpaperUrl(index);
+    if (!cacheRef.current.has(src)) {
+      const promise = new Promise((resolve) => {
+        const image = new window.Image();
+        image.onload = () => resolve(true);
+        image.onerror = () => { cacheRef.current.delete(src); resolve(false); };
+        image.src = src;
+      });
+      cacheRef.current.set(src, promise);
+    }
+    return cacheRef.current.get(src);
+  }, [wallpaperUrl]);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
+  const nextWallpaper = useCallback(async () => {
+    if (pendingRef.current) return;
+    pendingRef.current = true;
+    const next = (currentRef.current + 1) % WALLPAPERS.length;
+    const ready = await preload(next);
+    if (ready && mountedRef.current) {
+      setPreviousIndex(currentRef.current);
+      currentRef.current = next;
+      setCurrentIndex(next);
+    }
+    pendingRef.current = false;
+  }, [preload]);
+
+  useEffect(() => {
+    preload((currentIndex + 1) % WALLPAPERS.length);
+    const cleanup = setTimeout(() => setPreviousIndex(null), 1100);
+    return () => clearTimeout(cleanup);
+  }, [currentIndex, preload]);
 
   // Auto-rotate effect
   useEffect(() => {
@@ -37,11 +84,7 @@ export const DynamicBackground = () => {
       }, 8000);
     }
     return () => clearInterval(interval);
-  }, [currentIndex, isAutoPlaying]); // Re-run when index changes to reset timer
-
-  const nextWallpaper = () => {
-    setCurrentIndex((prev) => (prev + 1) % WALLPAPERS.length);
-  };
+  }, [currentIndex, isAutoPlaying, nextWallpaper]);
 
   const toggleAutoPlay = () => {
     setIsAutoPlaying((prev) => !prev);
@@ -51,16 +94,8 @@ export const DynamicBackground = () => {
     <>
       {/* BACKGROUND LAYER (z-0) - Sit on top of body, but behind content */}
       <div className="fixed inset-0 z-0 w-full h-full overflow-hidden">
-        {WALLPAPERS.map((src, index) => (
-          <div
-            key={src}
-            className={cn(
-              "absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out",
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            )}
-            style={{ backgroundImage: `url(${src})` }}
-          />
-        ))}
+        {previousIndex !== null && <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${wallpaperUrl(previousIndex)})` }} />}
+        <div key={currentIndex} data-wallpaper={currentIndex} aria-hidden="true" className={cn("absolute inset-0 bg-cover bg-center bg-no-repeat", previousIndex !== null && "wallpaper-arrive")} style={{ backgroundImage: `url(${wallpaperUrl(currentIndex)})` }} />
 
         {/* Dark Overlay for Text Readability */}
         <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px]" />

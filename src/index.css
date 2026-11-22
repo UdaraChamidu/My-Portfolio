@@ -474,6 +474,43 @@
 .chat-message pre, .chat-message table { max-width: 100%; overflow-x: auto; }
 .chat-message h1, .chat-message h2, .chat-message h3 { font-size: 1rem; font-weight: 600; margin-block: 0.5rem; }
 
+.process-node {
+  animation: process-highlight 6s ease-in-out infinite;
+  animation-delay: var(--step-delay);
+}
+.process-step::after {
+  content: "";
+  position: absolute;
+  top: 1.125rem;
+  left: 4rem;
+  right: 0;
+  height: 1px;
+  background: hsl(var(--primary) / 0.25);
+}
+.process-step:last-child::after { display: none; }
+@keyframes process-highlight {
+  0%, 35%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+  15% { box-shadow: 0 0 0 6px hsl(var(--primary) / 0.12), 0 0 20px hsl(var(--primary) / 0.2); }
+}
+.wallpaper-arrive { animation: wallpaper-arrive 1s ease-in-out both; }
+@keyframes wallpaper-arrive { from { opacity: 0; } to { opacity: 1; } }
+.review-carousel { touch-action: pan-y; }
+
+@media (max-width: 639px) {
+  .hero-client-title { font-size: 2.125rem; }
+  .portfolio-footer { padding-bottom: calc(6.5rem + env(safe-area-inset-bottom)); }
+  .form-control { font-size: 1rem; }
+  .chat-panel input { font-size: 1rem; }
+  #hero .hero-portrait { width: 9rem; }
+  #hero .hero-client-title + p { line-height: 1.65; }
+  .filter-control { min-height: 2.75rem; padding-inline: 0.75rem; }
+  html { scroll-padding-bottom: 6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-node, .wallpaper-arrive { animation: none; }
+}
+
 @supports not (backdrop-filter: blur(18px)) {
   .chat-panel { background: hsl(var(--card) / 0.97); }
 }

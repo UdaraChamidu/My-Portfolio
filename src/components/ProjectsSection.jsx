@@ -4,6 +4,8 @@ import {
   ExternalLink,
   FileText,
   Github,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -21,7 +23,7 @@ const projects = [
     image: "/projects/thumbnails/promotor.jpg",
     title: "Promotr: AI Nightclub Booking & Guest Engagement",
     description:
-      "An AI-powered nightclub platform for guest inquiries, booking requests, and staff handoffs across communication channels, with a centralized administration dashboard.",
+      "Brings guest questions, booking enquiries, and staff handoffs into one AI-powered platform so venue teams can manage conversations in one place.",
     tags: ["Next.js", "TypeScript", "Supabase", "OpenAI", "Instagram API", "n8n", "Gmail API", "Twilio", "Vercel"],
     category: "AI Automation",
     workType: "Client project",
@@ -32,7 +34,7 @@ const projects = [
     image: "/projects/thumbnails/elevenlabs Lauren AI Voice Agent Workflow.png",
     title: "Lauren: ElevenLabs Voice Agent for Call Automation",
     description:
-      "An ElevenLabs conversational voice agent optimized for outbound calls, natural dialogue, interruption handling, call transfers, voicemail workflows, and TrackDrive call operations.",
+      "Supports outbound customer qualification with natural voice conversations, structured lead capture, call transfers, and TrackDrive integration.",
     tags: ["ElevenLabs", "Voice AI", "TrackDrive", "API Integrations", "Telephony"],
     category: "AI Automation",
     workType: "Client project",
@@ -43,7 +45,7 @@ const projects = [
     image: "/projects/thumbnails/german energy.jpg",
     title: "German Energy Data Monitoring & Grafana Analytics",
     description:
-      "An automated pipeline that retrieves German and European electricity-market and grid data, normalizes it into PostgreSQL, and visualizes time-series trends through Grafana dashboards.",
+      "Turns fragmented electricity-market and grid feeds into consistent PostgreSQL records and Grafana dashboards for ongoing monitoring.",
     tags: ["n8n", "PostgreSQL", "Grafana", "REST APIs", "SQL", "JavaScript", "JSON/XML"],
     category: "AI Automation",
     workType: "Employment project",
@@ -74,7 +76,7 @@ const projects = [
     id: "insurance-ai-consultant",
     title: "Insurance AI Consultant Platform",
     description:
-      "An AI-enabled consultation and client-intake platform for insurance professionals, combining video meetings, scheduling, compliance workflows, and a RAG knowledge base.",
+      "Connects insurance client intake, scheduling, video consultations, and business knowledge in an AI-assisted workspace for insurance professionals.",
     image: "/projects/thumbnails/insurance.jpg",
     tags: ["React", "Supabase", "WebRTC", "Pinecone"],
     category: "AI",
@@ -86,7 +88,7 @@ const projects = [
     id: "ai-email-automation",
     title: "AI Email Automation System",
     description:
-      "A human-in-the-loop n8n system that classifies Gmail messages, prepares context-aware reply drafts, and tracks each email through approval and sending.",
+      "Helps a business manage incoming Gmail messages with AI filtering, reply drafts, and tracking while keeping final sending under human approval.",
     image: "/projects/thumbnails/email automation.jpg",
     tags: ["n8n", "Gmail", "OpenAI", "Google Sheets"],
     category: "AI Automation",
@@ -97,7 +99,7 @@ const projects = [
     id: "ai-voice-agent-platform",
     title: "AI Voice Agent SaaS Platform",
     description:
-      "A client SaaS platform for automated outbound calling, context-aware voice conversations, callback scheduling, and centralized campaign analytics.",
+      "Automates lead outreach and callback scheduling through context-aware AI calls, with campaign management and analytics in one dashboard.",
     image: "/projects/thumbnails/voice agent.jpg",
     tags: ["React", "n8n", "Twilio / Vapi", "Pinecone"],
     category: "AI Automation",
@@ -108,7 +110,7 @@ const projects = [
     id: "biabot-client-intake",
     title: "BiaBot: AI Client Intake Platform",
     description:
-      "A full-stack conversational intake platform that captures client requirements through text or voice, extracts structured data, generates review-ready summaries, and automates internal handoffs to Monday.com.",
+      "Replaces static intake forms with text and voice conversations, then turns client requirements into structured summaries and Monday.com handoffs.",
     image: "/projects/thumbnails/biabot client intake chatbot.jpg",
     tags: ["React", "FastAPI", "OpenAI", "Google Cloud Run"],
     category: "AI",
@@ -172,7 +174,7 @@ const projects = [
     id: "hr-leave-management",
     title: "Idea8 HR Management Platform",
     description:
-      "A production full-stack platform for employee management, leave and work-from-home approvals, real-time notifications, and HR analytics.",
+      "Centralizes employee records, leave and work-from-home approvals, notifications, and HR analytics for internal company operations.",
     image:
       "/projects/case-studies/hr-leave-management/cover-dashboard.png",
     tags: ["React", "NestJS", "Prisma", "PostgreSQL"],
@@ -199,7 +201,7 @@ const projects = [
     id: "lumina-ai",
     title: "Lumina AI",
     description:
-      "A secure Gemini medical-information chatbot with n8n orchestration, authentication, persistent usage controls, and layered anti-abuse protection.",
+      "Provides conversational access to medical information with authentication, persistent usage limits, and anti-abuse controls around the AI workflow.",
     image: "/projects/case-studies/lumina-ai/main-interface.webp",
     tags: ["React", "n8n", "Gemini", "Supabase"],
     category: "AI",
@@ -412,12 +414,14 @@ const categories = [
 export const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("Featured");
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showAllFeatured, setShowAllFeatured] = useState(false);
 
   const filteredProjects = projects.filter((project) =>
     activeCategory === "Featured"
       ? project.featured
       : project.category === activeCategory
   );
+  const visibleProjects = activeCategory === "Featured" && !showAllFeatured ? filteredProjects.slice(0, 6) : filteredProjects;
 
   return (
     <section id="projects" className="section-shell">
@@ -441,7 +445,7 @@ export const ProjectsSection = () => {
             <button
               key={category}
               type="button"
-              onClick={() => setActiveCategory(category)}
+              onClick={() => { setActiveCategory(category); setShowAllFeatured(false); }}
               aria-pressed={activeCategory === category}
               className={cn(
                 "filter-control",
@@ -455,8 +459,8 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div key={activeCategory} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
+        <div id="project-grid" key={activeCategory} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {visibleProjects.map((project) => (
             <article
               key={project.id}
               className="surface-card surface-card-interactive group flex h-full flex-col overflow-hidden"
@@ -464,7 +468,7 @@ export const ProjectsSection = () => {
               <div
                 className={cn(
                   "relative overflow-hidden bg-secondary/20",
-                  project.image ? "h-48" : "h-16"
+                  project.image ? "aspect-video" : "h-16"
                 )}
               >
                 {project.image && (
@@ -477,14 +481,16 @@ export const ProjectsSection = () => {
                   height="360"
                 />
                 )}
-                <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
+                <div className="absolute inset-x-3 top-3 flex flex-wrap items-start justify-between gap-2">
+                <span className="rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
                   {project.category}
                 </span>
                 {project.workType && (
-                <span className="absolute right-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
+                <span className="rounded-md bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
                   {project.workType}
                 </span>
                 )}
+                </div>
               </div>
 
               <div className="p-5 flex flex-1 flex-col text-left">
@@ -565,7 +571,20 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        {activeCategory === "Featured" && filteredProjects.length > 6 && (
+          <div className="mt-6 text-center">
+            <p className="mb-3 text-xs text-muted-foreground" role="status">Showing {visibleProjects.length} of {filteredProjects.length} featured projects</p>
+            <button type="button" className="button-secondary" aria-controls="project-grid" aria-expanded={showAllFeatured} onClick={() => {
+              if (showAllFeatured) document.getElementById("projects")?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+              setShowAllFeatured((value) => !value);
+            }}>
+              {showAllFeatured ? "Show fewer projects" : `Show all ${filteredProjects.length} projects`}
+              {showAllFeatured ? <ChevronUp size={17} aria-hidden="true" /> : <ChevronDown size={17} aria-hidden="true" />}
+            </button>
+          </div>
+        )}
+
+        <div className="mt-7 text-center">
           <a
             className="button-secondary mx-auto w-fit"
             target="_blank"

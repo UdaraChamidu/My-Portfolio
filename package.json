@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "node --test tests/*.test.js",
+    "test:ui": "playwright test",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -27,6 +29,7 @@
     "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^6.1.0",

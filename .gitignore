@@ -27,6 +27,8 @@ dist-ssr
 # Local browser and visual QA artifacts
 .hero-qa-*/
 .browser-qa/
+playwright-report/
+test-results/
 
 # Confidential project media that must never be deployed
 private-assets/

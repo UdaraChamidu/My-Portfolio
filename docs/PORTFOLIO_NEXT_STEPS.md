@@ -1,13 +1,15 @@
 # Portfolio Next Steps
 
-Updated: 21 November 2026, Asia/Colombo.
+Updated: 22 November 2026, Asia/Colombo.
 
-## Resume Here Tomorrow
+## Current Handoff
 
 1. Finish shared-counter configuration for the chatbot before deploying the protection changes. See `docs/chatbot.md`.
 2. Confirm the contact-form behavior with a deliberate test enquiry when Udara is available. Do not send unsolicited test emails.
-3. Implement the compact contact/process improvements, then projects and reviews, one stage at a time.
-4. Finish with a full mobile audit. Do not treat desktop screenshots or successful builds as mobile sign-off.
+3. Review today's local implementation of contact, process, projects, and reviews in `http://127.0.0.1:5180/`.
+4. Browser checks cover six viewport sizes in both themes, plus desktop/mobile workflows. Real-phone and Safari verification remain pending.
+
+Implemented locally on 22 November: optional enquiry metadata and service prefill, a compact animated process strip, six initial featured cards with all nine retained, a text-based review carousel, staged wallpaper loading, lazy-loaded chat formatting and secondary pages, keyboard/mobile fixes, and search/social assets. No account, deployment, email delivery, or production Redis verification has been performed.
 
 This is the current forward plan. `PORTFOLIO_IMPLEMENTATION_PLAN.md` remains the older historical plan; its earlier counts, hidden-role notes, and completed phases may no longer describe the current application.
 
@@ -62,33 +64,34 @@ Important: 50 requests per IP is not 50 requests per authenticated person. Peopl
 - [x] Prevent immediate duplicate submissions with an in-flight guard.
 - [x] Preserve form contents when primary delivery fails; clear only after primary success.
 - [x] Test successful delivery, primary failure, and acknowledgement-only failure with mocks.
-- [ ] Add an optional service selector covering the existing four services.
-- [ ] Add an optional timeline selector, without making the form long.
-- [ ] Include the selected service/timeline in the existing message text unless EmailJS templates are explicitly updated and checked.
-- [ ] Prefill the service when a visitor clicks its existing enquiry button, while allowing edits.
-- [ ] Add low-friction spam protection and confirm EmailJS allowed-origin/account settings.
+- [x] Add an optional service selector covering the existing four services.
+- [x] Add an optional timeline selector, without making the form long.
+- [x] Include selections in the existing email message without requiring template changes.
+- [x] Prefill the service from its enquiry button, while allowing edits.
+- [x] Add a honeypot, duplicate-submit guard, length checks, and a short client-side resend cooldown. These are not a replacement for server/provider abuse controls.
+- [!] Confirm EmailJS allowed-origin/account settings in the provider account.
 - [!] Verify one authorized real message reaches Udara and that the acknowledgement is correct. No real email has been sent during automated tests.
 
 Acceptance: existing EmailJS flow works without n8n, duplicates are discouraged, optional fields are genuinely optional, and failures never erase a visitor's message.
 
 ## Stage 3: Explain The Process Without A Long New Section
 
-- [ ] Integrate a compact four-step strip into Services, rather than adding another full-height page section.
-- [ ] Use: Understand -> Plan -> Build -> Launch & Support.
-- [ ] Keep each explanation to one short sentence and avoid unsupported turnaround or support commitments.
-- [ ] Add purple connecting-line or step-highlight animation consistent with current effects.
-- [ ] Use a compact two-by-two arrangement on narrow screens, with no forced horizontal overflow.
+- [x] Integrate a compact four-step strip into Services, rather than adding another full-height page section.
+- [x] Use: Understand -> Plan -> Build -> Launch & Support.
+- [x] Keep each explanation to one short sentence and avoid unsupported turnaround or support commitments.
+- [x] Add purple connecting-line and step-highlight animation consistent with current effects.
+- [x] Use a compact two-by-two arrangement on narrow screens, with no forced horizontal overflow.
 
 Acceptance: clients understand how work starts without a major increase in mobile scrolling.
 
 ## Stage 4: Project First Impressions
 
-- [ ] Improve each featured card's short description to explain the business problem or purpose in plain language.
-- [ ] Standardize the existing contribution summaries inside project details.
+- [x] Improve each featured card's short description to explain the business problem or purpose in plain language.
+- [x] Retain the consistent existing My contribution section in all project details; keyboard interaction is now focus-contained.
 - [ ] Add measurable results only where Udara can verify and disclose them; otherwise use accurate qualitative outcomes.
-- [ ] Start with a manageable featured selection and a clear Show more action, retaining every project and existing category.
-- [ ] Confirm which projects lead the initial view before changing featured priorities; do not silently demote approved work.
-- [ ] Keep View details as the only featured-card action, with external links inside details.
+- [x] Show six featured projects initially, with Show all/Show fewer actions; retain all nine featured projects and categories.
+- [x] Preserve existing project order and featured flags. Automated inventory comparison confirms all original identities, types, media, links, and tags are retained.
+- [x] Keep View details as the only featured-card action, with external links inside details.
 - [!] Additional project-gallery images: waiting for Udara, not a blocker for text/structure improvements.
 
 Acceptance: cards remain compact and details remain rich. Do not fabricate images, client outcomes, or project metrics.
@@ -97,55 +100,73 @@ Acceptance: cards remain compact and details remain rich. Do not fabricate image
 
 ### Approved direction
 
-- [ ] Replace public screenshot-opening cards with a compact text review component. No click-to-open review images.
-- [ ] Show one review at a time, with left/right arrow buttons and active-position indicators.
-- [ ] Support automatic cycling with a horizontal slide transition; initially preview Udara's suggested two-second interval as a configurable setting.
+- [x] Replace screenshot-opening cards with a compact text component; no review-image links or previews are rendered.
+- [x] Show one review at a time, with left/right arrows and active-position indicators.
+- [x] Support a horizontal slide transition and the suggested two-second automatic cycling interval.
 - [ ] Check whether two seconds gives enough reading time for actual quotes; propose a longer interval if needed, not less animation.
-- [ ] Pause cycling on hover, keyboard focus, or active interaction so visitors can read. Provide accessible control and honor explicit reduced-motion preferences.
-- [ ] Add touch swipes and keep the text from overflowing or being clipped on mobile.
-- [ ] Avoid jumps between reviews: use an appropriate minimum height but allow long quotes to expand rather than truncating them invisibly.
-- [ ] Keep the carousel near Services as the existing Reviews section, not an additional duplicate testimonial section.
+- [x] Pause cycling on hover, keyboard focus, touch navigation, or hidden pages; include pause/play and reduced-motion support.
+- [x] Add touch swipes, manual/keyboard navigation, and narrow-screen controls.
+- [x] Use a shared-height grid track so slides do not jump or truncate content.
+- [x] Keep the carousel in the existing Reviews section next to Services.
 
 ### Content needed
 
 - [!] Receive exact review text, reviewer display name or approved anonymous label, company if permitted, project/service, and rating only if genuinely given.
-- [!] For existing screenshots, ask for transcripts or permission to transcribe the review images only. Existing verified text can be reused now; do not invent the unread feedback.
+- [x] Inspect review evidence only: 1.png and 2.png contain ratings but no written quotes; 3.png contains the existing quote "Honest, talented freelancer". Retain all three ratings without inventing additional testimonial text.
 - [!] Additional reviews do not need screenshots: direct client-written feedback is acceptable when its authenticity and publication permission are confirmed.
-- [ ] Do not label manually supplied feedback as platform-verified without actual platform evidence.
+- [x] Do not label manually supplied feedback as platform-verified without actual platform evidence.
 - [ ] Keep original evidence privately if necessary; do not accidentally publish private identities or financial details.
-- [ ] Do not add an unmoderated public review/comment form. Future submissions would require consent and manual approval before publication.
+- [x] Do not add an unmoderated public review/comment form. Future submissions would require consent and manual approval before publication.
 
 Three genuine reviews are sufficient to start. There is no reason to duplicate or fabricate more reviews to fill the carousel.
 
 ## Stage 6: Motion, Performance, And Discoverability
 
-- [ ] Preserve all normal wallpaper and animation behavior while loading only the current and next wallpaper assets where feasible.
-- [ ] Preserve smooth crossfades; avoid a blank wallpaper or obvious loading flash.
-- [ ] Optimize image variants and JS loading without removing content or effects.
-- [ ] Add a small workflow animation inside existing Services space only if it contributes to the layout, not another tall decorative section.
+- [x] Keep all 13 wallpapers and existing eight-second rotation; preload the next wallpaper instead of mounting 13 layers.
+- [x] Wait for the next wallpaper to load, then crossfade, temporarily retaining the outgoing layer. Keep the current wallpaper on a preload error.
+- [x] Request responsive wallpaper sizes; load chat Markdown and secondary routes separately. Main production JS decreased from approximately 588 kB before today to 441 kB, uncompressed build output. This is not a field-performance score.
+- [x] Add animated process nodes inside existing Services space without a new tall section.
 - [ ] Verify readable text over every wallpaper in both themes.
-- [ ] Add a purpose-built social preview, canonical URL, sitemap, and robots file once the production domain is confirmed.
+- [x] Add a 1200x630 social preview using the real profile photo, canonical URL, sitemap, and robots file for the existing configured origin `https://udarachamidu.site`.
 - [ ] Measure actual load/interactivity/layout stability; do not claim performance gains based on a successful build alone.
 
 ## Stage 7: Complete Mobile Review Last
 
-- [ ] Check narrow mobile, larger mobile, tablet, and desktop in both themes, including small landscape heights.
-- [ ] Audit hero wrapping, portrait scale, spacing, and all three hero buttons.
-- [ ] Check hamburger menu visibility, keyboard focus, theme toggle, and scroll restoration.
-- [ ] Check project filters, cards, detail modals, galleries, optional video, close controls, and keyboard focus containment.
-- [ ] Check Services icons, compact process strip, reviews swipes/arrows, experience journey, skills, and credential filters.
-- [ ] Check contact inputs, error/success states, and long email addresses.
-- [ ] Check chat with the software keyboard open, outside-click minimization, long replies, API errors, and limit messages.
+- [x] Check 320x740, 390x844, 844x390, 768x1024, 1440x900, and 1920x1080 layouts in both themes through headless Chrome.
+- [x] Check hero wrapping/portrait/controls, page errors, detected broken images, and off-screen interactive element bounds.
+- [x] Check hamburger navigation, focus cycling, theme controls, and closing/restoring scroll on desktop resize.
+- [x] Check featured expansion, filters, modal opening/closing, and keyboard focus containment.
+- [ ] Real-phone gallery gestures, media playback, and Safari behavior remain pending.
+- [x] Check section bounds, review arrows/keyboard/swipe events, normal animations, skills, and credential filters; capture layout screenshots.
+- [x] Check contact prefill and optional metadata, draft retention on primary failure, honeypot behavior, and acknowledgement-only failure with mocked delivery.
+- [x] Check chat minimization, preserved conversation, quota feedback, and a simulated visual-keyboard viewport. Actual mobile keyboard behavior still needs a device test.
 - [ ] Prevent wallpaper controls and chatbot from covering important text, buttons, or footer links.
 - [ ] Check touch behavior without relying on hover, readable type, tap targets, safe areas, and horizontal overflow.
 - [ ] Test an actual phone when available; distinguish emulation from real-device results.
 
 ## Validation And Handoff
 
-- [ ] Run focused lint and production build after each implemented stage.
-- [ ] Keep automated coverage for rate limits and email delivery states.
-- [ ] Use screenshots for meaningful layout changes; do not infer visual correctness solely from compilation.
-- [ ] Keep a short change summary and outstanding items after each stage.
-- [ ] Keep optional account/configuration work separate from local code completion.
+- [x] Full-project lint and production build pass. Existing toast prop validation warnings were resolved without visual changes.
+- [x] 21 unit/integration tests cover rate limits, delivery states, optional enquiry metadata, and project inventory.
+- [x] 29 browser checks passed across the complete suite and targeted checks; screenshots are in ignored `.browser-qa/`.
+- [x] Keep a change summary and outstanding items in this plan.
+- [x] Keep optional account/configuration work separate from local code completion.
 
-No visual/content stages beyond the chatbot and contact reliability fixes were implemented tonight. Continue tomorrow with the production-protection gate, then Stage 2.
+## Remaining External And Content Gates
+
+- Configure/verify shared Redis and Vercel settings before deploying chat protection. Missing production storage deliberately blocks AI calls. No production changes were made.
+- Verify EmailJS allowed domains and actual inbox/acknowledgement delivery with an authorized test enquiry. Automated tests use mocks only; no real messages were sent.
+- Supply approved client names, company/role details, additional exact review text, and any missing project gallery images.
+- Confirm the carousel's two-second pace by trying it; it can be changed without altering the animation design.
+- Real mobile hardware, Safari, all-wallpaper contrast/readability checks, and deployed field performance remain pending.
+- Non-breaking dependency updates reduced npm audit findings from nine high-severity entries to four. The remaining chain is `@vercel/blob` -> `@vercel/oidc` -> `@vercel/cli-config` -> `zod`; npm proposes a breaking Blob downgrade. No forced downgrade was made. The existing Writing/Blob backend was retained and should receive a separate dependency decision.
+
+## Reproduce Checks
+
+- `npm test`
+- `npm run lint`
+- `npm run build`
+- `npm run test:ui` (uses installed Chrome; mocks AI/email calls)
+- `node scripts/render-social-preview.mjs` (regenerates the sharing image from the real profile photo and HTML layout)
+
+The older implementation plan is preserved. No commits, pushes, account changes, or deployments were performed.

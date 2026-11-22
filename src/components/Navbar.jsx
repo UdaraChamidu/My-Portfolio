@@ -3,6 +3,7 @@ import { Download, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ThemeToggle } from "./ThemeToggle";
+import { cycleFocus, focusableElements } from "@/lib/focusUtils";
 
 const navItems = [
   { name: "About Me", href: "#about" },
@@ -20,6 +21,14 @@ export const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
   const menuButtonRef = useRef(null);
   const firstMobileLinkRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+
+  useEffect(() => {
+    const breakpoint = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => { if (breakpoint.matches) setIsMenuOpen(false); };
+    breakpoint.addEventListener("change", onChange);
+    return () => breakpoint.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -56,6 +65,7 @@ export const Navbar = () => {
     firstMobileLinkRef.current?.focus();
 
     const handleKeyDown = (event) => {
+      cycleFocus(event, [...focusableElements(menuButtonRef.current?.parentElement), ...focusableElements(mobileMenuRef.current)]);
       if (event.key === "Escape") {
         setIsMenuOpen(false);
         menuButtonRef.current?.focus();
@@ -145,8 +155,9 @@ export const Navbar = () => {
         {isMenuOpen &&
           createPortal(
             <div
+              ref={mobileMenuRef}
               id="mobile-navigation"
-              className="fixed inset-0 z-40 flex flex-col items-center overflow-y-auto overscroll-contain bg-background/95 px-6 pb-8 pt-24 backdrop-blur-md lg:hidden"
+              className="fixed inset-0 z-40 flex h-[100dvh] flex-col items-center overflow-y-auto overscroll-contain bg-background/95 px-6 pb-8 pt-24 backdrop-blur-md lg:hidden"
             >
               <div className="flex w-full max-w-sm flex-col gap-2">
                 {navItems.map((item, index) => (

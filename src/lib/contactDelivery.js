@@ -1,3 +1,14 @@
+import { enquiryServices, enquiryTimelines } from "../data/enquiryOptions.js";
+
+export function buildContactMessage(message, serviceId, timeline) {
+  const service = enquiryServices.find((option) => option.id === serviceId);
+  const metadata = [
+    service ? `Service: ${service.label}` : null,
+    enquiryTimelines.includes(timeline) ? `Timeline: ${timeline}` : null,
+  ].filter(Boolean);
+  return [...metadata, message.trim()].join("\n\n");
+}
+
 export async function sendContactEnquiry(send, formData) {
   const serviceId = "service_qp0jrov";
   const publicKey = "TqR-vRWKOgnaZq2aA";

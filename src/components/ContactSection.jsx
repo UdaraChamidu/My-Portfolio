@@ -8,32 +8,54 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { sendContactEnquiry } from "@/lib/contactDelivery";
+import { buildContactMessage, sendContactEnquiry } from "@/lib/contactDelivery";
+import { enquiryServices, enquiryTimelines } from "@/data/enquiryOptions";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef();
   const submittingRef = useRef(false);
+  const lastSubmittedRef = useRef(0);
+  const [service, setService] = useState("");
+  const [timeline, setTimeline] = useState("");
+
+  useEffect(() => {
+    const selectService = (event) => {
+      if (enquiryServices.some((option) => option.id === event.detail)) setService(event.detail);
+    };
+    window.addEventListener("portfolio:enquiry-service", selectService);
+    return () => window.removeEventListener("portfolio:enquiry-service", selectService);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (submittingRef.current) return;
+    const form = e.currentTarget;
+    if (form.company_website.value || Date.now() - lastSubmittedRef.current < 30000) {
+      toast({ title: "Please wait a moment", description: "Please wait before submitting again, or use the email link.", variant: "destructive" });
+      return;
+    }
     submittingRef.current = true;
     setIsSubmitting(true);
 
-    const form = e.target;
-
     const formData = {
-      user_name: form.user_name.value,
-      user_email: form.user_email.value,
-      message: form.message.value,
+      user_name: form.user_name.value.trim(),
+      user_email: form.user_email.value.trim(),
+      message: buildContactMessage(form.message.value, service, timeline),
     };
+    if (!formData.user_name || !formData.user_email || !form.message.value.trim()) {
+      submittingRef.current = false;
+      setIsSubmitting(false);
+      toast({ title: "Please complete your message", description: "Enter your name, email, and project details.", variant: "destructive" });
+      return;
+    }
 
     try {
         const result = await sendContactEnquiry((...args) => emailjs.send(...args), formData);
+        lastSubmittedRef.current = Date.now();
         toast({
           title: "Message sent!",
           description: result.acknowledgementSent
@@ -41,6 +63,8 @@ export const ContactSection = () => {
             : "Your message was sent, but the confirmation email could not be delivered. No need to resend.",
         });
         form.reset();
+        setService("");
+        setTimeline("");
     } catch (error) {
         console.error("EmailJS Error:", error);
         toast({
@@ -173,6 +197,13 @@ export const ContactSection = () => {
             </h3>
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 text-left">
+              <fieldset disabled={isSubmitting} className="min-w-0 space-y-4">
+              <legend className="sr-only">Project enquiry</legend>
+              <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="company-website">Company website</label>
+                <input id="company-website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label
                   htmlFor="name"
@@ -185,6 +216,7 @@ export const ContactSection = () => {
                   id="name"
                   name="user_name"
                   required
+                  maxLength={100}
                   className="form-control"
                   autoComplete="name"
                   placeholder="Your name"
@@ -203,10 +235,29 @@ export const ContactSection = () => {
                   id="email"
                   name="user_email"
                   required
+                  maxLength={254}
                   className="form-control"
                   autoComplete="email"
                   placeholder="you@example.com"
                 />
+              </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="min-w-0">
+                  <label htmlFor="enquiry-service" className="mb-2 block text-sm font-medium">Service <span className="font-normal text-muted-foreground">(optional)</span></label>
+                  <select id="enquiry-service" name="service" value={service} onChange={(event) => setService(event.target.value)} className="form-control text-sm">
+                    <option value="">Not sure yet</option>
+                    {enquiryServices.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
+                  </select>
+                </div>
+                <div className="min-w-0">
+                  <label htmlFor="enquiry-timeline" className="mb-2 block text-sm font-medium">Timeline <span className="font-normal text-muted-foreground">(optional)</span></label>
+                  <select id="enquiry-timeline" name="timeline" value={timeline} onChange={(event) => setTimeline(event.target.value)} className="form-control text-sm">
+                    <option value="">Select timeline</option>
+                    {enquiryTimelines.map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -220,7 +271,8 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  rows={5}
+                  maxLength={4000}
+                  rows={4}
                   className="form-control resize-y"
                   placeholder="Tell me about your project, goals, and timeline."
                 />
@@ -236,6 +288,7 @@ export const ContactSection = () => {
                 {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />
               </button>
+              </fieldset>
             </form>
           </div>
         </div>

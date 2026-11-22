@@ -16,7 +16,7 @@ export const Footer = () => {
             <a className="hover:text-primary" href="#about">About</a>
             <a className="hover:text-primary" href="#projects">Projects</a>
             <a className="hover:text-primary" href="#services">Services</a>
-            <a className="hover:text-primary" href="/writing">Writing</a>
+            {/* Writing is hidden from portfolio navigation for now. */}
             <a className="hover:text-primary" href="#contact">Contact</a>
           </nav>
         </div>

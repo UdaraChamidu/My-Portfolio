@@ -89,7 +89,7 @@ export const HeroSection = () => {
                 className="h-full w-full rounded-full object-cover object-[center_35%]"
                 width="360"
                 height="360"
-                fetchPriority="high"
+                loading="eager"
               />
             </div>
           </div>

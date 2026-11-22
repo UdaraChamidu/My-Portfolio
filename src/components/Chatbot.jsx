@@ -1,7 +1,7 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { ArrowUpRight, MessageCircle, Send, X } from "lucide-react";
+
+const ChatMessage = lazy(() => import("./ChatMessage").then((module) => ({ default: module.ChatMessage })));
 
 const quickReplies = [
   { label: "Automate my business", message: "How could Udara help automate my business?" },
@@ -24,6 +24,23 @@ export const Chatbot = () => {
   const inputRef = useRef(null);
   const pendingRef = useRef(false);
   const requestRef = useRef(null);
+  const [viewport, setViewport] = useState(null);
+
+  useEffect(() => {
+    if (!isOpen || !window.visualViewport) return undefined;
+    const update = () => {
+      const visual = window.visualViewport;
+      const inset = Math.max(0, window.innerHeight - visual.height - visual.offsetTop);
+      setViewport({ bottom: inset + (inset > 120 ? 16 : 96), height: Math.min(580, visual.height - (inset > 120 ? 32 : 120)) });
+    };
+    update();
+    window.visualViewport.addEventListener("resize", update);
+    window.visualViewport.addEventListener("scroll", update);
+    return () => {
+      window.visualViewport.removeEventListener("resize", update);
+      window.visualViewport.removeEventListener("scroll", update);
+    };
+  }, [isOpen]);
 
   useEffect(() => () => requestRef.current?.abort(), []);
 
@@ -116,6 +133,7 @@ export const Chatbot = () => {
       {isOpen && (
         <section
           ref={panelRef}
+          style={viewport ? { bottom: viewport.bottom, height: Math.max(180, viewport.height) } : undefined}
           id="portfolio-chat"
           role="dialog"
           aria-labelledby="chat-title"
@@ -140,9 +158,7 @@ export const Chatbot = () => {
                 ? "mr-4 bg-secondary/60 text-foreground"
                 : "ml-6 bg-primary text-primary-foreground"}`}>
                 <p className="mb-1 text-xs font-semibold">{msg.from === "bot" ? "Assistant" : "You"}</p>
-                <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
-                  a: ({ href, children }) => <a href={href} className="underline underline-offset-2" target={href?.startsWith("#") || href?.startsWith("/") ? undefined : "_blank"} rel="noopener noreferrer">{children}</a>,
-                }}>{msg.text}</ReactMarkdown>
+                <Suspense fallback={<p>{msg.text}</p>}><ChatMessage text={msg.text} /></Suspense>
               </div>
             ))}
             {isTyping && <p role="status" className="text-sm text-muted-foreground">Thinking...</p>}

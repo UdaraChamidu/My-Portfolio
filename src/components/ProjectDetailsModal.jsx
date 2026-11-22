@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { cycleFocus, focusableElements } from "@/lib/focusUtils";
 import {
   CheckCircle2,
   ExternalLink,
@@ -18,6 +19,7 @@ const DetailSection = ({ title, children }) => (
 
 export const ProjectDetailsModal = ({ project, onClose }) => {
   const closeButtonRef = useRef(null);
+  const dialogRef = useRef(null);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -27,6 +29,7 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
 
     const handleKeyDown = (event) => {
       if (event.key === "Escape") onClose();
+      cycleFocus(event, focusableElements(dialogRef.current));
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -46,10 +49,11 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
       }}
     >
       <article
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={`${project.id}-details-title`}
-        className="relative max-h-[94vh] w-full max-w-6xl overflow-y-auto rounded-lg border border-border bg-background text-left shadow-2xl"
+        className="relative max-h-[94dvh] w-full max-w-6xl overflow-y-auto overscroll-contain rounded-lg border border-border bg-background text-left shadow-2xl"
       >
         <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-md sm:px-6">
           <div className="min-w-0">
@@ -77,7 +81,7 @@ export const ProjectDetailsModal = ({ project, onClose }) => {
             <p className="section-kicker">Featured Case Study</p>
             <h2
               id={`${project.id}-details-title`}
-              className="text-3xl font-bold leading-tight md:text-5xl"
+              className="break-words text-2xl font-bold leading-tight sm:text-3xl md:text-5xl"
             >
               {project.title}
             </h2>
