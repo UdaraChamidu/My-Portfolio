@@ -255,6 +255,46 @@ for (const width of [390, 1440]) {
   });
 }
 
+for (const width of [390, 1440]) {
+  test(`experience cycles all four roles without scrolling or focus changes at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto("/#experience");
+    await page.mouse.move(0, 0);
+    const section = page.locator("#experience");
+    await section.scrollIntoViewIfNeeded();
+    const cards = section.locator(".experience-entry");
+    await expect(cards).toHaveCount(4);
+    const ids = await cards.evaluateAll((elements) => elements.map((element) => element.id));
+    const active = section.locator('.experience-entry[data-active="true"]');
+    await expect(active).toHaveAttribute("id", ids[0]);
+    const start = await page.evaluate(() => ({ scroll: scrollY, focus: document.activeElement.tagName }));
+    for (const index of [1, 2, 3, 0]) {
+      await expect(active).toHaveAttribute("id", ids[index], { timeout: 3500 });
+      if (width >= 1024) {
+        await expect(section.locator('[aria-current="step"]')).toHaveAttribute("aria-controls", ids[index]);
+      }
+    }
+    const end = await page.evaluate(() => ({ scroll: scrollY, focus: document.activeElement.tagName }));
+    expect(Math.abs(end.scroll - start.scroll)).toBeLessThanOrEqual(1);
+    expect(end.focus).toBe(start.focus);
+    await cards.first().hover();
+    await expect(active).toHaveAttribute("id", ids[0]);
+    await expect(cards.first()).toHaveCSS("opacity", "1");
+    await page.waitForTimeout(2300);
+    await expect(active).toHaveAttribute("id", ids[0]);
+    await page.mouse.move(0, 0);
+    await expect(active).toHaveAttribute("id", ids[1], { timeout: 3500 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.waitForTimeout(2300);
+    await expect(active).toHaveAttribute("id", ids[1]);
+    await cards.last().focus();
+    await expect(active).toHaveAttribute("id", ids[3]);
+    await page.waitForTimeout(2300);
+    await expect(active).toHaveAttribute("id", ids[3]);
+  });
+}
+
 test("review touch gesture changes slides without opening an image", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });

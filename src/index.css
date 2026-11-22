@@ -544,9 +544,10 @@
   scroll-margin-block: 6rem;
 }
 
-.experience-entry[data-active="true"] {
-  border-color: hsl(var(--primary) / 0.6);
-  box-shadow: 0 4px 22px hsl(var(--primary) / 0.09);
+.portfolio-content #experience .experience-entry[data-active="true"] {
+  border-color: hsl(var(--primary) / 0.75);
+  background-color: hsl(var(--card) / var(--glass-hover-opacity));
+  box-shadow: inset 3px 0 hsl(var(--primary)), 0 6px 26px hsl(var(--primary) / 0.22);
 }
 
 .experience-journey {
@@ -565,6 +566,7 @@
   display: block;
   height: 100%;
   background: hsl(var(--primary));
+  box-shadow: 0 0 12px hsl(var(--primary) / 0.45);
   transform-origin: left;
   transition: transform 450ms ease;
 }
@@ -582,6 +584,15 @@
   transform: translateY(-2px);
 }
 
+.experience-milestone[aria-current="step"] .experience-milestone-dot,
+.experience-entry[data-active="true"] .experience-step {
+  animation: experience-marker-glow 2s ease-in-out infinite;
+}
+@keyframes experience-marker-glow {
+  0%, 100% { box-shadow: 0 0 0 4px hsl(var(--primary) / 0.12), 0 0 12px hsl(var(--primary) / 0.2); }
+  50% { box-shadow: 0 0 0 7px hsl(var(--primary) / 0.2), 0 0 22px hsl(var(--primary) / 0.45); }
+}
+
 .experience-grid {
   position: relative;
   padding-left: 1.75rem;
@@ -595,6 +606,11 @@
   bottom: 30px;
   width: 2px;
   background: hsl(var(--primary) / 0.3);
+  animation: experience-rail-glow 2s ease-in-out infinite;
+}
+@keyframes experience-rail-glow {
+  0%, 100% { box-shadow: 0 0 4px hsl(var(--primary) / 0.15); }
+  50% { box-shadow: 0 0 12px hsl(var(--primary) / 0.5); }
 }
 
 .experience-step {
@@ -640,6 +656,7 @@
   transition: transform 400ms ease;
 }
 
+.experience-entry[data-active="true"]::before,
 .experience-entry:hover::before,
 .experience-entry:focus-within::before {
   transform: scaleX(1);
@@ -649,6 +666,7 @@
   transition: transform 250ms ease;
 }
 
+.experience-entry[data-active="true"] .company-logo,
 .experience-entry:hover .company-logo {
   transform: scale(1.04);
 }

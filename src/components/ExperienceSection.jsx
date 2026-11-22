@@ -1,5 +1,5 @@
 import { ExternalLink, MapPin } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const experienceList = [
   {
@@ -93,8 +93,35 @@ const experienceList = [
 const careerJourney = [...experienceList].sort((a, b) => a.startDate.localeCompare(b.startDate));
 
 export const ExperienceSection = () => {
-  const [activeIndex, setActiveIndex] = useState(careerJourney.length - 1);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const sectionRef = useRef(null);
   const cardRefs = useRef({});
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let inView = false;
+    let timer;
+    const syncRotation = () => {
+      clearInterval(timer);
+      if (!inView || document.hidden || preference.matches || hovered || focused) return;
+      timer = setInterval(() => setActiveIndex((index) => (index + 1) % careerJourney.length), 2000);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      syncRotation();
+    }, { threshold: 0.1 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    document.addEventListener("visibilitychange", syncRotation);
+    preference.addEventListener("change", syncRotation);
+    return () => {
+      clearInterval(timer);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncRotation);
+      preference.removeEventListener("change", syncRotation);
+    };
+  }, [hovered, focused]);
 
   const selectMilestone = (index) => {
     setActiveIndex(index);
@@ -108,7 +135,9 @@ export const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="section-shell section-band">
+    <section id="experience" ref={sectionRef} className="section-shell section-band"
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
       <div className="section-inner">
         <div className="section-header">
           <p className="section-kicker">Career Journey</p>
@@ -123,7 +152,7 @@ export const ExperienceSection = () => {
 
         <nav className="experience-journey mb-8 hidden lg:block" style={{ "--milestone-inset": `${50 / careerJourney.length}%` }} aria-label="Career milestones by start date">
           <div className="experience-rail" aria-hidden="true">
-            <span style={{ transform: `scaleX(${activeIndex / Math.max(careerJourney.length - 1, 1)})` }} />
+            <span style={{ transform: `scaleX(${activeIndex / Math.max(careerJourney.length - 1, 1)})`, transition: activeIndex === 0 ? "none" : undefined }} />
           </div>
           <ol className="relative grid" style={{ gridTemplateColumns: `repeat(${careerJourney.length}, minmax(0, 1fr))` }}>
             {careerJourney.map((exp, index) => (
@@ -131,6 +160,8 @@ export const ExperienceSection = () => {
                 <button
                   type="button"
                   onClick={() => selectMilestone(index)}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onFocus={() => setActiveIndex(index)}
                   aria-current={activeIndex === index ? "step" : undefined}
                   aria-controls={`experience-role-${exp.id}`}
                   aria-label={`${exp.milestone}, started ${exp.startLabel}. View ${exp.company} experience`}
