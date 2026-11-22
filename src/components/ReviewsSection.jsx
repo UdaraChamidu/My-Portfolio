@@ -34,7 +34,8 @@ export const ReviewsSection = () => {
   const [playing, setPlaying] = useState(() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const [inView, setInView] = useState(false);
+  const [pageVisible, setPageVisible] = useState(() => !document.hidden);
   const carouselRef = useRef(null);
   const touchStart = useRef(null);
   const move = (direction) => setActive((index) => (index + direction + reviews.length) % reviews.length);
@@ -43,18 +44,18 @@ export const ReviewsSection = () => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const preferenceChanged = () => { if (media.matches) setPlaying(false); };
     media.addEventListener("change", preferenceChanged);
-    const onVisibility = () => setVisible(!document.hidden);
+    const onVisibility = () => setPageVisible(!document.hidden);
     document.addEventListener("visibilitychange", onVisibility);
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting && !document.hidden), { threshold: 0.2 });
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.2 });
     if (carouselRef.current) observer.observe(carouselRef.current);
     return () => { observer.disconnect(); media.removeEventListener("change", preferenceChanged); document.removeEventListener("visibilitychange", onVisibility); };
   }, []);
 
   useEffect(() => {
-    if (!playing || hovered || focused || !visible) return undefined;
+    if (!playing || hovered || focused || !inView || !pageVisible) return undefined;
     const timer = setInterval(() => setActive((index) => (index + 1) % reviews.length), 2000);
     return () => clearInterval(timer);
-  }, [playing, hovered, focused, visible]);
+  }, [playing, hovered, focused, inView, pageVisible]);
 
   return (
     <section id="reviews" className="section-shell">

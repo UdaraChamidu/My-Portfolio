@@ -14,7 +14,7 @@ const WALLPAPERS = [
   "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop", // Matrix/Hacker Code
   "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop", // Retro Tech / Arcade
   "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=2089&auto=format&fit=crop", // Dark Circuitry
-  "https://images.unsplash.com/photo-1531297424006-db5118fe5b96?q=80&w=2070&auto=format&fit=crop", // Gaming Nebula
+  "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2070&auto=format&fit=crop", // Laptop
   "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop", // Electric Lightning
   "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop", // Synthwave Sun
 ];
@@ -26,15 +26,14 @@ export const DynamicBackground = () => {
   const pendingRef = useRef(false);
   const mountedRef = useRef(false);
   const cacheRef = useRef(new Map());
-  const [imageWidth] = useState(() => window.innerWidth < 640 ? 960 : window.innerWidth < 1200 ? 1600 : 2080);
+  const [imageWidth] = useState(() => window.innerWidth < 640 ? 960 : 1920);
   const [isAutoPlaying, setIsAutoPlaying] = useState(
     () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
   const wallpaperUrl = useCallback((index) => {
-    const url = new URL(WALLPAPERS[index]);
-    url.searchParams.set("w", String(imageWidth));
-    return url.href;
+    const filename = new URL(WALLPAPERS[index]).pathname.slice(1);
+    return `/wallpapers/${filename}-${imageWidth}.jpg`;
   }, [imageWidth]);
 
   const preload = useCallback((index) => {
@@ -42,8 +41,16 @@ export const DynamicBackground = () => {
     if (!cacheRef.current.has(src)) {
       const promise = new Promise((resolve) => {
         const image = new window.Image();
-        image.onload = () => resolve(true);
-        image.onerror = () => { cacheRef.current.delete(src); resolve(false); };
+        const finish = (ready) => {
+          clearTimeout(timeout);
+          image.onload = null;
+          image.onerror = null;
+          if (!ready) cacheRef.current.delete(src);
+          resolve(ready);
+        };
+        const timeout = setTimeout(() => finish(false), 6000);
+        image.onload = () => finish(true);
+        image.onerror = () => finish(false);
         image.src = src;
       });
       cacheRef.current.set(src, promise);
@@ -59,21 +66,32 @@ export const DynamicBackground = () => {
   const nextWallpaper = useCallback(async () => {
     if (pendingRef.current) return;
     pendingRef.current = true;
-    const next = (currentRef.current + 1) % WALLPAPERS.length;
-    const ready = await preload(next);
-    if (ready && mountedRef.current) {
-      setPreviousIndex(currentRef.current);
-      currentRef.current = next;
-      setCurrentIndex(next);
+    try {
+      // Skip unavailable images rather than retrying the same broken slide forever.
+      for (let offset = 1; offset < WALLPAPERS.length; offset++) {
+        const next = (currentRef.current + offset) % WALLPAPERS.length;
+        const ready = await preload(next);
+        if (!mountedRef.current) return;
+        if (ready) {
+          setPreviousIndex(currentRef.current);
+          currentRef.current = next;
+          setCurrentIndex(next);
+          return;
+        }
+      }
+    } finally {
+      pendingRef.current = false;
     }
-    pendingRef.current = false;
   }, [preload]);
 
   useEffect(() => {
+    preload(currentIndex).then((ready) => {
+      if (!ready && mountedRef.current) nextWallpaper();
+    });
     preload((currentIndex + 1) % WALLPAPERS.length);
     const cleanup = setTimeout(() => setPreviousIndex(null), 1100);
     return () => clearTimeout(cleanup);
-  }, [currentIndex, preload]);
+  }, [currentIndex, preload, nextWallpaper]);
 
   // Auto-rotate effect
   useEffect(() => {
@@ -102,7 +120,7 @@ export const DynamicBackground = () => {
       </div>
 
       {/* CONTROLS (z-50) - Always clickable */}
-      <div className="fixed bottom-4 left-4 z-50 flex gap-2 sm:bottom-6 sm:left-6">
+      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 flex gap-2 sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] sm:left-6">
         {/* Change Wallpaper Button */}
         <button
           onClick={nextWallpaper}

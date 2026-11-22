@@ -6,10 +6,10 @@ Updated: 22 November 2026, Asia/Colombo.
 
 1. Finish shared-counter configuration for the chatbot before deploying the protection changes. See `docs/chatbot.md`.
 2. Confirm the contact-form behavior with a deliberate test enquiry when Udara is available. Do not send unsolicited test emails.
-3. Review today's local implementation of contact, process, projects, and reviews in `http://127.0.0.1:5180/`.
+3. Review today's local implementation in `http://127.0.0.1:5180/`. Wallpaper reliability and the remaining dependency audit findings are now fixed locally.
 4. Browser checks cover six viewport sizes in both themes, plus desktop/mobile workflows. Real-phone and Safari verification remain pending.
 
-Implemented locally on 22 November: optional enquiry metadata and service prefill, a compact animated process strip, six initial featured cards with all nine retained, a text-based review carousel, staged wallpaper loading, lazy-loaded chat formatting and secondary pages, keyboard/mobile fixes, and search/social assets. No account, deployment, email delivery, or production Redis verification has been performed.
+Implemented locally on 22 November: optional enquiry metadata and service prefill, a compact animated process strip, six initial featured cards with all nine retained, a text-based review carousel, staged local wallpaper loading, lazy-loaded chat formatting and secondary pages, keyboard/mobile fixes, and search/social assets. Follow-up: wallpapers are bundled with the site, unavailable images are skipped, stalled loads time out, review visibility tracking is corrected, and Zod is patched without downgrading Blob. No account, deployment, email delivery, or production Redis verification has been performed.
 
 This is the current forward plan. `PORTFOLIO_IMPLEMENTATION_PLAN.md` remains the older historical plan; its earlier counts, hidden-role notes, and completed phases may no longer describe the current application.
 
@@ -115,20 +115,22 @@ Acceptance: cards remain compact and details remain rich. Do not fabricate image
 - [x] Inspect review evidence only: 1.png and 2.png contain ratings but no written quotes; 3.png contains the existing quote "Honest, talented freelancer". Retain all three ratings without inventing additional testimonial text.
 - [!] Additional reviews do not need screenshots: direct client-written feedback is acceptable when its authenticity and publication permission are confirmed.
 - [x] Do not label manually supplied feedback as platform-verified without actual platform evidence.
-- [ ] Keep original evidence privately if necessary; do not accidentally publish private identities or financial details.
+- [!] Review whether original evidence should remain publicly accessible. Removing review links does not make files under `public/reviews` private; decide whether to remove those assets from deployment separately.
 - [x] Do not add an unmoderated public review/comment form. Future submissions would require consent and manual approval before publication.
 
 Three genuine reviews are sufficient to start. There is no reason to duplicate or fabricate more reviews to fill the carousel.
 
 ## Stage 6: Motion, Performance, And Discoverability
 
-- [x] Keep all 13 wallpapers and existing eight-second rotation; preload the next wallpaper instead of mounting 13 layers.
-- [x] Wait for the next wallpaper to load, then crossfade, temporarily retaining the outgoing layer. Keep the current wallpaper on a preload error.
+- [x] Keep 13 wallpapers and existing eight-second rotation; preload the next wallpaper instead of mounting 13 layers. Twelve original photos remain unchanged; one source returned HTTP 404 and was replaced with a working technology photo.
+- [x] Serve mobile/desktop JPEG copies from `public/wallpapers` so visitors no longer depend on Unsplash access. All 26 assets are validated; initially only current/next images are requested.
+- [x] Wait for the next wallpaper to load, then crossfade, temporarily retaining the outgoing layer. Skip failed images and time out stalled loads after six seconds; keep the existing image if no alternative loads.
+- [x] Browser checks decode every wallpaper at 390px and 1440px, prove automatic rotation, and simulate both image failure and an indefinitely stalled request.
 - [x] Request responsive wallpaper sizes; load chat Markdown and secondary routes separately. Main production JS decreased from approximately 588 kB before today to 441 kB, uncompressed build output. This is not a field-performance score.
 - [x] Add animated process nodes inside existing Services space without a new tall section.
 - [ ] Verify readable text over every wallpaper in both themes.
 - [x] Add a 1200x630 social preview using the real profile photo, canonical URL, sitemap, and robots file for the existing configured origin `https://udarachamidu.site`.
-- [ ] Measure actual load/interactivity/layout stability; do not claim performance gains based on a successful build alone.
+- [x] Capture an initial production-build lab measurement rather than inferring performance from build size. One unthrottled local Chrome sample at 390px: FCP/LCP 1,524ms, CLS 0; at 1440px: FCP/LCP 708ms, CLS 0. Only two wallpapers were requested in each initial sample. These single local samples are not field scores or proof of improved performance; real-network interactivity remains pending.
 
 ## Stage 7: Complete Mobile Review Last
 
@@ -140,15 +142,15 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 - [x] Check section bounds, review arrows/keyboard/swipe events, normal animations, skills, and credential filters; capture layout screenshots.
 - [x] Check contact prefill and optional metadata, draft retention on primary failure, honeypot behavior, and acknowledgement-only failure with mocked delivery.
 - [x] Check chat minimization, preserved conversation, quota feedback, and a simulated visual-keyboard viewport. Actual mobile keyboard behavior still needs a device test.
-- [ ] Prevent wallpaper controls and chatbot from covering important text, buttons, or footer links.
-- [ ] Check touch behavior without relying on hover, readable type, tap targets, safe areas, and horizontal overflow.
+- [x] Give floating wallpaper/chat controls safe-area-aware bottom offsets; a touch-only browser check verifies footer links remain clear. Floating controls can still overlap page content while scrolling; verify physical-device usability before further placement changes.
+- [x] Check touch-only wallpaper switching/chat opening without hover, 44px minimum floating-control targets, safe-area styling, and layout overflow. Physical-device behavior remains a separate gate.
 - [ ] Test an actual phone when available; distinguish emulation from real-device results.
 
 ## Validation And Handoff
 
 - [x] Full-project lint and production build pass. Existing toast prop validation warnings were resolved without visual changes.
-- [x] 21 unit/integration tests cover rate limits, delivery states, optional enquiry metadata, and project inventory.
-- [x] 29 browser checks passed across the complete suite and targeted checks; screenshots are in ignored `.browser-qa/`.
+- [x] 22 unit/integration tests cover rate limits, delivery states, optional enquiry metadata, project inventory, and all local wallpaper assets.
+- [x] All 35 browser checks passed against an isolated production preview, including complete wallpaper loading/rotation, failure recovery, touch-only controls, both themes, and desktop/mobile workflows. Screenshots are in ignored `.browser-qa/`. An earlier development-server run was invalidated by live reloads; final validation uses the built preview instead.
 - [x] Keep a change summary and outstanding items in this plan.
 - [x] Keep optional account/configuration work separate from local code completion.
 
@@ -159,14 +161,14 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 - Supply approved client names, company/role details, additional exact review text, and any missing project gallery images.
 - Confirm the carousel's two-second pace by trying it; it can be changed without altering the animation design.
 - Real mobile hardware, Safari, all-wallpaper contrast/readability checks, and deployed field performance remain pending.
-- Non-breaking dependency updates reduced npm audit findings from nine high-severity entries to four. The remaining chain is `@vercel/blob` -> `@vercel/oidc` -> `@vercel/cli-config` -> `zod`; npm proposes a breaking Blob downgrade. No forced downgrade was made. The existing Writing/Blob backend was retained and should receive a separate dependency decision.
+- Dependency audit now reports zero known vulnerabilities. A scoped override updates `@vercel/cli-config`'s Zod from 4.1.11 to 4.6.7 within the same major version, removing the remaining advisory chain without downgrading Blob or removing the Writing backend. Recheck this override when upstream updates its pinned dependency.
 
 ## Reproduce Checks
 
 - `npm test`
 - `npm run lint`
 - `npm run build`
-- `npm run test:ui` (uses installed Chrome; mocks AI/email calls)
+- `npm run test:ui` (builds first, then tests an isolated production preview on port 5181 with installed Chrome; mocks AI/email calls and leaves the development server on 5180 alone)
 - `node scripts/render-social-preview.mjs` (regenerates the sharing image from the real profile photo and HTML layout)
 
 The older implementation plan is preserved. No commits, pushes, account changes, or deployments were performed.

@@ -53,10 +53,93 @@ for (const [name, width, height] of viewports) {
   }
 }
 
+for (const width of [390, 1440]) {
+  test(`wallpapers load locally and all 13 can rotate at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    const externalRequests = [];
+    page.on("request", (request) => { if (request.url().includes("images.unsplash.com")) externalRequests.push(request.url()); });
+    await page.route("https://images.unsplash.com/**", (route) => route.abort());
+    await page.goto("/");
+    const slide = page.locator("[data-wallpaper]");
+    for (let index = 0; index < 13; index++) {
+      await expect(slide).toHaveAttribute("data-wallpaper", String(index));
+      const loaded = await slide.evaluate(async (element) => {
+        const url = element.style.backgroundImage.slice(5, -2);
+        const image = new Image();
+        image.src = url;
+        await image.decode();
+        return { width: image.naturalWidth, height: image.naturalHeight, path: new URL(image.src).pathname };
+      });
+      expect(loaded.width).toBe(width < 640 ? 960 : 1920);
+      expect(loaded.height).toBeGreaterThan(100);
+      expect(loaded.path).toMatch(/^\/wallpapers\//);
+      if (index < 12) await page.getByRole("button", { name: "Show next background wallpaper" }).click();
+    }
+    await page.getByRole("button", { name: "Show next background wallpaper" }).click();
+    await expect(slide).toHaveAttribute("data-wallpaper", "0");
+    expect(externalRequests).toEqual([]);
+    await mkdir(".browser-qa", { recursive: true });
+    await page.screenshot({ path: `.browser-qa/wallpaper-restored-${width}-dark.png` });
+    await page.getByRole("button", { name: "Use light theme", exact: true }).first().click();
+    await page.screenshot({ path: `.browser-qa/wallpaper-restored-${width}-light.png` });
+  });
+}
+
+test("wallpaper automatically advances after eight seconds", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await expect(page.locator("[data-wallpaper]")).toHaveAttribute("data-wallpaper", "1", { timeout: 12000 });
+});
+
+test("wallpaper skips a failed image without freezing", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.route("**/wallpapers/photo-1518770660439-4636190af475-*", (route) => route.abort());
+  await page.goto("/");
+  await page.getByRole("button", { name: "Show next background wallpaper" }).click();
+  await expect(page.locator("[data-wallpaper]")).toHaveAttribute("data-wallpaper", "2");
+});
+
+test("wallpaper recovers from a stalled preload", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.route("**/wallpapers/photo-1518770660439-4636190af475-*", () => {});
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await page.getByRole("button", { name: "Show next background wallpaper" }).click();
+  await expect(page.locator("[data-wallpaper]")).toHaveAttribute("data-wallpaper", "2", { timeout: 10000 });
+});
+
+test.describe("touch-only mobile", () => {
+  test.use({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  test("controls work without hover and leave footer links clear", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    expect(await page.evaluate(() => matchMedia("(hover: none)").matches)).toBe(true);
+    await page.getByRole("button", { name: "Show next background wallpaper" }).tap();
+    await expect(page.locator("[data-wallpaper]")).toHaveAttribute("data-wallpaper", "1");
+    await page.locator("footer").scrollIntoViewIfNeeded();
+    const controls = [];
+    for (const name of ["Show next background wallpaper", "Play background slideshow", "Chat with Udara's assistant"]) {
+      const button = page.getByRole("button", { name, exact: true });
+      await expect.poll(async () => (await button.boundingBox()).width).toBeGreaterThanOrEqual(44);
+      const box = await button.boundingBox();
+      expect(box.width).toBeGreaterThanOrEqual(44);
+      expect(box.height).toBeGreaterThanOrEqual(44);
+      controls.push(box);
+    }
+    for (const link of await page.locator("footer a").all()) {
+      const box = await link.boundingBox();
+      if (!box) continue;
+      expect(controls.some((control) => box.x < control.x + control.width && box.x + box.width > control.x && box.y < control.y + control.height && box.y + box.height > control.y)).toBe(false);
+    }
+    await page.getByRole("button", { name: "Chat with Udara's assistant", exact: true }).tap();
+    await expect(page.getByRole("dialog", { name: "Udara's AI Assistant", exact: true })).toBeVisible();
+  });
+});
+
 test("normal motion remains active, carousel cycles, and only two wallpapers load initially", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   const wallpaperRequests = new Set();
-  page.on("request", (request) => { if (request.url().includes("images.unsplash.com")) wallpaperRequests.add(request.url()); });
+  page.on("request", (request) => { if (request.url().includes("/wallpapers/")) wallpaperRequests.add(request.url()); });
   await page.goto("/");
   await expect(page.locator(".star").first()).toHaveCSS("animation-name", "pulse-subtle");
   expect(wallpaperRequests.size).toBeLessThanOrEqual(2);

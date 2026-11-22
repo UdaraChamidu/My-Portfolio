@@ -121,7 +121,7 @@ export const Chatbot = () => {
       <button
         ref={launcherRef}
         type="button"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:h-18 md:w-18"
+        className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:h-18 md:w-18"
         onClick={() => setIsOpen((open) => !open)}
         aria-label={isOpen ? "Close assistant" : "Chat with Udara's assistant"}
         aria-expanded={isOpen}
