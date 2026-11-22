@@ -1,4 +1,5 @@
 /* global process */
+import { checkChatLimit } from "../scripts/chat-rate-limit.js";
 const PORTFOLIO_CONTEXT = `
 You are Udara Herath's portfolio assistant. Answer concisely and professionally.
 Always finish the answer. Use 2-5 complete sentences unless the visitor asks for
@@ -55,6 +56,24 @@ export default async function handler(request, response) {
   }
 
   const maxOutputTokens = DETAILED_REQUEST_PATTERN.test(message) ? 1600 : 700;
+
+  try {
+    const limit = await checkChatLimit(request);
+    if (!limit.allowed) {
+      response.setHeader("Retry-After", String(limit.retryAfter));
+      return response.status(429).json({
+        error: limit.scope === "minute"
+          ? "Please wait a moment before sending more messages."
+          : limit.scope === "daily"
+            ? "You have reached today's chat allowance. Please return tomorrow or contact Udara directly."
+            : "The assistant has reached its daily allowance. Please contact Udara directly.",
+        code: "CHAT_RATE_LIMITED", retryAfter: limit.retryAfter,
+      });
+    }
+  } catch {
+    console.error("Chat rate limiter unavailable; provider request blocked.");
+    return response.status(503).json({ error: "The assistant is temporarily unavailable. Please contact Udara directly.", code: "CHAT_LIMIT_UNAVAILABLE" });
+  }
 
   const history = Array.isArray(request.body?.history)
     ? request.body.history

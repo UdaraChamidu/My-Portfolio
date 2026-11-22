@@ -10,22 +10,21 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { sendContactEnquiry } from "@/lib/contactDelivery";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef();
+  const submittingRef = useRef(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     setIsSubmitting(true);
 
     const form = e.target;
-
-    const serviceId = "service_qp0jrov";
-    const userToYouTemplateId = "template_agqr49w";
-    const autoReplyTemplateId = "template_zja5mq3";
-    const publicKey = "TqR-vRWKOgnaZq2aA";
 
     const formData = {
       user_name: form.user_name.value,
@@ -33,35 +32,26 @@ export const ContactSection = () => {
       message: form.message.value,
     };
 
-    // Send message to you
-    emailjs
-      .send(serviceId, userToYouTemplateId, formData, publicKey)
-      .then(() => {
-        // Send auto-reply to user
-        return emailjs.send(
-          serviceId,
-          autoReplyTemplateId,
-          formData,
-          publicKey
-        );
-      })
-      .then(() => {
+    try {
+        const result = await sendContactEnquiry((...args) => emailjs.send(...args), formData);
         toast({
           title: "Message sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
+          description: result.acknowledgementSent
+            ? "Thank you for your message. I'll get back to you soon."
+            : "Your message was sent, but the confirmation email could not be delivered. No need to resend.",
         });
-        setIsSubmitting(false);
         form.reset();
-      })
-      .catch((error) => {
+    } catch (error) {
         console.error("EmailJS Error:", error);
-        setIsSubmitting(false);
         toast({
           title: "Something went wrong",
           description: "Please try again later.",
           variant: "destructive",
         });
-      });
+    } finally {
+      submittingRef.current = false;
+      setIsSubmitting(false);
+    }
   };
 
   return (

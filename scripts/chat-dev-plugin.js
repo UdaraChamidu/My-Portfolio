@@ -6,8 +6,8 @@ export function chatDevPlugin() {
   return {
     name: "portfolio-chat-api",
     configureServer(server) {
-      const env = loadEnv(server.config.mode, server.config.envDir, "OPENAI_");
-      for (const key of ["OPENAI_API_KEY", "OPENAI_CHAT_MODEL"]) {
+      const env = loadEnv(server.config.mode, server.config.envDir, ["OPENAI_", "CHAT_", "UPSTASH_"]);
+      for (const key of ["OPENAI_API_KEY", "OPENAI_CHAT_MODEL", "CHAT_DAILY_LIMIT", "CHAT_MINUTE_LIMIT", "CHAT_GLOBAL_DAILY_LIMIT", "CHAT_RATE_LIMIT_SECRET", "UPSTASH_REDIS_REST_URL", "UPSTASH_REDIS_REST_TOKEN"]) {
         if (env[key]) process.env[key] = env[key];
       }
       // Vite does not execute Vercel functions during local development.

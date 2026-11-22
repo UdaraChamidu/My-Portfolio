@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import handler from "../api/chat.js";
 import { chatDevPlugin } from "../scripts/chat-dev-plugin.js";
+let testIdentity = 0;
 
 function responseRecorder() {
   return {
@@ -19,12 +20,14 @@ function responseRecorder() {
 }
 
 async function withEnvironment(callback) {
-  const originalKey = process.env.OPENAI_API_KEY;
-  const originalModel = process.env.OPENAI_CHAT_MODEL;
+  const keys = ["OPENAI_API_KEY", "OPENAI_CHAT_MODEL", "CHAT_RATE_LIMIT_SECRET", "CHAT_DAILY_LIMIT", "CHAT_MINUTE_LIMIT", "CHAT_GLOBAL_DAILY_LIMIT", "UPSTASH_REDIS_REST_URL", "UPSTASH_REDIS_REST_TOKEN", "NODE_ENV", "VERCEL"];
+  const original = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
+  keys.forEach((key) => delete process.env[key]);
   process.env.OPENAI_API_KEY = "test-only-not-a-real-key";
-  delete process.env.OPENAI_CHAT_MODEL;
+  process.env.NODE_ENV = "test";
+  process.env.CHAT_RATE_LIMIT_SECRET = `isolated-test-${++testIdentity}`;
   try { await callback(); } finally {
-    for (const [key, value] of [["OPENAI_API_KEY", originalKey], ["OPENAI_CHAT_MODEL", originalModel]]) {
+    for (const [key, value] of Object.entries(original)) {
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;
     }
@@ -126,6 +129,33 @@ test("provider quota errors give actionable, sanitized feedback", async (t) => w
   await handler({ method: "POST", body: { message: "Hello" } }, response);
   assert.match(response.body.error, /usage limit/);
   assert.doesNotMatch(JSON.stringify(response.body), /private account/);
+}));
+
+test("local burst limit stops requests before calling OpenAI", async (t) => withEnvironment(async () => {
+  process.env.CHAT_MINUTE_LIMIT = "1";
+  let attempts = 0;
+  t.mock.method(globalThis, "fetch", async () => {
+    attempts++;
+    return { ok: true, json: async () => ({ status: "completed", output: [{ type: "message", role: "assistant", content: [{ type: "output_text", text: "Hello." }] }] }) };
+  });
+  const request = { method: "POST", body: { message: "Hello" } };
+  await handler(request, responseRecorder());
+  const response = responseRecorder();
+  await handler(request, response);
+  assert.equal(response.statusCode, 429);
+  assert.equal(response.body.code, "CHAT_RATE_LIMITED");
+  assert.ok(Number(response.headers["Retry-After"]) > 0);
+  assert.equal(attempts, 1);
+}));
+
+test("production without a shared limiter blocks OpenAI calls", async (t) => withEnvironment(async () => {
+  process.env.NODE_ENV = "production";
+  const provider = t.mock.method(globalThis, "fetch", async () => { throw new Error("Must not call OpenAI"); });
+  const response = responseRecorder();
+  await handler({ method: "POST", body: { message: "Hello" } }, response);
+  assert.equal(response.statusCode, 503);
+  assert.equal(response.body.code, "CHAT_LIMIT_UNAVAILABLE");
+  assert.equal(provider.mock.callCount(), 0);
 }));
 
 test("Vite serves the chat endpoint, rejects malformed JSON, and preserves unrelated routes", async () => withEnvironment(async () => {
