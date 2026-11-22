@@ -295,6 +295,41 @@ for (const width of [390, 1440]) {
   });
 }
 
+for (const width of [390, 1440]) {
+  test(`hero motion preserves content and layout at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto("/");
+    await page.mouse.move(0, 0);
+    const hero = page.locator("#hero");
+    await expect(hero.getByRole("heading", { level: 1 })).toHaveText("Turn your ideas into intelligent solutions.");
+    for (const item of await hero.locator(".hero-reveal").all()) {
+      await expect(item).toHaveCSS("opacity", "1");
+    }
+    const portrait = hero.locator(".hero-portrait");
+    await expect(portrait).toHaveCSS("animation-name", "hero-portrait-halo");
+    const photoBox = await portrait.boundingBox();
+    expect(photoBox.width).toBe(width === 390 ? 144 : 360);
+    const cta = hero.getByRole("link", { name: "Discuss Your Project", exact: true });
+    expect(await cta.evaluate((element) => getComputedStyle(element, "::before").animationName)).toBe("hero-cta-attention");
+    await expect(hero.getByRole("link", { name: "View Services", exact: true })).toHaveAttribute("href", "#services");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await mkdir(".browser-qa", { recursive: true });
+    await page.screenshot({ path: `.browser-qa/hero-motion-${width}.png` });
+    await cta.hover();
+    expect(await cta.evaluate((element) => getComputedStyle(element, "::before").animationName)).toBe("none");
+    await page.mouse.move(0, 0);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(portrait).toHaveCSS("animation-name", "none");
+    for (const item of await hero.locator(".hero-reveal").all()) {
+      await expect(item).toHaveCSS("animation-name", "none");
+      await expect(item).toHaveCSS("opacity", "1");
+    }
+    expect(await cta.evaluate((element) => getComputedStyle(element, "::before").animationName)).toBe("none");
+    expect((await portrait.boundingBox()).width).toBe(photoBox.width);
+  });
+}
+
 test("review touch gesture changes slides without opening an image", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });

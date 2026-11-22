@@ -426,8 +426,9 @@
   translate: 0 14px;
 }
 
-.hero-entrance {
-  animation: hero-entrance 650ms ease both;
+.hero-reveal {
+  animation: hero-entrance 650ms ease backwards;
+  animation-delay: var(--hero-delay, 0ms);
 }
 
 @keyframes hero-entrance {
@@ -437,7 +438,26 @@
 
 .hero-portrait {
   transition: box-shadow 300ms ease;
+  animation: hero-portrait-halo 5s ease-in-out infinite;
 }
+@keyframes hero-portrait-halo {
+  0%, 100% { box-shadow: 0 0 22px hsl(var(--primary) / 0.22); }
+  50% { box-shadow: 0 0 36px hsl(var(--primary) / 0.48), 0 0 0 5px hsl(var(--primary) / 0.08); }
+}
+.hero-cta-glow { position: relative; isolation: isolate; }
+.hero-cta-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  animation: hero-cta-attention 7s ease-in-out 1s infinite;
+}
+@keyframes hero-cta-attention {
+  0%, 65%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+  78%, 87% { box-shadow: 0 0 0 4px hsl(var(--primary) / 0.14), 0 0 24px hsl(var(--primary) / 0.45); }
+}
+.hero-cta-glow:is(:hover, :focus-visible)::before { animation: none; }
 
 .hero-client {
   min-height: min(850px, 94svh);
@@ -458,6 +478,7 @@
 }
 
 .hero-portrait:hover {
+  animation: none;
   box-shadow: 0 0 36px hsl(var(--primary) / 0.4);
 }
 
@@ -516,6 +537,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-reveal, .hero-portrait, .hero-cta-glow::before { animation: none; }
   .process-node, .wallpaper-arrive { animation: none; }
 }
 

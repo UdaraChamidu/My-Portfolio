@@ -36,30 +36,30 @@ export const HeroSection = () => {
       id="hero"
       className="hero-client relative flex items-center px-4 pb-10 pt-28 md:pb-12 md:pt-28"
     >
-      <div className="hero-entrance section-inner relative z-10">
+      <div className="section-inner relative z-10">
         <div className="grid items-center gap-7 lg:grid-cols-[3fr_2fr] lg:gap-6">
           <div className="min-w-0 text-center lg:text-left">
           <div className="mb-5">
-            <p className="text-2xl font-semibold text-foreground sm:text-3xl">
+            <p className="hero-reveal text-2xl font-semibold text-foreground sm:text-3xl">
               Hi, I am <span className="text-primary">Udara Herath</span>
             </p>
-            <p className="mt-2 text-lg leading-snug text-foreground/90 sm:text-xl">AI Engineer & Automation Specialist</p>
+            <p className="hero-reveal mt-2 text-lg leading-snug text-foreground/90 sm:text-xl" style={{ "--hero-delay": "80ms" }}>AI Engineer & Automation Specialist</p>
           </div>
 
-        <h1 className="hero-client-title font-bold">
+        <h1 className="hero-reveal hero-client-title font-bold" style={{ "--hero-delay": "160ms" }}>
           Turn your ideas into{" "}
           <span className="block text-primary">intelligent solutions.</span>
         </h1>
 
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8 lg:mx-0">
+        <p className="hero-reveal mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8 lg:mx-0" style={{ "--hero-delay": "240ms" }}>
           I help businesses turn ideas into AI agents, voice systems, and
           custom applications that work. From automating repetitive tasks to
           connecting your tools, I build around what your business needs.
         </p>
-        <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
+        <div className="hero-reveal mt-7 flex flex-wrap justify-center gap-3 lg:justify-start" style={{ "--hero-delay": "320ms" }}>
           <a
             href="#contact"
-            className="button-primary"
+            className="hero-cta-glow button-primary"
           >
             Discuss Your Project
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -81,7 +81,7 @@ export const HeroSection = () => {
         </div>
           </div>
 
-          <div className="order-first flex justify-center lg:order-last">
+          <div className="hero-reveal order-first flex justify-center lg:order-last" style={{ "--hero-delay": "160ms" }}>
             <div className="hero-portrait aspect-square w-44 overflow-hidden rounded-full border-2 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:w-56 lg:w-full lg:max-w-80 xl:max-w-[360px]">
               <img
                 src="/profile.jpg"
@@ -96,7 +96,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Restore md:grid-cols-3 when the hidden UK proof item is enabled. */}
-        <div className="mt-8 grid border-y border-border/70 text-left sm:grid-cols-2 lg:mt-10">
+        <div className="hero-reveal mt-8 grid border-y border-border/70 text-left sm:grid-cols-2 lg:mt-10" style={{ "--hero-delay": "400ms" }}>
           {proofItems.map((item) => {
             const Icon = item.icon;
             const Wrapper = item.url ? "a" : "div";
