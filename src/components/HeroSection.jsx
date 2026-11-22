@@ -7,6 +7,7 @@ import {
   Rocket,
   Workflow,
 } from "lucide-react";
+import { RotatingHeroHeadline } from "./RotatingHeroHeadline";
 
 const proofItems = [
   /* Temporarily hidden. Remove this comment wrapper to restore the UK role.
@@ -46,10 +47,7 @@ export const HeroSection = () => {
             <p className="hero-reveal mt-2 text-lg leading-snug text-foreground/90 sm:text-xl" style={{ "--hero-delay": "80ms" }}>AI Engineer & Automation Specialist</p>
           </div>
 
-        <h1 className="hero-reveal hero-client-title font-bold" style={{ "--hero-delay": "160ms" }}>
-          Turn your ideas into{" "}
-          <span className="block text-primary">intelligent solutions.</span>
-        </h1>
+        <RotatingHeroHeadline />
 
         <p className="hero-reveal mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8 lg:mx-0" style={{ "--hero-delay": "240ms" }}>
           I help businesses turn ideas into AI agents, voice systems, and

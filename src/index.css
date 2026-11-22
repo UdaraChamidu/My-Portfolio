@@ -467,7 +467,23 @@
   font-size: 2.5rem;
   line-height: 1.12;
   text-wrap: balance;
+  height: 2.24em;
 }
+.hero-typewriter { display: block; transition: opacity 200ms ease; }
+.hero-typewriter[data-phase="fading"] { opacity: 0; }
+.hero-headline-line { display: block; height: 1.12em; white-space: nowrap; }
+.hero-type-caret { display: inline-block; position: relative; width: 0; }
+.hero-type-caret::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  width: 2px;
+  height: 0.8em;
+  background: hsl(var(--primary));
+  animation: hero-caret-blink 1s step-end infinite;
+}
+@keyframes hero-caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
 @media (min-width: 640px) {
   .hero-client-title { font-size: 3.75rem; }
@@ -475,6 +491,9 @@
 
 @media (min-width: 1024px) {
   .hero-client-title { font-size: 4.0625rem; }
+}
+@media (min-width: 640px) and (max-width: 767px), (min-width: 1024px) and (max-width: 1279px) {
+  .hero-client-title { font-size: 3.5rem; }
 }
 
 .hero-portrait:hover {
@@ -537,8 +556,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-type-caret { display: none; }
+  .hero-typewriter { transition: none; }
   .hero-reveal, .hero-portrait, .hero-cta-glow::before { animation: none; }
   .process-node, .wallpaper-arrive { animation: none; }
+}
+
+@media (max-width: 359px) {
+  .hero-client-title { font-size: 1.75rem; }
 }
 
 @supports not (backdrop-filter: blur(18px)) {

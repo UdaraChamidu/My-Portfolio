@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
+import { heroHeadlines } from "../../src/data/heroHeadlines.js";
 
 test.beforeEach(async ({ page }) => {
   // Tests never send enquiries or spend AI credits.
@@ -24,7 +25,7 @@ for (const [name, width, height] of viewports) {
       // Theme storage follows the existing app; select explicitly if required.
       const toggle = page.getByRole("button", { name: theme === "light" ? "Use light theme" : "Use dark theme", exact: true }).first();
       if (await toggle.count()) await toggle.click();
-      await expect(page.getByRole("heading", { level: 1 })).toHaveText("Turn your ideas into intelligent solutions.");
+      await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName("Turn your ideas into intelligent solutions.");
       await expect(page.locator("html")).toHaveClass(theme === "dark" ? /dark/ : /^(?!.*dark).*$/);
       await expect(page.locator("#projects article")).toHaveCount(6);
       await mkdir(".browser-qa", { recursive: true });
@@ -302,7 +303,7 @@ for (const width of [390, 1440]) {
     await page.goto("/");
     await page.mouse.move(0, 0);
     const hero = page.locator("#hero");
-    await expect(hero.getByRole("heading", { level: 1 })).toHaveText("Turn your ideas into intelligent solutions.");
+    await expect(hero.getByRole("heading", { level: 1 })).toHaveAccessibleName("Turn your ideas into intelligent solutions.");
     for (const item of await hero.locator(".hero-reveal").all()) {
       await expect(item).toHaveCSS("opacity", "1");
     }
@@ -327,6 +328,64 @@ for (const width of [390, 1440]) {
     }
     expect(await cta.evaluate((element) => getComputedStyle(element, "::before").animationName)).toBe("none");
     expect((await portrait.boundingBox()).width).toBe(photoBox.width);
+  });
+}
+
+for (const width of [320, 360, 390, 640, 768, 1024, 1280, 1440, 1920]) {
+  test(`all hero headlines fit the same two-line font at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    const heading = page.getByRole("heading", { level: 1 });
+    const fit = await heading.evaluate((element, headlines) => {
+      const style = getComputedStyle(element);
+      const context = document.createElement("canvas").getContext("2d");
+      context.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      const lines = element.querySelectorAll(".hero-headline-line");
+      return {
+        height: element.getBoundingClientRect().height,
+        lineHeight: parseFloat(style.lineHeight),
+        fits: headlines.flat().every((text) => context.measureText(text).width <= element.clientWidth),
+        fonts: Array.from(lines, (line) => getComputedStyle(line).fontSize),
+        font: style.fontSize,
+      };
+    }, heroHeadlines);
+    expect(fit.fits).toBe(true);
+    expect(Math.abs(fit.height - 2 * fit.lineHeight)).toBeLessThan(1);
+    expect(fit.fonts).toEqual([fit.font, fit.font]);
+    await expect(page.locator(".hero-typewriter")).toHaveAttribute("data-phase", "static");
+    await expect(heading.locator(".hero-headline-line").first()).toHaveText(heroHeadlines[0][0]);
+    await expect(heading.locator(".hero-headline-line").last()).toHaveText(heroHeadlines[0][1]);
+  });
+}
+
+for (const width of [390, 1440]) {
+  test(`hero types and rotates without moving the portrait or controls at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    const visual = page.locator(".hero-typewriter");
+    const anchors = [page.locator(".hero-portrait"), page.locator("#hero h1"), page.locator("#hero .hero-cta-glow")];
+    const baseline = await Promise.all(anchors.map((element) => element.boundingBox()));
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await expect(visual).toHaveAttribute("data-playing", "true");
+    for (let index = 0; index < heroHeadlines.length; index++) {
+      await expect(visual).toHaveAttribute("data-headline-index", String(index));
+      await expect(visual).toHaveAttribute("data-phase", "holding", { timeout: 6000 });
+      for (let line = 0; line < 2; line++) {
+        await expect(visual.locator(".hero-headline-line").nth(line)).toHaveText(heroHeadlines[index][line]);
+      }
+      for (let anchor = 0; anchor < anchors.length; anchor++) {
+        const bounds = await anchors[anchor].boundingBox();
+        for (const key of ["x", "y", "width", "height"]) expect(Math.abs(bounds[key] - baseline[anchor][key])).toBeLessThan(1);
+      }
+      await expect(visual).toHaveAttribute("data-headline-index", String((index + 1) % heroHeadlines.length), { timeout: 4500 });
+    }
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(visual).toHaveAttribute("data-phase", "static");
+    await expect(visual.locator(".hero-headline-line").first()).toHaveText(heroHeadlines[0][0]);
+    await mkdir(".browser-qa", { recursive: true });
+    await page.screenshot({ path: `.browser-qa/hero-typewriter-${width}.png` });
   });
 }
 
