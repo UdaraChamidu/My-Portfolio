@@ -171,6 +171,90 @@ test("mobile credential and skill filters retain their content", async ({ page }
   await expect(page.locator("#skills")).toContainText("ElevenLabs");
 });
 
+test("review loops forward across both boundaries without passing backwards through slide two", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/#reviews");
+  const carousel = page.getByRole("region", { name: "Client reviews", exact: true });
+  await carousel.hover();
+  const track = carousel.locator("[data-review-position]");
+  const next = carousel.getByRole("button", { name: "Next review", exact: true });
+  for (let cycle = 0; cycle < 2; cycle++) {
+    for (const position of [2, 3]) {
+      await next.click();
+      await expect(track).toHaveAttribute("data-review-position", String(position));
+      await page.waitForTimeout(700);
+    }
+    await track.evaluate((element) => {
+      window.reviewWrapTransition = null;
+      element.addEventListener("transitionrun", () => {
+        const animation = element.getAnimations().find((item) => item.transitionProperty === "transform");
+        const frames = animation?.effect.getKeyframes();
+        if (frames?.length) {
+          window.reviewWrapTransition = {
+            start: frames[0].transform,
+            end: frames[frames.length - 1].transform,
+          };
+        }
+      }, { once: true });
+    });
+    await next.click();
+    await expect.poll(() => page.evaluate(() => window.reviewWrapTransition)).toEqual({
+      start: "translateX(-300%)", end: "translateX(-400%)",
+    });
+    await expect(track).toHaveAttribute("data-review-position", "1");
+    await expect(carousel.getByRole("button", { name: "Show review 1", exact: true })).toHaveAttribute("aria-current", "true");
+    await page.waitForTimeout(100);
+  }
+  await carousel.getByRole("button", { name: "Previous review", exact: true }).click();
+  await expect(track).toHaveAttribute("data-review-position", "0");
+  await expect(track).toHaveAttribute("data-review-position", "3");
+});
+
+test("automatic purple highlights run without hover and yield to manual interaction", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/#about");
+  const card = page.locator(".about-highlight").first();
+  await expect(card).toHaveCSS("animation-name", "automatic-surface-highlight");
+  await expect(page.locator(".about-highlight").nth(1)).toHaveCSS("animation-delay", "2s");
+  await card.hover();
+  await expect(card).toHaveCSS("animation-name", "none");
+  await page.mouse.move(0, 0);
+  await expect(card).toHaveCSS("animation-name", "automatic-surface-highlight");
+  await page.locator("#services").scrollIntoViewIfNeeded();
+  await expect(page.locator(".service-row").first()).toHaveCSS("animation-name", "automatic-surface-highlight");
+  await expect(page.locator(".service-row").nth(1)).toHaveCSS("animation-delay", "2s");
+  await expect(page.locator(".process-node").first()).toHaveCSS("animation-duration", "8s");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(card).toHaveCSS("animation-name", "none");
+});
+
+for (const width of [390, 1440]) {
+  test(`About cards and every service remain opaque with normal motion at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto("/");
+    await page.mouse.move(0, 0);
+    await expect(page.locator("#about .about-highlight")).toHaveCount(3);
+    await expect(page.locator("#services .service-row")).toHaveCount(4);
+    for (const selector of ["#about .about-highlight", "#services .service-row"]) {
+      for (const element of await page.locator(selector).all()) {
+        await element.scrollIntoViewIfNeeded();
+        await expect(element).toHaveClass(/reveal-visible/);
+        await expect(element).toHaveCSS("opacity", "1");
+        await expect(element).toHaveCSS("translate", "0px");
+        await expect(element).toHaveCSS("animation-name", "automatic-surface-highlight");
+        await element.hover();
+        await expect(element).toHaveCSS("opacity", "1");
+        await page.mouse.move(0, 0);
+        await expect(element).toHaveCSS("opacity", "1");
+      }
+    }
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(page.locator("#about .about-highlight").first()).toHaveCSS("opacity", "1");
+    await expect(page.locator("#services .service-row").first()).toHaveCSS("opacity", "1");
+  });
+}
+
 test("review touch gesture changes slides without opening an image", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
@@ -292,15 +376,16 @@ for (const [name, viewport] of [["desktop", { width: 1440, height: 900 }], ["mob
       expect(calls).toBe(1);
     });
 
-    test("review arrows and keyboard work without screenshot links", async ({ page }) => {
+    test("review arrows, keyboard, and inline proof work without screenshot links", async ({ page }) => {
       await page.goto("/#reviews");
       const carousel = page.getByRole("region", { name: "Client reviews", exact: true });
-      await expect(carousel.locator("a, img")).toHaveCount(0);
+      await expect(carousel.locator("a")).toHaveCount(0);
+      await expect(carousel.getByRole("img", { name: "Upwork feedback for AI Automations and Engineering", exact: true })).toBeVisible();
       await carousel.getByRole("button", { name: "Next review", exact: true }).click();
       await expect(carousel.getByRole("group", { name: "2 of 3", exact: true })).toBeVisible();
       await page.keyboard.press("ArrowRight");
       await expect(carousel.getByRole("group", { name: "3 of 3", exact: true })).toBeVisible();
-      await expect(carousel.getByText('"Honest, talented freelancer"')).toBeVisible();
+      await expect(carousel.getByRole("group", { name: "3 of 3", exact: true }).getByText('"Honest, talented freelancer"')).toBeVisible();
       await carousel.getByRole("button", { name: "Next review", exact: true }).click();
       await expect(carousel.getByRole("group", { name: "1 of 3", exact: true })).toBeVisible();
     });

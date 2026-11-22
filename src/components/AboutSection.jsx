@@ -43,8 +43,8 @@ export const AboutSection = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4">
-            <div className="surface-card surface-card-interactive p-5 md:p-6">
+          <div className="auto-highlight-group grid grid-cols-1 gap-4" style={{ "--highlight-cycle": "6s" }}>
+            <div className="about-highlight surface-card surface-card-interactive p-5 md:p-6" style={{ "--highlight-delay": "0s" }}>
               <div className="flex items-start gap-4">
                 <div className="icon-tile">
                   <BrainCircuit className="h-6 w-6 text-primary" />
@@ -61,7 +61,7 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="surface-card surface-card-interactive p-5 md:p-6">
+            <div className="about-highlight surface-card surface-card-interactive p-5 md:p-6" style={{ "--highlight-delay": "2s" }}>
               <div className="flex items-start gap-4">
                 <div className="icon-tile">
                   <Workflow className="h-6 w-6 text-primary" />
@@ -78,7 +78,7 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="surface-card surface-card-interactive p-5 md:p-6">
+            <div className="about-highlight surface-card surface-card-interactive p-5 md:p-6" style={{ "--highlight-delay": "4s" }}>
               <div className="flex items-start gap-4">
                 <div className="icon-tile">
                   <Blocks className="h-6 w-6 text-primary" />

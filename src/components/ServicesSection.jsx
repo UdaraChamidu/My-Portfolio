@@ -142,7 +142,7 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="divide-y divide-border border-y border-border">
+        <div className="auto-highlight-group divide-y divide-border border-y border-border" style={{ "--highlight-cycle": "8s" }}>
           {[services[1], services[0], services[2], services[3]].map((service, index) => {
             const Icon = service.icon;
 
@@ -150,6 +150,7 @@ export const ServicesSection = () => {
               <article
                 key={service.id}
                 aria-labelledby={`${service.id}-title`}
+                style={{ "--highlight-delay": `${index * 2}s` }}
                 className="service-row group grid min-w-0 gap-4 px-2 py-5 text-left sm:px-4 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,2fr)] lg:gap-8 lg:py-6"
               >
                 <div className="min-w-0">
@@ -232,7 +233,7 @@ export const ServicesSection = () => {
           <ol className="process-strip grid grid-cols-2 gap-x-5 gap-y-6 md:grid-cols-4">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
-              return <li key={step.title} className="process-step relative min-w-0 text-left" style={{ "--step-delay": `${index * 1.5}s` }}>
+              return <li key={step.title} className="process-step relative min-w-0 text-left" style={{ "--step-delay": `${index * 2}s` }}>
                 <div className="mb-2 flex items-center gap-2">
                   <span className="process-node icon-tile h-9 w-9"><Icon size={18} aria-hidden="true" /></span>
                   <span className="text-xs font-semibold text-primary">0{index + 1}</span>

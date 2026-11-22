@@ -96,13 +96,14 @@ Acceptance: clients understand how work starts without a major increase in mobil
 
 Acceptance: cards remain compact and details remain rich. Do not fabricate images, client outcomes, or project metrics.
 
-## Stage 5: Text-Based Client Review Carousel
+## Stage 5: Client Review Carousel And Evidence
 
 ### Approved direction
 
-- [x] Replace screenshot-opening cards with a compact text component; no review-image links or previews are rendered.
+- [x] Replace screenshot-opening cards with compact text and inline screenshot evidence. Updated at Udara's request: existing Upwork feedback images are visible beside the review, with no image links or popup viewer.
 - [x] Show one review at a time, with left/right arrows and active-position indicators.
 - [x] Support a horizontal slide transition and the suggested two-second automatic cycling interval.
+- [x] Loop forward continuously from review three to review one using boundary clones and an invisible position reset; no reverse sweep through the second review. Previous navigation loops in the opposite direction when deliberately requested.
 - [ ] Check whether two seconds gives enough reading time for actual quotes; propose a longer interval if needed, not less animation.
 - [x] Pause cycling on hover, keyboard focus, touch navigation, or hidden pages; include pause/play and reduced-motion support.
 - [x] Add touch swipes, manual/keyboard navigation, and narrow-screen controls.
@@ -115,7 +116,7 @@ Acceptance: cards remain compact and details remain rich. Do not fabricate image
 - [x] Inspect review evidence only: 1.png and 2.png contain ratings but no written quotes; 3.png contains the existing quote "Honest, talented freelancer". Retain all three ratings without inventing additional testimonial text.
 - [!] Additional reviews do not need screenshots: direct client-written feedback is acceptable when its authenticity and publication permission are confirmed.
 - [x] Do not label manually supplied feedback as platform-verified without actual platform evidence.
-- [!] Review whether original evidence should remain publicly accessible. Removing review links does not make files under `public/reviews` private; decide whether to remove those assets from deployment separately.
+- [x] Existing `public/reviews` evidence is intentionally displayed inline following Udara's latest request. New WhatsApp/Telegram evidence needs approved content and redaction of private details before publication.
 - [x] Do not add an unmoderated public review/comment form. Future submissions would require consent and manual approval before publication.
 
 Three genuine reviews are sufficient to start. There is no reason to duplicate or fabricate more reviews to fill the carousel.
@@ -126,8 +127,10 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 - [x] Serve mobile/desktop JPEG copies from `public/wallpapers` so visitors no longer depend on Unsplash access. All 26 assets are validated; initially only current/next images are requested.
 - [x] Wait for the next wallpaper to load, then crossfade, temporarily retaining the outgoing layer. Skip failed images and time out stalled loads after six seconds; keep the existing image if no alternative loads.
 - [x] Browser checks decode every wallpaper at 390px and 1440px, prove automatic rotation, and simulate both image failure and an indefinitely stalled request.
-- [x] Request responsive wallpaper sizes; load chat Markdown and secondary routes separately. Main production JS decreased from approximately 588 kB before today to 441 kB, uncompressed build output. This is not a field-performance score.
+- [x] Request responsive wallpaper sizes; load chat Markdown and secondary routes separately. Main production JS decreased from approximately 588 kB before today to approximately 443 kB after the review-loop update, uncompressed build output. This is not a field-performance score.
 - [x] Add animated process nodes inside existing Services space without a new tall section.
+- [x] Strengthen process nodes and connecting lines with sequential purple fill, halo, and pulse. Add automatic two-second-staggered purple surface/icon highlights to the three About cards and four Service rows; actual hover/focus takes priority. Preserve reduced-motion support and existing technology-logo colors.
+- [x] Fix the reveal/highlight animation conflict: revealed elements explicitly retain full opacity and their resting position even when another animation replaces the reveal. Normal-motion checks verify all three About cards and all four Service rows on desktop/mobile, including hover and reduced-motion changes.
 - [ ] Verify readable text over every wallpaper in both themes.
 - [x] Add a 1200x630 social preview using the real profile photo, canonical URL, sitemap, and robots file for the existing configured origin `https://udarachamidu.site`.
 - [x] Capture an initial production-build lab measurement rather than inferring performance from build size. One unthrottled local Chrome sample at 390px: FCP/LCP 1,524ms, CLS 0; at 1440px: FCP/LCP 708ms, CLS 0. Only two wallpapers were requested in each initial sample. These single local samples are not field scores or proof of improved performance; real-network interactivity remains pending.
@@ -150,7 +153,8 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 
 - [x] Full-project lint and production build pass. Existing toast prop validation warnings were resolved without visual changes.
 - [x] 22 unit/integration tests cover rate limits, delivery states, optional enquiry metadata, project inventory, and all local wallpaper assets.
-- [x] All 35 browser checks passed against an isolated production preview, including complete wallpaper loading/rotation, failure recovery, touch-only controls, both themes, and desktop/mobile workflows. Screenshots are in ignored `.browser-qa/`. An earlier development-server run was invalidated by live reloads; final validation uses the built preview instead.
+- [x] All 37 browser checks passed against an isolated production preview, including forward/reverse review boundaries, inline evidence, automatic highlights and manual priority, complete wallpaper loading/rotation, failure recovery, touch-only controls, both themes, and desktop/mobile workflows. Screenshots are in ignored `.browser-qa/`. An earlier development-server run was invalidated by live reloads; final validation uses the built preview instead.
+- [x] Visibility follow-up: build and lint pass; 38 of 39 checks passed in the full run. The remaining carousel check sampled a short animation window and was changed to inspect actual transition keyframes. The focused rerun passed all three cases: carousel wrapping and both new desktop/mobile opacity regressions. All 39 distinct cases have now passed across the full run and targeted rerun.
 - [x] Keep a change summary and outstanding items in this plan.
 - [x] Keep optional account/configuration work separate from local code completion.
 

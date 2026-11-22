@@ -475,7 +475,7 @@
 .chat-message h1, .chat-message h2, .chat-message h3 { font-size: 1rem; font-weight: 600; margin-block: 0.5rem; }
 
 .process-node {
-  animation: process-highlight 6s ease-in-out infinite;
+  animation: process-highlight 8s ease-in-out infinite;
   animation-delay: var(--step-delay);
 }
 .process-step::after {
@@ -484,14 +484,22 @@
   top: 1.125rem;
   left: 4rem;
   right: 0;
-  height: 1px;
+  height: 2px;
   background: hsl(var(--primary) / 0.25);
+  animation: process-connection 8s ease-in-out infinite;
+  animation-delay: var(--step-delay);
+  transform-origin: left;
 }
 .process-step:last-child::after { display: none; }
 @keyframes process-highlight {
-  0%, 35%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
-  15% { box-shadow: 0 0 0 6px hsl(var(--primary) / 0.12), 0 0 20px hsl(var(--primary) / 0.2); }
+  0%, 26%, 100% { background-color: hsl(var(--primary) / 0.1); color: hsl(var(--primary)); box-shadow: 0 0 0 0 hsl(var(--primary) / 0); transform: scale(1); }
+  5%, 20% { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); box-shadow: 0 0 0 6px hsl(var(--primary) / 0.2), 0 0 28px hsl(var(--primary) / 0.5); transform: scale(1.1); }
 }
+@keyframes process-connection {
+  0%, 26%, 100% { opacity: 0.35; transform: scaleX(0.6); box-shadow: none; }
+  6%, 20% { opacity: 1; transform: scaleX(1); background-color: hsl(var(--primary)); box-shadow: 0 0 12px hsl(var(--primary) / 0.65); }
+}
+@media (max-width: 767px) { .process-step:nth-child(2)::after { display: none; } }
 .wallpaper-arrive { animation: wallpaper-arrive 1s ease-in-out both; }
 @keyframes wallpaper-arrive { from { opacity: 0; } to { opacity: 1; } }
 .review-carousel { touch-action: pan-y; }
@@ -520,10 +528,14 @@
 }
 
 .reveal-enter.reveal-visible {
+  /* Visibility must survive another animation replacing the reveal animation. */
+  opacity: 1;
+  translate: 0 0;
   animation: portfolio-reveal 550ms ease both;
 }
 
 @keyframes portfolio-reveal {
+  from { opacity: 0; translate: 0 14px; }
   to { opacity: 1; translate: 0 0; }
 }
 
@@ -717,6 +729,33 @@
   50% { transform: translateY(-6px); }
 }
 
+.auto-highlight-group :is(.about-highlight, .service-row) {
+  animation: automatic-surface-highlight var(--highlight-cycle) ease-in-out infinite;
+  animation-delay: var(--highlight-delay);
+}
+.auto-highlight-group :is(.about-highlight .icon-tile, .service-main-icon) {
+  animation: automatic-icon-highlight var(--highlight-cycle) ease-in-out infinite;
+  animation-delay: var(--highlight-delay);
+}
+.auto-highlight-group .service-row::before {
+  animation: automatic-edge-highlight var(--highlight-cycle) ease-in-out infinite;
+  animation-delay: var(--highlight-delay);
+}
+.auto-highlight-group:is(:hover, :focus-within) :is(.about-highlight, .service-row, .icon-tile),
+.auto-highlight-group:is(:hover, :focus-within) .service-row::before { animation: none; }
+@keyframes automatic-surface-highlight {
+  0%, 25%, 100% { background-color: hsl(var(--card) / var(--glass-opacity, 0)); border-color: hsl(var(--border)); box-shadow: none; transform: translateY(0); }
+  5%, 19% { background-color: hsl(var(--card) / 0.72); border-color: hsl(var(--primary) / 0.75); box-shadow: inset 3px 0 hsl(var(--primary)), 0 6px 24px hsl(var(--primary) / 0.22); transform: translateY(-2px); }
+}
+@keyframes automatic-icon-highlight {
+  0%, 25%, 100% { background-color: hsl(var(--primary) / 0.1); box-shadow: none; transform: translateY(0) rotate(0); }
+  5%, 19% { color: hsl(var(--primary)); background-color: hsl(var(--primary) / 0.24); box-shadow: 0 0 22px hsl(var(--primary) / 0.38); transform: translateY(-3px) rotate(-4deg); }
+}
+@keyframes automatic-edge-highlight {
+  0%, 25%, 100% { transform: scaleY(0); }
+  5%, 19% { transform: scaleY(1); }
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
@@ -725,6 +764,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .auto-highlight-group :is(.about-highlight, .service-row, .icon-tile),
+  .auto-highlight-group .service-row::before,
+  .process-step::after { animation: none; }
   *,
   *::before,
   *::after {
