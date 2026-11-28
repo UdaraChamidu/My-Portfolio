@@ -36,6 +36,11 @@ const slots = [
   [110, 32, 36, 9.5], [104, 79, 28, 7.5],
 ];
 
+const mobileSlots = [
+  [20, -14, 23, 7], [82, -9, 23, 9], [-9, 25, 23, 8],
+  [-10, 79, 23, 10], [113, 21, 23, 8.5], [112, 77, 23, 11],
+];
+
 function createDrift(x, y) {
   const length = Math.hypot(x - 50, y - 50);
   const nx = (x - 50) / length;
@@ -52,17 +57,32 @@ function createDrift(x, y) {
 }
 
 export const HeroTechnologyFloat = () => {
-  const [visible, setVisible] = useState(() => slots.map((_, index) => index));
+  const [mobile, setMobile] = useState(() => window.matchMedia("(max-width: 767px)").matches);
+  const activeSlots = mobile ? mobileSlots : slots;
+  const [visible, setVisible] = useState(() => activeSlots.map((_, index) => index));
   const [changing, setChanging] = useState(null);
-  const [drifts] = useState(() => slots.map(([x, y]) => createDrift(x, y)));
+  const [drifts] = useState(() => ({
+    desktop: slots.map(([x, y]) => createDrift(x, y)),
+    mobile: mobileSlots.map(([x, y]) => createDrift(x, y)),
+  }));
+
+  useEffect(() => {
+    const screen = window.matchMedia("(max-width: 767px)");
+    const update = () => setMobile(screen.matches);
+    screen.addEventListener("change", update);
+    return () => screen.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let timer;
     let inView = false;
     let slot = 0;
-    let next = slots.length;
-    const displayed = slots.map((_, index) => index);
+    const slotCount = mobile ? mobileSlots.length : slots.length;
+    let next = slotCount;
+    const displayed = Array.from({ length: slotCount }, (_, index) => index);
+    setVisible(displayed);
+    setChanging(null);
     const canPlay = () => inView && !document.hidden && !motion.matches;
     const schedule = () => {
       timer = window.setTimeout(() => {
@@ -74,10 +94,10 @@ export const HeroTechnologyFloat = () => {
           setVisible([...displayed]);
           setChanging(null);
           next = (next + 1) % technologies.length;
-          slot = (slot + 1) % slots.length;
+          slot = (slot + 1) % slotCount;
           schedule();
         }, 250);
-      }, 750);
+      }, mobile ? 2750 : 750);
     };
     const sync = () => {
       window.clearTimeout(timer);
@@ -97,12 +117,12 @@ export const HeroTechnologyFloat = () => {
       motion.removeEventListener("change", sync);
       document.removeEventListener("visibilitychange", sync);
     };
-  }, []);
+  }, [mobile]);
 
   return (
   <div className="hero-technology-float" aria-hidden="true">
-    {slots.map(([x, y, size, duration], index) => {
-      const [name, Icon, color] = technologies[visible[index]];
+    {activeSlots.map(([x, y, size, duration], index) => {
+      const [name, Icon, color] = technologies[visible[index] ?? index];
       return (
       <span
         key={index}
@@ -112,7 +132,7 @@ export const HeroTechnologyFloat = () => {
           left: `${x}%`, top: `${y}%`, "--logo-color": color,
           "--logo-size": `${size}px`, "--float-duration": `${duration}s`,
           "--float-delay": `${index * -1.7}s`,
-          ...drifts[index],
+          ...drifts[mobile ? "mobile" : "desktop"][index],
         }}
       >
         <span className="hero-floating-logo" data-changing={changing === index}>

@@ -636,6 +636,15 @@
   transition: opacity 180ms ease, translate 180ms ease;
 }
 .chat-launcher:is(:hover, :focus-visible) .chat-launcher-label { opacity: 1; translate: 0 0; }
+@media (max-width: 767px) {
+  .chat-launcher {
+    width: 56px;
+    height: 56px;
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  .chat-assistant-avatar { transform: scale(0.9); }
+}
 @keyframes chat-assistant-idle {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -4px; }

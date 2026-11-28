@@ -170,15 +170,18 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 
 - Replaced only the closed chat launcher with a compact purple robot using existing Lucide Bot/Hand icons and CSS. Transparent surrounding area, gentle five-second idle movement, and a brief wave every eight seconds; character enlarged 15% on follow-up. No video, remote assets, or extra dependencies.
 - Added a hover/keyboard-focus label. The open state keeps a conventional close button and removes the animated character. Reduced-motion preferences disable character animation.
+- Mobile-only follow-up below 768px: character scale reduced to 0.9 (desktop remains 1.15), with a 56px tap target and 16px corner offsets respecting the bottom safe area. Desktop size and placement are unchanged.
 - Preserved chat API, protection, prompts, panel styling, conversation history, outside-click dismissal, Escape, and input behavior.
 - Build, lint, 24 unit/integration tests, and two focused Chrome cases pass (390/1440px). Checked dark/light screenshots, mocked message exchange, no requests before sending, history retention, dismissal, focus return, and reduced motion. No live API calls; full browser suite not rerun.
 
 ### Portrait Floating Technologies Follow-Up
 
-- Eight decorative, upright logos are visible at once, cycling through 20 tools: n8n, OpenAI, Make.com, Python, Supabase, MCP, LangChain, Twilio, Claude, Gemini, LangGraph, ElevenLabs, Deepgram, Gmail, Google Sheets, Excel, Slack, PostgreSQL, React, and FastAPI. Reuses installed icon libraries; no remote logo requests or new dependencies.
+- Eight decorative, upright logos are visible on desktop, with six in a dedicated mobile arrangement below 768px. Both cycle through 20 tools: n8n, OpenAI, Make.com, Python, Supabase, MCP, LangChain, Twilio, Claude, Gemini, LangGraph, ElevenLabs, Deepgram, Gmail, Google Sheets, Excel, Slack, PostgreSQL, React, and FastAPI. Reuses installed icon libraries; no remote logo requests or new dependencies.
 - Replaced the initial circular orbit with asymmetric placement, varied logo sizes, and independent 7-11-second drifting animations. Removed dark badges, circular borders, and glass backgrounds; retained brand colors and a subtle purple glow. Existing portrait dimensions, hero copy, grid spacing, and headline rotation remain unchanged.
 - Text is layered above the decorative logos; stacked layouts clip lower logos before they reach the text. Reduced-motion preferences disable the drifting animation.
 - Increased logo sizes roughly 15%, with independently randomized multi-direction drift paths bounded outside the portrait. One slot fades to the next unused logo every second (750ms hold plus 250ms fade-out), without visible duplicates. Swaps pause offscreen, in hidden tabs, and with reduced motion. Timers and observers are cleaned up on unmount.
+- Mobile swaps run every three seconds (2750ms hold plus 250ms fade-out); desktop retains its one-second cadence. Resizing across the breakpoint updates slot count and timing with timer cleanup.
+- Mobile follow-up validation: build, lint, all 24 unit/integration tests, and all eight focused Chrome checks pass across both launcher and floating-logo test files. Includes six-logo mobile layout, three-second timing, breakpoint switching, desktop preservation, and mocked chat behavior. Inspected mobile hero screenshot; full browser suite not rerun.
 - Build, lint, all 24 unit/integration tests, and five focused Chrome checks pass: layout at 390, 1024, 1440, and 1920px, plus sequential swaps covering all 20 tools. Checked portrait bounds, motion, no horizontal overflow, transparent borderless logos, no duplicate tools, and reduced motion; inspected desktop screenshots. Full browser suite not rerun.
 
 - Configure/verify shared Redis and Vercel settings before deploying chat protection. Missing production storage deliberately blocks AI calls. No production changes were made.

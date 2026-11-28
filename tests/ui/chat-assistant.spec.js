@@ -14,9 +14,10 @@ for (const width of [390, 1440]) {
     await expect(launcher).toBeVisible();
     await expect(page.locator(".chat-assistant-wave")).toHaveCSS("animation-name", "chat-assistant-wave");
     await expect(page.locator(".chat-assistant-wave")).toHaveCSS("animation-duration", "8s");
-    await expect(page.locator(".chat-assistant-avatar")).toHaveCSS("transform", "matrix(1.15, 0, 0, 1.15, 0, 0)");
+    await expect(page.locator(".chat-assistant-avatar")).toHaveCSS("transform", width < 768 ? "matrix(0.9, 0, 0, 0.9, 0, 0)" : "matrix(1.15, 0, 0, 1.15, 0, 0)");
     const bounds = await launcher.boundingBox();
-    expect(bounds.width).toBeGreaterThanOrEqual(64);
+    expect(bounds.width).toBe(width < 768 ? 56 : 72);
+    expect(width - bounds.x - bounds.width).toBe(width < 768 ? 16 : 24);
     expect(bounds.x + bounds.width).toBeLessThanOrEqual(width);
     await launcher.focus();
     await expect(page.locator(".chat-launcher-label")).toHaveCSS("opacity", "1");

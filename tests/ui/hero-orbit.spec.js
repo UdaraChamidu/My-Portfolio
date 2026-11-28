@@ -6,7 +6,7 @@ for (const width of [390, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
     const tracks = page.locator(".hero-floating-technology");
-    await expect(tracks).toHaveCount(8);
+    await expect(tracks).toHaveCount(width < 768 ? 6 : 8);
     const portrait = page.locator(".hero-portrait");
     const stage = page.locator(".hero-portrait-stage");
     await expect(portrait).toBeVisible();
@@ -67,4 +67,32 @@ test("floating logos cycle through twenty tools one slot at a time", async ({ pa
   const paused = await names();
   await page.clock.fastForward(20000);
   expect(await names()).toEqual(paused);
+});
+
+test("mobile uses six logos with three-second swaps and restores desktop settings", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.clock.install();
+  await page.goto("/");
+  const logos = page.locator(".hero-floating-technology");
+  const names = () => logos.evaluateAll((elements) => elements.map((element) => element.dataset.technology));
+  await expect(logos).toHaveCount(6);
+  await page.clock.runFor(100);
+  let previous = await names();
+  for (let cycle = 0; cycle < 6; cycle++) {
+    await page.clock.fastForward(2000);
+    expect(await names()).toEqual(previous);
+    await page.clock.fastForward(750);
+    await page.clock.fastForward(250);
+    const current = await names();
+    expect(current.filter((name, slot) => name !== previous[slot])).toHaveLength(1);
+    expect(new Set(current).size).toBe(6);
+    previous = current;
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.clock.runFor(100);
+  await expect(logos).toHaveCount(8);
+  const desktop = await names();
+  await page.clock.fastForward(750);
+  await page.clock.fastForward(250);
+  expect((await names()).filter((name, slot) => name !== desktop[slot])).toHaveLength(1);
 });
