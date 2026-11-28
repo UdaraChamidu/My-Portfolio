@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { ArrowUpRight, MessageCircle, Send, X } from "lucide-react";
+import { ArrowUpRight, Send, X } from "lucide-react";
+import { ChatAssistantAvatar } from "./ChatAssistantAvatar";
 
 const ChatMessage = lazy(() => import("./ChatMessage").then((module) => ({ default: module.ChatMessage })));
 
@@ -121,13 +122,15 @@ export const Chatbot = () => {
       <button
         ref={launcherRef}
         type="button"
-        className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:h-18 md:w-18"
+        className="chat-launcher group fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full text-primary transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:h-18 md:w-18"
+        data-open={isOpen}
         onClick={() => setIsOpen((open) => !open)}
         aria-label={isOpen ? "Close assistant" : "Chat with Udara's assistant"}
         aria-expanded={isOpen}
         aria-controls="portfolio-chat"
       >
-        {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
+        {isOpen ? <X size={28} aria-hidden="true" /> : <ChatAssistantAvatar />}
+        {!isOpen && <span className="chat-launcher-label" aria-hidden="true">Ask my AI assistant</span>}
       </button>
 
       {isOpen && (

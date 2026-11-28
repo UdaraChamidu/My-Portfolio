@@ -166,12 +166,19 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 
 ## Remaining External And Content Gates
 
+### Waving Chat Assistant Follow-Up
+
+- Replaced only the closed chat launcher with a compact purple robot using existing Lucide Bot/Hand icons and CSS. Transparent surrounding area, gentle five-second idle movement, and a brief wave every eight seconds; character enlarged 15% on follow-up. No video, remote assets, or extra dependencies.
+- Added a hover/keyboard-focus label. The open state keeps a conventional close button and removes the animated character. Reduced-motion preferences disable character animation.
+- Preserved chat API, protection, prompts, panel styling, conversation history, outside-click dismissal, Escape, and input behavior.
+- Build, lint, 24 unit/integration tests, and two focused Chrome cases pass (390/1440px). Checked dark/light screenshots, mocked message exchange, no requests before sending, history retention, dismissal, focus return, and reduced motion. No live API calls; full browser suite not rerun.
+
 ### Portrait Floating Technologies Follow-Up
 
 - Eight decorative, upright logos are visible at once, cycling through 20 tools: n8n, OpenAI, Make.com, Python, Supabase, MCP, LangChain, Twilio, Claude, Gemini, LangGraph, ElevenLabs, Deepgram, Gmail, Google Sheets, Excel, Slack, PostgreSQL, React, and FastAPI. Reuses installed icon libraries; no remote logo requests or new dependencies.
 - Replaced the initial circular orbit with asymmetric placement, varied logo sizes, and independent 7-11-second drifting animations. Removed dark badges, circular borders, and glass backgrounds; retained brand colors and a subtle purple glow. Existing portrait dimensions, hero copy, grid spacing, and headline rotation remain unchanged.
 - Text is layered above the decorative logos; stacked layouts clip lower logos before they reach the text. Reduced-motion preferences disable the drifting animation.
-- Increased logo sizes roughly 15%, with independently randomized multi-direction drift paths bounded outside the portrait. One slot fades to the next unused logo every 4-6 seconds, without visible duplicates. Swaps pause offscreen, in hidden tabs, and with reduced motion. Timers and observers are cleaned up on unmount.
+- Increased logo sizes roughly 15%, with independently randomized multi-direction drift paths bounded outside the portrait. One slot fades to the next unused logo every second (750ms hold plus 250ms fade-out), without visible duplicates. Swaps pause offscreen, in hidden tabs, and with reduced motion. Timers and observers are cleaned up on unmount.
 - Build, lint, all 24 unit/integration tests, and five focused Chrome checks pass: layout at 390, 1024, 1440, and 1920px, plus sequential swaps covering all 20 tools. Checked portrait bounds, motion, no horizontal overflow, transparent borderless logos, no duplicate tools, and reduced motion; inspected desktop screenshots. Full browser suite not rerun.
 
 - Configure/verify shared Redis and Vercel settings before deploying chat protection. Missing production storage deliberately blocks AI calls. No production changes were made.

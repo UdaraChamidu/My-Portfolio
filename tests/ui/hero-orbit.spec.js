@@ -49,12 +49,12 @@ test("floating logos cycle through twenty tools one slot at a time", async ({ pa
   const logos = page.locator(".hero-floating-technology");
   const names = () => logos.evaluateAll((elements) => elements.map((element) => element.dataset.technology));
   await expect(logos).toHaveCount(8);
-  await page.clock.runFor(1000);
+  await page.clock.runFor(100);
   let previous = await names();
   const seen = new Set(previous);
   for (let index = 0; index < 14; index++) {
-    await page.clock.fastForward(6100);
-    await page.clock.fastForward(300);
+    await page.clock.fastForward(750);
+    await page.clock.fastForward(250);
     const current = await names();
     expect(current.filter((name, slot) => name !== previous[slot])).toHaveLength(1);
     expect(new Set(current).size).toBe(8);

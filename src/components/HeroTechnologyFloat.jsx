@@ -77,7 +77,7 @@ export const HeroTechnologyFloat = () => {
           slot = (slot + 1) % slots.length;
           schedule();
         }, 250);
-      }, 4000 + Math.random() * 2000);
+      }, 750);
     };
     const sync = () => {
       window.clearTimeout(timer);
