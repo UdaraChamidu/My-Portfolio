@@ -166,6 +166,14 @@ Three genuine reviews are sufficient to start. There is no reason to duplicate o
 
 ## Remaining External And Content Gates
 
+### Portrait Floating Technologies Follow-Up
+
+- Eight decorative, upright logos are visible at once, cycling through 20 tools: n8n, OpenAI, Make.com, Python, Supabase, MCP, LangChain, Twilio, Claude, Gemini, LangGraph, ElevenLabs, Deepgram, Gmail, Google Sheets, Excel, Slack, PostgreSQL, React, and FastAPI. Reuses installed icon libraries; no remote logo requests or new dependencies.
+- Replaced the initial circular orbit with asymmetric placement, varied logo sizes, and independent 7-11-second drifting animations. Removed dark badges, circular borders, and glass backgrounds; retained brand colors and a subtle purple glow. Existing portrait dimensions, hero copy, grid spacing, and headline rotation remain unchanged.
+- Text is layered above the decorative logos; stacked layouts clip lower logos before they reach the text. Reduced-motion preferences disable the drifting animation.
+- Increased logo sizes roughly 15%, with independently randomized multi-direction drift paths bounded outside the portrait. One slot fades to the next unused logo every 4-6 seconds, without visible duplicates. Swaps pause offscreen, in hidden tabs, and with reduced motion. Timers and observers are cleaned up on unmount.
+- Build, lint, all 24 unit/integration tests, and five focused Chrome checks pass: layout at 390, 1024, 1440, and 1920px, plus sequential swaps covering all 20 tools. Checked portrait bounds, motion, no horizontal overflow, transparent borderless logos, no duplicate tools, and reduced motion; inspected desktop screenshots. Full browser suite not rerun.
+
 - Configure/verify shared Redis and Vercel settings before deploying chat protection. Missing production storage deliberately blocks AI calls. No production changes were made.
 - Verify EmailJS allowed domains and actual inbox/acknowledgement delivery with an authorized test enquiry. Automated tests use mocks only; no real messages were sent.
 - Supply approved client names, company/role details, additional exact review text, and any missing project gallery images.

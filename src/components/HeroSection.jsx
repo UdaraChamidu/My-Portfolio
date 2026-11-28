@@ -8,6 +8,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { RotatingHeroHeadline } from "./RotatingHeroHeadline";
+import { HeroTechnologyFloat } from "./HeroTechnologyFloat";
 
 const proofItems = [
   /* Temporarily hidden. Remove this comment wrapper to restore the UK role.
@@ -39,7 +40,7 @@ export const HeroSection = () => {
     >
       <div className="section-inner relative z-10">
         <div className="grid items-center gap-7 lg:grid-cols-[3fr_2fr] lg:gap-6">
-          <div className="min-w-0 text-center lg:text-left">
+          <div className="relative z-10 min-w-0 text-center lg:text-left">
           <div className="mb-5">
             <p className="hero-reveal text-2xl font-semibold text-foreground sm:text-3xl">
               Hi, I am <span className="text-primary">Udara Herath</span>
@@ -80,7 +81,9 @@ export const HeroSection = () => {
           </div>
 
           <div className="hero-reveal order-first flex justify-center lg:order-last" style={{ "--hero-delay": "160ms" }}>
-            <div className="hero-portrait aspect-square w-44 overflow-hidden rounded-full border-2 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)] sm:w-56 lg:w-full lg:max-w-80 xl:max-w-[360px]">
+            <div className="hero-portrait-stage relative isolate aspect-square w-44 sm:w-56 lg:w-full lg:max-w-80 xl:max-w-[360px]">
+              <HeroTechnologyFloat />
+            <div className="hero-portrait relative aspect-square w-full overflow-hidden rounded-full border-2 border-primary bg-card p-1 shadow-[0_0_24px_hsl(var(--primary)/0.25)]">
               <img
                 src="/profile.jpg"
                 alt="Udara Herath"
@@ -89,6 +92,7 @@ export const HeroSection = () => {
                 height="360"
                 loading="eager"
               />
+            </div>
             </div>
           </div>
         </div>
